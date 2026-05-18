@@ -1,0 +1,231 @@
+---
+import Base from '../layouts/Base.astro';
+
+const navItems = ["Hiên Nhà", "Tôi Là Ai", "Đường Đi", "Câu Hay", "Ba Mươi Sáu Kế", "Sách", "Nhạc", "Game", "Lưu Bút"];
+
+const posts = [
+  {
+    title: "Hai Mũi Tên",
+    date: "12 tháng 5, 2026",
+    type: "Chuyện mưu lược",
+    seal: "Mưu",
+    body: "Một chuyện nhỏ về thế yếu, đòn phủ đầu, và cách làm cho người mạnh hơn phải tự cân nhắc trước khi ra tay.",
+  },
+  {
+    title: "Lời Dặn Tuổi Ba Mươi",
+    date: "10 tháng 5, 2026",
+    type: "Tự rèn",
+    seal: "Rèn",
+    body: "Ngủ cho đàng hoàng. Tập cho đều. Đọc ít lại nếu đọc chỉ để né việc làm. Kỷ luật không cần màu mè.",
+  },
+  {
+    title: "Tin Vui Tháng Tư",
+    date: "Tháng 4, 2026",
+    type: "Đường học",
+    seal: "Học",
+    body: "Được nhận vào MSAI của UT Austin. Không phải bỏ nghề cũ để chạy theo AI.",
+  },
+];
+
+const quests = [
+  { name: "Bench 225lb", done: true },
+  { name: "Squat 315lb", done: true },
+  { name: "Deadlift 245lb", done: true },
+  { name: "UT Austin MSAI", done: true },
+  { name: "Toán cho ML", done: false },
+  { name: "Learn PyTorch", done: false },
+];
+---
+
+<Base title="Góc Của Hung">
+  <main
+    class="min-h-screen"
+    style="color: #2a1b10; background-color: #efe1c3; background-image: repeating-linear-gradient(0deg, rgba(42,27,16,.035) 0 1px, transparent 1px 26px), radial-gradient(circle at 12% 10%, rgba(123,45,22,.15), transparent 28%), radial-gradient(circle at 85% 20%, rgba(120,72,28,.12), transparent 25%);"
+  >
+    <div class="mx-auto max-w-6xl px-4 py-5 sm:px-7 lg:px-8">
+      <div
+        class="border-[3px] border-double p-2"
+        style="border-color: rgba(42,27,16,0.35); background: rgba(42,27,16,0.025);"
+      >
+        <div class="border p-4 sm:p-6 lg:p-8" style="border-color: rgba(42,27,16,0.20);">
+
+          <header class="grid gap-6 lg:grid-cols-[1fr_260px] lg:items-start">
+            <div>
+              <div
+                class="inline-block border px-3 py-1 text-xs uppercase tracking-[0.26em]"
+                style="border-color: rgba(42,27,16,0.30); color: rgba(42,27,16,0.75); box-shadow: 3px 3px 0 rgba(0,0,0,.08);"
+              >
+                Nhật ký tiếng Việt của Hung
+              </div>
+              <h1 class="mt-5 max-w-4xl font-serif text-5xl font-black leading-[1.02] tracking-tight sm:text-7xl lg:text-8xl">
+                Chuyện ở hiên nhà của một người làm kỹ sư.
+              </h1>
+              <p class="mt-5 max-w-2xl font-serif text-lg leading-8" style="color: rgba(42,27,16,0.75);">
+                Code, AI, tạ sắt, sách cũ, nhạc khuya, vài câu chuyện mưu lược, và những dòng ghi lại để tự nhắc mình sống cho có gốc, có chí, có đường đi.
+              </p>
+            </div>
+
+            <aside
+              class="border p-4"
+              style="background: rgba(248,237,207,0.90); border-color: rgba(107,63,33,0.30); box-shadow: 6px 6px 0 rgba(0,0,0,.10);"
+            >
+              <div class="text-center font-serif text-2xl font-black">Hung</div>
+              <div
+                class="mx-auto mt-2 grid h-20 w-20 place-items-center rounded-full border-4 border-double text-xl font-black tracking-tight"
+                style="border-color: rgba(42,27,16,0.40); background: rgba(0,0,0,0.04); color: #7b2d16;"
+              >
+                H
+              </div>
+              <p class="mt-3 text-center text-sm leading-6" style="color: rgba(42,27,16,0.75);">
+                Kỹ sư dữ liệu. Học AI. Tập tạ. Ghi chép để khỏi sống lơ mơ.
+              </p>
+              <div class="my-5 flex items-center gap-3 opacity-80">
+                <div class="h-px flex-1" style="background: #7b2d16;"></div>
+                <div class="text-xs tracking-[0.35em]" style="color: #7b2d16;">◇ ◇ ◇</div>
+                <div class="h-px flex-1" style="background: #7b2d16;"></div>
+              </div>
+              <div class="grid grid-cols-2 gap-2">
+                {[{l:"Bài",v:"42"},{l:"Mood",v:"Tỉnh"},{l:"Bench",v:"225"},{l:"Quest",v:"MSAI"}].map(s => (
+                  <div class="border p-3" style="background: rgba(0,0,0,0.025); border-color: rgba(42,27,16,0.25); box-shadow: 4px 4px 0 rgba(0,0,0,.08);">
+                    <div class="text-[11px] uppercase tracking-[0.18em]" style="color: rgba(42,27,16,0.60);">{s.l}</div>
+                    <div class="mt-1 text-lg font-bold">{s.v}</div>
+                  </div>
+                ))}
+              </div>
+            </aside>
+          </header>
+
+          <nav
+            class="mt-6 grid grid-cols-3 gap-2 border-y py-3 text-center text-sm font-semibold sm:grid-cols-9"
+            style="border-color: rgba(42,27,16,0.25);"
+          >
+            {navItems.map(item => (
+              <button
+                class="border px-2 py-2 transition hover:translate-y-[-1px]"
+                style="border-color: rgba(42,27,16,0.20); background: rgba(0,0,0,0.02); color: rgba(42,27,16,0.75);"
+              >
+                {item}
+              </button>
+            ))}
+          </nav>
+
+          <section class="mt-6 grid gap-5 lg:grid-cols-[310px_1fr]">
+            <aside class="space-y-5">
+              <section
+                class="border p-4"
+                style="background: rgba(248,237,207,0.90); border-color: rgba(107,63,33,0.30); box-shadow: 6px 6px 0 rgba(0,0,0,.10);"
+              >
+                <div class="font-serif text-xl font-black">Xem phong cách</div>
+                <p class="mt-2 text-sm leading-6" style="color: rgba(42,27,16,0.75);">
+                  Trang này có 10 bộ phong cách. Bấm vào đây để thử tất cả.
+                </p>
+                <a
+                  href={`${import.meta.env.BASE_URL}/style-lab/`}
+                  class="mt-4 inline-block border px-4 py-2 text-sm font-bold transition hover:translate-x-0.5"
+                  style="border-color: #7b2d16; color: #7b2d16; box-shadow: 3px 3px 0 rgba(0,0,0,.10);"
+                >
+                  mở Style Lab →
+                </a>
+              </section>
+
+              <section
+                class="border p-4"
+                style="background: rgba(255,246,220,0.65); border-color: rgba(107,63,33,0.20); box-shadow: 6px 6px 0 rgba(0,0,0,.10);"
+              >
+                <div class="font-serif text-xl font-black">Đang nghe</div>
+                <div
+                  class="mt-3 border-y py-3 text-2xl font-black"
+                  style="border-color: rgba(42,27,16,0.15);"
+                >
+                  Mạnh Bà
+                </div>
+                <p class="mt-2 text-sm" style="color: rgba(42,27,16,0.75);">
+                  Một bài để nhớ rằng có những thứ qua cầu là phải để lại.
+                </p>
+              </section>
+
+              <section
+                class="border p-4"
+                style="background: rgba(255,246,220,0.65); border-color: rgba(107,63,33,0.20); box-shadow: 6px 6px 0 rgba(0,0,0,.10);"
+              >
+                <div class="font-serif text-xl font-black">Việc đang làm</div>
+                <div class="mt-3 space-y-2">
+                  {quests.map(q => (
+                    <div
+                      class="flex items-center justify-between border-b pb-2 text-sm"
+                      style="border-color: rgba(42,27,16,0.15);"
+                    >
+                      <span>{q.name}</span>
+                      <span class="font-bold" style={q.done ? "color: #7b2d16;" : ""}>
+                        {q.done ? "xong" : "mở"}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            </aside>
+
+            <section class="space-y-4">
+              {posts.map(post => (
+                <article
+                  class="grid gap-4 border p-4 sm:grid-cols-[84px_1fr] sm:p-5"
+                  style="background: rgba(255,246,220,0.65); border-color: rgba(107,63,33,0.20); box-shadow: 6px 6px 0 rgba(0,0,0,.10);"
+                >
+                  <div class="flex sm:block sm:text-center">
+                    <div
+                      class="grid h-16 w-16 shrink-0 place-items-center border-4 border-double font-serif text-sm font-black"
+                      style="color: #7b2d16; border-color: rgba(42,27,16,0.35);"
+                    >
+                      {post.seal}
+                    </div>
+                    <div class="ml-3 sm:ml-0 sm:mt-3">
+                      <div class="text-xs uppercase tracking-[0.2em]" style="color: rgba(42,27,16,0.60);">{post.type}</div>
+                      <div class="mt-1 text-xs" style="color: rgba(42,27,16,0.60);">{post.date}</div>
+                    </div>
+                  </div>
+                  <div>
+                    <h3 class="font-serif text-2xl font-black sm:text-3xl">{post.title}</h3>
+                    <p class="mt-3 max-w-3xl text-base leading-8" style="color: rgba(42,27,16,0.75);">{post.body}</p>
+                    <button
+                      class="mt-4 border px-4 py-2 text-sm font-bold transition hover:translate-x-0.5"
+                      style="border-color: #7b2d16; color: #7b2d16; box-shadow: 3px 3px 0 rgba(0,0,0,.10);"
+                    >
+                      đọc tiếp →
+                    </button>
+                  </div>
+                </article>
+              ))}
+            </section>
+          </section>
+
+          <footer class="mt-7 border-t pt-5" style="border-color: rgba(42,27,16,0.25);">
+            <div class="grid gap-4 sm:grid-cols-[1fr_2fr]">
+              <div
+                class="border p-4"
+                style="background: rgba(255,246,220,0.65); border-color: rgba(107,63,33,0.20); box-shadow: 5px 5px 0 rgba(0,0,0,.10);"
+              >
+                <div class="font-serif text-xl font-black">Lưu bút</div>
+                <p class="mt-2 leading-7" style="color: rgba(42,27,16,0.75);">
+                  "Trang này giống một góc nhà hơn là một landing page. Vậy mới đúng."
+                </p>
+              </div>
+              <div
+                class="border p-4"
+                style="background: rgba(255,246,220,0.65); border-color: rgba(107,63,33,0.20); box-shadow: 5px 5px 0 rgba(0,0,0,.10);"
+              >
+                <div class="font-serif text-xl font-black">Ghi chú thiết kế</div>
+                <p class="mt-2 leading-7" style="color: rgba(42,27,16,0.75);">
+                  Giữ chất Việt bằng chất liệu: giấy dó, mực nâu, hiên nhà, quán cóc. Trang vẫn nói về code và AI, nhưng giọng kể không cần giả Tây.
+                </p>
+              </div>
+            </div>
+            <div class="mt-5 text-center text-xs uppercase tracking-[0.35em]" style="color: rgba(42,27,16,0.60);">
+              ✦  giấy dó  ✦  mực nâu  ✦  hiên nhà  ✦
+            </div>
+          </footer>
+
+        </div>
+      </div>
+    </div>
+  </main>
+</Base>
