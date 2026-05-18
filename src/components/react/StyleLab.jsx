@@ -572,7 +572,7 @@ function WovenStat({ label, value, style }) {
 }
 
 export default function VietnameseBlogStyleLab() {
-  const [styleId, setStyleId] = useState("giaydo");
+  const [styleId, setStyleId] = useState("hoian");
   const style = useMemo(() => styles.find((item) => item.id === styleId) || styles[0], [styleId]);
 
   return (
