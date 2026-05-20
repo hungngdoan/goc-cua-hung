@@ -3,47 +3,47 @@ import { motion } from "framer-motion";
 
 const posts = [
   {
-    title: "Hai Mũi Tên",
-    date: "12 tháng 5, 2026",
-    type: "Chuyện mưu lược",
-    seal: "Mưu",
-    body: "Một chuyện nhỏ về thế yếu, đòn phủ đầu, và cách làm cho người mạnh hơn phải tự cân nhắc trước khi ra tay. Trong đời, không phải lúc nào mình cũng có nhiều lựa chọn. Có lúc chỉ cần một lựa chọn đủ sắc."
+    title: "Placeholder Article One",
+    date: "Month 00, 0000",
+    type: "Sample category",
+    seal: "One",
+    body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae velit at sapien varius blandit."
   },
   {
-    title: "Lời Dặn Tuổi Ba Mươi",
-    date: "10 tháng 5, 2026",
-    type: "Tự rèn",
-    seal: "Rèn",
-    body: "Ngủ cho đàng hoàng. Tập cho đều. Đọc ít lại nếu đọc chỉ để né việc làm. Đừng mê những lời khuyên nghe hay mà không đổi nổi một ngày sống thật. Kỷ luật không cần màu mè."
+    title: "Placeholder Article Two",
+    date: "Month 00, 0000",
+    type: "Sample note",
+    seal: "Two",
+    body: "Praesent commodo libero non lectus facilisis, sed tempor mi luctus. Cras posuere sem a nibh gravida."
   },
   {
-    title: "Tin Vui Tháng Tư",
-    date: "Tháng 4, 2026",
-    type: "Đường học",
-    seal: "Học",
-    body: "Được nhận vào MSAI của UT Austin. Không phải bỏ nghề cũ để chạy theo AI. Đây là chuyện một kỹ sư hạ tầng học thêm trí tuệ máy để đi xa hơn trong mười năm tới."
+    title: "Placeholder Article Three",
+    date: "Month 00, 0000",
+    type: "Sample update",
+    seal: "Tre",
+    body: "Aliquam erat volutpat. Donec vitae arcu nec justo dictum pretium quis a augue."
   },
   {
-    title: "Tạ Sắt Và Cơm Nhà",
-    date: "24 tháng 2, 2026",
-    type: "Thân thể",
-    seal: "Lực",
-    body: "Bench, squat, deadlift, cutting, fasting. Nghe rất Tây, nhưng gốc vẫn là chuyện rất đời: ăn, ngủ, tập, chịu khó. Thân không vững thì chí lớn cũng dễ thành lời nói suông."
+    title: "Placeholder Article Four",
+    date: "Month 00, 0000",
+    type: "Sample essay",
+    seal: "For",
+    body: "Sed sit amet tellus at ipsum faucibus gravida. Vivamus luctus erat non quam ultrices placerat."
   },
   {
-    title: "Đêm Gõ Code",
-    date: "20 tháng 2, 2026",
-    type: "Nghề kỹ sư",
-    seal: "Nghề",
-    body: "Nửa đêm, đèn bàn còn sáng, nhạc chạy nhỏ, terminal mở im lìm. Có những lúc code giống như ngồi vá một tấm áo cũ: từng mũi nhỏ, lặng lẽ, nhưng sai một mũi là cả đường chỉ lệch."
+    title: "Placeholder Article Five",
+    date: "Month 00, 0000",
+    type: "Sample journal",
+    seal: "Fiv",
+    body: "Nam dapibus, lorem a porta posuere, ipsum massa facilisis neque, eget pretium sem lorem in est."
   }
 ];
 
 const styles = [
   {
     id: "giaydo",
-    name: "Giấy Dó Mực Nâu",
-    subtitle: "Như một cuốn sổ tay đặt trên bàn gỗ, có vết trà, có chữ mực, có khoảng thở.",
+    name: "Placeholder Style One",
+    subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer tincidunt lorem in quam feugiat.",
     pageBg: "#efe1c3",
     text: "#2a1b10",
     textSoft: "rgba(42,27,16,0.75)",
@@ -88,12 +88,12 @@ const styles = [
     dividerSymbol: "◇ ◇ ◇",
     dividerTracking: "0.35em",
     pattern: "repeating-linear-gradient(0deg, rgba(42,27,16,.035) 0 1px, transparent 1px 26px), radial-gradient(circle at 12% 10%, rgba(123,45,22,.15), transparent 28%), radial-gradient(circle at 85% 20%, rgba(120,72,28,.12), transparent 25%)",
-    motif: "✦  giấy dó  ✦  mực nâu  ✦  hiên nhà  ✦"
+    motif: "✦  placeholder  ✦  sample  ✦  text  ✦"
   },
   {
     id: "hoian",
-    name: "Hội An Đèn Lồng",
-    subtitle: "Ấm, vàng, cũ, hơi thơ. Hợp với nhật ký đêm, nhạc, sách, chuyện đời.",
+    name: "Placeholder Style Two",
+    subtitle: "Praesent commodo libero non lectus facilisis, sed tempor mi luctus.",
     pageBg: "#28140d",
     text: "#ffe7b3",
     textSoft: "rgba(255,231,179,0.75)",
@@ -138,12 +138,12 @@ const styles = [
     dividerSymbol: "◇ ◇ ◇",
     dividerTracking: "0.35em",
     pattern: "radial-gradient(circle at 18% 12%, rgba(244,184,96,.24), transparent 16%), radial-gradient(circle at 78% 8%, rgba(209,75,51,.18), transparent 18%), linear-gradient(90deg, rgba(244,184,96,.06) 1px, transparent 1px)",
-    motif: "◆  phố cổ  ◆  đèn lồng  ◆  sông Hoài  ◆"
+    motif: "◆  placeholder  ◆  sample  ◆  text  ◆"
   },
   {
     id: "dongho",
-    name: "Tranh Đông Hồ",
-    subtitle: "Mộc mạc, dân gian, hơi nghịch. Dùng màu phẳng, viền mạnh, bố cục như tranh in tay.",
+    name: "Placeholder Style Three",
+    subtitle: "Aliquam erat volutpat. Donec vitae arcu nec justo dictum pretium.",
     pageBg: "#f3d68a",
     text: "#331d10",
     textSoft: "rgba(51,29,16,0.70)",
@@ -188,12 +188,12 @@ const styles = [
     dividerSymbol: "◇ ◇ ◇",
     dividerTracking: "0.35em",
     pattern: "repeating-linear-gradient(45deg, rgba(51,29,16,.045) 0 2px, transparent 2px 12px), radial-gradient(circle at 90% 15%, rgba(178,31,19,.18), transparent 22%)",
-    motif: "◈  dân gian  ◈  mộc bản  ◈  nét đậm  ◈"
+    motif: "◈  placeholder  ◈  sample  ◈  text  ◈"
   },
   {
     id: "sapbao_sang",
-    name: "Sạp Báo Sài Gòn Cũ",
-    subtitle: "Như tờ báo giấy cũ, có tiêu đề lớn, cột chữ hẹp, mùi cà phê đen và tiếng xe ngoài hẻm.",
+    name: "Placeholder Style Four",
+    subtitle: "Sed sit amet tellus at ipsum faucibus gravida. Vivamus luctus erat non quam.",
     pageBg: "#ded2b2",
     text: "#201811",
     textSoft: "rgba(32,24,17,0.75)",
@@ -238,12 +238,12 @@ const styles = [
     dividerSymbol: "◇ ◇ ◇",
     dividerTracking: "0.35em",
     pattern: "repeating-linear-gradient(90deg, rgba(32,24,17,.04) 0 1px, transparent 1px 38px), repeating-linear-gradient(0deg, rgba(32,24,17,.025) 0 1px, transparent 1px 18px)",
-    motif: "TIN SÁNG · CHUYỆN NGHỀ · ĐỜI SỐNG · GHI CHÉP"
+    motif: "PLACEHOLDER · SAMPLE · TEXT · NOTES"
   },
   {
     id: "quancoc_sang",
-    name: "Quán Cóc Đầu Hẻm",
-    subtitle: "Gần gũi, ít diễn. Một chỗ ngồi xuống, uống ly bạc xỉu, kể chuyện code và chuyện đời.",
+    name: "Placeholder Style Five",
+    subtitle: "Nam dapibus, lorem a porta posuere, ipsum massa facilisis neque.",
     pageBg: "#d9c28f",
     text: "#24180e",
     textSoft: "rgba(36,24,14,0.72)",
@@ -288,12 +288,12 @@ const styles = [
     dividerSymbol: "◇ ◇ ◇",
     dividerTracking: "0.35em",
     pattern: "radial-gradient(circle at 20% 20%, rgba(47,107,63,.16), transparent 24%), repeating-linear-gradient(90deg, rgba(93,59,31,.05) 0 3px, transparent 3px 18px)",
-    motif: "☕  bàn nhựa  •  hẻm nhỏ  •  chuyện dài  ☕"
+    motif: "☕  placeholder  •  sample  •  text  ☕"
   },
   {
     id: "hong_tram",
-    name: "Hồng Trầm",
-    subtitle: "Hồng bụi trên nền than. Như lụa cũ, mực đêm, và một căn phòng có đèn thấp.",
+    name: "Placeholder Style Six",
+    subtitle: "Curabitur posuere, mi sed facilisis varius, nunc massa tempor arcu.",
     pageBg: "#0C090B",
     text: "#E8D8DD",
     textSoft: "#9A858C",
@@ -338,12 +338,12 @@ const styles = [
     dividerSymbol: "• • •",
     dividerTracking: "0.28em",
     pattern: "radial-gradient(circle at 12% 8%, rgba(176,112,128,0.12), transparent 18%), radial-gradient(circle at 82% 18%, rgba(176,112,128,0.05), transparent 26%), radial-gradient(circle at 50% 92%, rgba(176,112,128,0.05), transparent 28%), repeating-linear-gradient(90deg, rgba(255,255,255,0.018) 0 1px, transparent 1px 34px), repeating-linear-gradient(0deg, rgba(255,255,255,0.012) 0 1px, transparent 1px 24px), linear-gradient(135deg, #0C090B, #1A1218 48%, #100C0E)",
-    motif: "lụa trầm · mực đêm · hương gỗ · chuyện khuya"
+    motif: "placeholder · sample · text · notes"
   },
   {
     id: "den_dau",
-    name: "Đèn Dầu Phố Cũ",
-    subtitle: "Tối, ấm, vàng cũ. Hợp với nhật ký đêm, nhạc, sách và chuyện đời.",
+    name: "Placeholder Style Seven",
+    subtitle: "Morbi vulputate neque ut massa facilisis, vitae luctus lorem dictum.",
     pageBg: "#0D0906",
     text: "#F0DEC1",
     textSoft: "#A99575",
@@ -388,12 +388,12 @@ const styles = [
     dividerSymbol: "• • •",
     dividerTracking: "0.28em",
     pattern: "radial-gradient(circle at 12% 8%, rgba(208,154,78,0.12), transparent 18%), radial-gradient(circle at 82% 18%, rgba(208,154,78,0.055), transparent 26%), radial-gradient(circle at 50% 92%, rgba(208,154,78,0.055), transparent 28%), repeating-linear-gradient(90deg, rgba(255,255,255,0.018) 0 1px, transparent 1px 34px), repeating-linear-gradient(0deg, rgba(255,255,255,0.012) 0 1px, transparent 1px 24px), linear-gradient(135deg, #0D0906, #1E1309 48%, #120D08)",
-    motif: "đèn dầu · gỗ cũ · phố khuya · tiếng xe xa"
+    motif: "placeholder · sample · text · notes"
   },
   {
     id: "muc_than",
-    name: "Mực Than Giấy Đen",
-    subtitle: "Rất tối, gọn, nặng chữ. Dành cho bài dài và suy nghĩ nghiêm túc.",
+    name: "Placeholder Style Eight",
+    subtitle: "Donec interdum ligula non nisl luctus, vitae finibus tortor pretium.",
     pageBg: "#080808",
     text: "#E7DFD0",
     textSoft: "#9A907D",
@@ -438,12 +438,12 @@ const styles = [
     dividerSymbol: "• • •",
     dividerTracking: "0.28em",
     pattern: "radial-gradient(circle at 12% 8%, rgba(175,160,132,0.10), transparent 18%), radial-gradient(circle at 82% 18%, rgba(175,160,132,0.045), transparent 26%), radial-gradient(circle at 50% 92%, rgba(175,160,132,0.045), transparent 28%), repeating-linear-gradient(90deg, rgba(255,255,255,0.018) 0 1px, transparent 1px 34px), repeating-linear-gradient(0deg, rgba(255,255,255,0.012) 0 1px, transparent 1px 24px), linear-gradient(135deg, #080808, #15120D 48%, #0B0A09)",
-    motif: "mực than · giấy đen · dòng chậm · ý nặng"
+    motif: "placeholder · sample · text · notes"
   },
   {
     id: "sap_bao_dem",
-    name: "Sạp Báo Đêm",
-    subtitle: "Như tờ báo cũ đọc dưới đèn vàng: tiêu đề lớn, cột chữ chắc, không màu mè.",
+    name: "Placeholder Style Nine",
+    subtitle: "Suspendisse vitae tellus sed lorem laoreet porta id at mauris.",
     pageBg: "#0F0C09",
     text: "#EAD8C2",
     textSoft: "#A48D76",
@@ -488,12 +488,12 @@ const styles = [
     dividerSymbol: "• • •",
     dividerTracking: "0.28em",
     pattern: "radial-gradient(circle at 12% 8%, rgba(190,111,93,0.11), transparent 18%), radial-gradient(circle at 82% 18%, rgba(190,111,93,0.05), transparent 26%), radial-gradient(circle at 50% 92%, rgba(190,111,93,0.05), transparent 28%), repeating-linear-gradient(90deg, rgba(255,255,255,0.018) 0 1px, transparent 1px 34px), repeating-linear-gradient(0deg, rgba(255,255,255,0.012) 0 1px, transparent 1px 24px), linear-gradient(135deg, #0F0C09, #1B120D 48%, #100C09)",
-    motif: "tin khuya · cà phê đen · cột báo · ghi chép"
+    motif: "placeholder · sample · text · notes"
   },
   {
     id: "quan_coc_toi",
-    name: "Quán Cóc Sau Mưa",
-    subtitle: "Đen xanh, gần gũi, có mùi nền đất ướt và ly bạc xỉu cuối ngày.",
+    name: "Placeholder Style Ten",
+    subtitle: "Maecenas suscipit sem vitae sapien rhoncus, non posuere neque tempor.",
     pageBg: "#070D0A",
     text: "#DDE8DC",
     textSoft: "#8EA291",
@@ -538,12 +538,12 @@ const styles = [
     dividerSymbol: "• • •",
     dividerTracking: "0.28em",
     pattern: "radial-gradient(circle at 12% 8%, rgba(122,160,131,0.11), transparent 18%), radial-gradient(circle at 82% 18%, rgba(122,160,131,0.045), transparent 26%), radial-gradient(circle at 50% 92%, rgba(122,160,131,0.045), transparent 28%), repeating-linear-gradient(90deg, rgba(255,255,255,0.018) 0 1px, transparent 1px 34px), repeating-linear-gradient(0deg, rgba(255,255,255,0.012) 0 1px, transparent 1px 24px), linear-gradient(135deg, #070D0A, #101B15 48%, #080F0C)",
-    motif: "hẻm nhỏ · mưa đêm · bạc xỉu · chuyện dài"
+    motif: "placeholder · sample · text · notes"
   }
 ];
 
-const navItems = ["Hiên Nhà", "Tôi Là Ai", "Đường Đi", "Câu Hay", "Ba Mươi Sáu Kế", "Sách", "Nhạc", "Game", "Lưu Bút"];
-const quests = ["Bench 225lb", "Squat 315lb", "Deadlift 245lb", "UT Austin MSAI", "Toán cho ML", "Learn PyTorch"];
+const navItems = ["Alpha", "Bravo", "Charlie", "Delta", "Echo", "Foxtrot", "Gamma", "Helix", "Indigo"];
+const quests = ["Placeholder task one", "Placeholder task two", "Placeholder task three", "Placeholder task four", "Placeholder task five", "Placeholder task six"];
 
 function Divider({ style }) {
   return (
@@ -601,13 +601,13 @@ export default function VietnameseBlogStyleLab() {
                     boxShadow: style.tagShadow
                   }}
                 >
-                  Nhật ký tiếng Việt của Hung
+                  Placeholder Label
                 </div>
                 <h1 className="mt-5 max-w-4xl font-serif text-5xl font-black leading-[1.02] tracking-tight sm:text-7xl lg:text-8xl">
-                  Chuyện ở hiên nhà của một người làm kỹ sư.
+                  Placeholder headline for a style preview page.
                 </h1>
                 <p className="mt-5 max-w-2xl font-serif text-lg leading-8" style={{ color: style.textSoft }}>
-                  Code, AI, tạ sắt, sách cũ, nhạc khuya, vài câu chuyện mưu lược, và những dòng ghi lại để tự nhắc mình sống cho có gốc, có chí, có đường đi.
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur posuere, mi sed facilisis varius, nunc massa tempor arcu, vitae placerat neque justo sed lorem.
                 </p>
               </div>
 
@@ -619,22 +619,22 @@ export default function VietnameseBlogStyleLab() {
                   boxShadow: style.panelShadow
                 }}
               >
-                <div className="text-center font-serif text-2xl font-black">Hung</div>
+                <div className="text-center font-serif text-2xl font-black">Name</div>
                 <div
                   className="mx-auto mt-2 grid h-20 w-20 place-items-center rounded-full border-4 border-double text-xl font-black tracking-tight"
                   style={{ borderColor: style.avatarBorder, background: style.avatarBg, color: style.accent }}
                 >
-                  H
+                  N
                 </div>
                 <p className="mt-3 text-center text-sm leading-6" style={{ color: style.textSoft }}>
-                  Kỹ sư dữ liệu. Học AI. Tập tạ. Ghi chép để khỏi sống lơ mơ.
+                  Placeholder description for a short profile, bio, or personal note.
                 </p>
                 <Divider style={style} />
                 <div className="grid grid-cols-2 gap-2">
-                  <WovenStat label="Bài" value="42" style={style} />
-                  <WovenStat label="Mood" value="Tỉnh" style={style} />
-                  <WovenStat label="Bench" value="225" style={style} />
-                  <WovenStat label="Quest" value="MSAI" style={style} />
+                  <WovenStat label="Item" value="00" style={style} />
+                  <WovenStat label="Mode" value="Text" style={style} />
+                  <WovenStat label="Stat" value="000" style={style} />
+                  <WovenStat label="Goal" value="Plan" style={style} />
                 </div>
               </aside>
             </header>
@@ -664,9 +664,9 @@ export default function VietnameseBlogStyleLab() {
                     boxShadow: style.panelShadow
                   }}
                 >
-                  <div className="font-serif text-xl font-black">Chọn chất trang</div>
+                  <div className="font-serif text-xl font-black">Placeholder Options</div>
                   <p className="mt-2 text-sm leading-6" style={{ color: style.textSoft }}>
-                    Không phải đổi mỗi màu. Mỗi bản dưới đây đổi cả không khí, nhịp đọc, và cảm giác của trang.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer tincidunt lorem in quam feugiat.
                   </p>
                   <div className="mt-4 space-y-2">
                     {styles.map((item) => (
@@ -700,15 +700,15 @@ export default function VietnameseBlogStyleLab() {
                     boxShadow: style.panelSoftShadow
                   }}
                 >
-                  <div className="font-serif text-xl font-black">Đang nghe</div>
+                  <div className="font-serif text-xl font-black">Placeholder Title</div>
                   <div
                     className="mt-3 border-y py-3 text-2xl font-black"
                     style={{ borderColor: style.contentBorder, color: style.musicHighlight }}
                   >
-                    Mạnh Bà
+                    Sample Text
                   </div>
                   <p className="mt-2 text-sm" style={{ color: style.textSoft }}>
-                    Một bài để nhớ rằng có những thứ qua cầu là phải để lại.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                   </p>
                 </section>
 
@@ -720,7 +720,7 @@ export default function VietnameseBlogStyleLab() {
                     boxShadow: style.panelSoftShadow
                   }}
                 >
-                  <div className="font-serif text-xl font-black">Việc đang làm</div>
+                  <div className="font-serif text-xl font-black">Placeholder List</div>
                   <div className="mt-3 space-y-2">
                     {quests.map((quest, index) => (
                       <div
@@ -730,7 +730,7 @@ export default function VietnameseBlogStyleLab() {
                       >
                         <span style={{ color: style.questColor }}>{quest}</span>
                         <span className="font-bold" style={{ color: index < 4 ? style.accent : style.questMuted }}>
-                          {index < 4 ? "xong" : "mở"}
+                          {index < 4 ? "done" : "open"}
                         </span>
                       </div>
                     ))}
@@ -751,7 +751,7 @@ export default function VietnameseBlogStyleLab() {
                     boxShadow: style.previewShadow
                   }}
                 >
-                  <div className="text-xs uppercase tracking-[0.3em]" style={{ color: style.textMuted }}>mẫu đang xem</div>
+                  <div className="text-xs uppercase tracking-[0.3em]" style={{ color: style.textMuted }}>active sample</div>
                   <h2 className="mt-2 font-serif text-4xl font-black sm:text-5xl" style={{ color: style.accent }}>
                     {style.name}
                   </h2>
@@ -806,7 +806,7 @@ export default function VietnameseBlogStyleLab() {
                             boxShadow: style.btnShadow
                           }}
                         >
-                          đọc tiếp →
+                          read more →
                         </button>
                       </div>
                     </motion.article>
@@ -825,9 +825,9 @@ export default function VietnameseBlogStyleLab() {
                     boxShadow: style.footerShadow
                   }}
                 >
-                  <div className="font-serif text-xl font-black">Lưu bút</div>
+                  <div className="font-serif text-xl font-black">Placeholder Footer</div>
                   <p className="mt-2 leading-7" style={{ color: style.textSoft }}>
-                    "Trang này giống một góc nhà hơn là một landing page. Vậy mới đúng."
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae tellus sed lorem."
                   </p>
                 </div>
                 <div
@@ -838,9 +838,9 @@ export default function VietnameseBlogStyleLab() {
                     boxShadow: style.footerShadow
                   }}
                 >
-                  <div className="font-serif text-xl font-black">Ghi chú thiết kế</div>
+                  <div className="font-serif text-xl font-black">Placeholder Notes</div>
                   <p className="mt-2 leading-7" style={{ color: style.textSoft }}>
-                    Giữ chất Việt bằng chất liệu: lụa trầm, đèn thấp, giấy tối, báo cũ, hẻm sau mưa. Trang vẫn nói về code và AI, nhưng không cần mặc áo startup hiện đại.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas suscipit sem vitae sapien rhoncus, non posuere neque tempor.
                   </p>
                 </div>
               </div>
