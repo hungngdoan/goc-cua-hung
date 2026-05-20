@@ -1,43 +1,43 @@
 ---
 import Base from '../layouts/Base.astro';
 
-const navItems = ["Hiên Nhà", "Tôi Là Ai", "Đường Đi", "Câu Hay", "Ba Mươi Sáu Kế", "Sách", "Nhạc", "Game", "Lưu Bút"];
+const navItems = ["Alpha", "Bravo", "Charlie", "Delta", "Echo", "Foxtrot", "Gamma", "Helix", "Indigo"];
 
 const posts = [
   {
-    title: "Hai Mũi Tên",
-    date: "12 tháng 5, 2026",
-    type: "Chuyện mưu lược",
-    seal: "Mưu",
-    body: "Một chuyện nhỏ về thế yếu, đòn phủ đầu, và cách làm cho người mạnh hơn phải tự cân nhắc trước khi ra tay.",
+    title: "Placeholder Article One",
+    date: "Month 00, 0000",
+    type: "Sample category",
+    seal: "One",
+    body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae velit at sapien varius blandit.",
   },
   {
-    title: "Lời Dặn Tuổi Ba Mươi",
-    date: "10 tháng 5, 2026",
-    type: "Tự rèn",
-    seal: "Rèn",
-    body: "Ngủ cho đàng hoàng. Tập cho đều. Đọc ít lại nếu đọc chỉ để né việc làm. Kỷ luật không cần màu mè.",
+    title: "Placeholder Article Two",
+    date: "Month 00, 0000",
+    type: "Sample note",
+    seal: "Two",
+    body: "Praesent commodo libero non lectus facilisis, sed tempor mi luctus. Cras posuere sem a nibh gravida.",
   },
   {
-    title: "Tin Vui Tháng Tư",
-    date: "Tháng 4, 2026",
-    type: "Đường học",
-    seal: "Học",
-    body: "Được nhận vào MSAI của UT Austin. Không phải bỏ nghề cũ để chạy theo AI.",
+    title: "Placeholder Article Three",
+    date: "Month 00, 0000",
+    type: "Sample update",
+    seal: "Tre",
+    body: "Aliquam erat volutpat. Donec vitae arcu nec justo dictum pretium quis a augue.",
   },
 ];
 
 const quests = [
-  { name: "Bench 225lb", done: true },
-  { name: "Squat 315lb", done: true },
-  { name: "Deadlift 245lb", done: true },
-  { name: "UT Austin MSAI", done: true },
-  { name: "Toán cho ML", done: false },
-  { name: "Learn PyTorch", done: false },
+  { name: "Placeholder task one", done: true },
+  { name: "Placeholder task two", done: true },
+  { name: "Placeholder task three", done: true },
+  { name: "Placeholder task four", done: true },
+  { name: "Placeholder task five", done: false },
+  { name: "Placeholder task six", done: false },
 ];
 ---
 
-<Base title="Góc Của Hung">
+<Base title="Placeholder Page">
   <main
     class="min-h-screen"
     style="color: #ffe7b3; background-color: #28140d; background-image: radial-gradient(circle at 18% 12%, rgba(244,184,96,.24), transparent 16%), radial-gradient(circle at 78% 8%, rgba(209,75,51,.18), transparent 18%), linear-gradient(90deg, rgba(244,184,96,.06) 1px, transparent 1px);"
@@ -55,13 +55,13 @@ const quests = [
                 class="inline-block border px-3 py-1 text-xs uppercase tracking-[0.26em]"
                 style="border-color: rgba(255,231,179,0.30); color: rgba(255,231,179,0.75); box-shadow: 3px 3px 0 rgba(0,0,0,.08);"
               >
-                Góc zui zẻ của Hưng
+                Placeholder Label
               </div>
               <h1 class="mt-5 max-w-4xl font-serif text-5xl font-black leading-[1.02] tracking-tight sm:text-7xl lg:text-8xl">
-                Góc không tên của một kẻ không bỏ cuộc
+                Placeholder headline for a page still being written
               </h1>
               <p class="mt-5 max-w-2xl font-serif text-lg leading-8" style="color: rgba(255,231,179,0.75);">
-                Code, AI, tạ sắt, sách cũ, nhạc khuya, vài câu chuyện mưu lược, và những dòng ghi lại để tự nhắc mình sống cho có gốc, có chí, có đường đi.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur posuere, mi sed facilisis varius, nunc massa tempor arcu, vitae placerat neque justo sed lorem.
               </p>
             </div>
 
@@ -69,15 +69,15 @@ const quests = [
               class="border p-4"
               style="background: rgba(58,29,18,0.88); border-color: rgba(244,184,96,0.35); box-shadow: 6px 6px 0 rgba(0,0,0,.10);"
             >
-              <div class="text-center font-serif text-2xl font-black">Hung</div>
+              <div class="text-center font-serif text-2xl font-black">Name</div>
               <div
                 class="mx-auto mt-2 grid h-20 w-20 place-items-center rounded-full border-4 border-double text-xl font-black tracking-tight"
                 style="border-color: rgba(255,231,179,0.40); background: rgba(0,0,0,0.04); color: #f4b860;"
               >
-                H
+                N
               </div>
               <p class="mt-3 text-center text-sm leading-6" style="color: rgba(255,231,179,0.75);">
-                Kỹ sư dữ liệu. Học AI. Tập tạ. Ghi chép để khỏi sống lơ mơ.
+                Placeholder description for a short profile, bio, or personal note.
               </p>
               <div class="my-5 flex items-center gap-3 opacity-80">
                 <div class="h-px flex-1" style="background: #f4b860;"></div>
@@ -85,7 +85,7 @@ const quests = [
                 <div class="h-px flex-1" style="background: #f4b860;"></div>
               </div>
               <div class="grid grid-cols-2 gap-2">
-                {[{l:"Bài",v:"42"},{l:"Mood",v:"Tỉnh"},{l:"Bench",v:"225"},{l:"Quest",v:"MSAI"}].map(s => (
+                {[{l:"Item",v:"00"},{l:"Mode",v:"Text"},{l:"Stat",v:"000"},{l:"Goal",v:"Plan"}].map(s => (
                   <div class="border p-3" style="background: rgba(0,0,0,0.025); border-color: rgba(255,231,179,0.25); box-shadow: 4px 4px 0 rgba(0,0,0,.08);">
                     <div class="text-[11px] uppercase tracking-[0.18em]" style="color: rgba(255,231,179,0.60);">{s.l}</div>
                     <div class="mt-1 text-lg font-bold">{s.v}</div>
@@ -115,16 +115,16 @@ const quests = [
                 class="border p-4"
                 style="background: rgba(58,29,18,0.88); border-color: rgba(244,184,96,0.35); box-shadow: 6px 6px 0 rgba(0,0,0,.10);"
               >
-                <div class="font-serif text-xl font-black">Xem phong cách</div>
+                <div class="font-serif text-xl font-black">Placeholder Block</div>
                 <p class="mt-2 text-sm leading-6" style="color: rgba(255,231,179,0.75);">
-                  Trang này có 10 bộ phong cách. Bấm vào đây để thử tất cả.
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer tincidunt lorem in quam feugiat.
                 </p>
                 <a
                   href={`${import.meta.env.BASE_URL}/style-lab/`}
                   class="mt-4 inline-block border px-4 py-2 text-sm font-bold transition hover:translate-x-0.5"
                   style="border-color: #f4b860; color: #f4b860; box-shadow: 3px 3px 0 rgba(0,0,0,.10);"
                 >
-                  mở Style Lab →
+                  placeholder link →
                 </a>
               </section>
 
@@ -132,15 +132,15 @@ const quests = [
                 class="border p-4"
                 style="background: rgba(81,35,21,0.55); border-color: rgba(244,184,96,0.25); box-shadow: 6px 6px 0 rgba(0,0,0,.10);"
               >
-                <div class="font-serif text-xl font-black">Đang nghe</div>
+                <div class="font-serif text-xl font-black">Placeholder Title</div>
                 <div
                   class="mt-3 border-y py-3 text-2xl font-black"
                   style="border-color: rgba(255,231,179,0.15);"
                 >
-                  Mạnh Bà
+                  Sample Text
                 </div>
                 <p class="mt-2 text-sm" style="color: rgba(255,231,179,0.75);">
-                  Một bài để nhớ rằng có những thứ qua cầu là phải để lại.
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 </p>
               </section>
 
@@ -148,7 +148,7 @@ const quests = [
                 class="border p-4"
                 style="background: rgba(81,35,21,0.55); border-color: rgba(244,184,96,0.25); box-shadow: 6px 6px 0 rgba(0,0,0,.10);"
               >
-                <div class="font-serif text-xl font-black">Việc đang làm</div>
+                <div class="font-serif text-xl font-black">Placeholder List</div>
                 <div class="mt-3 space-y-2">
                   {quests.map(q => (
                     <div
@@ -157,7 +157,7 @@ const quests = [
                     >
                       <span>{q.name}</span>
                       <span class="font-bold" style={q.done ? "color: #f4b860;" : ""}>
-                        {q.done ? "xong" : "mở"}
+                        {q.done ? "done" : "open"}
                       </span>
                     </div>
                   ))}
@@ -190,7 +190,7 @@ const quests = [
                       class="mt-4 border px-4 py-2 text-sm font-bold transition hover:translate-x-0.5"
                       style="border-color: #f4b860; color: #f4b860; box-shadow: 3px 3px 0 rgba(0,0,0,.10);"
                     >
-                      đọc tiếp →
+                      read more →
                     </button>
                   </div>
                 </article>
@@ -204,23 +204,23 @@ const quests = [
                 class="border p-4"
                 style="background: rgba(81,35,21,0.55); border-color: rgba(244,184,96,0.25); box-shadow: 5px 5px 0 rgba(0,0,0,.10);"
               >
-                <div class="font-serif text-xl font-black">Lưu bút</div>
+                <div class="font-serif text-xl font-black">Placeholder Footer</div>
                 <p class="mt-2 leading-7" style="color: rgba(255,231,179,0.75);">
-                  "Trang này giống một góc nhà hơn là một landing page. Vậy mới đúng."
+                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae tellus sed lorem."
                 </p>
               </div>
               <div
                 class="border p-4"
                 style="background: rgba(81,35,21,0.55); border-color: rgba(244,184,96,0.25); box-shadow: 5px 5px 0 rgba(0,0,0,.10);"
               >
-                <div class="font-serif text-xl font-black">Ghi chú thiết kế</div>
+                <div class="font-serif text-xl font-black">Placeholder Notes</div>
                 <p class="mt-2 leading-7" style="color: rgba(255,231,179,0.75);">
-                  Giữ chất Việt bằng ánh đèn lồng, phố cổ, gỗ trầm, sông Hoài. Trang vẫn nói về code và AI, nhưng giọng kể không cần giả Tây.
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas suscipit sem vitae sapien rhoncus, non posuere neque tempor.
                 </p>
               </div>
             </div>
             <div class="mt-5 text-center text-xs uppercase tracking-[0.35em]" style="color: rgba(255,231,179,0.60);">
-              ◆  phố cổ  ◆  đèn lồng  ◆  sông Hoài  ◆
+              ◆  placeholder  ◆  sample  ◆  text  ◆
             </div>
           </footer>
 
