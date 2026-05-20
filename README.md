@@ -2,23 +2,28 @@
 
 Live site: https://hungngdoan.github.io/goc-cua-hung/
 
-## Run Locally
+## Getting Started
 
-Simple local sequence:
+Clone the project, install dependencies, and start the local dev server:
 
 ```bash
+git clone https://github.com/hungngdoan/goc-cua-hung.git
+cd goc-cua-hung
 npm install
-npm run dev
+npm start
 ```
 
-Open the localhost URL shown in the terminal. This is the best mode while editing because it auto refreshes.
+Open the localhost URL shown in the terminal, usually `http://localhost:4321/goc-cua-hung/`. This is the best mode while editing because it auto refreshes.
 
-To check the production build locally:
+## Available Commands
 
-```bash
-npm run build
-npm run preview
-```
+| Command | Purpose |
+| --- | --- |
+| `npm install` | Install project dependencies, including Astro. |
+| `npm start` | Start the local development server on port `4321`. |
+| `npm run dev` | Same local development server as `npm start`. |
+| `npm run build` | Build the static site into `dist/`. |
+| `npm run preview` | Preview the already-built `dist/` folder locally. |
 
 `npm run preview` only serves the already-built `dist/` folder, so run `npm run build` again after source changes.
 
