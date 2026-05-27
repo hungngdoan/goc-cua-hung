@@ -42,7 +42,7 @@ const posts = [
 const styles = [
   {
     id: "giaydo",
-    name: "Placeholder Style One",
+    name: "Placeholder Style Eight",
     subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer tincidunt lorem in quam feugiat.",
     pageBg: "#efe1c3",
     text: "#2a1b10",
@@ -92,7 +92,7 @@ const styles = [
   },
   {
     id: "hoian",
-    name: "Placeholder Style Two",
+    name: "Placeholder Style One",
     subtitle: "Praesent commodo libero non lectus facilisis, sed tempor mi luctus.",
     pageBg: "#28140d",
     text: "#ffe7b3",
@@ -142,7 +142,7 @@ const styles = [
   },
   {
     id: "dongho",
-    name: "Placeholder Style Three",
+    name: "Placeholder Style Nine",
     subtitle: "Aliquam erat volutpat. Donec vitae arcu nec justo dictum pretium.",
     pageBg: "#f3d68a",
     text: "#331d10",
@@ -192,7 +192,7 @@ const styles = [
   },
   {
     id: "sapbao_sang",
-    name: "Placeholder Style Four",
+    name: "Placeholder Style Ten",
     subtitle: "Sed sit amet tellus at ipsum faucibus gravida. Vivamus luctus erat non quam.",
     pageBg: "#ded2b2",
     text: "#201811",
@@ -242,7 +242,7 @@ const styles = [
   },
   {
     id: "quancoc_sang",
-    name: "Placeholder Style Five",
+    name: "Placeholder Style Eleven",
     subtitle: "Nam dapibus, lorem a porta posuere, ipsum massa facilisis neque.",
     pageBg: "#d9c28f",
     text: "#24180e",
@@ -292,7 +292,7 @@ const styles = [
   },
   {
     id: "hong_tram",
-    name: "Placeholder Style Six",
+    name: "Placeholder Style Two",
     subtitle: "Curabitur posuere, mi sed facilisis varius, nunc massa tempor arcu.",
     pageBg: "#0C090B",
     text: "#E8D8DD",
@@ -342,7 +342,7 @@ const styles = [
   },
   {
     id: "den_dau",
-    name: "Placeholder Style Seven",
+    name: "Placeholder Style Three",
     subtitle: "Morbi vulputate neque ut massa facilisis, vitae luctus lorem dictum.",
     pageBg: "#0D0906",
     text: "#F0DEC1",
@@ -392,7 +392,7 @@ const styles = [
   },
   {
     id: "muc_than",
-    name: "Placeholder Style Eight",
+    name: "Placeholder Style Four",
     subtitle: "Donec interdum ligula non nisl luctus, vitae finibus tortor pretium.",
     pageBg: "#080808",
     text: "#E7DFD0",
@@ -442,7 +442,7 @@ const styles = [
   },
   {
     id: "sap_bao_dem",
-    name: "Placeholder Style Nine",
+    name: "Placeholder Style Five",
     subtitle: "Suspendisse vitae tellus sed lorem laoreet porta id at mauris.",
     pageBg: "#0F0C09",
     text: "#EAD8C2",
@@ -492,7 +492,7 @@ const styles = [
   },
   {
     id: "quan_coc_toi",
-    name: "Placeholder Style Ten",
+    name: "Placeholder Style Six",
     subtitle: "Maecenas suscipit sem vitae sapien rhoncus, non posuere neque tempor.",
     pageBg: "#070D0A",
     text: "#DDE8DC",
@@ -539,10 +539,127 @@ const styles = [
     dividerTracking: "0.28em",
     pattern: "radial-gradient(circle at 12% 8%, rgba(122,160,131,0.11), transparent 18%), radial-gradient(circle at 82% 18%, rgba(122,160,131,0.045), transparent 26%), radial-gradient(circle at 50% 92%, rgba(122,160,131,0.045), transparent 28%), repeating-linear-gradient(90deg, rgba(255,255,255,0.018) 0 1px, transparent 1px 34px), repeating-linear-gradient(0deg, rgba(255,255,255,0.012) 0 1px, transparent 1px 24px), linear-gradient(135deg, #070D0A, #101B15 48%, #080F0C)",
     motif: "placeholder · sample · text · notes"
+  },
+  {
+    id: "suong_mai",
+    name: "Placeholder Style Twelve",
+    subtitle: "Morning mist over still water, cool and quiet.",
+    pageBg: "#DDE3E4",
+    text: "#1A252B",
+    textSoft: "rgba(26,37,43,0.72)",
+    textMuted: "rgba(26,37,43,0.55)",
+    accent: "#3D6B6B",
+    accentSoft: "rgba(61,107,107,0.133)",
+    borderOuter: "rgba(26,37,43,0.32)",
+    borderInner: "rgba(26,37,43,0.18)",
+    borderSection: "rgba(26,37,43,0.22)",
+    contentBorder: "rgba(26,37,43,0.14)",
+    questColor: "#1A252B",
+    questMuted: "#1A252B",
+    frameBg: "rgba(255,255,255,0.04)",
+    frameShadow: "none",
+    panelBg: "rgba(235,240,241,0.88)",
+    panelBorder: "rgba(45,75,82,0.30)",
+    panelShadow: "6px 6px 0 rgba(0,0,0,.08)",
+    panelSoftBg: "rgba(245,249,250,0.70)",
+    panelSoftBorder: "rgba(45,75,82,0.22)",
+    panelSoftShadow: "6px 6px 0 rgba(0,0,0,.08)",
+    previewShadow: "7px 7px 0 rgba(0,0,0,.10)",
+    footerShadow: "5px 5px 0 rgba(0,0,0,.08)",
+    navBg: "rgba(0,0,0,0.02)",
+    navBorder: "rgba(26,37,43,0.18)",
+    chooserBg: "rgba(0,0,0,0.02)",
+    chooserBorder: "rgba(0,0,0,0.16)",
+    chooserShadow: "4px 4px 0 rgba(0,0,0,.14)",
+    chooserTextInactive: "#1A252B",
+    musicHighlight: "#1A252B",
+    statBg: "rgba(0,0,0,0.022)",
+    statBorder: "rgba(26,37,43,0.22)",
+    statShadow: "4px 4px 0 rgba(0,0,0,.06)",
+    btnBg: "transparent",
+    btnShadow: "3px 3px 0 rgba(0,0,0,.08)",
+    tagBg: "transparent",
+    tagBorder: "rgba(26,37,43,0.28)",
+    tagShadow: "3px 3px 0 rgba(0,0,0,.06)",
+    sealBg: "transparent",
+    sealBorder: "rgba(26,37,43,0.32)",
+    avatarBorder: "rgba(26,37,43,0.38)",
+    avatarBg: "rgba(0,0,0,0.04)",
+    dividerSymbol: "≈ ≈ ≈",
+    dividerTracking: "0.35em",
+    pattern: "radial-gradient(circle at 20% 20%, rgba(180,200,205,0.45), transparent 32%), radial-gradient(circle at 80% 60%, rgba(160,185,190,0.30), transparent 28%), linear-gradient(180deg, rgba(255,255,255,0.20), transparent 60%)",
+    motif: "≈  placeholder  ≈  sample  ≈  text  ≈"
+  },
+  {
+    id: "hoa_dao",
+    name: "Placeholder Style Seven",
+    subtitle: "Peach blossom in spring, soft and full of longing.",
+    pageBg: "#E8B0BE",
+    text: "#4A1F2A",
+    textSoft: "rgba(74,31,42,0.72)",
+    textMuted: "rgba(74,31,42,0.55)",
+    accent: "#B6455D",
+    accentSoft: "rgba(182,69,93,0.133)",
+    borderOuter: "rgba(74,31,42,0.30)",
+    borderInner: "rgba(74,31,42,0.18)",
+    borderSection: "rgba(74,31,42,0.22)",
+    contentBorder: "rgba(74,31,42,0.14)",
+    questColor: "#4A1F2A",
+    questMuted: "#4A1F2A",
+    frameBg: "rgba(255,255,255,0.06)",
+    frameShadow: "none",
+    panelBg: "rgba(252,228,232,0.92)",
+    panelBorder: "rgba(123,40,60,0.30)",
+    panelShadow: "6px 6px 0 rgba(76,20,32,.08)",
+    panelSoftBg: "rgba(254,238,241,0.75)",
+    panelSoftBorder: "rgba(123,40,60,0.22)",
+    panelSoftShadow: "6px 6px 0 rgba(76,20,32,.08)",
+    previewShadow: "7px 7px 0 rgba(76,20,32,.10)",
+    footerShadow: "5px 5px 0 rgba(76,20,32,.08)",
+    navBg: "rgba(255,255,255,0.04)",
+    navBorder: "rgba(74,31,42,0.18)",
+    chooserBg: "rgba(255,255,255,0.04)",
+    chooserBorder: "rgba(74,31,42,0.16)",
+    chooserShadow: "4px 4px 0 rgba(76,20,32,.14)",
+    chooserTextInactive: "#4A1F2A",
+    musicHighlight: "#4A1F2A",
+    statBg: "rgba(255,255,255,0.04)",
+    statBorder: "rgba(74,31,42,0.22)",
+    statShadow: "4px 4px 0 rgba(76,20,32,.06)",
+    btnBg: "transparent",
+    btnShadow: "3px 3px 0 rgba(76,20,32,.08)",
+    tagBg: "transparent",
+    tagBorder: "rgba(74,31,42,0.28)",
+    tagShadow: "3px 3px 0 rgba(76,20,32,.06)",
+    sealBg: "transparent",
+    sealBorder: "rgba(74,31,42,0.32)",
+    avatarBorder: "rgba(74,31,42,0.38)",
+    avatarBg: "rgba(255,255,255,0.04)",
+    dividerSymbol: "♡ ♡ ♡",
+    dividerTracking: "0.40em",
+    pattern: "repeating-linear-gradient(0deg, rgba(74,31,42,0.10) 0 1px, transparent 1px 28px), radial-gradient(circle at 15% 10%, rgba(255,182,193,0.55), transparent 28%), radial-gradient(circle at 85% 20%, rgba(255,200,210,0.40), transparent 24%), radial-gradient(circle at 50% 90%, rgba(182,69,93,0.10), transparent 30%), linear-gradient(180deg, rgba(255,255,255,0.10), transparent 60%)",
+    motif: "♡  placeholder  ♡  sample  ♡  text  ♡"
   }
 ];
 
-const navItems = ["Alpha", "Bravo", "Charlie", "Delta", "Echo", "Foxtrot", "Gamma", "Helix", "Indigo"];
+const darkRow = ["hoian", "hong_tram", "den_dau", "muc_than", "sap_bao_dem", "quan_coc_toi"].map((id) => styles.find((s) => s.id === id));
+const brightRow = ["hoa_dao", "giaydo", "dongho", "sapbao_sang", "quancoc_sang", "suong_mai"].map((id) => styles.find((s) => s.id === id));
+
+const styleIcons = {
+  hoian: "🏮",
+  hong_tram: "🌹",
+  den_dau: "🕯",
+  muc_than: "🖋",
+  sap_bao_dem: "🌙",
+  quan_coc_toi: "🍵",
+  hoa_dao: "🌸",
+  giaydo: "📜",
+  dongho: "⏳",
+  sapbao_sang: "⛅",
+  quancoc_sang: "☕",
+  suong_mai: "💧"
+};
+
 const quests = ["Placeholder task one", "Placeholder task two", "Placeholder task three", "Placeholder task four", "Placeholder task five", "Placeholder task six"];
 
 function Divider({ style }) {
@@ -575,12 +692,76 @@ export default function VietnameseBlogStyleLab() {
   const [styleId, setStyleId] = useState("hoian");
   const style = useMemo(() => styles.find((item) => item.id === styleId) || styles[0], [styleId]);
 
+  const renderTab = (item) => {
+    const isActive = item.id === style.id;
+    return (
+      <button
+        key={item.id}
+        onClick={() => setStyleId(item.id)}
+        className={`style-tab flex flex-1 items-center justify-center border px-3 py-2 ${isActive ? "is-active" : ""}`}
+        style={{
+          minWidth: "140px",
+          borderColor: isActive ? item.accent : style.navBorder,
+          background: isActive ? style.accentSoft : style.navBg,
+          color: isActive ? style.text : style.textSoft,
+          fontWeight: isActive ? 800 : 600,
+          "--glow": item.accent,
+          "--glow-soft": item.accentSoft
+        }}
+      >
+        <span className="tab-icon" aria-hidden="true">{styleIcons[item.id]}</span>
+        {item.name}
+      </button>
+    );
+  };
+
   return (
+    <>
+      <style>{`
+        .style-tab {
+          position: relative;
+          transition: box-shadow 220ms ease, transform 180ms ease, border-color 180ms ease;
+        }
+        .style-tab:hover {
+          transform: translateY(-1px);
+          box-shadow: 0 0 0 1px var(--glow, transparent), 0 0 14px var(--glow-soft, transparent);
+        }
+        .style-tab.is-active {
+          box-shadow: 0 0 0 1.5px var(--glow, transparent), 0 0 20px var(--glow-soft, transparent), 0 0 6px var(--glow, transparent);
+        }
+        .style-tab.is-active:hover {
+          transform: translateY(-1px);
+        }
+        .tab-icon {
+          display: inline-block;
+          max-width: 0;
+          margin-right: 0;
+          opacity: 0;
+          overflow: hidden;
+          white-space: nowrap;
+          transition: max-width 200ms ease, opacity 200ms ease, margin-right 200ms ease;
+          pointer-events: none;
+          font-size: 1.05em;
+          line-height: 1;
+        }
+        .style-tab:hover .tab-icon {
+          max-width: 1.5em;
+          margin-right: 0.4em;
+          opacity: 1;
+        }
+        @media (hover: none) {
+          .tab-icon {
+            max-width: 1.5em;
+            margin-right: 0.4em;
+            opacity: 1;
+          }
+        }
+      `}</style>
     <main
       className="min-h-screen"
       style={{ color: style.text, backgroundColor: style.pageBg, backgroundImage: style.pattern }}
     >
-      <div className="mx-auto max-w-6xl px-4 py-5 sm:px-7 lg:px-8">
+      <div className="mx-auto max-w-6xl xl:max-w-7xl 2xl:max-w-[1700px] px-4 py-5 sm:px-7 lg:px-8 2xl:px-12">
         <div
           className="border-[3px] border-double p-2"
           style={{
@@ -589,8 +770,8 @@ export default function VietnameseBlogStyleLab() {
             boxShadow: style.frameShadow
           }}
         >
-          <div className="border p-4 sm:p-6 lg:p-8" style={{ borderColor: style.borderInner }}>
-            <header className="grid gap-6 lg:grid-cols-[1fr_260px] lg:items-start">
+          <div className="border p-4 sm:p-6 lg:p-8 2xl:p-12" style={{ borderColor: style.borderInner }}>
+            <header className="grid gap-6 lg:grid-cols-[1fr_260px] xl:grid-cols-[1fr_300px] 2xl:grid-cols-[1fr_360px] lg:items-start">
               <div>
                 <div
                   className="inline-block border px-3 py-1 text-xs uppercase tracking-[0.26em]"
@@ -603,7 +784,7 @@ export default function VietnameseBlogStyleLab() {
                 >
                   Placeholder Label
                 </div>
-                <h1 className="mt-5 max-w-4xl font-serif text-5xl font-black leading-[1.02] tracking-tight sm:text-7xl lg:text-8xl">
+                <h1 className="mt-5 max-w-4xl 2xl:max-w-5xl font-serif text-5xl font-black leading-[1.02] tracking-tight sm:text-7xl lg:text-8xl 2xl:text-9xl">
                   Placeholder headline for a style preview page.
                 </h1>
                 <p className="mt-5 max-w-2xl font-serif text-lg leading-8" style={{ color: style.textSoft }}>
@@ -639,59 +820,20 @@ export default function VietnameseBlogStyleLab() {
               </aside>
             </header>
 
-            <nav
-              className="mt-6 grid grid-cols-3 gap-2 border-y py-3 text-center text-sm font-semibold sm:grid-cols-9"
+            <div
+              className="mt-6 border-y py-3"
               style={{ borderColor: style.borderSection }}
             >
-              {navItems.map((item) => (
-                <button
-                  key={item}
-                  className="border px-2 py-2 transition hover:translate-y-[-1px]"
-                  style={{ borderColor: style.navBorder, background: style.navBg, color: style.textSoft }}
-                >
-                  {item}
-                </button>
-              ))}
-            </nav>
+              <nav className="flex flex-wrap gap-2 text-sm font-semibold">
+                {darkRow.map(renderTab)}
+              </nav>
+              <nav className="mt-2 flex flex-wrap gap-2 text-sm font-semibold">
+                {brightRow.map(renderTab)}
+              </nav>
+            </div>
 
-            <section className="mt-6 grid gap-5 lg:grid-cols-[310px_1fr]">
+            <section className="mt-6 grid gap-5 lg:grid-cols-[310px_1fr] 2xl:grid-cols-[380px_1fr] 2xl:gap-8">
               <aside className="space-y-5">
-                <section
-                  className="border p-4"
-                  style={{
-                    background: style.panelBg,
-                    borderColor: style.panelBorder,
-                    boxShadow: style.panelShadow
-                  }}
-                >
-                  <div className="font-serif text-xl font-black">Placeholder Options</div>
-                  <p className="mt-2 text-sm leading-6" style={{ color: style.textSoft }}>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer tincidunt lorem in quam feugiat.
-                  </p>
-                  <div className="mt-4 space-y-2">
-                    {styles.map((item) => (
-                      <button
-                        key={item.id}
-                        onClick={() => setStyleId(item.id)}
-                        className={`w-full border px-3 py-3 text-left transition ${
-                          item.id === style.id
-                            ? "translate-x-1"
-                            : "hover:translate-x-1"
-                        }`}
-                        style={{
-                          borderColor: item.id === style.id ? style.accent : style.chooserBorder,
-                          background: item.id === style.id ? style.accentSoft : style.chooserBg,
-                          color: item.id === style.id ? style.text : style.chooserTextInactive,
-                          boxShadow: item.id === style.id ? style.chooserShadow : "none"
-                        }}
-                      >
-                        <div className="font-serif text-base font-black">{item.name}</div>
-                        <div className="mt-1 text-xs leading-5 opacity-70">{item.subtitle}</div>
-                      </button>
-                    ))}
-                  </div>
-                </section>
-
                 <section
                   className="border p-4"
                   style={{
@@ -852,5 +994,6 @@ export default function VietnameseBlogStyleLab() {
         </div>
       </div>
     </main>
+    </>
   );
 }
