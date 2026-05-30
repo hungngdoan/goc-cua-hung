@@ -1,5 +1,7 @@
 import React, { useMemo, useState } from "react";
 import { motion } from "framer-motion";
+import bannerRoses from "../../banner_roses.gif?url";
+import ThirtySixKe from "./ThirtySixKe.jsx";
 
 const posts = [
   {
@@ -392,8 +394,8 @@ const styles = [
   },
   {
     id: "muc_than",
-    name: "Placeholder Style Four",
-    subtitle: "Donec interdum ligula non nisl luctus, vitae finibus tortor pretium.",
+    name: "36 Kế",
+    subtitle: "Ba mươi sáu mưu kế cổ điển.",
     pageBg: "#080808",
     text: "#E7DFD0",
     textSoft: "#9A907D",
@@ -544,50 +546,50 @@ const styles = [
     id: "suong_mai",
     name: "Placeholder Style Twelve",
     subtitle: "Morning mist over still water, cool and quiet.",
-    pageBg: "#DDE3E4",
-    text: "#1A252B",
-    textSoft: "rgba(26,37,43,0.72)",
-    textMuted: "rgba(26,37,43,0.55)",
-    accent: "#3D6B6B",
-    accentSoft: "rgba(61,107,107,0.133)",
-    borderOuter: "rgba(26,37,43,0.32)",
-    borderInner: "rgba(26,37,43,0.18)",
-    borderSection: "rgba(26,37,43,0.22)",
-    contentBorder: "rgba(26,37,43,0.14)",
-    questColor: "#1A252B",
-    questMuted: "#1A252B",
-    frameBg: "rgba(255,255,255,0.04)",
+    pageBg: "#A9B8B8",
+    text: "#142226",
+    textSoft: "rgba(20,34,38,0.76)",
+    textMuted: "rgba(20,34,38,0.58)",
+    accent: "#315F64",
+    accentSoft: "rgba(49,95,100,0.16)",
+    borderOuter: "rgba(20,34,38,0.42)",
+    borderInner: "rgba(20,34,38,0.24)",
+    borderSection: "rgba(20,34,38,0.28)",
+    contentBorder: "rgba(20,34,38,0.18)",
+    questColor: "#142226",
+    questMuted: "rgba(20,34,38,0.68)",
+    frameBg: "rgba(20,34,38,0.025)",
     frameShadow: "none",
-    panelBg: "rgba(235,240,241,0.88)",
-    panelBorder: "rgba(45,75,82,0.30)",
-    panelShadow: "6px 6px 0 rgba(0,0,0,.08)",
-    panelSoftBg: "rgba(245,249,250,0.70)",
-    panelSoftBorder: "rgba(45,75,82,0.22)",
-    panelSoftShadow: "6px 6px 0 rgba(0,0,0,.08)",
-    previewShadow: "7px 7px 0 rgba(0,0,0,.10)",
-    footerShadow: "5px 5px 0 rgba(0,0,0,.08)",
-    navBg: "rgba(0,0,0,0.02)",
-    navBorder: "rgba(26,37,43,0.18)",
-    chooserBg: "rgba(0,0,0,0.02)",
-    chooserBorder: "rgba(0,0,0,0.16)",
-    chooserShadow: "4px 4px 0 rgba(0,0,0,.14)",
-    chooserTextInactive: "#1A252B",
-    musicHighlight: "#1A252B",
-    statBg: "rgba(0,0,0,0.022)",
-    statBorder: "rgba(26,37,43,0.22)",
-    statShadow: "4px 4px 0 rgba(0,0,0,.06)",
+    panelBg: "rgba(213,222,220,0.88)",
+    panelBorder: "rgba(31,69,74,0.36)",
+    panelShadow: "6px 6px 0 rgba(20,34,38,.10)",
+    panelSoftBg: "rgba(224,229,222,0.68)",
+    panelSoftBorder: "rgba(31,69,74,0.26)",
+    panelSoftShadow: "6px 6px 0 rgba(20,34,38,.08)",
+    previewShadow: "7px 7px 0 rgba(20,34,38,.12)",
+    footerShadow: "5px 5px 0 rgba(20,34,38,.10)",
+    navBg: "rgba(20,34,38,0.035)",
+    navBorder: "rgba(20,34,38,0.22)",
+    chooserBg: "rgba(20,34,38,0.035)",
+    chooserBorder: "rgba(20,34,38,0.20)",
+    chooserShadow: "4px 4px 0 rgba(20,34,38,.14)",
+    chooserTextInactive: "#142226",
+    musicHighlight: "#315F64",
+    statBg: "rgba(49,95,100,0.10)",
+    statBorder: "rgba(31,69,74,0.28)",
+    statShadow: "4px 4px 0 rgba(20,34,38,.08)",
     btnBg: "transparent",
-    btnShadow: "3px 3px 0 rgba(0,0,0,.08)",
+    btnShadow: "3px 3px 0 rgba(20,34,38,.08)",
     tagBg: "transparent",
-    tagBorder: "rgba(26,37,43,0.28)",
-    tagShadow: "3px 3px 0 rgba(0,0,0,.06)",
+    tagBorder: "rgba(20,34,38,0.34)",
+    tagShadow: "3px 3px 0 rgba(20,34,38,.08)",
     sealBg: "transparent",
-    sealBorder: "rgba(26,37,43,0.32)",
-    avatarBorder: "rgba(26,37,43,0.38)",
-    avatarBg: "rgba(0,0,0,0.04)",
+    sealBorder: "rgba(20,34,38,0.36)",
+    avatarBorder: "rgba(49,95,100,0.46)",
+    avatarBg: "rgba(49,95,100,0.10)",
     dividerSymbol: "≈ ≈ ≈",
     dividerTracking: "0.35em",
-    pattern: "radial-gradient(circle at 20% 20%, rgba(180,200,205,0.45), transparent 32%), radial-gradient(circle at 80% 60%, rgba(160,185,190,0.30), transparent 28%), linear-gradient(180deg, rgba(255,255,255,0.20), transparent 60%)",
+    pattern: "radial-gradient(circle at 18% 16%, rgba(232,220,208,0.22), transparent 28%), radial-gradient(circle at 78% 58%, rgba(49,95,100,0.18), transparent 30%), repeating-linear-gradient(90deg, rgba(20,34,38,0.035) 0 1px, transparent 1px 42px), linear-gradient(180deg, rgba(255,255,255,0.06), rgba(20,34,38,0.08) 100%)",
     motif: "≈  placeholder  ≈  sample  ≈  text  ≈"
   },
   {
@@ -642,14 +644,14 @@ const styles = [
   }
 ];
 
-const darkRow = ["hoian", "hong_tram", "den_dau", "muc_than", "sap_bao_dem", "quan_coc_toi"].map((id) => styles.find((s) => s.id === id));
+const darkRow = ["den_dau", "hong_tram", "hoian", "muc_than", "sap_bao_dem", "quan_coc_toi"].map((id) => styles.find((s) => s.id === id));
 const brightRow = ["hoa_dao", "giaydo", "dongho", "sapbao_sang", "quancoc_sang", "suong_mai"].map((id) => styles.find((s) => s.id === id));
 
 const styleIcons = {
   hoian: "🏮",
   hong_tram: "🌹",
   den_dau: "🕯",
-  muc_than: "🖋",
+  muc_than: "📜",
   sap_bao_dem: "🌙",
   quan_coc_toi: "🍵",
   hoa_dao: "🌸",
@@ -675,21 +677,21 @@ function Divider({ style }) {
 function WovenStat({ label, value, style }) {
   return (
     <div
-      className="border p-3"
+      className="border p-4"
       style={{
         background: style.statBg,
         borderColor: style.statBorder,
         boxShadow: style.statShadow
       }}
     >
-      <div className="text-[11px] uppercase tracking-[0.18em]" style={{ color: style.textMuted }}>{label}</div>
-      <div className="mt-1 text-lg font-bold" style={{ color: style.text }}>{value}</div>
+      <div className="text-[11px] font-bold uppercase leading-4 tracking-[0.12em]" style={{ color: style.textMuted }}>{label}</div>
+      <div className="mt-1 text-xl font-black" style={{ color: style.text }}>{value}</div>
     </div>
   );
 }
 
 export default function VietnameseBlogStyleLab() {
-  const [styleId, setStyleId] = useState("hoian");
+  const [styleId, setStyleId] = useState("den_dau");
   const style = useMemo(() => styles.find((item) => item.id === styleId) || styles[0], [styleId]);
 
   const renderTab = (item) => {
@@ -756,12 +758,46 @@ export default function VietnameseBlogStyleLab() {
             opacity: 1;
           }
         }
+        .banner-stars {
+          position: absolute;
+          inset: 0;
+          background-image:
+            radial-gradient(1px 1px at 7% 32%, rgba(255,255,255,0.7), transparent),
+            radial-gradient(1px 1px at 14% 64%, rgba(255,255,255,0.45), transparent),
+            radial-gradient(1.5px 1.5px at 24% 22%, rgba(255,255,255,0.6), transparent),
+            radial-gradient(1px 1px at 77% 20%, rgba(255,255,255,0.6), transparent),
+            radial-gradient(1.5px 1.5px at 88% 30%, rgba(255,255,255,0.8), transparent),
+            radial-gradient(1px 1px at 94% 60%, rgba(255,255,255,0.45), transparent);
+          opacity: 0.7;
+          pointer-events: none;
+          animation: bannerTwinkle 4.2s ease-in-out infinite;
+        }
+        @keyframes bannerTwinkle {
+          0%, 100% { opacity: 0.4; }
+          50% { opacity: 0.85; }
+        }
+        .banner-img {
+          image-rendering: pixelated;
+          image-rendering: crisp-edges;
+          filter: drop-shadow(0 2px 10px rgba(0,0,0,0.45));
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .banner-stars { animation: none; }
+        }
+        .web-scale-shell {
+          transform-origin: top center;
+        }
+        @media (min-width: 2000px) {
+          .web-scale-shell {
+            zoom: 1.12;
+          }
+        }
       `}</style>
     <main
       className="min-h-screen"
       style={{ color: style.text, backgroundColor: style.pageBg, backgroundImage: style.pattern }}
     >
-      <div className="mx-auto max-w-6xl xl:max-w-7xl 2xl:max-w-[1700px] px-4 py-5 sm:px-7 lg:px-8 2xl:px-12">
+      <div className="web-scale-shell mx-auto max-w-6xl xl:max-w-7xl 2xl:max-w-[1700px] px-4 py-5 sm:px-7 lg:px-8 2xl:px-12">
         <div
           className="border-[3px] border-double p-2"
           style={{
@@ -771,7 +807,24 @@ export default function VietnameseBlogStyleLab() {
           }}
         >
           <div className="border p-4 sm:p-6 lg:p-8 2xl:p-12" style={{ borderColor: style.borderInner }}>
-            <header className="grid gap-6 lg:grid-cols-[1fr_260px] xl:grid-cols-[1fr_300px] 2xl:grid-cols-[1fr_360px] lg:items-start">
+            <div
+              className="relative mb-7 overflow-hidden border"
+              style={{
+                borderColor: style.panelBorder,
+                boxShadow: style.previewShadow,
+                background:
+                  "radial-gradient(120% 80% at 50% 115%, rgba(244,184,96,0.12), transparent 60%), linear-gradient(180deg, #05040a 0%, #0a0710 58%, #050409 100%)"
+              }}
+            >
+              <div className="banner-stars" aria-hidden="true" />
+              <img
+                src={bannerRoses}
+                alt="Đêm sao: hai đứa trẻ và chú chó ngồi trên bãi cỏ, khóm hồng nở bên phải"
+                className="banner-img relative z-10 mx-auto block h-auto w-full"
+                style={{ maxWidth: "780px" }}
+              />
+            </div>
+            <header>
               <div>
                 <div
                   className="inline-block border px-3 py-1 text-xs uppercase tracking-[0.26em]"
@@ -782,42 +835,50 @@ export default function VietnameseBlogStyleLab() {
                     boxShadow: style.tagShadow
                   }}
                 >
-                  Placeholder Label
+                  Đời là vô thường
                 </div>
-                <h1 className="mt-5 max-w-4xl 2xl:max-w-5xl font-serif text-5xl font-black leading-[1.02] tracking-tight sm:text-7xl lg:text-8xl 2xl:text-9xl">
-                  Placeholder headline for a style preview page.
-                </h1>
+                <div className="mt-5 grid gap-5 xl:grid-cols-[minmax(0,0.9fr)_minmax(620px,820px)] xl:items-center">
+                  <h1 className="max-w-4xl 2xl:max-w-5xl font-serif text-4xl font-black leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl 2xl:text-7xl">
+                    Một Góc Đời
+                  </h1>
+                  <aside
+                    className="grid gap-4 border p-4 sm:grid-cols-[auto_1fr] sm:items-center lg:p-5 xl:grid-cols-[auto_minmax(0,1fr)_auto]"
+                    style={{
+                      background: style.panelBg,
+                      borderColor: style.panelBorder,
+                      boxShadow: style.panelShadow
+                    }}
+                  >
+                    <div className="flex items-center gap-4">
+                      <div
+                        className="grid h-20 w-20 shrink-0 place-items-center rounded-full border-4 border-double text-2xl font-black tracking-tight"
+                        style={{ borderColor: style.avatarBorder, background: style.avatarBg, color: style.accent }}
+                      >
+                        H
+                      </div>
+                      <div>
+                        <div className="font-serif text-3xl font-black leading-none">Hưng</div>
+                        <div className="mt-2 text-sm font-bold uppercase tracking-[0.16em]" style={{ color: style.textMuted }}>
+                          Góc riêng
+                        </div>
+                      </div>
+                    </div>
+                    <p
+                      className="text-lg leading-8 sm:border-l sm:pl-5"
+                      style={{ color: style.textSoft, borderColor: style.contentBorder }}
+                    >
+                      Ghi lại chuyện nhỏ, nếp nghĩ, và những ngày đáng nhớ.
+                    </p>
+                    <div className="grid grid-cols-2 gap-2 sm:col-span-2 xl:col-span-1 xl:w-[250px]">
+                      <WovenStat label="Mục tiêu" value="Lưu giữ" style={style} />
+                      <WovenStat label="Trạng thái" value="Tích cực" style={style} />
+                    </div>
+                  </aside>
+                </div>
                 <p className="mt-5 max-w-2xl font-serif text-lg leading-8" style={{ color: style.textSoft }}>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur posuere, mi sed facilisis varius, nunc massa tempor arcu, vitae placerat neque justo sed lorem.
+                  Một góc riêng, để giữ lại và chia sẻ.
                 </p>
               </div>
-
-              <aside
-                className="border p-4"
-                style={{
-                  background: style.panelBg,
-                  borderColor: style.panelBorder,
-                  boxShadow: style.panelShadow
-                }}
-              >
-                <div className="text-center font-serif text-2xl font-black">Name</div>
-                <div
-                  className="mx-auto mt-2 grid h-20 w-20 place-items-center rounded-full border-4 border-double text-xl font-black tracking-tight"
-                  style={{ borderColor: style.avatarBorder, background: style.avatarBg, color: style.accent }}
-                >
-                  N
-                </div>
-                <p className="mt-3 text-center text-sm leading-6" style={{ color: style.textSoft }}>
-                  Placeholder description for a short profile, bio, or personal note.
-                </p>
-                <Divider style={style} />
-                <div className="grid grid-cols-2 gap-2">
-                  <WovenStat label="Item" value="00" style={style} />
-                  <WovenStat label="Mode" value="Text" style={style} />
-                  <WovenStat label="Stat" value="000" style={style} />
-                  <WovenStat label="Goal" value="Plan" style={style} />
-                </div>
-              </aside>
             </header>
 
             <div
@@ -832,6 +893,12 @@ export default function VietnameseBlogStyleLab() {
               </nav>
             </div>
 
+            {style.id === "muc_than" ? (
+              <div className="mx-auto mt-6 w-full max-w-[865px]">
+                <ThirtySixKe />
+              </div>
+            ) : (
+              <>
             <section className="mt-6 grid gap-5 lg:grid-cols-[310px_1fr] 2xl:grid-cols-[380px_1fr] 2xl:gap-8">
               <aside className="space-y-5">
                 <section
@@ -990,6 +1057,8 @@ export default function VietnameseBlogStyleLab() {
                 {style.motif}
               </div>
             </footer>
+              </>
+            )}
           </div>
         </div>
       </div>
