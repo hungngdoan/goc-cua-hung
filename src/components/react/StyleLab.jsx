@@ -5,51 +5,25 @@ import MusicPlayer from "./MusicPlayer.jsx";
 import TaoThao from "./TaoThao.jsx";
 import ThirtySixKe from "./ThirtySixKe.jsx";
 
-const posts = [
-  {
-    title: "🏹 Hai Mũi Tên",
-    date: "31/5/2026",
-    type: "Cập nhật",
-    seal: "🏹",
-    sealLarge: true,
-    body: [
-      "⛰️ Một người nọ lên núi tìm đại sư để thỉnh giáo. Đại sư hỏi: \"Có hai con quỷ muốn ăn thịt ngươi. Quỷ đỏ 👹 chỉ cần một mũi tên là bị tiêu diệt. Quỷ xanh 😈 cần tới tận hai mũi tên. Nhưng trong tay ngươi chỉ có hai mũi tên. Ngươi làm sao để sống sót?\"",
-      "Người nọ nhìn thẳng vào mắt đại sư, gằn giọng nói: \"Đơn giản thôi, tôi sẽ bắn con quỷ xanh một mũi trước. Mũi tên còn lại, kẻ nào dám tấn công tôi, tôi sẽ bắn kẻ đó!\""
-    ],
-    lesson:
-      "🎯 Khi bị dồn vào đường cùng với nguồn lực hạn hẹp, đừng cố tìm cách an toàn tuyệt đối. Hãy dùng đòn phủ đầu để răn đe kẻ mạnh nhất. Giữ lại con bài cuối cùng để kẻ thù khiếp sợ mà không manh động. 🛡️",
-    tags: ["#Tri"],
-    readMore: false
-  },
-  {
-    title: "Placeholder Article Two",
-    date: "Month 00, 0000",
-    type: "Sample note",
-    seal: "Two",
-    body: "Praesent commodo libero non lectus facilisis, sed tempor mi luctus. Cras posuere sem a nibh gravida."
-  },
-  {
-    title: "Placeholder Article Three",
-    date: "Month 00, 0000",
-    type: "Sample update",
-    seal: "Tre",
-    body: "Aliquam erat volutpat. Donec vitae arcu nec justo dictum pretium quis a augue."
-  },
-  {
-    title: "Placeholder Article Four",
-    date: "Month 00, 0000",
-    type: "Sample essay",
-    seal: "For",
-    body: "Sed sit amet tellus at ipsum faucibus gravida. Vivamus luctus erat non quam ultrices placerat."
-  },
-  {
-    title: "Placeholder Article Five",
-    date: "Month 00, 0000",
-    type: "Sample journal",
-    seal: "Fiv",
-    body: "Nam dapibus, lorem a porta posuere, ipsum massa facilisis neque, eget pretium sem lorem in est."
-  }
-];
+const postsByStyle = {
+  den_dau: [
+    {
+      title: "🏹 Hai Mũi Tên",
+      date: "31/5/2026",
+      type: "Cập nhật",
+      seal: "🏹",
+      sealLarge: true,
+      body: [
+        "⛰️ Một người nọ lên núi tìm đại sư để thỉnh giáo. Đại sư hỏi: \"Có hai con quỷ muốn ăn thịt ngươi. Quỷ đỏ 👹 chỉ cần một mũi tên là bị tiêu diệt. Quỷ xanh 😈 cần tới tận hai mũi tên. Nhưng trong tay ngươi chỉ có hai mũi tên. Ngươi làm sao để sống sót?\"",
+        "Người nọ nhìn thẳng vào mắt đại sư, gằn giọng nói: \"Đơn giản thôi, tôi sẽ bắn con quỷ xanh một mũi trước. Mũi tên còn lại, kẻ nào dám tấn công tôi, tôi sẽ bắn kẻ đó!\""
+      ],
+      lesson:
+        "🎯 Khi bị dồn vào đường cùng với nguồn lực hạn hẹp, đừng cố tìm cách an toàn tuyệt đối. Hãy dùng đòn phủ đầu để răn đe kẻ mạnh nhất. Giữ lại con bài cuối cùng để kẻ thù khiếp sợ mà không manh động. 🛡️",
+      tags: ["#Tri"],
+      readMore: false
+    }
+  ]
+};
 
 const styles = [
   {
@@ -703,6 +677,7 @@ function WovenStat({ label, value, style }) {
 export default function VietnameseBlogStyleLab() {
   const [styleId, setStyleId] = useState("den_dau");
   const style = useMemo(() => styles.find((item) => item.id === styleId) || styles[0], [styleId]);
+  const tabPosts = postsByStyle[style.id] || [];
   // Portal target for the music player: lives in the sidebar (under "Placeholder
   // Title") on normal tabs, and is null on the sidebar-less tabs (36 Kế, Tào Tháo).
   const [musicSlot, setMusicSlot] = useState(null);
@@ -1022,8 +997,9 @@ export default function VietnameseBlogStyleLab() {
                   </div>
                 </motion.div>
 
+                {tabPosts.length > 0 && (
                 <div className="mt-5 space-y-4">
-                  {posts.map((post, index) => {
+                  {tabPosts.map((post, index) => {
                     const bodyBlocks = Array.isArray(post.body) ? post.body : [post.body];
 
                     return (
@@ -1116,6 +1092,7 @@ export default function VietnameseBlogStyleLab() {
                     );
                   })}
                 </div>
+                )}
               </section>
             </section>
 
