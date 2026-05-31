@@ -11,7 +11,7 @@ const postsByStyle = {
       title: "🏹 Hai Mũi Tên",
       date: "31/5/2026",
       type: "Cập nhật",
-      seal: "🏹",
+      seal: "⚔️",
       sealLarge: true,
       body: [
         "⛰️ Một người nọ lên núi tìm đại sư để thỉnh giáo. Đại sư hỏi: \"Có hai con quỷ muốn ăn thịt ngươi. Quỷ đỏ 👹 chỉ cần một mũi tên là bị tiêu diệt. Quỷ xanh 😈 cần tới tận hai mũi tên. Nhưng trong tay ngươi chỉ có hai mũi tên. Ngươi làm sao để sống sót?\"",
@@ -646,7 +646,17 @@ const styleIcons = {
   suong_mai: "💧"
 };
 
-const quests = ["Placeholder task one", "Placeholder task two", "Placeholder task three", "Placeholder task four", "Placeholder task five", "Placeholder task six"];
+const defaultSidebarList = {
+  title: "Placeholder List",
+  items: ["Placeholder task one", "Placeholder task two", "Placeholder task three", "Placeholder task four", "Placeholder task five", "Placeholder task six"]
+};
+
+const sidebarListsByStyle = {
+  den_dau: {
+    title: "Mục Tiêu",
+    items: ["Viết lại một chuyện nhỏ", "Giữ nhịp đọc mỗi ngày", "Chọn một điều biết ơn", "Dọn gọn một góc riêng", "Nghe trọn một bản nhạc", "Ngủ sớm hơn hôm qua"]
+  }
+};
 
 function Divider({ style }) {
   return (
@@ -678,6 +688,7 @@ export default function VietnameseBlogStyleLab() {
   const [styleId, setStyleId] = useState("den_dau");
   const style = useMemo(() => styles.find((item) => item.id === styleId) || styles[0], [styleId]);
   const tabPosts = postsByStyle[style.id] || [];
+  const sidebarList = sidebarListsByStyle[style.id] || defaultSidebarList;
   // Portal target for the music player: lives in the sidebar (under "Placeholder
   // Title") on normal tabs, and is null on the sidebar-less tabs (36 Kế, Tào Tháo).
   const [musicSlot, setMusicSlot] = useState(null);
@@ -800,6 +811,48 @@ export default function VietnameseBlogStyleLab() {
           height: 2px;
           background: var(--strip, linear-gradient(90deg, #ff69b4, #00ffff, #ffd700));
           pointer-events: none;
+        }
+        .footer-link {
+          transition: opacity 160ms ease, text-decoration-color 160ms ease;
+          text-decoration: underline;
+          text-decoration-color: transparent;
+          text-underline-offset: 3px;
+        }
+        .footer-link:hover {
+          opacity: 0.85;
+          text-decoration-color: currentColor;
+        }
+        .gc-footer-stars {
+          letter-spacing: 0.5em;
+          font-size: 1.1rem;
+          animation: gc-rainbow 3s linear infinite;
+        }
+        @keyframes gc-rainbow {
+          0%   { color: #ff3b3b; }
+          16%  { color: #ff9f1c; }
+          33%  { color: #ffe600; }
+          50%  { color: #3bd16f; }
+          66%  { color: #3b9bff; }
+          83%  { color: #b15bff; }
+          100% { color: #ff3b3b; }
+        }
+        .gc-heart {
+          color: #ff4d6d;
+          animation: gc-twinkle 1.4s ease-in-out infinite;
+        }
+        @keyframes gc-twinkle {
+          0%, 100% { opacity: 1; }
+          50%      { opacity: 0.25; }
+        }
+        .gc-blink {
+          animation: gc-blink-anim 1.1s steps(1) infinite;
+        }
+        @keyframes gc-blink-anim {
+          0%, 49%   { opacity: 1; }
+          50%, 100% { opacity: 0; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .gc-footer-stars, .gc-heart, .gc-blink { animation: none; }
         }
       `}</style>
     <main
@@ -954,9 +1007,9 @@ export default function VietnameseBlogStyleLab() {
                     "--strip": sidebarStrip
                   }}
                 >
-                  <div className="font-serif text-xl font-black">Placeholder List</div>
+                  <div className="font-serif text-xl font-black">{sidebarList.title}</div>
                   <div className="mt-3 space-y-2">
-                    {quests.map((quest, index) => (
+                    {sidebarList.items.map((quest, index) => (
                       <div
                         key={quest}
                         className="flex items-center justify-between border-b pb-2 text-sm"
@@ -1096,37 +1149,36 @@ export default function VietnameseBlogStyleLab() {
               </section>
             </section>
 
-            <footer className="mt-7 border-t pt-5" style={{ borderColor: style.borderSection }}>
-              <div className="grid gap-4 sm:grid-cols-[1fr_2fr]">
-                <div
-                  className="border p-4"
-                  style={{
-                    background: style.panelSoftBg,
-                    borderColor: style.panelSoftBorder,
-                    boxShadow: style.footerShadow
-                  }}
-                >
-                  <div className="font-serif text-xl font-black">Placeholder Footer</div>
-                  <p className="mt-2 leading-7" style={{ color: style.textSoft }}>
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae tellus sed lorem."
-                  </p>
-                </div>
-                <div
-                  className="border p-4"
-                  style={{
-                    background: style.panelSoftBg,
-                    borderColor: style.panelSoftBorder,
-                    boxShadow: style.footerShadow
-                  }}
-                >
-                  <div className="font-serif text-xl font-black">Placeholder Notes</div>
-                  <p className="mt-2 leading-7" style={{ color: style.textSoft }}>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas suscipit sem vitae sapien rhoncus, non posuere neque tempor.
-                  </p>
-                </div>
+            <footer className="mt-7 border-t pt-6" style={{ borderColor: style.borderSection }}>
+              <div className="mx-auto max-w-xl text-center">
+                <Divider style={style} />
+                <p className="mt-3 font-serif text-2xl font-black italic leading-snug" style={{ color: style.accent }}>
+                  “Cảm ơn bạn đã ghé qua một góc đời.”
+                </p>
+                <p className="mt-3 leading-7" style={{ color: style.textSoft }}>
+                  Mỗi tuần một dòng, mỗi ngày một điều biết ơn. Cứ từ từ, rồi thứ gì tới cũng sẽ tới.
+                </p>
+                <div className="mt-3 text-sm font-bold" style={{ color: style.text }}>— Hưng</div>
               </div>
-              <div className="mt-5 text-center text-xs uppercase tracking-[0.35em]" style={{ color: style.textMuted }}>
-                {style.motif}
+              <div className="mt-5 flex flex-col items-center gap-2 border-t pt-4 text-xs sm:flex-row sm:justify-between" style={{ borderColor: style.contentBorder, color: style.textMuted }}>
+                <span>
+                  <a href="#" className="footer-link">Cập nhật</a> · <a href="#" className="footer-link">Suy ngẫm</a> · <a href="#" className="footer-link">Lưu trữ</a>
+                </span>
+                <span className="flex items-center gap-3">
+                  <a href="mailto:hungngdoan@gmail.com" className="footer-link">✉ Email</a>
+                  <a href="https://github.com/hungngdoan" target="_blank" rel="noreferrer" className="footer-link">GitHub</a>
+                </span>
+              </div>
+
+              <div className="mt-6 text-center" style={{ color: style.textMuted }}>
+                <div className="gc-footer-stars" aria-hidden="true">✦ ✧ ✦ ✧ ✦ ✧ ✦</div>
+                <p className="mt-2 text-sm">
+                  made with <span className="gc-heart">♥</span> and too much caffeine
+                </p>
+                <p className="mt-2 font-serif text-base font-black" style={{ color: style.accent }}>
+                  <span className="gc-blink">Hưng | Đúng, là Hưng</span>
+                </p>
+                <p className="mt-1 text-[11px] uppercase tracking-[0.3em]">© 2026 Một Góc Đời</p>
               </div>
             </footer>
               </>
