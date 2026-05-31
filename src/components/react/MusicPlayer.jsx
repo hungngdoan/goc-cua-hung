@@ -21,7 +21,7 @@ const playerStyles = `
   --font-display: "Press Start 2P", monospace;
   font-family: var(--font-pixel);
   background: var(--bg-panel);
-  border: 1px solid #335;
+  border: 1px solid var(--mb-border, #335);
   border-radius: 4px;
   padding: 13px;
   position: relative;
@@ -36,7 +36,7 @@ const playerStyles = `
   left: 0;
   right: 0;
   height: 2px;
-  background: linear-gradient(90deg, var(--accent-pink), var(--accent-cyan), var(--accent-gold));
+  background: var(--mb-strip, linear-gradient(90deg, var(--accent-pink), var(--accent-cyan), var(--accent-gold)));
 }
 
 .music-box h3 {
@@ -60,15 +60,15 @@ const playerStyles = `
 @keyframes music-glow-pulse {
   0% {
     text-shadow:
-      0 0 10px rgba(255, 105, 180, 0.8),
-      0 0 20px rgba(255, 105, 180, 0.4),
+      0 0 10px rgba(var(--mb-glow-rgb, 255, 105, 180), 0.8),
+      0 0 20px rgba(var(--mb-glow-rgb, 255, 105, 180), 0.4),
       2px 2px 0 #330033;
   }
   100% {
     text-shadow:
-      0 0 20px rgba(255, 105, 180, 1),
-      0 0 40px rgba(255, 105, 180, 0.6),
-      0 0 60px rgba(255, 105, 180, 0.3),
+      0 0 20px rgba(var(--mb-glow-rgb, 255, 105, 180), 1),
+      0 0 40px rgba(var(--mb-glow-rgb, 255, 105, 180), 0.6),
+      0 0 60px rgba(var(--mb-glow-rgb, 255, 105, 180), 0.3),
       2px 2px 0 #330033;
   }
 }
@@ -129,8 +129,8 @@ const playerStyles = `
 }
 
 .music-btn:hover {
-  background: rgba(0, 255, 255, 0.15);
-  box-shadow: 0 0 10px rgba(0, 255, 255, 0.4);
+  background: rgba(var(--mb-glow-rgb, 0, 255, 255), 0.15);
+  box-shadow: 0 0 10px rgba(var(--mb-glow-rgb, 0, 255, 255), 0.4);
 }
 
 .music-btn.playing {
@@ -206,7 +206,7 @@ const playerStyles = `
   background: var(--accent-gold);
   border: none;
   cursor: pointer;
-  box-shadow: 0 0 6px rgba(255, 215, 0, 0.5);
+  box-shadow: 0 0 6px rgba(var(--mb-glow-rgb, 255, 215, 0), 0.5);
 }
 
 .music-vol-slider::-moz-range-thumb {
@@ -216,7 +216,7 @@ const playerStyles = `
   background: var(--accent-gold);
   border: none;
   cursor: pointer;
-  box-shadow: 0 0 6px rgba(255, 215, 0, 0.5);
+  box-shadow: 0 0 6px rgba(var(--mb-glow-rgb, 255, 215, 0), 0.5);
 }
 
 .music-credit {
@@ -231,9 +231,17 @@ const playerStyles = `
 
 .music-credit:hover {
   color: var(--accent-pink);
-  text-shadow: 0 0 8px rgba(255, 105, 180, 0.5);
+  text-shadow: 0 0 8px rgba(var(--mb-glow-rgb, 255, 105, 180), 0.5);
 }
 `;
+
+function hexToRgb(hex) {
+  const match = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex || "");
+  if (!match) {
+    return "255, 105, 180";
+  }
+  return `${parseInt(match[1], 16)}, ${parseInt(match[2], 16)}, ${parseInt(match[3], 16)}`;
+}
 
 function formatTime(seconds) {
   if (!Number.isFinite(seconds)) {
@@ -245,7 +253,7 @@ function formatTime(seconds) {
   return `${minutes}:${remainingSeconds < 10 ? "0" : ""}${remainingSeconds}`;
 }
 
-export default function MusicPlayer({ portalTarget = null }) {
+export default function MusicPlayer({ portalTarget = null, theme = null, colorful = false }) {
   const audioRef = useRef(null);
   const previousVolumeRef = useRef(0.5);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -357,8 +365,27 @@ export default function MusicPlayer({ portalTarget = null }) {
     setIsMuted(false);
   };
 
+  // When a theme is supplied, the box background, frame, and top strip follow
+  // that tab's palette. The retro controls keep their neon colors.
+  const themeVars = !theme
+    ? undefined
+    : colorful
+      ? // Keep the hung-blog neon controls, only match the box background.
+        { "--bg-panel": theme.panelSoftBg }
+      : {
+          "--bg-panel": theme.panelBg,
+          "--mb-border": theme.panelBorder,
+          "--mb-strip": theme.accent,
+          "--accent-cyan": theme.accent,
+          "--accent-pink": theme.accent,
+          "--accent-gold": theme.accent,
+          "--text-dim": theme.textMuted,
+          "--link-color": theme.accent,
+          "--mb-glow-rgb": hexToRgb(theme.accent)
+        };
+
   const playerUi = (
-    <div className="sidebar-box music-box">
+    <div className="sidebar-box music-box" style={themeVars}>
       <h3><span className="blink">&#9835;</span> Now Playing</h3>
       <div className="music-title-wrap">
         <div className="music-title-scroll">Mạnh Bà by Linh Hương Luz</div>

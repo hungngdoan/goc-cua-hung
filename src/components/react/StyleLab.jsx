@@ -5,43 +5,25 @@ import MusicPlayer from "./MusicPlayer.jsx";
 import TaoThao from "./TaoThao.jsx";
 import ThirtySixKe from "./ThirtySixKe.jsx";
 
-const posts = [
-  {
-    title: "Placeholder Article One",
-    date: "Month 00, 0000",
-    type: "Sample category",
-    seal: "One",
-    body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae velit at sapien varius blandit."
-  },
-  {
-    title: "Placeholder Article Two",
-    date: "Month 00, 0000",
-    type: "Sample note",
-    seal: "Two",
-    body: "Praesent commodo libero non lectus facilisis, sed tempor mi luctus. Cras posuere sem a nibh gravida."
-  },
-  {
-    title: "Placeholder Article Three",
-    date: "Month 00, 0000",
-    type: "Sample update",
-    seal: "Tre",
-    body: "Aliquam erat volutpat. Donec vitae arcu nec justo dictum pretium quis a augue."
-  },
-  {
-    title: "Placeholder Article Four",
-    date: "Month 00, 0000",
-    type: "Sample essay",
-    seal: "For",
-    body: "Sed sit amet tellus at ipsum faucibus gravida. Vivamus luctus erat non quam ultrices placerat."
-  },
-  {
-    title: "Placeholder Article Five",
-    date: "Month 00, 0000",
-    type: "Sample journal",
-    seal: "Fiv",
-    body: "Nam dapibus, lorem a porta posuere, ipsum massa facilisis neque, eget pretium sem lorem in est."
-  }
-];
+const postsByStyle = {
+  den_dau: [
+    {
+      title: "🏹 Hai Mũi Tên",
+      date: "31/5/2026",
+      type: "Cập nhật",
+      seal: "🏹",
+      sealLarge: true,
+      body: [
+        "⛰️ Một người nọ lên núi tìm đại sư để thỉnh giáo. Đại sư hỏi: \"Có hai con quỷ muốn ăn thịt ngươi. Quỷ đỏ 👹 chỉ cần một mũi tên là bị tiêu diệt. Quỷ xanh 😈 cần tới tận hai mũi tên. Nhưng trong tay ngươi chỉ có hai mũi tên. Ngươi làm sao để sống sót?\"",
+        "Người nọ nhìn thẳng vào mắt đại sư, gằn giọng nói: \"Đơn giản thôi, tôi sẽ bắn con quỷ xanh một mũi trước. Mũi tên còn lại, kẻ nào dám tấn công tôi, tôi sẽ bắn kẻ đó!\""
+      ],
+      lesson:
+        "🎯 Khi bị dồn vào đường cùng với nguồn lực hạn hẹp, đừng cố tìm cách an toàn tuyệt đối. Hãy dùng đòn phủ đầu để răn đe kẻ mạnh nhất. Giữ lại con bài cuối cùng để kẻ thù khiếp sợ mà không manh động. 🛡️",
+      tags: ["#Tri"],
+      readMore: false
+    }
+  ]
+};
 
 const styles = [
   {
@@ -347,7 +329,7 @@ const styles = [
   {
     id: "den_dau",
     name: "Đêm Huyền",
-    subtitle: "Midnight secrets. Smoke and moonlight.",
+    subtitle: "Câu chuyện dưới ánh trăng.",
     pageBg: "#080B14",
     text: "#D4DAE8",
     textSoft: "#7A839A",
@@ -392,7 +374,7 @@ const styles = [
     dividerSymbol: "• • •",
     dividerTracking: "0.28em",
     pattern: "radial-gradient(circle at 12% 8%, rgba(100,140,200,0.05), transparent 18%), radial-gradient(circle at 82% 18%, rgba(139,159,191,0.12), transparent 26%), radial-gradient(circle at 50% 92%, rgba(100,140,200,0.05), transparent 28%), repeating-linear-gradient(90deg, rgba(255,255,255,0.018) 0 1px, transparent 1px 34px), repeating-linear-gradient(0deg, rgba(255,255,255,0.012) 0 1px, transparent 1px 24px), linear-gradient(135deg, #080B14, #0F1528 48%, #0A0E1A)",
-    motif: "smoke · moonlight · midnight · secrets"
+    motif: "ánh trăng · chuyện nhỏ · đêm khuya · riêng mình"
   },
   {
     id: "muc_than",
@@ -668,7 +650,7 @@ const quests = ["Placeholder task one", "Placeholder task two", "Placeholder tas
 
 function Divider({ style }) {
   return (
-    <div className="my-5 flex items-center gap-3 opacity-80">
+    <div className="my-1.5 flex items-center gap-2 opacity-80">
       <div className="h-px flex-1" style={{ background: style.accent }} />
       <div style={{ color: style.accent, letterSpacing: style.dividerTracking }} className="text-xs">{style.dividerSymbol}</div>
       <div className="h-px flex-1" style={{ background: style.accent }} />
@@ -695,19 +677,17 @@ function WovenStat({ label, value, style }) {
 export default function VietnameseBlogStyleLab() {
   const [styleId, setStyleId] = useState("den_dau");
   const style = useMemo(() => styles.find((item) => item.id === styleId) || styles[0], [styleId]);
+  const tabPosts = postsByStyle[style.id] || [];
   // Portal target for the music player: lives in the sidebar (under "Placeholder
   // Title") on normal tabs, and is null on the sidebar-less tabs (36 Kế, Tào Tháo).
   const [musicSlot, setMusicSlot] = useState(null);
 
-  // On the Đêm Huyền tab, every box adopts the music box's hung-blog look
-  // (navy #0d0d2b panel, #335 frame, neon gradient strip). All other tabs keep
-  // their theme-driven box styling.
-  const isHungBlogTab = style.id === "den_dau";
-  const boxStyle = (bg, border, shadow) =>
-    isHungBlogTab
-      ? { background: "#0d0d2b", borderColor: "#335", boxShadow: "none", borderRadius: "4px" }
-      : { background: bg, borderColor: border, boxShadow: shadow };
-  const boxClass = isHungBlogTab ? " hb-box" : "";
+  // On Đêm Huyền the sidebar boxes use the colorful hung-blog neon strip to
+  // match the music box; every other tab uses its own accent color.
+  const sidebarStrip =
+    style.id === "den_dau"
+      ? "linear-gradient(90deg, #ff69b4, #00ffff, #ffd700)"
+      : style.accent;
 
   const renderTab = (item) => {
     const isActive = item.id === style.id;
@@ -818,7 +798,7 @@ export default function VietnameseBlogStyleLab() {
           left: 0;
           right: 0;
           height: 2px;
-          background: linear-gradient(90deg, #ff69b4, #00ffff, #ffd700);
+          background: var(--strip, linear-gradient(90deg, #ff69b4, #00ffff, #ffd700));
           pointer-events: none;
         }
       `}</style>
@@ -924,7 +904,9 @@ export default function VietnameseBlogStyleLab() {
 
             {/* Mounted once here, outside the tab switch, so the audio never
                 unmounts. Its visual UI portals into the sidebar slot below. */}
-            <MusicPlayer portalTarget={musicSlot} />
+            {/* Đêm Huyền keeps the colorful hung-blog controls but matches its
+                box background to the neighboring boxes; other tabs fully theme. */}
+            <MusicPlayer portalTarget={musicSlot} theme={style} colorful={style.id === "den_dau"} />
 
             {style.id === "muc_than" ? (
               <div className="mx-auto mt-6 w-full max-w-[865px]">
@@ -939,18 +921,23 @@ export default function VietnameseBlogStyleLab() {
             <section className="mt-6 grid gap-5 lg:grid-cols-[260px_1fr] 2xl:grid-cols-[320px_1fr] 2xl:gap-8">
               <aside className="space-y-5">
                 <section
-                  className={`border p-4${boxClass}`}
-                  style={boxStyle(style.panelSoftBg, style.panelSoftBorder, style.panelSoftShadow)}
+                  className="border p-4 hb-box"
+                  style={{
+                    background: style.panelSoftBg,
+                    borderColor: style.panelSoftBorder,
+                    boxShadow: style.panelSoftShadow,
+                    "--strip": sidebarStrip
+                  }}
                 >
-                  <div className="font-serif text-xl font-black">Placeholder Title</div>
+                  <div className="font-serif text-xl font-black">Vui vẻ</div>
                   <div
                     className="mt-3 border-y py-3 text-2xl font-black"
                     style={{ borderColor: style.contentBorder, color: style.musicHighlight }}
                   >
-                    Sample Text
+                    Kiên nhẫn
                   </div>
                   <p className="mt-2 text-sm" style={{ color: style.textSoft }}>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Cứ từ từ rồi thứ gì tới cũng sẽ tới.
                   </p>
                 </section>
 
@@ -959,8 +946,13 @@ export default function VietnameseBlogStyleLab() {
                 <div ref={setMusicSlot} />
 
                 <section
-                  className={`border p-4${boxClass}`}
-                  style={boxStyle(style.panelSoftBg, style.panelSoftBorder, style.panelSoftShadow)}
+                  className="border p-4 hb-box"
+                  style={{
+                    background: style.panelSoftBg,
+                    borderColor: style.panelSoftBorder,
+                    boxShadow: style.panelSoftShadow,
+                    "--strip": sidebarStrip
+                  }}
                 >
                   <div className="font-serif text-xl font-black">Placeholder List</div>
                   <div className="mt-3 space-y-2">
@@ -986,74 +978,121 @@ export default function VietnameseBlogStyleLab() {
                   initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.25 }}
-                  className="border p-5 sm:p-6"
+                  className="border p-2.5 sm:p-3"
                   style={{
                     background: style.panelBg,
                     borderColor: style.panelBorder,
                     boxShadow: style.previewShadow
                   }}
                 >
-                  <div className="text-xs uppercase tracking-[0.3em]" style={{ color: style.textMuted }}>active sample</div>
-                  <h2 className="mt-2 font-serif text-4xl font-black sm:text-5xl" style={{ color: style.accent }}>
+                  <h2 className="text-center font-serif text-3xl font-black leading-tight sm:text-4xl" style={{ color: style.accent }}>
                     {style.name}
                   </h2>
-                  <p className="mt-3 max-w-3xl font-serif text-lg leading-8" style={{ color: style.textSoft }}>
+                  <p className="mx-auto mt-1 max-w-3xl text-center font-serif text-base leading-6" style={{ color: style.textSoft }}>
                     {style.subtitle}
                   </p>
                   <Divider style={style} />
-                  <div className="text-center text-xs uppercase tracking-[0.32em]" style={{ color: style.textMuted }}>
+                  <div className="text-center text-[11px] uppercase leading-4 tracking-[0.24em]" style={{ color: style.textMuted }}>
                     {style.motif}
                   </div>
                 </motion.div>
 
+                {tabPosts.length > 0 && (
                 <div className="mt-5 space-y-4">
-                  {posts.map((post, index) => (
-                    <motion.article
-                      key={post.title}
-                      initial={{ opacity: 0, y: 12 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.25, delay: index * 0.04 }}
-                      className="grid gap-4 border p-4 sm:grid-cols-[84px_1fr] sm:p-5"
-                      style={{
-                        background: style.panelSoftBg,
-                        borderColor: style.panelSoftBorder,
-                        boxShadow: style.panelSoftShadow
-                      }}
-                    >
-                      <div className="flex sm:block sm:text-center">
-                        <div
-                          className="grid h-16 w-16 shrink-0 place-items-center border-4 border-double font-serif text-sm font-black"
-                          style={{ color: style.accent, borderColor: style.sealBorder, background: style.sealBg }}
-                        >
-                          {post.seal}
-                        </div>
-                        <div className="ml-3 sm:ml-0 sm:mt-3">
-                          <div className="text-xs uppercase tracking-[0.2em]" style={{ color: style.textMuted }}>
-                            {post.type}
+                  {tabPosts.map((post, index) => {
+                    const bodyBlocks = Array.isArray(post.body) ? post.body : [post.body];
+
+                    return (
+                      <motion.article
+                        key={post.title}
+                        initial={{ opacity: 0, y: 12 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.25, delay: index * 0.04 }}
+                        className="grid gap-4 border p-4 sm:grid-cols-[84px_1fr] sm:p-5"
+                        style={{
+                          background: style.panelSoftBg,
+                          borderColor: style.panelSoftBorder,
+                          boxShadow: style.panelSoftShadow
+                        }}
+                      >
+                        <div className="flex sm:block sm:text-center">
+                          <div
+                            className={`grid h-16 w-16 shrink-0 place-items-center border-4 border-double font-serif font-black ${post.sealLarge ? "text-xl" : "text-sm"}`}
+                            style={{ color: style.accent, borderColor: style.sealBorder, background: style.sealBg }}
+                          >
+                            {post.seal}
                           </div>
-                          <div className="mt-1 text-xs" style={{ color: style.textMuted }}>{post.date}</div>
+                          <div className="ml-3 sm:ml-0 sm:mt-3">
+                            <div className="text-xs uppercase tracking-[0.2em]" style={{ color: style.textMuted }}>
+                              {post.type}
+                            </div>
+                            <div className="mt-1 text-xs" style={{ color: style.textMuted }}>{post.date}</div>
+                          </div>
                         </div>
-                      </div>
-                      <div>
-                        <h3 className="font-serif text-2xl font-black sm:text-3xl">{post.title}</h3>
-                        <p className="mt-3 max-w-3xl text-base leading-8" style={{ color: style.textSoft }}>
-                          {post.body}
-                        </p>
-                        <button
-                          className="mt-4 border px-4 py-2 text-sm font-bold transition hover:translate-x-0.5"
-                          style={{
-                            borderColor: style.accent,
-                            color: style.accent,
-                            background: style.btnBg,
-                            boxShadow: style.btnShadow
-                          }}
-                        >
-                          read more →
-                        </button>
-                      </div>
-                    </motion.article>
-                  ))}
+                        <div>
+                          <h3 className="font-serif text-2xl font-black sm:text-3xl">{post.title}</h3>
+                          <div className="mt-3 max-w-3xl space-y-3 text-base leading-8" style={{ color: style.textSoft }}>
+                            {bodyBlocks.map((paragraph) => (
+                              <p key={paragraph}>{paragraph}</p>
+                            ))}
+                          </div>
+                          {post.lesson && (
+                            <>
+                              <div className="my-4 flex items-center gap-3 opacity-70">
+                                <div className="h-px flex-1" style={{ background: style.accent }} />
+                                <div className="text-xs" style={{ color: style.accent, letterSpacing: style.dividerTracking }}>
+                                  {style.dividerSymbol}
+                                </div>
+                                <div className="h-px flex-1" style={{ background: style.accent }} />
+                              </div>
+                              <p
+                                className="max-w-3xl border-l-4 py-2 pl-4 font-serif text-lg leading-8"
+                                style={{ borderColor: style.accent, color: style.text }}
+                              >
+                                {post.lesson}
+                              </p>
+                            </>
+                          )}
+                          {post.mood && (
+                            <div
+                              className="mt-4 border-y py-2 text-xs uppercase tracking-[0.16em]"
+                              style={{ borderColor: style.panelSoftBorder, color: style.textMuted }}
+                            >
+                              {post.mood}
+                            </div>
+                          )}
+                          {post.tags && (
+                            <div className="mt-3 flex flex-wrap gap-2">
+                              {post.tags.map((tag) => (
+                                <span
+                                  key={tag}
+                                  className="border px-2.5 py-1 text-xs font-bold"
+                                  style={{ borderColor: style.panelSoftBorder, color: style.accent, background: style.btnBg }}
+                                >
+                                  {tag}
+                                </span>
+                              ))}
+                            </div>
+                          )}
+                          {post.readMore !== false && (
+                            <button
+                              className="mt-4 border px-4 py-2 text-sm font-bold transition hover:translate-x-0.5"
+                              style={{
+                                borderColor: style.accent,
+                                color: style.accent,
+                                background: style.btnBg,
+                                boxShadow: style.btnShadow
+                              }}
+                            >
+                              read more -&gt;
+                            </button>
+                          )}
+                        </div>
+                      </motion.article>
+                    );
+                  })}
                 </div>
+                )}
               </section>
             </section>
 
