@@ -1,6 +1,8 @@
 import React, { useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import bannerRoses from "../../banner_roses.gif?url";
+import MusicPlayer from "./MusicPlayer.jsx";
+import TaoThao from "./TaoThao.jsx";
 import ThirtySixKe from "./ThirtySixKe.jsx";
 
 const posts = [
@@ -94,7 +96,7 @@ const styles = [
   },
   {
     id: "hoian",
-    name: "Placeholder Style One",
+    name: "Tào Tháo",
     subtitle: "Praesent commodo libero non lectus facilisis, sed tempor mi luctus.",
     pageBg: "#28140d",
     text: "#ffe7b3",
@@ -294,103 +296,103 @@ const styles = [
   },
   {
     id: "hong_tram",
-    name: "Placeholder Style Two",
-    subtitle: "Curabitur posuere, mi sed facilisis varius, nunc massa tempor arcu.",
-    pageBg: "#0C090B",
-    text: "#E8D8DD",
-    textSoft: "#9A858C",
-    textMuted: "#5C4A52",
-    accent: "#B07080",
-    accentSoft: "rgba(176,112,128,0.1)",
-    borderOuter: "#2E2226",
-    borderInner: "#2E2226",
-    borderSection: "#2E2226",
-    contentBorder: "#2E2226",
-    questColor: "#9A858C",
-    questMuted: "#5C4A52",
+    name: "Về tui",
+    subtitle: "Morbi vulputate neque ut massa facilisis, vitae luctus lorem dictum.",
+    pageBg: "#080807",
+    text: "#EED9A6",
+    textSoft: "#B8AA91",
+    textMuted: "#6F634E",
+    accent: "#C6A15B",
+    accentSoft: "rgba(198,161,91,0.12)",
+    borderOuter: "#2A261D",
+    borderInner: "#2A261D",
+    borderSection: "#2A261D",
+    contentBorder: "#2A261D",
+    questColor: "#B8AA91",
+    questMuted: "#6F634E",
     frameBg: "rgba(255,255,255,0.018)",
     frameShadow: "0 0 80px rgba(0,0,0,.38)",
-    panelBg: "rgba(22,18,20,0.74)",
-    panelBorder: "#2E2226",
+    panelBg: "rgba(18,17,15,0.86)",
+    panelBorder: "#2A261D",
     panelShadow: "6px 6px 0 rgba(0,0,0,.26)",
-    panelSoftBg: "rgba(22,18,20,0.74)",
-    panelSoftBorder: "#2E2226",
+    panelSoftBg: "rgba(20,18,15,0.78)",
+    panelSoftBorder: "#2A261D",
     panelSoftShadow: "6px 6px 0 rgba(0,0,0,.26)",
     previewShadow: "7px 7px 0 rgba(0,0,0,.30)",
     footerShadow: "5px 5px 0 rgba(0,0,0,.26)",
-    navBg: "rgba(22,18,20,0.74)",
-    navBorder: "#2E2226",
+    navBg: "rgba(18,17,15,0.86)",
+    navBorder: "#2A261D",
     chooserBg: "rgba(255,255,255,0.02)",
-    chooserBorder: "#2E2226",
+    chooserBorder: "#2A261D",
     chooserShadow: "4px 4px 0 rgba(0,0,0,.35)",
-    chooserTextInactive: "#9A858C",
-    musicHighlight: "#B07080",
-    statBg: "rgba(176,112,128,0.1)",
-    statBorder: "#2E2226",
+    chooserTextInactive: "#B8AA91",
+    musicHighlight: "#C6A15B",
+    statBg: "rgba(198,161,91,0.12)",
+    statBorder: "#2A261D",
     statShadow: "4px 4px 0 rgba(0,0,0,.24)",
-    btnBg: "rgba(176,112,128,0.1)",
+    btnBg: "rgba(198,161,91,0.12)",
     btnShadow: "3px 3px 0 rgba(0,0,0,.25)",
-    tagBg: "rgba(22,18,20,0.74)",
-    tagBorder: "#2E2226",
+    tagBg: "rgba(18,17,15,0.86)",
+    tagBorder: "#2A261D",
     tagShadow: "3px 3px 0 rgba(0,0,0,.22)",
-    sealBg: "rgba(176,112,128,0.1)",
-    sealBorder: "#5C4A52",
-    avatarBorder: "#5C4A52",
-    avatarBg: "rgba(176,112,128,0.1)",
+    sealBg: "rgba(198,161,91,0.12)",
+    sealBorder: "#6F634E",
+    avatarBorder: "#6F634E",
+    avatarBg: "rgba(198,161,91,0.12)",
     dividerSymbol: "• • •",
     dividerTracking: "0.28em",
-    pattern: "radial-gradient(circle at 12% 8%, rgba(176,112,128,0.12), transparent 18%), radial-gradient(circle at 82% 18%, rgba(176,112,128,0.05), transparent 26%), radial-gradient(circle at 50% 92%, rgba(176,112,128,0.05), transparent 28%), repeating-linear-gradient(90deg, rgba(255,255,255,0.018) 0 1px, transparent 1px 34px), repeating-linear-gradient(0deg, rgba(255,255,255,0.012) 0 1px, transparent 1px 24px), linear-gradient(135deg, #0C090B, #1A1218 48%, #100C0E)",
+    pattern: "radial-gradient(circle at 12% 8%, rgba(198,161,91,0.105), transparent 18%), radial-gradient(circle at 82% 18%, rgba(198,161,91,0.055), transparent 26%), radial-gradient(circle at 50% 92%, rgba(198,161,91,0.045), transparent 28%), repeating-linear-gradient(90deg, rgba(255,255,255,0.016) 0 1px, transparent 1px 34px), repeating-linear-gradient(0deg, rgba(255,255,255,0.010) 0 1px, transparent 1px 24px), linear-gradient(135deg, #080807, #12110F 48%, #090806)",
     motif: "placeholder · sample · text · notes"
   },
   {
     id: "den_dau",
-    name: "Placeholder Style Three",
-    subtitle: "Morbi vulputate neque ut massa facilisis, vitae luctus lorem dictum.",
-    pageBg: "#0D0906",
-    text: "#F0DEC1",
-    textSoft: "#A99575",
-    textMuted: "#5D4A32",
-    accent: "#D09A4E",
-    accentSoft: "rgba(208,154,78,0.1)",
-    borderOuter: "#342617",
-    borderInner: "#342617",
-    borderSection: "#342617",
-    contentBorder: "#342617",
-    questColor: "#A99575",
-    questMuted: "#5D4A32",
+    name: "Đêm Huyền",
+    subtitle: "Midnight secrets. Smoke and moonlight.",
+    pageBg: "#080B14",
+    text: "#D4DAE8",
+    textSoft: "#7A839A",
+    textMuted: "#454D63",
+    accent: "#8B9FBF",
+    accentSoft: "rgba(139,159,191,0.1)",
+    borderOuter: "#1C2236",
+    borderInner: "#1C2236",
+    borderSection: "#1C2236",
+    contentBorder: "#1C2236",
+    questColor: "#7A839A",
+    questMuted: "#454D63",
     frameBg: "rgba(255,255,255,0.018)",
     frameShadow: "0 0 80px rgba(0,0,0,.38)",
-    panelBg: "rgba(23,16,10,0.72)",
-    panelBorder: "#342617",
+    panelBg: "#0E1220",
+    panelBorder: "#1C2236",
     panelShadow: "6px 6px 0 rgba(0,0,0,.26)",
-    panelSoftBg: "rgba(23,16,10,0.72)",
-    panelSoftBorder: "#342617",
+    panelSoftBg: "rgba(14,18,32,0.74)",
+    panelSoftBorder: "#1C2236",
     panelSoftShadow: "6px 6px 0 rgba(0,0,0,.26)",
     previewShadow: "7px 7px 0 rgba(0,0,0,.30)",
     footerShadow: "5px 5px 0 rgba(0,0,0,.26)",
-    navBg: "rgba(23,16,10,0.72)",
-    navBorder: "#342617",
+    navBg: "rgba(14,18,32,0.74)",
+    navBorder: "#1C2236",
     chooserBg: "rgba(255,255,255,0.02)",
-    chooserBorder: "#342617",
+    chooserBorder: "#1C2236",
     chooserShadow: "4px 4px 0 rgba(0,0,0,.35)",
-    chooserTextInactive: "#A99575",
-    musicHighlight: "#D09A4E",
-    statBg: "rgba(208,154,78,0.1)",
-    statBorder: "#342617",
+    chooserTextInactive: "#7A839A",
+    musicHighlight: "#8B9FBF",
+    statBg: "rgba(139,159,191,0.1)",
+    statBorder: "#1C2236",
     statShadow: "4px 4px 0 rgba(0,0,0,.24)",
-    btnBg: "rgba(208,154,78,0.1)",
+    btnBg: "rgba(139,159,191,0.1)",
     btnShadow: "3px 3px 0 rgba(0,0,0,.25)",
-    tagBg: "rgba(23,16,10,0.72)",
-    tagBorder: "#342617",
+    tagBg: "rgba(14,18,32,0.74)",
+    tagBorder: "#1C2236",
     tagShadow: "3px 3px 0 rgba(0,0,0,.22)",
-    sealBg: "rgba(208,154,78,0.1)",
-    sealBorder: "#5D4A32",
-    avatarBorder: "#5D4A32",
-    avatarBg: "rgba(208,154,78,0.1)",
+    sealBg: "rgba(139,159,191,0.1)",
+    sealBorder: "#454D63",
+    avatarBorder: "#454D63",
+    avatarBg: "rgba(139,159,191,0.1)",
     dividerSymbol: "• • •",
     dividerTracking: "0.28em",
-    pattern: "radial-gradient(circle at 12% 8%, rgba(208,154,78,0.12), transparent 18%), radial-gradient(circle at 82% 18%, rgba(208,154,78,0.055), transparent 26%), radial-gradient(circle at 50% 92%, rgba(208,154,78,0.055), transparent 28%), repeating-linear-gradient(90deg, rgba(255,255,255,0.018) 0 1px, transparent 1px 34px), repeating-linear-gradient(0deg, rgba(255,255,255,0.012) 0 1px, transparent 1px 24px), linear-gradient(135deg, #0D0906, #1E1309 48%, #120D08)",
-    motif: "placeholder · sample · text · notes"
+    pattern: "radial-gradient(circle at 12% 8%, rgba(100,140,200,0.05), transparent 18%), radial-gradient(circle at 82% 18%, rgba(139,159,191,0.12), transparent 26%), radial-gradient(circle at 50% 92%, rgba(100,140,200,0.05), transparent 28%), repeating-linear-gradient(90deg, rgba(255,255,255,0.018) 0 1px, transparent 1px 34px), repeating-linear-gradient(0deg, rgba(255,255,255,0.012) 0 1px, transparent 1px 24px), linear-gradient(135deg, #080B14, #0F1528 48%, #0A0E1A)",
+    motif: "smoke · moonlight · midnight · secrets"
   },
   {
     id: "muc_than",
@@ -496,50 +498,50 @@ const styles = [
     id: "quan_coc_toi",
     name: "Placeholder Style Six",
     subtitle: "Maecenas suscipit sem vitae sapien rhoncus, non posuere neque tempor.",
-    pageBg: "#070D0A",
-    text: "#DDE8DC",
-    textSoft: "#8EA291",
-    textMuted: "#485A4D",
-    accent: "#7AA083",
-    accentSoft: "rgba(122,160,131,0.1)",
-    borderOuter: "#223329",
-    borderInner: "#223329",
-    borderSection: "#223329",
-    contentBorder: "#223329",
-    questColor: "#8EA291",
-    questMuted: "#485A4D",
+    pageBg: "#0C090B",
+    text: "#E8D8DD",
+    textSoft: "#9A858C",
+    textMuted: "#5C4A52",
+    accent: "#B07080",
+    accentSoft: "rgba(176,112,128,0.1)",
+    borderOuter: "#2E2226",
+    borderInner: "#2E2226",
+    borderSection: "#2E2226",
+    contentBorder: "#2E2226",
+    questColor: "#9A858C",
+    questMuted: "#5C4A52",
     frameBg: "rgba(255,255,255,0.018)",
     frameShadow: "0 0 80px rgba(0,0,0,.38)",
-    panelBg: "rgba(16,25,21,0.74)",
-    panelBorder: "#223329",
+    panelBg: "rgba(22,18,20,0.74)",
+    panelBorder: "#2E2226",
     panelShadow: "6px 6px 0 rgba(0,0,0,.26)",
-    panelSoftBg: "rgba(16,25,21,0.74)",
-    panelSoftBorder: "#223329",
+    panelSoftBg: "rgba(22,18,20,0.74)",
+    panelSoftBorder: "#2E2226",
     panelSoftShadow: "6px 6px 0 rgba(0,0,0,.26)",
     previewShadow: "7px 7px 0 rgba(0,0,0,.30)",
     footerShadow: "5px 5px 0 rgba(0,0,0,.26)",
-    navBg: "rgba(16,25,21,0.74)",
-    navBorder: "#223329",
+    navBg: "rgba(22,18,20,0.74)",
+    navBorder: "#2E2226",
     chooserBg: "rgba(255,255,255,0.02)",
-    chooserBorder: "#223329",
+    chooserBorder: "#2E2226",
     chooserShadow: "4px 4px 0 rgba(0,0,0,.35)",
-    chooserTextInactive: "#8EA291",
-    musicHighlight: "#7AA083",
-    statBg: "rgba(122,160,131,0.1)",
-    statBorder: "#223329",
+    chooserTextInactive: "#9A858C",
+    musicHighlight: "#B07080",
+    statBg: "rgba(176,112,128,0.1)",
+    statBorder: "#2E2226",
     statShadow: "4px 4px 0 rgba(0,0,0,.24)",
-    btnBg: "rgba(122,160,131,0.1)",
+    btnBg: "rgba(176,112,128,0.1)",
     btnShadow: "3px 3px 0 rgba(0,0,0,.25)",
-    tagBg: "rgba(16,25,21,0.74)",
-    tagBorder: "#223329",
+    tagBg: "rgba(22,18,20,0.74)",
+    tagBorder: "#2E2226",
     tagShadow: "3px 3px 0 rgba(0,0,0,.22)",
-    sealBg: "rgba(122,160,131,0.1)",
-    sealBorder: "#485A4D",
-    avatarBorder: "#485A4D",
-    avatarBg: "rgba(122,160,131,0.1)",
+    sealBg: "rgba(176,112,128,0.1)",
+    sealBorder: "#5C4A52",
+    avatarBorder: "#5C4A52",
+    avatarBg: "rgba(176,112,128,0.1)",
     dividerSymbol: "• • •",
     dividerTracking: "0.28em",
-    pattern: "radial-gradient(circle at 12% 8%, rgba(122,160,131,0.11), transparent 18%), radial-gradient(circle at 82% 18%, rgba(122,160,131,0.045), transparent 26%), radial-gradient(circle at 50% 92%, rgba(122,160,131,0.045), transparent 28%), repeating-linear-gradient(90deg, rgba(255,255,255,0.018) 0 1px, transparent 1px 34px), repeating-linear-gradient(0deg, rgba(255,255,255,0.012) 0 1px, transparent 1px 24px), linear-gradient(135deg, #070D0A, #101B15 48%, #080F0C)",
+    pattern: "radial-gradient(circle at 12% 8%, rgba(176,112,128,0.12), transparent 18%), radial-gradient(circle at 82% 18%, rgba(176,112,128,0.05), transparent 26%), radial-gradient(circle at 50% 92%, rgba(176,112,128,0.05), transparent 28%), repeating-linear-gradient(90deg, rgba(255,255,255,0.018) 0 1px, transparent 1px 34px), repeating-linear-gradient(0deg, rgba(255,255,255,0.012) 0 1px, transparent 1px 24px), linear-gradient(135deg, #0C090B, #1A1218 48%, #100C0E)",
     motif: "placeholder · sample · text · notes"
   },
   {
@@ -644,16 +646,16 @@ const styles = [
   }
 ];
 
-const darkRow = ["den_dau", "hong_tram", "hoian", "muc_than", "sap_bao_dem", "quan_coc_toi"].map((id) => styles.find((s) => s.id === id));
+const darkRow = ["den_dau", "hong_tram", "muc_than", "hoian", "sap_bao_dem", "quan_coc_toi"].map((id) => styles.find((s) => s.id === id));
 const brightRow = ["hoa_dao", "giaydo", "dongho", "sapbao_sang", "quancoc_sang", "suong_mai"].map((id) => styles.find((s) => s.id === id));
 
 const styleIcons = {
   hoian: "🏮",
-  hong_tram: "🌹",
-  den_dau: "🕯",
+  hong_tram: "🕯",
+  den_dau: "🌙",
   muc_than: "📜",
   sap_bao_dem: "🌙",
-  quan_coc_toi: "🍵",
+  quan_coc_toi: "🌹",
   hoa_dao: "🌸",
   giaydo: "📜",
   dongho: "⏳",
@@ -677,15 +679,15 @@ function Divider({ style }) {
 function WovenStat({ label, value, style }) {
   return (
     <div
-      className="border p-4"
+      className="border p-2.5"
       style={{
         background: style.statBg,
         borderColor: style.statBorder,
         boxShadow: style.statShadow
       }}
     >
-      <div className="text-[11px] font-bold uppercase leading-4 tracking-[0.12em]" style={{ color: style.textMuted }}>{label}</div>
-      <div className="mt-1 text-xl font-black" style={{ color: style.text }}>{value}</div>
+      <div className="text-[10px] font-bold uppercase leading-3 tracking-[0.12em]" style={{ color: style.textMuted }}>{label}</div>
+      <div className="mt-0.5 text-lg font-black leading-5" style={{ color: style.text }}>{value}</div>
     </div>
   );
 }
@@ -693,6 +695,19 @@ function WovenStat({ label, value, style }) {
 export default function VietnameseBlogStyleLab() {
   const [styleId, setStyleId] = useState("den_dau");
   const style = useMemo(() => styles.find((item) => item.id === styleId) || styles[0], [styleId]);
+  // Portal target for the music player: lives in the sidebar (under "Placeholder
+  // Title") on normal tabs, and is null on the sidebar-less tabs (36 Kế, Tào Tháo).
+  const [musicSlot, setMusicSlot] = useState(null);
+
+  // On the Đêm Huyền tab, every box adopts the music box's hung-blog look
+  // (navy #0d0d2b panel, #335 frame, neon gradient strip). All other tabs keep
+  // their theme-driven box styling.
+  const isHungBlogTab = style.id === "den_dau";
+  const boxStyle = (bg, border, shadow) =>
+    isHungBlogTab
+      ? { background: "#0d0d2b", borderColor: "#335", boxShadow: "none", borderRadius: "4px" }
+      : { background: bg, borderColor: border, boxShadow: shadow };
+  const boxClass = isHungBlogTab ? " hb-box" : "";
 
   const renderTab = (item) => {
     const isActive = item.id === style.id;
@@ -792,6 +807,20 @@ export default function VietnameseBlogStyleLab() {
             zoom: 1.12;
           }
         }
+        .hb-box {
+          position: relative;
+          overflow: hidden;
+        }
+        .hb-box::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 2px;
+          background: linear-gradient(90deg, #ff69b4, #00ffff, #ffd700);
+          pointer-events: none;
+        }
       `}</style>
     <main
       className="min-h-screen"
@@ -827,7 +856,7 @@ export default function VietnameseBlogStyleLab() {
             <header>
               <div>
                 <div
-                  className="inline-block border px-3 py-1 text-xs uppercase tracking-[0.26em]"
+                  className="inline-block border px-2.5 py-0.5 text-[10px] uppercase tracking-[0.2em]"
                   style={{
                     borderColor: style.tagBorder,
                     color: style.textSoft,
@@ -837,45 +866,45 @@ export default function VietnameseBlogStyleLab() {
                 >
                   Đời là vô thường
                 </div>
-                <div className="mt-5 grid gap-5 xl:grid-cols-[minmax(0,0.9fr)_minmax(620px,820px)] xl:items-center">
-                  <h1 className="max-w-4xl 2xl:max-w-5xl font-serif text-4xl font-black leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl 2xl:text-7xl">
+                <div className="mt-3 grid gap-3 xl:grid-cols-[minmax(0,0.9fr)_minmax(620px,820px)] xl:items-center">
+                  <h1 className="max-w-4xl 2xl:max-w-5xl font-serif text-3xl font-black leading-none tracking-tight sm:text-4xl lg:text-5xl 2xl:text-6xl">
                     Một Góc Đời
                   </h1>
                   <aside
-                    className="grid gap-4 border p-4 sm:grid-cols-[auto_1fr] sm:items-center lg:p-5 xl:grid-cols-[auto_minmax(0,1fr)_auto]"
+                    className="grid gap-3 border p-3 sm:grid-cols-[auto_1fr] sm:items-center xl:grid-cols-[auto_minmax(0,1fr)_auto]"
                     style={{
                       background: style.panelBg,
                       borderColor: style.panelBorder,
                       boxShadow: style.panelShadow
                     }}
                   >
-                    <div className="flex items-center gap-4">
+                    <div className="flex items-center gap-3">
                       <div
-                        className="grid h-20 w-20 shrink-0 place-items-center rounded-full border-4 border-double text-2xl font-black tracking-tight"
+                        className="grid h-14 w-14 shrink-0 place-items-center rounded-full border-[3px] border-double text-xl font-black tracking-tight"
                         style={{ borderColor: style.avatarBorder, background: style.avatarBg, color: style.accent }}
                       >
                         H
                       </div>
                       <div>
-                        <div className="font-serif text-3xl font-black leading-none">Hưng</div>
-                        <div className="mt-2 text-sm font-bold uppercase tracking-[0.16em]" style={{ color: style.textMuted }}>
+                        <div className="font-serif text-2xl font-black leading-none">Hưng</div>
+                        <div className="mt-1 text-[11px] font-bold uppercase leading-4 tracking-[0.16em]" style={{ color: style.textMuted }}>
                           Góc riêng
                         </div>
                       </div>
                     </div>
                     <p
-                      className="text-lg leading-8 sm:border-l sm:pl-5"
+                      className="text-[15px] leading-6 sm:border-l sm:pl-3"
                       style={{ color: style.textSoft, borderColor: style.contentBorder }}
                     >
-                      Ghi lại chuyện nhỏ, nếp nghĩ, và những ngày đáng nhớ.
+                      Ghi lại chuyện nhỏ, suy nghĩ, và những ngày đáng nhớ.
                     </p>
-                    <div className="grid grid-cols-2 gap-2 sm:col-span-2 xl:col-span-1 xl:w-[250px]">
+                    <div className="grid grid-cols-2 gap-1.5 sm:col-span-2 xl:col-span-1 xl:w-[220px]">
                       <WovenStat label="Mục tiêu" value="Lưu giữ" style={style} />
                       <WovenStat label="Trạng thái" value="Tích cực" style={style} />
                     </div>
                   </aside>
                 </div>
-                <p className="mt-5 max-w-2xl font-serif text-lg leading-8" style={{ color: style.textSoft }}>
+                <p className="mt-3 max-w-2xl font-serif text-base leading-6" style={{ color: style.textSoft }}>
                   Một góc riêng, để giữ lại và chia sẻ.
                 </p>
               </div>
@@ -893,21 +922,25 @@ export default function VietnameseBlogStyleLab() {
               </nav>
             </div>
 
+            {/* Mounted once here, outside the tab switch, so the audio never
+                unmounts. Its visual UI portals into the sidebar slot below. */}
+            <MusicPlayer portalTarget={musicSlot} />
+
             {style.id === "muc_than" ? (
               <div className="mx-auto mt-6 w-full max-w-[865px]">
                 <ThirtySixKe />
               </div>
+            ) : style.id === "hoian" ? (
+              <div className="mx-auto mt-6 w-full max-w-[900px]">
+                <TaoThao />
+              </div>
             ) : (
               <>
-            <section className="mt-6 grid gap-5 lg:grid-cols-[310px_1fr] 2xl:grid-cols-[380px_1fr] 2xl:gap-8">
+            <section className="mt-6 grid gap-5 lg:grid-cols-[260px_1fr] 2xl:grid-cols-[320px_1fr] 2xl:gap-8">
               <aside className="space-y-5">
                 <section
-                  className="border p-4"
-                  style={{
-                    background: style.panelSoftBg,
-                    borderColor: style.panelSoftBorder,
-                    boxShadow: style.panelSoftShadow
-                  }}
+                  className={`border p-4${boxClass}`}
+                  style={boxStyle(style.panelSoftBg, style.panelSoftBorder, style.panelSoftShadow)}
                 >
                   <div className="font-serif text-xl font-black">Placeholder Title</div>
                   <div
@@ -921,13 +954,13 @@ export default function VietnameseBlogStyleLab() {
                   </p>
                 </section>
 
+                {/* Portal target: the music player's visual UI renders here,
+                    directly under "Placeholder Title", matching hung-blog. */}
+                <div ref={setMusicSlot} />
+
                 <section
-                  className="border p-4"
-                  style={{
-                    background: style.panelSoftBg,
-                    borderColor: style.panelSoftBorder,
-                    boxShadow: style.panelSoftShadow
-                  }}
+                  className={`border p-4${boxClass}`}
+                  style={boxStyle(style.panelSoftBg, style.panelSoftBorder, style.panelSoftShadow)}
                 >
                   <div className="font-serif text-xl font-black">Placeholder List</div>
                   <div className="mt-3 space-y-2">
