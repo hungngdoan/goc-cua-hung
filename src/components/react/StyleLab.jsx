@@ -646,16 +646,26 @@ const styleIcons = {
   suong_mai: "💧"
 };
 
-const defaultSidebarList = {
-  title: "Placeholder List",
-  items: ["Placeholder task one", "Placeholder task two", "Placeholder task three", "Placeholder task four", "Placeholder task five", "Placeholder task six"]
+// Goals list shown in the left panel. Defined once and shared across every
+// tab so the sidebar reads identically no matter which theme is active.
+// status: "done" = finished one-off goal, "open" = in progress / will finish,
+// "ongoing" = a habit that is kept up rather than ever "completed".
+const sidebarList = {
+  title: "Mục Tiêu",
+  items: [
+    { text: "Dọn gọn một góc riêng", status: "done" },
+    { text: "Viết code hàng ngày", status: "ongoing" },
+    { text: "Đỗ cao học", status: "done" },
+    { text: "Học Pytorch", status: "done", href: "https://www.learnpytorch.io/" },
+    { text: "Đại số tuyến tính", status: "open" },
+    { text: "Tập Gym", status: "ongoing" }
+  ]
 };
 
-const sidebarListsByStyle = {
-  den_dau: {
-    title: "Mục Tiêu",
-    items: ["Viết lại một chuyện nhỏ", "Giữ nhịp đọc mỗi ngày", "Chọn một điều biết ơn", "Dọn gọn một góc riêng", "Nghe trọn một bản nhạc", "Ngủ sớm hơn hôm qua"]
-  }
+const statusLabels = {
+  done: "Xong",
+  open: "Đang làm",
+  ongoing: "Duy trì"
 };
 
 function Divider({ style }) {
@@ -688,7 +698,13 @@ export default function VietnameseBlogStyleLab() {
   const [styleId, setStyleId] = useState("den_dau");
   const style = useMemo(() => styles.find((item) => item.id === styleId) || styles[0], [styleId]);
   const tabPosts = postsByStyle[style.id] || [];
-  const sidebarList = sidebarListsByStyle[style.id] || defaultSidebarList;
+  // Per-status color, resolved against the active theme so each tab keeps its
+  // own palette while the labels stay identical everywhere.
+  const statusColors = {
+    done: style.accent,
+    open: style.text,
+    ongoing: style.textMuted
+  };
   // Portal target for the music player: lives in the sidebar (under "Placeholder
   // Title") on normal tabs, and is null on the sidebar-less tabs (36 Kế, Tào Tháo).
   const [musicSlot, setMusicSlot] = useState(null);
@@ -837,8 +853,12 @@ export default function VietnameseBlogStyleLab() {
           100% { color: #ff3b3b; }
         }
         .gc-heart {
+          display: inline-block;
+          font-size: 1.2em;
+          line-height: 1;
+          vertical-align: -0.08em;
           color: #ff4d6d;
-          animation: gc-twinkle 1.4s ease-in-out infinite;
+          animation: gc-twinkle 1.2s ease-in-out infinite;
         }
         @keyframes gc-twinkle {
           0%, 100% { opacity: 1; }
@@ -974,7 +994,7 @@ export default function VietnameseBlogStyleLab() {
             <section className="mt-6 grid gap-5 lg:grid-cols-[260px_1fr] 2xl:grid-cols-[320px_1fr] 2xl:gap-8">
               <aside className="space-y-5">
                 <section
-                  className="border p-4 hb-box"
+                  className="border p-3 hb-box"
                   style={{
                     background: style.panelSoftBg,
                     borderColor: style.panelSoftBorder,
@@ -982,16 +1002,49 @@ export default function VietnameseBlogStyleLab() {
                     "--strip": sidebarStrip
                   }}
                 >
-                  <div className="font-serif text-xl font-black">Vui vẻ</div>
-                  <div
-                    className="mt-3 border-y py-3 text-2xl font-black"
-                    style={{ borderColor: style.contentBorder, color: style.musicHighlight }}
-                  >
-                    Kiên nhẫn
+                  <div className="flex flex-col gap-1.5 text-sm">
+                    <a
+                      className="footer-link flex items-center gap-2.5"
+                      href="https://www.linkedin.com/in/nguyendoan001/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{ color: style.accent }}
+                    >
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" className="shrink-0" aria-hidden="true" focusable="false">
+                        <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 110-4.13 2.06 2.06 0 010 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z" />
+                      </svg>
+                      <span className="font-semibold">LinkedIn</span>
+                      <span className="ml-auto" aria-hidden="true" style={{ color: style.textMuted }}>↗</span>
+                    </a>
+                    <a
+                      className="footer-link flex items-center gap-2.5"
+                      href="https://github.com/hungngdoan"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{ color: style.accent }}
+                    >
+                      <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" className="shrink-0" aria-hidden="true" focusable="false">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
+                      </svg>
+                      <span className="font-semibold">GitHub</span>
+                      <span className="ml-auto" aria-hidden="true" style={{ color: style.textMuted }}>↗</span>
+                    </a>
+                    <a
+                      className="footer-link flex items-center gap-2.5"
+                      href="https://hungngdoan.github.io/hung-blog/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{ color: style.accent }}
+                    >
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="shrink-0" aria-hidden="true" focusable="false">
+                        <circle cx="12" cy="12" r="10" />
+                        <line x1="2" y1="12" x2="22" y2="12" />
+                        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                      </svg>
+                      <span className="font-semibold">Blog Tiếng Anh</span>
+                      <span className="ml-auto" aria-hidden="true" style={{ color: style.textMuted }}>↗</span>
+                    </a>
                   </div>
-                  <p className="mt-2 text-sm" style={{ color: style.textSoft }}>
-                    Cứ từ từ rồi thứ gì tới cũng sẽ tới.
-                  </p>
                 </section>
 
                 {/* Portal target: the music player's visual UI renders here,
@@ -1009,18 +1062,34 @@ export default function VietnameseBlogStyleLab() {
                 >
                   <div className="font-serif text-xl font-black">{sidebarList.title}</div>
                   <div className="mt-3 space-y-2">
-                    {sidebarList.items.map((quest, index) => (
-                      <div
-                        key={quest}
-                        className="flex items-center justify-between border-b pb-2 text-sm"
-                        style={{ borderColor: style.contentBorder }}
-                      >
-                        <span style={{ color: style.questColor }}>{quest}</span>
-                        <span className="font-bold" style={{ color: index < 4 ? style.accent : style.questMuted }}>
-                          {index < 4 ? "done" : "open"}
-                        </span>
-                      </div>
-                    ))}
+                    {sidebarList.items.map((quest) => {
+                      const status = statusLabels[quest.status] ? quest.status : "open";
+
+                      return (
+                        <div
+                          key={quest.text}
+                          className="flex items-center justify-between gap-3 border-b pb-2 text-sm"
+                          style={{ borderColor: style.contentBorder }}
+                        >
+                          {quest.href ? (
+                            <a
+                              href={quest.href}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="footer-link"
+                              style={{ color: style.questColor }}
+                            >
+                              {quest.text}
+                            </a>
+                          ) : (
+                            <span style={{ color: style.questColor }}>{quest.text}</span>
+                          )}
+                          <span className="shrink-0 font-bold" style={{ color: statusColors[status] }}>
+                            {statusLabels[status]}
+                          </span>
+                        </div>
+                      );
+                    })}
                   </div>
                 </section>
               </aside>
@@ -1150,30 +1219,10 @@ export default function VietnameseBlogStyleLab() {
             </section>
 
             <footer className="mt-7 border-t pt-6" style={{ borderColor: style.borderSection }}>
-              <div className="mx-auto max-w-xl text-center">
-                <Divider style={style} />
-                <p className="mt-3 font-serif text-2xl font-black italic leading-snug" style={{ color: style.accent }}>
-                  “Cảm ơn bạn đã ghé qua một góc đời.”
-                </p>
-                <p className="mt-3 leading-7" style={{ color: style.textSoft }}>
-                  Mỗi tuần một dòng, mỗi ngày một điều biết ơn. Cứ từ từ, rồi thứ gì tới cũng sẽ tới.
-                </p>
-                <div className="mt-3 text-sm font-bold" style={{ color: style.text }}>— Hưng</div>
-              </div>
-              <div className="mt-5 flex flex-col items-center gap-2 border-t pt-4 text-xs sm:flex-row sm:justify-between" style={{ borderColor: style.contentBorder, color: style.textMuted }}>
-                <span>
-                  <a href="#" className="footer-link">Cập nhật</a> · <a href="#" className="footer-link">Suy ngẫm</a> · <a href="#" className="footer-link">Lưu trữ</a>
-                </span>
-                <span className="flex items-center gap-3">
-                  <a href="mailto:hungngdoan@gmail.com" className="footer-link">✉ Email</a>
-                  <a href="https://github.com/hungngdoan" target="_blank" rel="noreferrer" className="footer-link">GitHub</a>
-                </span>
-              </div>
-
               <div className="mt-6 text-center" style={{ color: style.textMuted }}>
                 <div className="gc-footer-stars" aria-hidden="true">✦ ✧ ✦ ✧ ✦ ✧ ✦</div>
                 <p className="mt-2 text-sm">
-                  made with <span className="gc-heart">♥</span> and too much caffeine
+                  Được chế từ <span className="gc-heart">♥</span> và rất nhiều caffeine
                 </p>
                 <p className="mt-2 font-serif text-base font-black" style={{ color: style.accent }}>
                   <span className="gc-blink">Hưng | Đúng, là Hưng</span>
