@@ -4,11 +4,12 @@ import bannerRoses from "../../banner_roses.gif?url";
 import MusicPlayer from "./MusicPlayer.jsx";
 import TaoThao from "./TaoThao.jsx";
 import ThirtySixKe from "./ThirtySixKe.jsx";
+import VeTui from "./VeTui.jsx";
 
 const postsByStyle = {
   den_dau: [
     {
-      title: "🏹 Hai Mũi Tên",
+      title: "Hai Mũi Tên",
       date: "31/5/2026",
       type: "Cập nhật",
       seal: "🏹",
@@ -19,7 +20,7 @@ const postsByStyle = {
       ],
       lesson:
         "🎯 Khi bị dồn vào đường cùng với nguồn lực hạn hẹp, đừng cố tìm cách an toàn tuyệt đối. Hãy dùng đòn phủ đầu để răn đe kẻ mạnh nhất. Giữ lại con bài cuối cùng để kẻ thù khiếp sợ mà không manh động. 🛡️",
-      tags: ["#Tri"],
+      tags: ["#Trí"],
       readMore: false
     }
   ]
@@ -28,53 +29,53 @@ const postsByStyle = {
 const styles = [
   {
     id: "giaydo",
-    name: "Placeholder Style Eight",
-    subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer tincidunt lorem in quam feugiat.",
-    pageBg: "#efe1c3",
-    text: "#2a1b10",
-    textSoft: "rgba(42,27,16,0.75)",
-    textMuted: "rgba(42,27,16,0.60)",
-    accent: "#7b2d16",
-    accentSoft: "rgba(123,45,22,0.133)",
-    borderOuter: "rgba(42,27,16,0.35)",
-    borderInner: "rgba(42,27,16,0.20)",
-    borderSection: "rgba(42,27,16,0.25)",
-    contentBorder: "rgba(42,27,16,0.15)",
-    questColor: "#2a1b10",
-    questMuted: "#2a1b10",
-    frameBg: "rgba(42,27,16,0.025)",
+    name: "Mực Lam",
+    subtitle: "Nền giấy sáng, mực xanh lam, một dấu son nhỏ giữ nhịp.",
+    pageBg: "#eaf2ed",
+    text: "#132c35",
+    textSoft: "rgba(19,44,53,0.74)",
+    textMuted: "rgba(19,44,53,0.58)",
+    accent: "#1d5b73",
+    accentSoft: "rgba(29,91,115,0.135)",
+    borderOuter: "rgba(19,44,53,0.30)",
+    borderInner: "rgba(19,44,53,0.18)",
+    borderSection: "rgba(19,44,53,0.22)",
+    contentBorder: "rgba(19,44,53,0.14)",
+    questColor: "#132c35",
+    questMuted: "#5f7880",
+    frameBg: "rgba(29,91,115,0.035)",
     frameShadow: "none",
-    panelBg: "rgba(248,237,207,0.90)",
-    panelBorder: "rgba(107,63,33,0.30)",
-    panelShadow: "6px 6px 0 rgba(0,0,0,.10)",
-    panelSoftBg: "rgba(255,246,220,0.65)",
-    panelSoftBorder: "rgba(107,63,33,0.20)",
-    panelSoftShadow: "6px 6px 0 rgba(0,0,0,.10)",
-    previewShadow: "7px 7px 0 rgba(0,0,0,.12)",
-    footerShadow: "5px 5px 0 rgba(0,0,0,.10)",
-    navBg: "rgba(0,0,0,0.02)",
-    navBorder: "rgba(42,27,16,0.20)",
-    chooserBg: "rgba(0,0,0,0.02)",
-    chooserBorder: "rgba(0,0,0,0.18)",
-    chooserShadow: "4px 4px 0 rgba(0,0,0,.16)",
-    chooserTextInactive: "#2a1b10",
-    musicHighlight: "#2a1b10",
-    statBg: "rgba(0,0,0,0.025)",
-    statBorder: "rgba(42,27,16,0.25)",
-    statShadow: "4px 4px 0 rgba(0,0,0,.08)",
-    btnBg: "transparent",
-    btnShadow: "3px 3px 0 rgba(0,0,0,.10)",
-    tagBg: "transparent",
-    tagBorder: "rgba(42,27,16,0.30)",
-    tagShadow: "3px 3px 0 rgba(0,0,0,.08)",
-    sealBg: "transparent",
-    sealBorder: "rgba(42,27,16,0.35)",
-    avatarBorder: "rgba(42,27,16,0.40)",
-    avatarBg: "rgba(0,0,0,0.04)",
-    dividerSymbol: "◇ ◇ ◇",
+    panelBg: "rgba(253,250,239,0.94)",
+    panelBorder: "rgba(29,91,115,0.28)",
+    panelShadow: "6px 6px 0 rgba(29,91,115,.10)",
+    panelSoftBg: "rgba(255,255,247,0.74)",
+    panelSoftBorder: "rgba(29,91,115,0.18)",
+    panelSoftShadow: "6px 6px 0 rgba(29,91,115,.08)",
+    previewShadow: "7px 7px 0 rgba(29,91,115,.12)",
+    footerShadow: "5px 5px 0 rgba(29,91,115,.10)",
+    navBg: "rgba(29,91,115,0.05)",
+    navBorder: "rgba(29,91,115,0.20)",
+    chooserBg: "rgba(255,255,255,0.22)",
+    chooserBorder: "rgba(29,91,115,0.22)",
+    chooserShadow: "4px 4px 0 rgba(29,91,115,.14)",
+    chooserTextInactive: "#132c35",
+    musicHighlight: "#b63a34",
+    statBg: "rgba(29,91,115,0.055)",
+    statBorder: "rgba(29,91,115,0.24)",
+    statShadow: "4px 4px 0 rgba(29,91,115,.08)",
+    btnBg: "rgba(29,91,115,0.045)",
+    btnShadow: "3px 3px 0 rgba(29,91,115,.10)",
+    tagBg: "rgba(182,58,52,0.06)",
+    tagBorder: "rgba(182,58,52,0.32)",
+    tagShadow: "3px 3px 0 rgba(182,58,52,.08)",
+    sealBg: "rgba(182,58,52,0.08)",
+    sealBorder: "rgba(182,58,52,0.48)",
+    avatarBorder: "rgba(29,91,115,0.42)",
+    avatarBg: "rgba(29,91,115,0.07)",
+    dividerSymbol: "✒ ✒ ✒",
     dividerTracking: "0.35em",
-    pattern: "repeating-linear-gradient(0deg, rgba(42,27,16,.035) 0 1px, transparent 1px 26px), radial-gradient(circle at 12% 10%, rgba(123,45,22,.15), transparent 28%), radial-gradient(circle at 85% 20%, rgba(120,72,28,.12), transparent 25%)",
-    motif: "✦  placeholder  ✦  sample  ✦  text  ✦"
+    pattern: "linear-gradient(90deg, rgba(182,58,52,0.10) 0 2px, transparent 2px 78px), repeating-linear-gradient(0deg, rgba(29,91,115,0.055) 0 1px, transparent 1px 30px), radial-gradient(circle at 82% 16%, rgba(182,58,52,0.13), transparent 18%), linear-gradient(180deg, rgba(255,255,255,0.46), rgba(222,236,232,0.38) 100%)",
+    motif: "mực lam · giấy sáng · dấu son · ghi chú"
   },
   {
     id: "hoian",
@@ -128,7 +129,7 @@ const styles = [
   },
   {
     id: "dongho",
-    name: "Placeholder Style Nine",
+    name: "Tủ sách",
     subtitle: "Aliquam erat volutpat. Donec vitae arcu nec justo dictum pretium.",
     pageBg: "#f3d68a",
     text: "#331d10",
@@ -178,103 +179,103 @@ const styles = [
   },
   {
     id: "sapbao_sang",
-    name: "Placeholder Style Ten",
-    subtitle: "Sed sit amet tellus at ipsum faucibus gravida. Vivamus luctus erat non quam.",
-    pageBg: "#ded2b2",
-    text: "#201811",
-    textSoft: "rgba(32,24,17,0.75)",
-    textMuted: "rgba(32,24,17,0.60)",
-    accent: "#8a1f16",
-    accentSoft: "rgba(138,31,22,0.133)",
-    borderOuter: "rgba(32,24,17,0.35)",
-    borderInner: "rgba(32,24,17,0.20)",
-    borderSection: "rgba(32,24,17,0.25)",
-    contentBorder: "rgba(32,24,17,0.15)",
-    questColor: "#201811",
-    questMuted: "#201811",
-    frameBg: "rgba(32,24,17,0.025)",
+    name: "Trà Sáng",
+    subtitle: "Giấy màu trà ấm, xanh sâu, vàng rang và mực nâu trầm.",
+    pageBg: "#dfc894",
+    text: "#2c1d12",
+    textSoft: "rgba(44,29,18,0.75)",
+    textMuted: "rgba(44,29,18,0.58)",
+    accent: "#315c3d",
+    accentSoft: "rgba(49,92,61,0.14)",
+    borderOuter: "rgba(44,29,18,0.32)",
+    borderInner: "rgba(49,92,61,0.20)",
+    borderSection: "rgba(49,92,61,0.23)",
+    contentBorder: "rgba(44,29,18,0.15)",
+    questColor: "#2c1d12",
+    questMuted: "#6f5a3a",
+    frameBg: "rgba(49,92,61,0.035)",
     frameShadow: "none",
-    panelBg: "rgba(238,226,191,0.92)",
-    panelBorder: "rgba(32,24,17,0.35)",
-    panelShadow: "6px 6px 0 rgba(0,0,0,.10)",
-    panelSoftBg: "rgba(247,236,207,0.70)",
-    panelSoftBorder: "rgba(32,24,17,0.25)",
-    panelSoftShadow: "6px 6px 0 rgba(0,0,0,.10)",
-    previewShadow: "7px 7px 0 rgba(0,0,0,.12)",
-    footerShadow: "5px 5px 0 rgba(0,0,0,.10)",
-    navBg: "rgba(0,0,0,0.02)",
-    navBorder: "rgba(32,24,17,0.20)",
-    chooserBg: "rgba(0,0,0,0.02)",
-    chooserBorder: "rgba(0,0,0,0.18)",
-    chooserShadow: "4px 4px 0 rgba(0,0,0,.16)",
-    chooserTextInactive: "#201811",
-    musicHighlight: "#201811",
-    statBg: "rgba(0,0,0,0.025)",
-    statBorder: "rgba(32,24,17,0.25)",
-    statShadow: "4px 4px 0 rgba(0,0,0,.08)",
-    btnBg: "transparent",
-    btnShadow: "3px 3px 0 rgba(0,0,0,.10)",
-    tagBg: "transparent",
-    tagBorder: "rgba(32,24,17,0.30)",
-    tagShadow: "3px 3px 0 rgba(0,0,0,.08)",
-    sealBg: "transparent",
-    sealBorder: "rgba(32,24,17,0.35)",
-    avatarBorder: "rgba(32,24,17,0.40)",
-    avatarBg: "rgba(0,0,0,0.04)",
-    dividerSymbol: "◇ ◇ ◇",
+    panelBg: "rgba(247,229,179,0.90)",
+    panelBorder: "rgba(49,92,61,0.30)",
+    panelShadow: "6px 6px 0 rgba(44,29,18,.12)",
+    panelSoftBg: "rgba(250,236,196,0.72)",
+    panelSoftBorder: "rgba(49,92,61,0.20)",
+    panelSoftShadow: "6px 6px 0 rgba(44,29,18,.09)",
+    previewShadow: "7px 7px 0 rgba(44,29,18,.13)",
+    footerShadow: "5px 5px 0 rgba(44,29,18,.10)",
+    navBg: "rgba(49,92,61,0.05)",
+    navBorder: "rgba(49,92,61,0.22)",
+    chooserBg: "rgba(255,244,212,0.24)",
+    chooserBorder: "rgba(49,92,61,0.24)",
+    chooserShadow: "4px 4px 0 rgba(44,29,18,.15)",
+    chooserTextInactive: "#2c1d12",
+    musicHighlight: "#9b6a24",
+    statBg: "rgba(49,92,61,0.06)",
+    statBorder: "rgba(49,92,61,0.26)",
+    statShadow: "4px 4px 0 rgba(44,29,18,.09)",
+    btnBg: "rgba(49,92,61,0.05)",
+    btnShadow: "3px 3px 0 rgba(44,29,18,.11)",
+    tagBg: "rgba(155,106,36,0.08)",
+    tagBorder: "rgba(155,106,36,0.34)",
+    tagShadow: "3px 3px 0 rgba(44,29,18,.08)",
+    sealBg: "rgba(155,106,36,0.09)",
+    sealBorder: "rgba(155,106,36,0.44)",
+    avatarBorder: "rgba(49,92,61,0.44)",
+    avatarBg: "rgba(49,92,61,0.08)",
+    dividerSymbol: "☵ ◇ ☵",
     dividerTracking: "0.35em",
-    pattern: "repeating-linear-gradient(90deg, rgba(32,24,17,.04) 0 1px, transparent 1px 38px), repeating-linear-gradient(0deg, rgba(32,24,17,.025) 0 1px, transparent 1px 18px)",
-    motif: "PLACEHOLDER · SAMPLE · TEXT · NOTES"
+    pattern: "radial-gradient(circle at 16% 14%, rgba(155,106,36,0.18), transparent 22%), radial-gradient(circle at 84% 18%, rgba(49,92,61,0.16), transparent 24%), radial-gradient(circle at 52% 94%, rgba(44,29,18,0.08), transparent 30%), repeating-linear-gradient(0deg, rgba(44,29,18,0.04) 0 1px, transparent 1px 30px), linear-gradient(180deg, rgba(255,238,190,0.42), rgba(190,157,95,0.26) 100%)",
+    motif: "trà sáng · xanh sâu · vàng rang · mực nâu"
   },
   {
     id: "quancoc_sang",
-    name: "Placeholder Style Eleven",
-    subtitle: "Nam dapibus, lorem a porta posuere, ipsum massa facilisis neque.",
-    pageBg: "#d9c28f",
-    text: "#24180e",
-    textSoft: "rgba(36,24,14,0.72)",
-    textMuted: "rgba(36,24,14,0.60)",
-    accent: "#2f6b3f",
-    accentSoft: "rgba(47,107,63,0.133)",
-    borderOuter: "rgba(36,24,14,0.35)",
-    borderInner: "rgba(36,24,14,0.20)",
-    borderSection: "rgba(36,24,14,0.25)",
-    contentBorder: "rgba(36,24,14,0.15)",
-    questColor: "#24180e",
-    questMuted: "#24180e",
-    frameBg: "rgba(36,24,14,0.025)",
+    name: "Lụa Sen",
+    subtitle: "Hồng sen nhạt, nền ngà, xanh sage và mực mận trầm.",
+    pageBg: "#eee2dc",
+    text: "#382338",
+    textSoft: "rgba(56,35,56,0.74)",
+    textMuted: "rgba(56,35,56,0.56)",
+    accent: "#72866f",
+    accentSoft: "rgba(114,134,111,0.145)",
+    borderOuter: "rgba(56,35,56,0.28)",
+    borderInner: "rgba(114,134,111,0.18)",
+    borderSection: "rgba(114,134,111,0.22)",
+    contentBorder: "rgba(56,35,56,0.13)",
+    questColor: "#382338",
+    questMuted: "#766472",
+    frameBg: "rgba(114,134,111,0.035)",
     frameShadow: "none",
-    panelBg: "rgba(234,214,162,0.90)",
-    panelBorder: "rgba(93,59,31,0.35)",
-    panelShadow: "6px 6px 0 rgba(0,0,0,.10)",
-    panelSoftBg: "rgba(245,228,178,0.70)",
-    panelSoftBorder: "rgba(93,59,31,0.25)",
-    panelSoftShadow: "6px 6px 0 rgba(0,0,0,.10)",
-    previewShadow: "7px 7px 0 rgba(0,0,0,.12)",
-    footerShadow: "5px 5px 0 rgba(0,0,0,.10)",
-    navBg: "rgba(0,0,0,0.02)",
-    navBorder: "rgba(36,24,14,0.20)",
-    chooserBg: "rgba(0,0,0,0.02)",
-    chooserBorder: "rgba(0,0,0,0.18)",
-    chooserShadow: "4px 4px 0 rgba(0,0,0,.16)",
-    chooserTextInactive: "#24180e",
-    musicHighlight: "#24180e",
-    statBg: "rgba(0,0,0,0.025)",
-    statBorder: "rgba(36,24,14,0.25)",
-    statShadow: "4px 4px 0 rgba(0,0,0,.08)",
-    btnBg: "transparent",
-    btnShadow: "3px 3px 0 rgba(0,0,0,.10)",
-    tagBg: "transparent",
-    tagBorder: "rgba(36,24,14,0.30)",
-    tagShadow: "3px 3px 0 rgba(0,0,0,.08)",
-    sealBg: "transparent",
-    sealBorder: "rgba(36,24,14,0.35)",
-    avatarBorder: "rgba(36,24,14,0.40)",
-    avatarBg: "rgba(0,0,0,0.04)",
-    dividerSymbol: "◇ ◇ ◇",
+    panelBg: "rgba(255,250,241,0.92)",
+    panelBorder: "rgba(114,134,111,0.28)",
+    panelShadow: "6px 6px 0 rgba(77,55,71,.10)",
+    panelSoftBg: "rgba(250,244,235,0.76)",
+    panelSoftBorder: "rgba(114,134,111,0.18)",
+    panelSoftShadow: "6px 6px 0 rgba(77,55,71,.08)",
+    previewShadow: "7px 7px 0 rgba(77,55,71,.11)",
+    footerShadow: "5px 5px 0 rgba(77,55,71,.09)",
+    navBg: "rgba(114,134,111,0.045)",
+    navBorder: "rgba(114,134,111,0.20)",
+    chooserBg: "rgba(255,250,241,0.28)",
+    chooserBorder: "rgba(114,134,111,0.22)",
+    chooserShadow: "4px 4px 0 rgba(77,55,71,.13)",
+    chooserTextInactive: "#382338",
+    musicHighlight: "#9d6375",
+    statBg: "rgba(114,134,111,0.055)",
+    statBorder: "rgba(114,134,111,0.24)",
+    statShadow: "4px 4px 0 rgba(77,55,71,.08)",
+    btnBg: "rgba(114,134,111,0.045)",
+    btnShadow: "3px 3px 0 rgba(77,55,71,.10)",
+    tagBg: "rgba(157,99,117,0.07)",
+    tagBorder: "rgba(157,99,117,0.30)",
+    tagShadow: "3px 3px 0 rgba(157,99,117,.08)",
+    sealBg: "rgba(157,99,117,0.08)",
+    sealBorder: "rgba(157,99,117,0.42)",
+    avatarBorder: "rgba(114,134,111,0.42)",
+    avatarBg: "rgba(114,134,111,0.07)",
+    dividerSymbol: "✿ ◇ ✿",
     dividerTracking: "0.35em",
-    pattern: "radial-gradient(circle at 20% 20%, rgba(47,107,63,.16), transparent 24%), repeating-linear-gradient(90deg, rgba(93,59,31,.05) 0 3px, transparent 3px 18px)",
-    motif: "☕  placeholder  •  sample  •  text  ☕"
+    pattern: "radial-gradient(circle at 18% 14%, rgba(216,166,181,0.22), transparent 24%), radial-gradient(circle at 84% 18%, rgba(114,134,111,0.16), transparent 22%), radial-gradient(circle at 50% 94%, rgba(56,35,56,0.055), transparent 28%), repeating-linear-gradient(135deg, rgba(114,134,111,0.035) 0 1px, transparent 1px 24px), linear-gradient(180deg, rgba(255,250,241,0.62), rgba(238,226,220,0.42) 100%)",
+    motif: "lụa sen · nền ngà · xanh sage · mực mận"
   },
   {
     id: "hong_tram",
@@ -428,7 +429,7 @@ const styles = [
   },
   {
     id: "sap_bao_dem",
-    name: "Placeholder Style Five",
+    name: "Nhạc Khuya",
     subtitle: "Suspendisse vitae tellus sed lorem laoreet porta id at mauris.",
     pageBg: "#0F0C09",
     text: "#EAD8C2",
@@ -478,7 +479,7 @@ const styles = [
   },
   {
     id: "quan_coc_toi",
-    name: "Placeholder Style Six",
+    name: "Góc kín",
     subtitle: "Maecenas suscipit sem vitae sapien rhoncus, non posuere neque tempor.",
     pageBg: "#0C090B",
     text: "#E8D8DD",
@@ -528,7 +529,7 @@ const styles = [
   },
   {
     id: "suong_mai",
-    name: "Placeholder Style Twelve",
+    name: "Cơn Mưa",
     subtitle: "Morning mist over still water, cool and quiet.",
     pageBg: "#A9B8B8",
     text: "#142226",
@@ -578,7 +579,7 @@ const styles = [
   },
   {
     id: "hoa_dao",
-    name: "Placeholder Style Seven",
+    name: "Góc Hồng",
     subtitle: "Peach blossom in spring, soft and full of longing.",
     pageBg: "#E8B0BE",
     text: "#4A1F2A",
@@ -639,14 +640,34 @@ const styleIcons = {
   sap_bao_dem: "🌙",
   quan_coc_toi: "🌹",
   hoa_dao: "🌸",
-  giaydo: "📜",
+  giaydo: "✒️",
   dongho: "⏳",
-  sapbao_sang: "⛅",
-  quancoc_sang: "☕",
+  sapbao_sang: "🍵",
+  quancoc_sang: "🪷",
   suong_mai: "💧"
 };
 
-const quests = ["Placeholder task one", "Placeholder task two", "Placeholder task three", "Placeholder task four", "Placeholder task five", "Placeholder task six"];
+// Goals list shown in the left panel. Defined once and shared across every
+// tab so the sidebar reads identically no matter which theme is active.
+// status: "done" = finished one-off goal, "open" = in progress / will finish,
+// "ongoing" = a habit that is kept up rather than ever "completed".
+const sidebarList = {
+  title: "Mục Tiêu",
+  items: [
+    { text: "Dọn gọn một góc riêng", status: "done" },
+    { text: "Viết code hàng ngày", status: "ongoing" },
+    { text: "Đỗ cao học", status: "done" },
+    { text: "Học Pytorch", status: "done", href: "https://www.learnpytorch.io/" },
+    { text: "Đại số tuyến tính", status: "open" },
+    { text: "Tập Gym", status: "ongoing" }
+  ]
+};
+
+const statusLabels = {
+  done: "Xong",
+  open: "Đang làm",
+  ongoing: "Duy trì"
+};
 
 function Divider({ style }) {
   return (
@@ -678,8 +699,15 @@ export default function VietnameseBlogStyleLab() {
   const [styleId, setStyleId] = useState("den_dau");
   const style = useMemo(() => styles.find((item) => item.id === styleId) || styles[0], [styleId]);
   const tabPosts = postsByStyle[style.id] || [];
-  // Portal target for the music player: lives in the sidebar (under "Placeholder
-  // Title") on normal tabs, and is null on the sidebar-less tabs (36 Kế, Tào Tháo).
+  // Per-status color, resolved against the active theme so each tab keeps its
+  // own palette while the labels stay identical everywhere.
+  const statusColors = {
+    done: style.accent,
+    open: style.text,
+    ongoing: style.textMuted
+  };
+  // Portal target for the music player: the visual UI portals into this sidebar
+  // slot, which now exists on every tab.
   const [musicSlot, setMusicSlot] = useState(null);
 
   // On Đêm Huyền the sidebar boxes use the colorful hung-blog neon strip to
@@ -801,6 +829,52 @@ export default function VietnameseBlogStyleLab() {
           background: var(--strip, linear-gradient(90deg, #ff69b4, #00ffff, #ffd700));
           pointer-events: none;
         }
+        .footer-link {
+          transition: opacity 160ms ease, text-decoration-color 160ms ease;
+          text-decoration: underline;
+          text-decoration-color: transparent;
+          text-underline-offset: 3px;
+        }
+        .footer-link:hover {
+          opacity: 0.85;
+          text-decoration-color: currentColor;
+        }
+        .gc-footer-stars {
+          letter-spacing: 0.5em;
+          font-size: 1.1rem;
+          animation: gc-rainbow 3s linear infinite;
+        }
+        @keyframes gc-rainbow {
+          0%   { color: #ff3b3b; }
+          16%  { color: #ff9f1c; }
+          33%  { color: #ffe600; }
+          50%  { color: #3bd16f; }
+          66%  { color: #3b9bff; }
+          83%  { color: #b15bff; }
+          100% { color: #ff3b3b; }
+        }
+        .gc-heart {
+          display: inline-block;
+          font-size: 1.2em;
+          line-height: 1;
+          vertical-align: -0.08em;
+          color: #ff4d6d;
+          animation: gc-twinkle 1.2s ease-in-out infinite;
+        }
+        @keyframes gc-twinkle {
+          0%, 100% { opacity: 1; }
+          50%      { opacity: 0.25; }
+        }
+        .gc-blink {
+          animation: gc-blink-anim 1.1s steps(1) infinite;
+        }
+        @keyframes gc-blink-anim {
+          0%, 49%   { opacity: 1; }
+          50%, 100% { opacity: 0; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .gc-footer-stars, .gc-heart, .gc-blink { animation: none; }
+        }
       `}</style>
     <main
       className="min-h-screen"
@@ -908,20 +982,10 @@ export default function VietnameseBlogStyleLab() {
                 box background to the neighboring boxes; other tabs fully theme. */}
             <MusicPlayer portalTarget={musicSlot} theme={style} colorful={style.id === "den_dau"} />
 
-            {style.id === "muc_than" ? (
-              <div className="mx-auto mt-6 w-full max-w-[865px]">
-                <ThirtySixKe />
-              </div>
-            ) : style.id === "hoian" ? (
-              <div className="mx-auto mt-6 w-full max-w-[900px]">
-                <TaoThao />
-              </div>
-            ) : (
-              <>
             <section className="mt-6 grid gap-5 lg:grid-cols-[260px_1fr] 2xl:grid-cols-[320px_1fr] 2xl:gap-8">
               <aside className="space-y-5">
                 <section
-                  className="border p-4 hb-box"
+                  className="border p-3 hb-box"
                   style={{
                     background: style.panelSoftBg,
                     borderColor: style.panelSoftBorder,
@@ -929,16 +993,49 @@ export default function VietnameseBlogStyleLab() {
                     "--strip": sidebarStrip
                   }}
                 >
-                  <div className="font-serif text-xl font-black">Vui vẻ</div>
-                  <div
-                    className="mt-3 border-y py-3 text-2xl font-black"
-                    style={{ borderColor: style.contentBorder, color: style.musicHighlight }}
-                  >
-                    Kiên nhẫn
+                  <div className="flex flex-col gap-1.5 text-sm">
+                    <a
+                      className="footer-link flex items-center gap-2.5"
+                      href="https://www.linkedin.com/in/nguyendoan001/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{ color: style.accent }}
+                    >
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" className="shrink-0" aria-hidden="true" focusable="false">
+                        <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 110-4.13 2.06 2.06 0 010 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z" />
+                      </svg>
+                      <span className="font-semibold">LinkedIn</span>
+                      <span className="ml-auto" aria-hidden="true" style={{ color: style.textMuted }}>↗</span>
+                    </a>
+                    <a
+                      className="footer-link flex items-center gap-2.5"
+                      href="https://github.com/hungngdoan"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{ color: style.accent }}
+                    >
+                      <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" className="shrink-0" aria-hidden="true" focusable="false">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
+                      </svg>
+                      <span className="font-semibold">GitHub</span>
+                      <span className="ml-auto" aria-hidden="true" style={{ color: style.textMuted }}>↗</span>
+                    </a>
+                    <a
+                      className="footer-link flex items-center gap-2.5"
+                      href="https://hungngdoan.github.io/hung-blog/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{ color: style.accent }}
+                    >
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="shrink-0" aria-hidden="true" focusable="false">
+                        <circle cx="12" cy="12" r="10" />
+                        <line x1="2" y1="12" x2="22" y2="12" />
+                        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                      </svg>
+                      <span className="font-semibold">Blog Tiếng Anh</span>
+                      <span className="ml-auto" aria-hidden="true" style={{ color: style.textMuted }}>↗</span>
+                    </a>
                   </div>
-                  <p className="mt-2 text-sm" style={{ color: style.textSoft }}>
-                    Cứ từ từ rồi thứ gì tới cũng sẽ tới.
-                  </p>
                 </section>
 
                 {/* Portal target: the music player's visual UI renders here,
@@ -954,25 +1051,53 @@ export default function VietnameseBlogStyleLab() {
                     "--strip": sidebarStrip
                   }}
                 >
-                  <div className="font-serif text-xl font-black">Placeholder List</div>
+                  <div className="font-serif text-xl font-black">{sidebarList.title}</div>
                   <div className="mt-3 space-y-2">
-                    {quests.map((quest, index) => (
-                      <div
-                        key={quest}
-                        className="flex items-center justify-between border-b pb-2 text-sm"
-                        style={{ borderColor: style.contentBorder }}
-                      >
-                        <span style={{ color: style.questColor }}>{quest}</span>
-                        <span className="font-bold" style={{ color: index < 4 ? style.accent : style.questMuted }}>
-                          {index < 4 ? "done" : "open"}
-                        </span>
-                      </div>
-                    ))}
+                    {sidebarList.items.map((quest) => {
+                      const status = statusLabels[quest.status] ? quest.status : "open";
+
+                      return (
+                        <div
+                          key={quest.text}
+                          className="flex items-center justify-between gap-3 border-b pb-2 text-sm"
+                          style={{ borderColor: style.contentBorder }}
+                        >
+                          {quest.href ? (
+                            <a
+                              href={quest.href}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="footer-link"
+                              style={{ color: style.questColor }}
+                            >
+                              {quest.text}
+                            </a>
+                          ) : (
+                            <span style={{ color: style.questColor }}>{quest.text}</span>
+                          )}
+                          <span className="shrink-0 font-bold" style={{ color: statusColors[status] }}>
+                            {statusLabels[status]}
+                          </span>
+                        </div>
+                      );
+                    })}
                   </div>
                 </section>
               </aside>
 
-              <section>
+              <section className="min-w-0">
+                {style.id === "muc_than" ? (
+                  <div className="mx-auto w-full max-w-[1080px]">
+                    <ThirtySixKe />
+                  </div>
+                ) : style.id === "hoian" ? (
+                  <div className="mx-auto w-full max-w-[1080px]">
+                    <TaoThao />
+                  </div>
+                ) : style.id === "hong_tram" ? (
+                  <VeTui />
+                ) : (
+                  <>
                 <motion.div
                   key={style.id}
                   initial={{ opacity: 0, y: 12 }}
@@ -1093,44 +1218,23 @@ export default function VietnameseBlogStyleLab() {
                   })}
                 </div>
                 )}
+                  </>
+                )}
               </section>
             </section>
 
-            <footer className="mt-7 border-t pt-5" style={{ borderColor: style.borderSection }}>
-              <div className="grid gap-4 sm:grid-cols-[1fr_2fr]">
-                <div
-                  className="border p-4"
-                  style={{
-                    background: style.panelSoftBg,
-                    borderColor: style.panelSoftBorder,
-                    boxShadow: style.footerShadow
-                  }}
-                >
-                  <div className="font-serif text-xl font-black">Placeholder Footer</div>
-                  <p className="mt-2 leading-7" style={{ color: style.textSoft }}>
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae tellus sed lorem."
-                  </p>
-                </div>
-                <div
-                  className="border p-4"
-                  style={{
-                    background: style.panelSoftBg,
-                    borderColor: style.panelSoftBorder,
-                    boxShadow: style.footerShadow
-                  }}
-                >
-                  <div className="font-serif text-xl font-black">Placeholder Notes</div>
-                  <p className="mt-2 leading-7" style={{ color: style.textSoft }}>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas suscipit sem vitae sapien rhoncus, non posuere neque tempor.
-                  </p>
-                </div>
-              </div>
-              <div className="mt-5 text-center text-xs uppercase tracking-[0.35em]" style={{ color: style.textMuted }}>
-                {style.motif}
+            <footer className="mt-7 border-t pt-6" style={{ borderColor: style.borderSection }}>
+              <div className="mt-6 text-center" style={{ color: style.textMuted }}>
+                <div className="gc-footer-stars" aria-hidden="true">✦ ✧ ✦ ✧ ✦ ✧ ✦</div>
+                <p className="mt-2 text-sm">
+                  Được chế từ <span className="gc-heart">♥</span> và rất nhiều caffeine
+                </p>
+                <p className="mt-2 font-serif text-base font-black" style={{ color: style.accent }}>
+                  <span className="gc-blink">Hưng | Đúng, là Hưng</span>
+                </p>
+                <p className="mt-1 text-[11px] uppercase tracking-[0.3em]">© 2026 Một Góc Đời</p>
               </div>
             </footer>
-              </>
-            )}
           </div>
         </div>
       </div>
