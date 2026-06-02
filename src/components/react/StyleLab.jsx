@@ -5,6 +5,7 @@ import MusicPlayer from "./MusicPlayer.jsx";
 import TaoThao from "./TaoThao.jsx";
 import ThirtySixKe from "./ThirtySixKe.jsx";
 import VeTui from "./VeTui.jsx";
+import MucLam from "./MucLam.jsx";
 
 const postsByStyle = {
   den_dau: [
@@ -1096,6 +1097,8 @@ export default function VietnameseBlogStyleLab() {
                   </div>
                 ) : style.id === "hong_tram" ? (
                   <VeTui />
+                ) : style.id === "giaydo" ? (
+                  <MucLam theme={style} />
                 ) : (
                   <>
                 <motion.div
