@@ -89,12 +89,6 @@ const TOPICS = [
 const CLOSING =
   "Nếu bạn đọc đến đây, có lẽ bạn cũng là người thích sống chậm. Kéo ghế ngồi xuống. Ở đây không ai vội.";
 
-const LINKS = [
-  { label: "LinkedIn", href: "https://www.linkedin.com/in/nguyendoan001/" },
-  { label: "GitHub", href: "https://github.com/hungngdoan" },
-  { label: "Blog Tiếng Anh", href: "https://hungngdoan.github.io/hung-blog/" },
-];
-
 /* -- atoms ------------------------------------------------------ */
 
 const Fade = ({ children, d = 0, className = "" }) => (
@@ -395,28 +389,6 @@ export default function VeTui() {
           </div>
         </Fade>
 
-        {/* ── links ── */}
-        <Fade d={1.2}>
-          <div className="flex flex-wrap gap-3 justify-center">
-            {LINKS.map((l) => (
-              <a
-                key={l.label}
-                href={l.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-4 py-2 text-xs uppercase tracking-wider transition-all duration-200 hover:opacity-75"
-                style={{
-                  color: P.gold,
-                  border: `1px solid ${P.border}`,
-                  borderBottom: `2px solid ${P.gold}`,
-                  letterSpacing: "0.1em",
-                }}
-              >
-                {l.label} &rarr;
-              </a>
-            ))}
-          </div>
-        </Fade>
       </div>
     </div>
   );
