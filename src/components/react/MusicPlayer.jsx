@@ -147,7 +147,7 @@ const playerStyles = `
 .music-progress-wrap {
   flex: 1;
   height: 6px;
-  background: rgba(255, 255, 255, 0.08);
+  background: var(--track-bg, rgba(255, 255, 255, 0.08));
   border-radius: 3px;
   cursor: pointer;
   position: relative;
@@ -157,7 +157,9 @@ const playerStyles = `
 .music-progress-bar {
   height: 100%;
   width: 0%;
-  background: linear-gradient(90deg, var(--accent-pink), var(--accent-cyan));
+  /* Per-tab gradient via --progress-from/--progress-to; falls back to the
+     pink->cyan neon defaults on the colorful (Đêm Huyền) player. */
+  background: linear-gradient(90deg, var(--progress-from, var(--accent-pink)), var(--progress-to, var(--accent-cyan)));
   border-radius: 3px;
   transition: width 0.1s linear;
 }
@@ -191,7 +193,7 @@ const playerStyles = `
   appearance: none;
   flex: 1;
   height: 4px;
-  background: rgba(255, 255, 255, 0.08);
+  background: var(--track-bg, rgba(255, 255, 255, 0.08));
   border-radius: 2px;
   outline: none;
   cursor: pointer;
@@ -241,6 +243,15 @@ function hexToRgb(hex) {
     return "255, 105, 180";
   }
   return `${parseInt(match[1], 16)}, ${parseInt(match[2], 16)}, ${parseInt(match[3], 16)}`;
+}
+
+// Mixes a hex colour toward white by `amount` (0-1). Used to build a
+// two-tone progress gradient from a single theme accent, so each tab's
+// bar is a distinct accent -> lighter-accent sweep rather than flat.
+function lighten(hex, amount) {
+  const [r, g, b] = hexToRgb(hex).split(",").map((part) => parseInt(part, 10));
+  const mix = (channel) => Math.round(channel + (255 - channel) * amount);
+  return `rgb(${mix(r)}, ${mix(g)}, ${mix(b)})`;
 }
 
 function formatTime(seconds) {
@@ -381,7 +392,14 @@ export default function MusicPlayer({ portalTarget = null, theme = null, colorfu
           "--accent-gold": theme.accent,
           "--text-dim": theme.textMuted,
           "--link-color": theme.accent,
-          "--mb-glow-rgb": hexToRgb(theme.accent)
+          "--mb-glow-rgb": hexToRgb(theme.accent),
+          // Empty track for the progress + volume bars. Derived from the
+          // theme's text colour so it stays visible on light themes (e.g.
+          // Góc Hồng) where the default faint-white track disappears.
+          "--track-bg": `rgba(${hexToRgb(theme.text)}, 0.18)`,
+          // Two-tone progress fill unique to each tab: accent -> lighter accent.
+          "--progress-from": theme.accent,
+          "--progress-to": lighten(theme.accent, 0.4)
         };
 
   const playerUi = (

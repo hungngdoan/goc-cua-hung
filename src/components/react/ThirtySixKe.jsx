@@ -77,11 +77,11 @@ const migrationGuards = `
     --ke-red: #c23a2e;
     --ke-teal: #2a6e6e;
     position: fixed;
-    right: max(
-      calc(env(safe-area-inset-right) + 10px),
-      calc((100vw - 1125px) / 2 - var(--ke-scroll-size) - var(--ke-scroll-outside-gap))
-    );
-    bottom: calc(env(safe-area-inset-bottom) + 100px);
+    /* The right offset is set inline from JS: the content column is offset by
+       the left sidebar, so its right edge is measured at runtime and the
+       controls are pinned just outside it. This value is only a fallback. */
+    right: 16px;
+    bottom: calc(env(safe-area-inset-bottom) + 40px);
     z-index: 80;
     display: flex;
     flex-direction: column;
@@ -137,8 +137,8 @@ const migrationGuards = `
   @media (max-width: 800px) {
     .ke-scroll-controls {
       --ke-scroll-size: 40px;
-      right: calc(env(safe-area-inset-right) + 10px);
-      bottom: calc(env(safe-area-inset-bottom) + 92px);
+      right: calc(env(safe-area-inset-right) + 12px);
+      bottom: calc(env(safe-area-inset-bottom) + 24px);
       gap: 6px;
     }
 
@@ -166,6 +166,7 @@ function parseThirtySixKe(source) {
 export default function ThirtySixKe() {
   const containerRef = useRef(null);
   const [scrollState, setScrollState] = useState({ canTop: false, canBottom: false });
+  const [controlsRight, setControlsRight] = useState(16);
   const { html, styles } = useMemo(() => parseThirtySixKe(thirtySixKeSource), []);
 
   useEffect(() => {
@@ -235,6 +236,30 @@ export default function ThirtySixKe() {
     };
   }, []);
 
+  // Pin the scroll controls just to the right of the 36 Kế content column.
+  // That column sits in a grid cell offset by the left sidebar, so a static
+  // viewport offset can't track its right edge -- measure it and re-measure
+  // on resize, then clamp to the viewport edge when the margin runs out.
+  useEffect(() => {
+    const measure = () => {
+      const content = containerRef.current;
+      if (!content) return;
+      const contentRight = content.getBoundingClientRect().right;
+      const buttonWidth = window.matchMedia("(max-width: 800px)").matches ? 40 : 44;
+      const gap = 28;
+      setControlsRight(Math.max(8, window.innerWidth - contentRight - gap - buttonWidth));
+    };
+
+    measure();
+    window.addEventListener("resize", measure);
+    const timer = window.setTimeout(measure, 300);
+
+    return () => {
+      window.removeEventListener("resize", measure);
+      window.clearTimeout(timer);
+    };
+  }, [html]);
+
   const scrollToEdge = (edge) => {
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const top = edge === "top" ? 0 : Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
@@ -249,7 +274,7 @@ export default function ThirtySixKe() {
     <>
       <style>{styles}</style>
       <div ref={containerRef} className="thirty-six-ke-page" dangerouslySetInnerHTML={{ __html: html }} />
-      <div className="ke-scroll-controls" aria-label="Page scroll controls">
+      <div className="ke-scroll-controls" style={{ right: `${controlsRight}px` }} aria-label="Page scroll controls">
         <button
           type="button"
           className="ke-scroll-button"

@@ -24,6 +24,17 @@ const postsByStyle = {
       tags: ["#Trí"],
       readMore: false
     }
+  ],
+  sap_bao_dem: [
+    {
+      title: "Mạnh Bà",
+      centered: true,
+      body: [
+        "Bỉ ngạn hoa nở bên bờ sinh tử\nSông Vong Xuyên nhuộm đỏ cả một dòng\nCanh Mạnh Bà, là ai quên ai nhớ\nCầu Nại Hà, là ai ngóng ai trông",
+        "\"Mạnh Bà chưa uống đã say\nHà chi Nguyệt Lão cắt dây tơ hồng\nNhân gian một cõi hư không\nCanh thừa, dây đứt khiến lòng ngỗn ngang.\""
+      ],
+      readMore: false
+    }
   ]
 };
 
@@ -431,7 +442,7 @@ const styles = [
   {
     id: "sap_bao_dem",
     name: "Nhạc Khuya",
-    subtitle: "Suspendisse vitae tellus sed lorem laoreet porta id at mauris.",
+    subtitle: "Nhạc khuya, nghe để buồn, chỉ là buồn một mình.",
     pageBg: "#0F0C09",
     text: "#EAD8C2",
     textSoft: "#A48D76",
@@ -476,7 +487,7 @@ const styles = [
     dividerSymbol: "• • •",
     dividerTracking: "0.28em",
     pattern: "radial-gradient(circle at 12% 8%, rgba(190,111,93,0.11), transparent 18%), radial-gradient(circle at 82% 18%, rgba(190,111,93,0.05), transparent 26%), radial-gradient(circle at 50% 92%, rgba(190,111,93,0.05), transparent 28%), repeating-linear-gradient(90deg, rgba(255,255,255,0.018) 0 1px, transparent 1px 34px), repeating-linear-gradient(0deg, rgba(255,255,255,0.012) 0 1px, transparent 1px 24px), linear-gradient(135deg, #0F0C09, #1B120D 48%, #100C09)",
-    motif: "placeholder · sample · text · notes"
+    motif: "đêm khuya · nhạc nhẹ · nhớ một người · thương một đời"
   },
   {
     id: "quan_coc_toi",
@@ -638,7 +649,7 @@ const styleIcons = {
   hong_tram: "🕯",
   den_dau: "🌙",
   muc_than: "📜",
-  sap_bao_dem: "🌙",
+  sap_bao_dem: "🎶",
   quan_coc_toi: "🌹",
   hoa_dao: "🌸",
   giaydo: "✒️",
@@ -693,6 +704,19 @@ function WovenStat({ label, value, style }) {
       <div className="text-[10px] font-bold uppercase leading-3 tracking-[0.12em]" style={{ color: style.textMuted }}>{label}</div>
       <div className="mt-0.5 text-lg font-black leading-5" style={{ color: style.text }}>{value}</div>
     </div>
+  );
+}
+
+// A small "now playing" equaliser: bars that bounce like a music wave.
+// Rendered above song posts (post.wave). Bars inherit currentColor.
+function MusicWave({ bars = 4 }) {
+  const delays = [-200, -560, -120, -380];
+  return (
+    <span className="gc-eq" aria-hidden="true">
+      {delays.slice(0, bars).map((delay, index) => (
+        <i key={index} style={{ animationDelay: `${delay}ms` }} />
+      ))}
+    </span>
   );
 }
 
@@ -873,15 +897,33 @@ export default function VietnameseBlogStyleLab() {
           0%, 49%   { opacity: 1; }
           50%, 100% { opacity: 0; }
         }
+        .gc-eq {
+          display: inline-flex;
+          align-items: flex-end;
+          gap: 3px;
+          height: 18px;
+        }
+        .gc-eq i {
+          width: 3px;
+          height: 6px;
+          border-radius: 1px;
+          background: currentColor;
+          animation: gc-eq-bounce 950ms ease-in-out infinite;
+        }
+        @keyframes gc-eq-bounce {
+          0%, 100% { height: 5px; }
+          50%      { height: 18px; }
+        }
         @media (prefers-reduced-motion: reduce) {
           .gc-footer-stars, .gc-heart, .gc-blink { animation: none; }
+          .gc-eq i { animation: none; height: 11px; }
         }
       `}</style>
     <main
       className="min-h-screen"
       style={{ color: style.text, backgroundColor: style.pageBg, backgroundImage: style.pattern }}
     >
-      <div className="web-scale-shell mx-auto max-w-6xl xl:max-w-7xl 2xl:max-w-[1700px] px-4 py-5 sm:px-7 lg:px-8 2xl:px-12">
+      <div className="web-scale-shell mx-auto max-w-6xl xl:max-w-7xl 2xl:max-w-[1700px] px-4 pt-2 pb-3 sm:px-7 lg:px-8 2xl:px-12">
         <div
           className="border-[3px] border-double p-2"
           style={{
@@ -890,9 +932,9 @@ export default function VietnameseBlogStyleLab() {
             boxShadow: style.frameShadow
           }}
         >
-          <div className="border p-4 sm:p-6 lg:p-8 2xl:p-12" style={{ borderColor: style.borderInner }}>
+          <div className="border p-3 sm:p-4 lg:p-6 2xl:p-8 pt-2 sm:pt-2 lg:pt-3 2xl:pt-4" style={{ borderColor: style.borderInner }}>
             <div
-              className="relative mb-7 overflow-hidden border"
+              className="relative mb-3 overflow-hidden border"
               style={{
                 borderColor: style.panelBorder,
                 boxShadow: style.previewShadow,
@@ -905,7 +947,7 @@ export default function VietnameseBlogStyleLab() {
                 src={bannerRoses}
                 alt="Đêm sao: hai đứa trẻ và chú chó ngồi trên bãi cỏ, khóm hồng nở bên phải"
                 className="banner-img relative z-10 mx-auto block h-auto w-full"
-                style={{ maxWidth: "780px" }}
+                style={{ maxWidth: "620px" }}
               />
             </div>
             <header>
@@ -921,12 +963,12 @@ export default function VietnameseBlogStyleLab() {
                 >
                   Đời là vô thường
                 </div>
-                <div className="mt-3 grid gap-3 xl:grid-cols-[minmax(0,0.9fr)_minmax(620px,820px)] xl:items-center">
-                  <h1 className="max-w-4xl 2xl:max-w-5xl font-serif text-3xl font-black leading-none tracking-tight sm:text-4xl lg:text-5xl 2xl:text-6xl">
+                <div className="mt-2 grid gap-2 xl:grid-cols-[minmax(0,0.9fr)_minmax(620px,820px)] xl:items-center">
+                  <h1 className="max-w-4xl 2xl:max-w-5xl font-serif text-2xl font-black leading-none tracking-tight sm:text-3xl lg:text-4xl 2xl:text-5xl">
                     Một Góc Đời
                   </h1>
                   <aside
-                    className="grid gap-3 border p-3 sm:grid-cols-[auto_1fr] sm:items-center xl:grid-cols-[auto_minmax(0,1fr)_auto]"
+                    className="grid gap-2 border p-2.5 sm:grid-cols-[auto_1fr] sm:items-center xl:grid-cols-[auto_minmax(0,1fr)_auto]"
                     style={{
                       background: style.panelBg,
                       borderColor: style.panelBorder,
@@ -935,13 +977,13 @@ export default function VietnameseBlogStyleLab() {
                   >
                     <div className="flex items-center gap-3">
                       <div
-                        className="grid h-14 w-14 shrink-0 place-items-center rounded-full border-[3px] border-double text-xl font-black tracking-tight"
+                        className="grid h-12 w-12 shrink-0 place-items-center rounded-full border-[3px] border-double text-lg font-black tracking-tight"
                         style={{ borderColor: style.avatarBorder, background: style.avatarBg, color: style.accent }}
                       >
                         H
                       </div>
                       <div>
-                        <div className="font-serif text-2xl font-black leading-none">Hưng</div>
+                        <div className="font-serif text-xl font-black leading-none">Hưng</div>
                         <div className="mt-1 text-[11px] font-bold uppercase leading-4 tracking-[0.16em]" style={{ color: style.textMuted }}>
                           Góc riêng
                         </div>
@@ -959,9 +1001,6 @@ export default function VietnameseBlogStyleLab() {
                     </div>
                   </aside>
                 </div>
-                <p className="mt-3 max-w-2xl font-serif text-base leading-6" style={{ color: style.textSoft }}>
-                  Một góc riêng, để giữ lại và chia sẻ.
-                </p>
               </div>
             </header>
 
@@ -1113,7 +1152,11 @@ export default function VietnameseBlogStyleLab() {
                     boxShadow: style.previewShadow
                   }}
                 >
-                  <h2 className="text-center font-serif text-3xl font-black leading-tight sm:text-4xl" style={{ color: style.accent }}>
+                  <h2
+                    className={`text-center font-serif text-3xl font-black leading-tight sm:text-4xl ${style.id === "sap_bao_dem" ? "flex items-center justify-center gap-3" : ""}`}
+                    style={{ color: style.accent }}
+                  >
+                    {style.id === "sap_bao_dem" && <MusicWave />}
                     {style.name}
                   </h2>
                   <p className="mx-auto mt-1 max-w-3xl text-center font-serif text-base leading-6" style={{ color: style.textSoft }}>
@@ -1136,32 +1179,41 @@ export default function VietnameseBlogStyleLab() {
                         initial={{ opacity: 0, y: 12 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.25, delay: index * 0.04 }}
-                        className="grid gap-4 border p-4 sm:grid-cols-[84px_1fr] sm:p-5"
+                        className={`grid gap-4 border p-4 sm:p-5 ${post.centered ? "text-center" : "sm:grid-cols-[84px_1fr]"}`}
                         style={{
                           background: style.panelSoftBg,
                           borderColor: style.panelSoftBorder,
                           boxShadow: style.panelSoftShadow
                         }}
                       >
-                        <div className="flex sm:block sm:text-center">
+                        {(post.seal || post.type || post.date) && (
+                        <div className={post.centered ? "text-center" : "flex sm:block sm:text-center"}>
                           <div
-                            className={`grid h-16 w-16 shrink-0 place-items-center border-4 border-double font-serif font-black ${post.sealLarge ? "text-xl" : "text-sm"}`}
+                            className={`grid h-16 w-16 shrink-0 place-items-center border-4 border-double font-serif font-black ${post.sealLarge ? "text-xl" : "text-sm"} ${post.centered ? "mx-auto" : ""}`}
                             style={{ color: style.accent, borderColor: style.sealBorder, background: style.sealBg }}
                           >
                             {post.seal}
                           </div>
-                          <div className="ml-3 sm:ml-0 sm:mt-3">
+                          <div className={post.centered ? "mt-3" : "ml-3 sm:ml-0 sm:mt-3"}>
                             <div className="text-xs uppercase tracking-[0.2em]" style={{ color: style.textMuted }}>
                               {post.type}
                             </div>
                             <div className="mt-1 text-xs" style={{ color: style.textMuted }}>{post.date}</div>
                           </div>
                         </div>
+                        )}
                         <div>
                           <h3 className="font-serif text-2xl font-black sm:text-3xl">{post.title}</h3>
-                          <div className="mt-3 max-w-3xl space-y-3 text-base leading-8" style={{ color: style.textSoft }}>
+                          <div className={`mt-3 max-w-3xl space-y-3 text-base leading-8 ${post.centered ? "mx-auto" : ""}`} style={{ color: style.textSoft }}>
                             {bodyBlocks.map((paragraph) => (
-                              <p key={paragraph}>{paragraph}</p>
+                              <p key={paragraph}>
+                                {paragraph.split("\n").map((line, lineIndex, lines) => (
+                                  <React.Fragment key={line}>
+                                    {line}
+                                    {lineIndex < lines.length - 1 && <br />}
+                                  </React.Fragment>
+                                ))}
+                              </p>
                             ))}
                           </div>
                           {post.lesson && (
@@ -1190,7 +1242,7 @@ export default function VietnameseBlogStyleLab() {
                             </div>
                           )}
                           {post.tags && (
-                            <div className="mt-3 flex flex-wrap gap-2">
+                            <div className={`mt-3 flex flex-wrap gap-2 ${post.centered ? "justify-center" : ""}`}>
                               {post.tags.map((tag) => (
                                 <span
                                   key={tag}
