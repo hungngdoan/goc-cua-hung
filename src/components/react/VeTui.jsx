@@ -25,21 +25,21 @@ const NAME = "Hưng";
 const TAGLINE = "Viết để nhớ. Viết để hiểu. Viết để buông.";
 
 const BIO =
-  "Tui là Hưng, kỹ sư phần mềm ở Texas. Blog này là góc nhỏ của một người sống xa nhà, viết bằng thứ tiếng mà mình thấy rõ mình nhất.";
+  "Hưng, kỹ sư phần mềm. Blog này là góc nhỏ của một người sống xa nhà, viết bằng thứ tiếng mà mình thấy rõ mình nhất.";
 
 const BECOMING = [
-  "Có công việc ổn định, nhưng không để công việc lấy mất đời sống của mình.",
-  "Có tham vọng học và tiến xa hơn, nhưng muốn đi xa bằng kỷ luật thay vì ồn ào.",
+  "Làm để sống hay sống để làm?",
+  "Kỷ luật là trên hết. (Cái giường phản đối, nhưng nó không có quyền biểu quyết.)",
   "Có lúc vụng về, nhưng luôn muốn học cách yêu thương rõ ràng và có trách nhiệm hơn.",
 ];
 
 const BECOMING_NOTE =
-  "Nếu một ngày có người đồng hành bước vào góc nhỏ này, tôi mong người đó nhìn thấy không phải một người hoàn hảo, mà là một người đang nghiêm túc xây một cuộc đời đáng tin.";
+  "Nếu một ngày có người đồng hành bước vào góc nhỏ này, tôi mong người đó nhìn thấy...";
 
 const FACTS = [
   {
     title: "Ban ngày",
-    body: "Kỹ sư phần mềm, chuyên dữ liệu và đám mây. Đang học thêm Thạc sĩ AI ở UT Austin.",
+    body: "Kỹ sư phần mềm, chuyên dữ liệu và đám mây. Thạc sĩ AI UT Austin vào tháng 8-2026.",
   },
   {
     title: "Sau giờ làm",
@@ -47,7 +47,7 @@ const FACTS = [
   },
   {
     title: "Tôi tin gì",
-    body: "Nhân quả",
+    body: "Đức năng thắng số",
   },
 ];
 
@@ -84,15 +84,6 @@ const TOPICS = [
   "Chuyện đời ở xứ người",
   "Bài học không ai dạy",
   "Những thứ nhỏ mà đẹp",
-];
-
-const CLOSING =
-  "Nếu bạn đọc đến đây, có lẽ bạn cũng là người thích sống chậm. Kéo ghế ngồi xuống. Ở đây không ai vội.";
-
-const LINKS = [
-  { label: "LinkedIn", href: "https://www.linkedin.com/in/nguyendoan001/" },
-  { label: "GitHub", href: "https://github.com/hungngdoan" },
-  { label: "Blog Tiếng Anh", href: "https://hungngdoan.github.io/hung-blog/" },
 ];
 
 /* -- atoms ------------------------------------------------------ */
@@ -290,7 +281,7 @@ export default function VeTui() {
               className="pointer-events-none absolute -left-10 -top-12 h-28 w-28 rounded-full blur-2xl"
               style={{ background: "rgba(198,161,91,.12)" }}
             />
-            <Lbl center>Người tôi đang trở thành</Lbl>
+            <Lbl center>Mục tiêu</Lbl>
             <div className="relative mt-5 grid gap-4 text-left">
               {BECOMING.map((item, index) => (
                 <div key={item} className="grid grid-cols-[2.25rem_1fr] gap-3">
@@ -375,45 +366,6 @@ export default function VeTui() {
               >
                 {t}
               </span>
-            ))}
-          </div>
-        </Fade>
-
-        <Fade d={1.06}>
-          <Dots py="py-6" />
-        </Fade>
-
-        {/* ── closing note ── */}
-        <Fade d={1.1}>
-          <div className="text-center px-4 sm:px-12 mb-2">
-            <p
-              className="text-sm italic leading-[1.9]"
-              style={{ color: P.muted }}
-            >
-              {CLOSING}
-            </p>
-          </div>
-        </Fade>
-
-        {/* ── links ── */}
-        <Fade d={1.2}>
-          <div className="flex flex-wrap gap-3 justify-center">
-            {LINKS.map((l) => (
-              <a
-                key={l.label}
-                href={l.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-4 py-2 text-xs uppercase tracking-wider transition-all duration-200 hover:opacity-75"
-                style={{
-                  color: P.gold,
-                  border: `1px solid ${P.border}`,
-                  borderBottom: `2px solid ${P.gold}`,
-                  letterSpacing: "0.1em",
-                }}
-              >
-                {l.label} &rarr;
-              </a>
             ))}
           </div>
         </Fade>
