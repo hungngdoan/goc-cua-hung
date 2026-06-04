@@ -491,7 +491,7 @@ const styles = [
   },
   {
     id: "quan_coc_toi",
-    name: "Góc kín",
+    name: "Trò chơi điện tử",
     subtitle: "Maecenas suscipit sem vitae sapien rhoncus, non posuere neque tempor.",
     pageBg: "#0C090B",
     text: "#E8D8DD",
@@ -650,7 +650,7 @@ const styleIcons = {
   den_dau: "🌙",
   muc_than: "📜",
   sap_bao_dem: "🎶",
-  quan_coc_toi: "🌹",
+  quan_coc_toi: "🎮",
   hoa_dao: "🌸",
   giaydo: "✒️",
   dongho: "⏳",
@@ -687,22 +687,6 @@ function Divider({ style }) {
       <div className="h-px flex-1" style={{ background: style.accent }} />
       <div style={{ color: style.accent, letterSpacing: style.dividerTracking }} className="text-xs">{style.dividerSymbol}</div>
       <div className="h-px flex-1" style={{ background: style.accent }} />
-    </div>
-  );
-}
-
-function WovenStat({ label, value, style }) {
-  return (
-    <div
-      className="border p-2.5"
-      style={{
-        background: style.statBg,
-        borderColor: style.statBorder,
-        boxShadow: style.statShadow
-      }}
-    >
-      <div className="text-[10px] font-bold uppercase leading-3 tracking-[0.12em]" style={{ color: style.textMuted }}>{label}</div>
-      <div className="mt-0.5 text-lg font-black leading-5" style={{ color: style.text }}>{value}</div>
     </div>
   );
 }
@@ -951,9 +935,12 @@ export default function VietnameseBlogStyleLab() {
               />
             </div>
             <header>
-              <div>
+              <div className="flex flex-wrap items-baseline gap-3">
+                <h1 className="max-w-4xl 2xl:max-w-5xl font-serif text-2xl font-black leading-none tracking-tight sm:text-3xl lg:text-4xl 2xl:text-5xl">
+                  Một Góc Đời
+                </h1>
                 <div
-                  className="inline-block border px-2.5 py-0.5 text-[10px] uppercase tracking-[0.2em]"
+                  className="inline-block border px-2.5 py-0.5 text-[10px] uppercase tracking-[0.2em] -translate-y-[4px]"
                   style={{
                     borderColor: style.tagBorder,
                     color: style.textSoft,
@@ -962,44 +949,6 @@ export default function VietnameseBlogStyleLab() {
                   }}
                 >
                   Đời là vô thường
-                </div>
-                <div className="mt-2 grid gap-2 xl:grid-cols-[minmax(0,0.9fr)_minmax(620px,820px)] xl:items-center">
-                  <h1 className="max-w-4xl 2xl:max-w-5xl font-serif text-2xl font-black leading-none tracking-tight sm:text-3xl lg:text-4xl 2xl:text-5xl">
-                    Một Góc Đời
-                  </h1>
-                  <aside
-                    className="grid gap-2 border p-2.5 sm:grid-cols-[auto_1fr] sm:items-center xl:grid-cols-[auto_minmax(0,1fr)_auto]"
-                    style={{
-                      background: style.panelBg,
-                      borderColor: style.panelBorder,
-                      boxShadow: style.panelShadow
-                    }}
-                  >
-                    <div className="flex items-center gap-3">
-                      <div
-                        className="grid h-12 w-12 shrink-0 place-items-center rounded-full border-[3px] border-double text-lg font-black tracking-tight"
-                        style={{ borderColor: style.avatarBorder, background: style.avatarBg, color: style.accent }}
-                      >
-                        H
-                      </div>
-                      <div>
-                        <div className="font-serif text-xl font-black leading-none">Hưng</div>
-                        <div className="mt-1 text-[11px] font-bold uppercase leading-4 tracking-[0.16em]" style={{ color: style.textMuted }}>
-                          Góc riêng
-                        </div>
-                      </div>
-                    </div>
-                    <p
-                      className="text-[15px] leading-6 sm:border-l sm:pl-3"
-                      style={{ color: style.textSoft, borderColor: style.contentBorder }}
-                    >
-                      Ghi lại chuyện nhỏ, suy nghĩ, và những ngày đáng nhớ.
-                    </p>
-                    <div className="grid grid-cols-2 gap-1.5 sm:col-span-2 xl:col-span-1 xl:w-[220px]">
-                      <WovenStat label="Mục tiêu" value="Lưu giữ" style={style} />
-                      <WovenStat label="Trạng thái" value="Tích cực" style={style} />
-                    </div>
-                  </aside>
                 </div>
               </div>
             </header>
