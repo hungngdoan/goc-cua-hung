@@ -21,9 +21,6 @@ const DBL = `3px double ${P.border}`;
 
 /* -- content ---------------------------------------------------- */
 
-const NAME = "Hưng";
-const TAGLINE = "Viết để nhớ. Viết để hiểu. Viết để buông.";
-
 const BIO =
   "Hưng, kỹ sư phần mềm. Blog này là góc nhỏ của một người sống xa nhà, viết bằng thứ tiếng mà mình thấy rõ mình nhất.";
 
@@ -119,27 +116,6 @@ const Lbl = ({ children, center = false }) => (
   </div>
 );
 
-const Avatar = ({ size = 80 }) => (
-  <div
-    className="rounded-full flex items-center justify-center shrink-0"
-    style={{
-      width: size,
-      height: size,
-      border: `3px double ${P.gold}`,
-      color: P.text,
-      background:
-        "radial-gradient(circle at 35% 28%, rgba(198,161,91,.22), rgba(18,17,15,.9) 58%)",
-      boxShadow:
-        "inset 0 0 0 1px rgba(238,217,166,.08), 6px 6px 0 rgba(0,0,0,.22)",
-      fontSize: size * 0.34,
-      fontWeight: 600,
-      fontStyle: "italic",
-    }}
-  >
-    H
-  </div>
-);
-
 const Card = ({ children, className = "", style: sx = {} }) => (
   <div
     className={className}
@@ -189,34 +165,8 @@ export default function VeTui() {
       />
 
       <div className="vetui relative z-10">
-
-        {/* ── header ── */}
-        <Fade d={0}>
-          <div className="flex items-center justify-center gap-4 mb-2">
-            <Avatar size={60} />
-            <div>
-              <h1
-                className="text-2xl sm:text-3xl font-semibold"
-                style={{ color: P.text }}
-              >
-                {NAME}
-              </h1>
-              <p
-                className="text-xs sm:text-sm italic mt-1"
-                style={{ color: P.gold }}
-              >
-                {TAGLINE}
-              </p>
-            </div>
-          </div>
-        </Fade>
-
-        <Fade d={0.05}>
-          <Dots py="py-6" />
-        </Fade>
-
         {/* ── bio card ── */}
-        <Fade d={0.1}>
+        <Fade d={0}>
           <Card className="mb-8">
             <Lbl>Giới thiệu</Lbl>
             <p className="leading-[1.85]" style={{ color: P.soft }}>
