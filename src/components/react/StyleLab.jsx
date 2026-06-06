@@ -35,6 +35,17 @@ const postsByStyle = {
       ],
       readMore: false
     }
+  ],
+  quan_coc_toi: [
+    {
+      title: "Liên Minh Huyền Thoại",
+      type: "Trò chơi",
+      seal: "⚔️",
+      body: [
+        "Chơi từ hồi gà rán Garena còn làm chủ"
+      ],
+      readMore: false
+    }
   ]
 };
 
