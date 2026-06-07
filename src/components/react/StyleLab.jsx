@@ -46,6 +46,14 @@ const postsByStyle = {
       ],
       readMore: false
     }
+  ],
+  hoa_dao: [
+    {
+      title: "Đối lập với yêu thương là sự thờ ơ",
+      small: true,
+      body: [],
+      readMore: false
+    }
   ]
 };
 
@@ -1139,7 +1147,7 @@ export default function VietnameseBlogStyleLab() {
                         initial={{ opacity: 0, y: 12 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.25, delay: index * 0.04 }}
-                        className={`grid gap-4 border p-4 sm:p-5 ${post.centered ? "text-center" : "sm:grid-cols-[84px_1fr]"}`}
+                        className={`grid gap-4 border ${post.small ? "p-3 sm:p-3.5" : "p-4 sm:p-5"} ${post.centered ? "text-center" : post.small ? "" : "sm:grid-cols-[84px_1fr]"}`}
                         style={{
                           background: style.panelSoftBg,
                           borderColor: style.panelSoftBorder,
@@ -1163,7 +1171,8 @@ export default function VietnameseBlogStyleLab() {
                         </div>
                         )}
                         <div>
-                          <h3 className="font-serif text-2xl font-black sm:text-3xl">{post.title}</h3>
+                          <h3 className={`font-serif ${post.small ? "text-base font-normal leading-6" : "text-2xl font-black sm:text-3xl"}`}>{post.title}</h3>
+                          {bodyBlocks.length > 0 && (
                           <div className={`mt-3 max-w-3xl space-y-3 text-base leading-8 ${post.centered ? "mx-auto" : ""}`} style={{ color: style.textSoft }}>
                             {bodyBlocks.map((paragraph) => (
                               <p key={paragraph}>
@@ -1176,6 +1185,7 @@ export default function VietnameseBlogStyleLab() {
                               </p>
                             ))}
                           </div>
+                          )}
                           {post.lesson && (
                             <>
                               <div className="my-4 flex items-center gap-3 opacity-70">
