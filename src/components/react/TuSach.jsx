@@ -57,6 +57,28 @@ const BOOKS = [
     ],
     defaultOpen: true,
   },
+  {
+    id: "truyen-co-grimm",
+    title: "Truyện Cổ Grimm",
+    author: "Anh em nhà Grimm",
+    emoji: "🏰",
+    cover: "truyen-co-grimm-cover.webp",
+    tag: "Cổ tích",
+    blurb:
+      "Ngày xửa ngày xưa... những trang sách ru cả một tuổi thơ, dạy ta điều phải trái trước khi ta kịp hiểu đời.",
+    // `tales` renders as a storybook grid -- one tale per card with a little
+    // emblem, the Vietnamese name, the original German title, and a one-line
+    // bài học. Add a tale = add an object.
+    tales: [
+      { emoji: "👠", vi: "Cô bé Lọ Lem", original: "Aschenputtel", moral: "Lòng nhân hậu rồi cũng tới ngày được đền đáp." },
+      { emoji: "🍎", vi: "Nàng Bạch Tuyết", original: "Schneewittchen", moral: "Đố kỵ với cái đẹp, hóa ra tự hại chính mình." },
+      { emoji: "🐺", vi: "Cô bé quàng khăn đỏ", original: "Rotkäppchen", moral: "Chớ vội tin lời đường mật của người lạ." },
+      { emoji: "🍬", vi: "Hansel và Gretel", original: "Hänsel und Gretel", moral: "Thương lấy nhau thì hiểm nguy nào cũng vượt." },
+      { emoji: "🗼", vi: "Nàng Rapunzel", original: "Rapunzel", moral: "Không bức tường nào giam nổi khát khao tự do." },
+      { emoji: "🐸", vi: "Hoàng tử Ếch", original: "Der Froschkönig", moral: "Giữ trọn lời hứa, đừng xét người qua vẻ ngoài." },
+    ],
+    defaultOpen: true,
+  },
 ];
 
 /* -- atoms ------------------------------------------------------ */
@@ -150,6 +172,50 @@ function Distinctions({ theme, contrast, items }) {
   );
 }
 
+/* -- the expandable storybook grid (a collection of tales) ------ */
+
+function Tales({ theme, items }) {
+  return (
+    <div className="mt-4 grid gap-3 sm:grid-cols-2">
+      {items.map((t, i) => (
+        <div
+          key={i}
+          className="ts-tale flex gap-3 border p-3"
+          style={{
+            background: theme.panelSoftBg,
+            borderColor: theme.panelSoftBorder,
+            boxShadow: theme.panelSoftShadow,
+          }}
+        >
+          {/* emblem: a square "wax seal", matching the badge style elsewhere */}
+          <span
+            className="grid h-11 w-11 shrink-0 place-items-center border-2 border-double text-2xl leading-none"
+            style={{ borderColor: theme.sealBorder, background: theme.sealBg }}
+            aria-hidden="true"
+          >
+            {t.emoji}
+          </span>
+          <div className="min-w-0">
+            <p className="font-serif text-base font-black leading-tight" style={{ color: theme.text }}>
+              {t.vi}
+            </p>
+            {t.original && (
+              <p className="text-[11px] italic leading-4" style={{ color: theme.textMuted }}>
+                {t.original}
+              </p>
+            )}
+            {t.moral && (
+              <p className="mt-1.5 text-sm leading-snug" style={{ color: theme.textSoft }}>
+                {t.moral}
+              </p>
+            )}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 /* -- a single book on the shelf --------------------------------- */
 
 // public/img/<file> resolved against the deploy base (/goc-cua-hung) so the
@@ -160,7 +226,10 @@ const coverUrl = (file) =>
 
 function BookCard({ theme, book }) {
   const reduce = useReducedMotion();
-  const hasDetail = (book.distinctions && book.distinctions.length > 0) || (book.notes && book.notes.length > 0);
+  const hasDetail =
+    (book.distinctions && book.distinctions.length > 0) ||
+    (book.tales && book.tales.length > 0) ||
+    (book.notes && book.notes.length > 0);
   const [open, setOpen] = useState(Boolean(book.defaultOpen && hasDetail));
   const coverSrc = coverUrl(book.cover);
 
@@ -185,11 +254,11 @@ function BookCard({ theme, book }) {
             style={{ borderColor: theme.panelBorder, boxShadow: theme.panelSoftShadow }}
           />
         ) : (
-          // fallback "book spine": a tall block with a thin accent edge + emoji
+          // fallback cover: a 2:3 placeholder sized like a real cover (so the
+          // shelf stays even) with a big emoji and the same accent spine edge.
           <div
-            className="relative hidden shrink-0 items-end justify-center overflow-hidden border sm:flex"
+            className="relative flex aspect-[2/3] w-[88px] shrink-0 items-center justify-center overflow-hidden border sm:w-[104px]"
             style={{
-              width: 58,
               background: theme.panelSoftBg,
               borderColor: theme.panelBorder,
               boxShadow: theme.panelSoftShadow,
@@ -197,7 +266,7 @@ function BookCard({ theme, book }) {
             aria-hidden="true"
           >
             <span className="absolute inset-y-0 left-0" style={{ width: 4, background: theme.accent }} />
-            <span className="pb-3 text-2xl">{book.emoji}</span>
+            <span className="text-4xl sm:text-5xl">{book.emoji}</span>
           </div>
         )}
 
@@ -207,7 +276,6 @@ function BookCard({ theme, book }) {
               className="mb-1.5 inline-block border px-2 py-0.5 text-[10px] font-bold uppercase tracking-[0.16em]"
               style={{ borderColor: theme.tagBorder, color: theme.accent, background: theme.tagBg }}
             >
-              {!coverSrc && <span className="mr-1 sm:hidden">{book.emoji}</span>}
               {book.tag}
             </div>
           )}
@@ -253,6 +321,10 @@ function BookCard({ theme, book }) {
               ? open
                 ? "Thu gọn 10 điều khác biệt"
                 : "Xem 10 điều khác biệt"
+              : book.tales
+              ? open
+                ? "Gấp sách lại"
+                : "Lật vài trang"
               : open
               ? "Thu gọn"
               : "Đọc ghi chú"}
@@ -271,6 +343,7 @@ function BookCard({ theme, book }) {
                 {book.distinctions && (
                   <Distinctions theme={theme} contrast={book.contrast} items={book.distinctions} />
                 )}
+                {book.tales && <Tales theme={theme} items={book.tales} />}
                 {book.notes && (
                   <ul className="mt-4 space-y-2">
                     {book.notes.map((n, i) => (
@@ -309,9 +382,14 @@ export default function TuSach({ theme }) {
         }
         .ts-toggle { transition: transform 160ms ease, box-shadow 160ms ease; }
         .ts-toggle:hover { transform: translateX(2px); }
+        .ts-tale { transition: transform 180ms ease, box-shadow 200ms ease, border-color 180ms ease; }
+        .ts-tale:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 0 0 1px ${theme.panelBorder}, ${theme.panelSoftShadow};
+        }
         @media (prefers-reduced-motion: reduce) {
-          .ts-card, .ts-toggle, .ts-caret { transition: none; }
-          .ts-card:hover, .ts-toggle:hover { transform: none; }
+          .ts-card, .ts-toggle, .ts-caret, .ts-tale { transition: none; }
+          .ts-card:hover, .ts-toggle:hover, .ts-tale:hover { transform: none; }
         }
       `}</style>
 
