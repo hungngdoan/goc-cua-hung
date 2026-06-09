@@ -6,6 +6,7 @@ import TaoThao from "./TaoThao.jsx";
 import ThirtySixKe from "./ThirtySixKe.jsx";
 import VeTui from "./VeTui.jsx";
 import MucLam from "./MucLam.jsx";
+import TuSach from "./TuSach.jsx";
 
 const postsByStyle = {
   den_dau: [
@@ -161,7 +162,7 @@ const styles = [
   {
     id: "dongho",
     name: "Tủ sách",
-    subtitle: "Aliquam erat volutpat. Donec vitae arcu nec justo dictum pretium.",
+    subtitle: "Những cuốn sách đã đọc, và đôi dòng đọng lại sau khi gấp trang cuối.",
     pageBg: "#f3d68a",
     text: "#331d10",
     textSoft: "rgba(51,29,16,0.70)",
@@ -206,7 +207,7 @@ const styles = [
     dividerSymbol: "◇ ◇ ◇",
     dividerTracking: "0.35em",
     pattern: "repeating-linear-gradient(45deg, rgba(51,29,16,.045) 0 2px, transparent 2px 12px), radial-gradient(circle at 90% 15%, rgba(178,31,19,.18), transparent 22%)",
-    motif: "◈  placeholder  ◈  sample  ◈  text  ◈"
+    motif: "tủ sách · trang giấy · đôi dòng · đọng lại"
   },
   {
     id: "sapbao_sang",
@@ -672,7 +673,7 @@ const styleIcons = {
   quan_coc_toi: "🎮",
   hoa_dao: "🌸",
   giaydo: "✒️",
-  dongho: "⏳",
+  dongho: "📚",
   sapbao_sang: "🍵",
   quancoc_sang: "🪷",
   suong_mai: "💧"
@@ -1106,6 +1107,8 @@ export default function VietnameseBlogStyleLab() {
                   <VeTui />
                 ) : style.id === "giaydo" ? (
                   <MucLam theme={style} />
+                ) : style.id === "dongho" ? (
+                  <TuSach theme={style} />
                 ) : (
                   <>
                 <motion.div
