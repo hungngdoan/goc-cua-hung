@@ -55,7 +55,6 @@ const BOOKS = [
         poor: "Tự hỏi những câu hỏi khiến mình nhụt chí.",
       },
     ],
-    defaultOpen: true,
   },
   {
     id: "truyen-co-grimm",
@@ -77,7 +76,6 @@ const BOOKS = [
       { emoji: "🗼", vi: "Nàng Rapunzel", original: "Rapunzel", moral: "Không bức tường nào giam nổi khát khao tự do." },
       { emoji: "🐸", vi: "Hoàng tử Ếch", original: "Der Froschkönig", moral: "Giữ trọn lời hứa, đừng xét người qua vẻ ngoài." },
     ],
-    defaultOpen: true,
   },
 ];
 
