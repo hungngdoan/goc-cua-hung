@@ -41,9 +41,18 @@ const postsByStyle = {
     {
       title: "Liên Minh Huyền Thoại",
       type: "Trò chơi",
-      seal: "⚔️",
+      image: `${import.meta.env.BASE_URL}/img/leage_icon.jpg`,
       body: [
-        "Chơi từ hồi gà rán Garena còn làm chủ"
+        "Chơi từ hồi gà rán Garena còn khuyến mãi"
+      ],
+      readMore: false
+    },
+    {
+      title: "Megaman X4 / Rockman X4",
+      type: "Trò chơi",
+      image: `${import.meta.env.BASE_URL}/img/mgx4.png`,
+      body: [
+        "Chơi trong giờ tin học"
       ],
       readMore: false
     }
@@ -1157,13 +1166,17 @@ export default function VietnameseBlogStyleLab() {
                           boxShadow: style.panelSoftShadow
                         }}
                       >
-                        {(post.seal || post.type || post.date) && (
+                        {(post.image || post.seal || post.type || post.date) && (
                         <div className={post.centered ? "text-center" : "flex sm:block sm:text-center"}>
                           <div
-                            className={`grid h-16 w-16 shrink-0 place-items-center border-4 border-double font-serif font-black ${post.sealLarge ? "text-xl" : "text-sm"} ${post.centered ? "mx-auto" : ""}`}
+                            className={`grid h-16 w-16 shrink-0 place-items-center overflow-hidden border-4 border-double font-serif font-black ${post.sealLarge ? "text-xl" : "text-sm"} ${post.centered ? "mx-auto" : ""}`}
                             style={{ color: style.accent, borderColor: style.sealBorder, background: style.sealBg }}
                           >
-                            {post.seal}
+                            {post.image ? (
+                              <img className="h-full w-full object-cover" src={post.image} alt="" />
+                            ) : (
+                              post.seal
+                            )}
                           </div>
                           <div className={post.centered ? "mt-3" : "ml-3 sm:ml-0 sm:mt-3"}>
                             <div className="text-xs uppercase tracking-[0.2em]" style={{ color: style.textMuted }}>
