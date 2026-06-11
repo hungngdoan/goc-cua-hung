@@ -162,7 +162,7 @@ export default function TaoThao() {
 
   return (
     <section className="taothao-page">
-      <style>{taothaoStyles}</style>
+      <style dangerouslySetInnerHTML={{ __html: taothaoStyles }} />
 
       <div className="tt-wrapper">
         <div className="tt-atmosphere" aria-hidden="true">

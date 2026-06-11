@@ -812,7 +812,7 @@ export default function VietnameseBlogStyleLab() {
 
   return (
     <>
-      <style>{`
+      <style dangerouslySetInnerHTML={{ __html: `
         .style-tab {
           position: relative;
           transition: box-shadow 220ms ease, transform 180ms ease, border-color 180ms ease;
@@ -963,7 +963,7 @@ export default function VietnameseBlogStyleLab() {
           .gc-footer-stars, .gc-heart, .gc-blink { animation: none; }
           .gc-eq i { animation: none; height: 11px; }
         }
-      `}</style>
+      ` }} />
     <main
       className="min-h-screen"
       style={{ color: style.text, backgroundColor: style.pageBg, backgroundImage: style.pattern }}

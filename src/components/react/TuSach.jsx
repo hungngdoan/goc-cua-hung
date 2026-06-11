@@ -369,7 +369,7 @@ function BookCard({ theme, book }) {
 export default function TuSach({ theme }) {
   return (
     <div className="tu-sach relative mx-auto w-full max-w-[920px]" style={{ color: theme.text }}>
-      <style>{`
+      <style dangerouslySetInnerHTML={{ __html: `
         .tu-sach ::selection { background: ${theme.accentSoft}; color: ${theme.text}; }
         .ts-card {
           transition: transform 200ms ease, box-shadow 220ms ease, border-color 200ms ease;
@@ -389,7 +389,7 @@ export default function TuSach({ theme }) {
           .ts-card, .ts-toggle, .ts-caret, .ts-tale { transition: none; }
           .ts-card:hover, .ts-toggle:hover, .ts-tale:hover { transform: none; }
         }
-      `}</style>
+      ` }} />
 
       {/* ── header: same themed preview tile every other tab uses ── */}
       <Fade d={0}>

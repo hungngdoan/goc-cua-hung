@@ -150,9 +150,9 @@ export default function VeTui() {
         fontFamily: "'Lora', Georgia, 'Times New Roman', serif",
       }}
     >
-      <style>{`
+      <style dangerouslySetInnerHTML={{ __html: `
         .vetui ::selection { background: rgba(198,161,91,0.25); color: #EED9A6; }
-      `}</style>
+      ` }} />
 
       {/* ambient gold glow + faint grid -- the "shiny" backdrop from v2 */}
       <div

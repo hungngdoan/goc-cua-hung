@@ -269,7 +269,7 @@ export default function ThirtySixKe() {
 
   return (
     <>
-      <style>{styles}</style>
+      <style dangerouslySetInnerHTML={{ __html: styles }} />
       <div ref={containerRef} className="thirty-six-ke-page" dangerouslySetInnerHTML={{ __html: html }} />
       <div className="ke-scroll-controls" style={{ right: `${controlsRight}px` }} aria-label="Page scroll controls">
         <button
