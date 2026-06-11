@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
-import thirtySixKeSource from "../../content/36ke.njk?raw";
+import thirtySixKeHtml from "../../content/36ke.html?raw";
+import thirtySixKeCss from "../../content/36ke.css?raw";
 
 const fontsImport =
   '@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=VT323&family=Press+Start+2P&display=swap");';
@@ -148,15 +149,11 @@ const migrationGuards = `
   }
 `;
 
-function parseThirtySixKe(source) {
-  const withoutFrontmatter = source.replace(/^---[\s\S]*?---\s*/, "");
-  const styleMatch = withoutFrontmatter.match(/<style>([\s\S]*?)<\/style>/);
-  const styles = styleMatch ? `${fontsImport}\n${styleMatch[1]}\n${migrationGuards}` : `${fontsImport}\n${migrationGuards}`;
+function parseThirtySixKe() {
+  const styles = `${fontsImport}\n${thirtySixKeCss}\n${migrationGuards}`;
   const assetBase = import.meta.env.BASE_URL || "/";
   const dragonSrc = `${assetBase.replace(/\/$/, "")}/img/chineseDragon1.jpg`;
-  const html = withoutFrontmatter
-    .replace(/<style>[\s\S]*?<\/style>\s*/, "")
-    .replace(/<script>[\s\S]*?<\/script>\s*$/, "")
+  const html = thirtySixKeHtml
     .replaceAll('src="img/chineseDragon1.jpg"', `src="${dragonSrc}"`)
     .trim();
 
@@ -167,7 +164,7 @@ export default function ThirtySixKe() {
   const containerRef = useRef(null);
   const [scrollState, setScrollState] = useState({ canTop: false, canBottom: false });
   const [controlsRight, setControlsRight] = useState(16);
-  const { html, styles } = useMemo(() => parseThirtySixKe(thirtySixKeSource), []);
+  const { html, styles } = useMemo(() => parseThirtySixKe(), []);
 
   useEffect(() => {
     const root = containerRef.current?.querySelector(".ke-shell");
