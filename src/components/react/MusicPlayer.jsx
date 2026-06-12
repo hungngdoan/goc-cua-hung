@@ -471,7 +471,7 @@ export default function MusicPlayer({ portalTarget = null, theme = null, colorfu
   // is never interrupted when tabs change.
   return (
     <>
-      <style>{playerStyles}</style>
+      <style dangerouslySetInnerHTML={{ __html: playerStyles }} />
       {portalTarget
         ? createPortal(playerUi, portalTarget)
         : <div className="mt-5 w-full max-w-[225px]">{playerUi}</div>}

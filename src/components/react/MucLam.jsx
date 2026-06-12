@@ -124,7 +124,7 @@ export default function MucLam({ theme }) {
       className="muc-lam relative mx-auto w-full max-w-[860px]"
       style={{ color: theme.text }}
     >
-      <style>{`
+      <style dangerouslySetInnerHTML={{ __html: `
         .muc-lam ::selection { background: ${theme.accentSoft}; color: ${theme.text}; }
         .ml-card {
           transition: transform 200ms ease, box-shadow 220ms ease, border-color 200ms ease;
@@ -137,7 +137,7 @@ export default function MucLam({ theme }) {
           .ml-card { transition: none; }
           .ml-card:hover { transform: none; }
         }
-      `}</style>
+      ` }} />
 
       {/* ── header: the original "Mực Lam" preview tile, theme-driven ── */}
       <Fade d={0}>

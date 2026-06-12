@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import bannerRoses from "../../banner_roses.gif?url";
 import MusicPlayer from "./MusicPlayer.jsx";
@@ -673,6 +673,9 @@ const styles = [
 const darkRow = ["den_dau", "hong_tram", "muc_than", "hoian", "sap_bao_dem", "quan_coc_toi"].map((id) => styles.find((s) => s.id === id));
 const brightRow = ["hoa_dao", "giaydo", "dongho", "sapbao_sang", "quancoc_sang", "suong_mai"].map((id) => styles.find((s) => s.id === id));
 
+const DEFAULT_STYLE_ID = "den_dau";
+const styleIds = new Set(styles.map((s) => s.id));
+
 const styleIcons = {
   hoian: "🏮",
   hong_tram: "🕯",
@@ -734,8 +737,37 @@ function MusicWave({ bars = 4 }) {
 }
 
 export default function VietnameseBlogStyleLab() {
-  const [styleId, setStyleId] = useState("den_dau");
+  const [styleId, setStyleId] = useState(DEFAULT_STYLE_ID);
   const style = useMemo(() => styles.find((item) => item.id === styleId) || styles[0], [styleId]);
+
+  // The active tab lives in the URL hash so a refresh or a shared link
+  // restores it, and back/forward walk through previously visited tabs.
+  // Applied after mount (not in the initial state) to keep the hydrated
+  // markup identical to the prerendered HTML.
+  useEffect(() => {
+    const applyHash = () => {
+      const id = window.location.hash.slice(1);
+      if (styleIds.has(id)) {
+        setStyleId(id);
+      } else if (!id) {
+        setStyleId(DEFAULT_STYLE_ID);
+      }
+    };
+    applyHash();
+    window.addEventListener("popstate", applyHash);
+    window.addEventListener("hashchange", applyHash);
+    return () => {
+      window.removeEventListener("popstate", applyHash);
+      window.removeEventListener("hashchange", applyHash);
+    };
+  }, []);
+
+  const selectTab = (id) => {
+    setStyleId(id);
+    if (window.location.hash.slice(1) !== id) {
+      window.history.pushState(null, "", `#${id}`);
+    }
+  };
   const tabPosts = postsByStyle[style.id] || [];
   // Per-status color, resolved against the active theme so each tab keeps its
   // own palette while the labels stay identical everywhere.
@@ -760,7 +792,7 @@ export default function VietnameseBlogStyleLab() {
     return (
       <button
         key={item.id}
-        onClick={() => setStyleId(item.id)}
+        onClick={() => selectTab(item.id)}
         className={`style-tab flex flex-1 items-center justify-center border px-3 py-2 ${isActive ? "is-active" : ""}`}
         style={{
           minWidth: "140px",
@@ -780,7 +812,7 @@ export default function VietnameseBlogStyleLab() {
 
   return (
     <>
-      <style>{`
+      <style dangerouslySetInnerHTML={{ __html: `
         .style-tab {
           position: relative;
           transition: box-shadow 220ms ease, transform 180ms ease, border-color 180ms ease;
@@ -931,7 +963,7 @@ export default function VietnameseBlogStyleLab() {
           .gc-footer-stars, .gc-heart, .gc-blink { animation: none; }
           .gc-eq i { animation: none; height: 11px; }
         }
-      `}</style>
+      ` }} />
     <main
       className="min-h-screen"
       style={{ color: style.text, backgroundColor: style.pageBg, backgroundImage: style.pattern }}
