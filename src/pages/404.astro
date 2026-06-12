@@ -1,0 +1,73 @@
+---
+import Base from '../layouts/Base.astro';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+---
+
+<Base title="Không tìm thấy trang — Một Góc Đời" description="Trang này không tồn tại.">
+  <main class="nf-wrap">
+    <p class="nf-code">404</p>
+    <h1 class="nf-title">Không tìm thấy trang</h1>
+    <p class="nf-text">Đường dẫn này không tồn tại, hoặc đã dời đi nơi khác.</p>
+    <a class="nf-link" href={`${base}/`}>&larr; Về Một Góc Đời</a>
+  </main>
+</Base>
+
+<style is:global>
+  body {
+    margin: 0;
+    background: #080b14;
+  }
+</style>
+
+<style>
+  /* den_dau theme tokens from StyleLab.jsx */
+  .nf-wrap {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    color: #d4dae8;
+    font-family: Lora, Georgia, serif;
+    text-align: center;
+    padding: 2rem;
+  }
+
+  .nf-code {
+    font-size: 0.8rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #7a839a;
+    border: 1px solid #1c2236;
+    background: #0e1220;
+    padding: 0.3rem 0.9rem 0.3rem 1.2rem;
+  }
+
+  .nf-title {
+    font-size: 2.2rem;
+    font-weight: 900;
+    margin: 0;
+  }
+
+  .nf-text {
+    color: #7a839a;
+    margin: 0;
+  }
+
+  .nf-link {
+    margin-top: 1.25rem;
+    color: #8b9fbf;
+    border: 1px solid #1c2236;
+    background: #0e1220;
+    padding: 0.6rem 1.2rem;
+    text-decoration: none;
+    box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.26);
+  }
+
+  .nf-link:hover {
+    color: #d4dae8;
+    border-color: #8b9fbf;
+  }
+</style>

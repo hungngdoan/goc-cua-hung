@@ -8,3 +8,6 @@ Thumbs.db
 *.log
 .env
 .env.*
+
+# Font binary used only by scripts/make-share-card.py (download URL in its header)
+scripts/*.ttf
