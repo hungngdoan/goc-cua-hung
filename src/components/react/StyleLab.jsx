@@ -7,6 +7,7 @@ import ThirtySixKe from "./ThirtySixKe.jsx";
 import VeTui from "./VeTui.jsx";
 import MucLam from "./MucLam.jsx";
 import TuSach from "./TuSach.jsx";
+import MuaRoi from "./MuaRoi.jsx";
 
 const postsByStyle = {
   den_dau: [
@@ -571,7 +572,7 @@ const styles = [
   {
     id: "suong_mai",
     name: "Cơn Mưa",
-    subtitle: "Morning mist over still water, cool and quiet.",
+    subtitle: "Ngày mưa ngồi yên, nhặt đôi câu chữ rồi ngẫm.",
     pageBg: "#A9B8B8",
     text: "#142226",
     textSoft: "rgba(20,34,38,0.76)",
@@ -616,7 +617,7 @@ const styles = [
     dividerSymbol: "≈ ≈ ≈",
     dividerTracking: "0.35em",
     pattern: "radial-gradient(circle at 18% 16%, rgba(232,220,208,0.22), transparent 28%), radial-gradient(circle at 78% 58%, rgba(49,95,100,0.18), transparent 30%), repeating-linear-gradient(90deg, rgba(20,34,38,0.035) 0 1px, transparent 1px 42px), linear-gradient(180deg, rgba(255,255,255,0.06), rgba(20,34,38,0.08) 100%)",
-    motif: "≈  placeholder  ≈  sample  ≈  text  ≈"
+    motif: "≈  tĩnh tâm  ≈  nhẫn nhịn  ≈  buông bỏ  ≈"
   },
   {
     id: "hoa_dao",
@@ -1150,6 +1151,8 @@ export default function VietnameseBlogStyleLab() {
                   <MucLam theme={style} />
                 ) : style.id === "dongho" ? (
                   <TuSach theme={style} />
+                ) : style.id === "suong_mai" ? (
+                  <MuaRoi theme={style} />
                 ) : (
                   <>
                 <motion.div
