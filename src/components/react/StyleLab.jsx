@@ -12,6 +12,26 @@ import MuaRoi from "./MuaRoi.jsx";
 const postsByStyle = {
   den_dau: [
     {
+      title: "Nghịch Lý Con Khỉ Vô Hạn",
+      date: "18/6/2026",
+      type: "Câu chuyện",
+      seal: "🐒",
+      sealLarge: true,
+      body: [
+        "Để tôi kể bạn nghe một câu chuyện nghe qua tưởng về lũ khỉ. Nhưng không phải.",
+        "Hãy tưởng tượng bạn đang dò một mật khẩu. Một ký tự thôi, vỏn vẹn 64 khả năng, bạn đoán đại rồi cũng trúng. Hai ký tự thì lâu hơn, nhưng rồi vẫn ra. Còn một triệu ký tự thì sao? Số khả năng lớn đến mức viết riêng con số ấy ra đã dài tới 1,8 triệu chữ số; xác suất đoán trúng nhỏ đến gần như bằng không. Gần như thôi. Chưa hẳn là không.",
+        "Và đây mới là chỗ kỳ lạ. Có trong tay vô hạn lần thử, việc dò ra mật khẩu một triệu ký tự ấy không chỉ trở nên rất có thể, mà thành điều chắc chắn. Với vô hạn lần thử, mọi điều có thể xảy ra rồi sẽ xảy ra.",
+        "Đặt vô số con khỉ trước vô số chiếc máy đánh chữ, để chúng gõ phím loạn xạ trong vô tận thời gian, rồi sẽ có một con gõ ra trọn vẹn toàn bộ tác phẩm của Shakespeare. Từng chữ, từng vở kịch, từng bài thơ, hoàn hảo. Không phải vì lũ khỉ thông minh, cũng chẳng phải vì chúng cố gắng, chỉ vì thời gian vô hạn biến cả điều bất khả thi nhất thành điều tất yếu.",
+        "Và nó không dừng lại ở đó. Mọi cuốn sách từng được viết rồi sẽ xuất hiện. Cả những cuốn chưa ai viết. Cả những cuốn kể về chuyện còn chưa xảy ra.",
+        "Nhưng câu chuyện thường bỏ quên một điều. Cùng cái vô hạn gõ ra Shakespeare ấy cũng gõ ra hàng tỉ bản lỗi: vẫn vở kịch đó nhưng sai một câu, lệch một ngày tháng, một lời dối đặt đúng vào chỗ đáng lẽ phải là sự thật. Kiệt tác nằm đâu đó trong ấy, chôn vùi giữa một bãi rác vô tận của những thứ nghe gần như thật. Vậy nên thứ hiếm hoi chưa bao giờ là trang sách, mà là người đọc đủ tỉnh để nhận ra. Bạn không cần mọi cuốn sách có thể có; bạn chỉ cần cuốn đáng để mang theo.",
+        "Nếu mọi thứ đều có thể xuất hiện, vậy điều gì khiến một thứ trở thành thật với riêng bạn?"
+      ],
+      lesson:
+        "♾️ Nghịch lý này không thực sự nói về lũ khỉ. Nó nói về sự vô hạn. Vô hạn không có nghĩa là rất rất lớn, mà có nghĩa là điều bất khả thi trở thành điều tất yếu.",
+      tags: ["#VôHạn", "#NghịchLý"],
+      readMore: false
+    },
+    {
       title: "Hai Mũi Tên",
       date: "31/5/2026",
       type: "Cập nhật",
