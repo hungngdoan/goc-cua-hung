@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import taothaoStyles from "../../styles/taothao.css?raw";
 import taothaoCards from "../../content/taothaoCards.json";
 
@@ -66,35 +66,79 @@ function gemBgStyle(gem) {
   };
 }
 
+// Strip Vietnamese diacritics so search matches with or without accents:
+// "tao thao" finds "Tào Tháo", "that bai" finds "thất bại", "doan" finds "Đoạn".
+function normalize(text) {
+  return text
+    .normalize("NFD")
+    .replace(/\p{Diacritic}/gu, "")
+    .toLowerCase()
+    .replace(/đ/g, "d");
+}
+
 export default function TaoThao() {
   const [index, setIndex] = useState(0);
   const [flipped, setFlipped] = useState(false);
   const [transitioning, setTransitioning] = useState(false);
+  const [thumbsOpen, setThumbsOpen] = useState(false);
+  const [query, setQuery] = useState("");
+  const [searchOpen, setSearchOpen] = useState(false);
   const [liveText, setLiveText] = useState(
     `${taothaoCards[0].name}. Thẻ 1 / ${taothaoCards.length}`
   );
   const cardAreaRef = useRef(null);
   const transitionTimer = useRef(null);
+  const searchInputRef = useRef(null);
 
-  const card = taothaoCards[index];
+  const results = useMemo(() => {
+    const q = normalize(query).trim();
+    if (!q) return taothaoCards;
+    const terms = q.split(/\s+/);
+    return taothaoCards.filter((entry) => {
+      const haystack = normalize(
+        `${entry.name} ${entry.flavor} ${entry.ability} ${entry.tag} ${entry.type}`
+      );
+      return terms.every((term) => haystack.includes(term));
+    });
+  }, [query]);
+
+  const searching = query.trim().length > 0;
+  const hasResults = results.length > 0;
+  const card = hasResults ? results[index] : null;
   const gem = GEM_COLORS[index % GEM_COLORS.length];
-  const [firstShape, secondShape] = card.artShapes;
-  const statusText = `Thẻ ${index + 1} / ${taothaoCards.length}`;
+  const [firstShape, secondShape] = card ? card.artShapes : [];
+  const statusText = searching
+    ? `${index + 1} / ${results.length} kết quả`
+    : `Thẻ ${index + 1} / ${results.length}`;
 
   const goTo = (next) => {
+    if (!results.length) return;
     let target = next;
-    if (target < 0) target = taothaoCards.length - 1;
-    if (target >= taothaoCards.length) target = 0;
+    if (target < 0) target = results.length - 1;
+    if (target >= results.length) target = 0;
 
     setIndex(target);
     setFlipped(false);
-    setLiveText(`${taothaoCards[target].name}. Thẻ ${target + 1} / ${taothaoCards.length}`);
+    setLiveText(`${results[target].name}. Thẻ ${target + 1} / ${results.length}`);
 
     if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       setTransitioning(true);
       window.clearTimeout(transitionTimer.current);
       transitionTimer.current = window.setTimeout(() => setTransitioning(false), 350);
     }
+  };
+
+  const onSearch = (event) => {
+    setQuery(event.target.value);
+    setIndex(0);
+    setFlipped(false);
+  };
+
+  const closeSearch = () => {
+    setSearchOpen(false);
+    setQuery("");
+    setIndex(0);
+    setFlipped(false);
   };
 
   const flipCard = () => {
@@ -156,9 +200,25 @@ export default function TaoThao() {
       cardArea?.removeEventListener("touchstart", onTouchStart);
       cardArea?.removeEventListener("touchend", onTouchEnd);
     };
-  }, [index, flipped]);
+  }, [index, flipped, query]);
 
   useEffect(() => () => window.clearTimeout(transitionTimer.current), []);
+
+  // Announce result counts to screen readers as the query changes.
+  useEffect(() => {
+    const q = query.trim();
+    if (!q) return;
+    setLiveText(
+      results.length
+        ? `${results.length} kết quả cho "${q}".`
+        : `Không tìm thấy kết quả cho "${q}".`
+    );
+  }, [query, results.length]);
+
+  // Focus the field as soon as the search expands.
+  useEffect(() => {
+    if (searchOpen) searchInputRef.current?.focus();
+  }, [searchOpen]);
 
   return (
     <section className="taothao-page">
@@ -186,8 +246,59 @@ export default function TaoThao() {
           <div className="tt-subtitle">Binh Pháp &amp; Xử Thế</div>
         </header>
 
+        <div className={`tt-search-wrap${searchOpen ? " open" : ""}`}>
+          {searchOpen ? (
+            <div className="tt-search" role="search">
+              <svg className="tt-search-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="11" cy="11" r="7" />
+                <line x1="16.5" y1="16.5" x2="21" y2="21" />
+              </svg>
+              <input
+                ref={searchInputRef}
+                type="text"
+                className="tt-search-input"
+                value={query}
+                onChange={onSearch}
+                onKeyDown={(event) => {
+                  if (event.key === "Escape") closeSearch();
+                }}
+                onBlur={() => {
+                  if (!query.trim()) setSearchOpen(false);
+                }}
+                placeholder="Bạn muốn tìm câu nói nào?"
+                aria-label="Tìm câu nói của Tào Tháo"
+                autoComplete="off"
+                spellCheck={false}
+              />
+              <button
+                type="button"
+                className="tt-search-clear"
+                onClick={closeSearch}
+                aria-label="Đóng tìm kiếm"
+              >
+                &#215;
+              </button>
+            </div>
+          ) : (
+            <button
+              type="button"
+              className="tt-search-toggle"
+              onClick={() => setSearchOpen(true)}
+              aria-label="Tìm câu nói"
+              aria-expanded="false"
+            >
+              <svg className="tt-search-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="11" cy="11" r="7" />
+                <line x1="16.5" y1="16.5" x2="21" y2="21" />
+              </svg>
+            </button>
+          )}
+        </div>
+
         <div className="tt-sr-only" aria-live="polite" aria-atomic="true">{liveText}</div>
 
+        {hasResults ? (
+        <>
         <div className="tt-stage">
           <button
             className="tt-arrow-btn"
@@ -223,15 +334,14 @@ export default function TaoThao() {
                   <span className="tt-gem-num">{index + 1}</span>
                 </div>
 
-                <div className="tt-card-art" aria-hidden="true">
-                  <div className="tt-card-art-inner">
-                    <div className="tt-art-gradient" style={artStyle(card)} />
-                    <div className="tt-art-shape" style={shapeStyle(firstShape)} />
-                    <div className="tt-art-shape" style={shapeStyle(secondShape)} />
-                    <div className="tt-art-rune">{card.rune}</div>
-                    <div className="tt-art-vignette" />
-                  </div>
+                <div className="tt-front-backdrop" aria-hidden="true">
+                  <div className="tt-front-wash" style={artStyle(card)} />
+                  <div className="tt-front-shape" style={shapeStyle(firstShape)} />
+                  <div className="tt-front-shape" style={shapeStyle(secondShape)} />
+                  <div className="tt-front-rune">{card.rune}</div>
                 </div>
+
+                <div className="tt-tag-chip">{card.tag}</div>
 
                 <div className="tt-text-box">
                   <div className="tt-flavor-text">{card.flavor}</div>
@@ -261,6 +371,7 @@ export default function TaoThao() {
                 <div className="tt-back-corner tt-br" aria-hidden="true" />
                 <div className="tt-card-back-content">
                   <div className="tt-back-label">Giải Nghĩa</div>
+                  <div className="tt-back-tag">{card.tag}</div>
                   <div className="tt-back-quote">{card.flavor}</div>
                   <div className="tt-back-explanation">{card.ability}</div>
                   <div className="tt-back-ornament" aria-hidden="true">
@@ -298,8 +409,27 @@ export default function TaoThao() {
             </button>
           </div>
 
-          <div className="tt-thumb-row" role="tablist" aria-label="Thu nhỏ thẻ">
-            {taothaoCards.map((thumbCard, thumbIndex) => (
+          <div className="tt-thumb-toggle-row">
+            <button
+              className="tt-ctrl-btn tt-thumb-toggle"
+              aria-expanded={thumbsOpen}
+              aria-controls="ttThumbRow"
+              onClick={() => setThumbsOpen((open) => !open)}
+            >
+              {thumbsOpen ? "Ẩn bớt thẻ" : "Hiện tất cả thẻ"}
+              <span className="tt-thumb-toggle-count">{results.length}</span>
+              <span className="tt-thumb-toggle-caret" aria-hidden="true">&#9662;</span>
+            </button>
+          </div>
+
+          <div
+            className="tt-thumb-row"
+            id="ttThumbRow"
+            role="tablist"
+            aria-label="Thu nhỏ thẻ"
+            hidden={!thumbsOpen}
+          >
+            {results.map((thumbCard, thumbIndex) => (
               <button
                 className={`tt-thumb${thumbIndex === index ? " active" : ""}`}
                 key={thumbCard.name}
@@ -316,6 +446,19 @@ export default function TaoThao() {
             ))}
           </div>
         </nav>
+        </>
+        ) : (
+          <div className="tt-no-results" role="status">
+            <div className="tt-no-results-rune" aria-hidden="true">空</div>
+            <p className="tt-no-results-title">Không tìm thấy câu nói nào</p>
+            <p className="tt-no-results-sub">
+              Thử từ khóa khác, ví dụ “thất bại”, “anh hùng” hay “thiên hạ”.
+            </p>
+            <button type="button" className="tt-ctrl-btn" onClick={closeSearch}>
+              Xóa tìm kiếm
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );
