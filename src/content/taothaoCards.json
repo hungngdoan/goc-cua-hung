@@ -2,6 +2,7 @@
   {
     "name": "Thế Chủ Động",
     "type": "Tào Tháo - Doctrine",
+    "tag": "Vang danh thiên cổ",
     "mana": 7,
     "atk": 9,
     "hp": 4,
@@ -31,6 +32,7 @@
   {
     "name": "Dùng Người Phải Tin",
     "type": "Tào Tháo - Command",
+    "tag": "Vang danh thiên cổ",
     "mana": 4,
     "atk": 6,
     "hp": 8,
@@ -60,6 +62,7 @@
   {
     "name": "Không Nói Nhu Nhược",
     "type": "Tào Tháo - Resolve",
+    "tag": "Vang danh thiên cổ",
     "mana": 5,
     "atk": 8,
     "hp": 5,
@@ -89,6 +92,7 @@
   {
     "name": "Sửa Sai Trong Bóng Tối",
     "type": "Tào Tháo - Adaptation",
+    "tag": "Vang danh thiên cổ",
     "mana": 3,
     "atk": 5,
     "hp": 9,
@@ -118,6 +122,7 @@
   {
     "name": "Giấu Tâm Can",
     "type": "Tào Tháo - Concealment",
+    "tag": "Vang danh thiên cổ",
     "mana": 2,
     "atk": 4,
     "hp": 10,
@@ -147,6 +152,7 @@
   {
     "name": "Dũng Mà Cẩn",
     "type": "Tào Tháo - Ambition",
+    "tag": "Vang danh thiên cổ",
     "mana": 6,
     "atk": 8,
     "hp": 7,
@@ -176,6 +182,7 @@
   {
     "name": "Nộ Mà Tỉnh",
     "type": "Tào Tháo - Temperance",
+    "tag": "Vang danh thiên cổ",
     "mana": 5,
     "atk": 7,
     "hp": 7,
@@ -201,5 +208,755 @@
       }
     ],
     "rune": "怒"
+  },
+  {
+    "name": "Thường Tình Binh Gia",
+    "type": "Tào Tháo - Strategy",
+    "tag": "Vang danh thiên cổ",
+    "mana": 4,
+    "atk": 6,
+    "hp": 6,
+    "rarity": "rare",
+    "set": "Tao III",
+    "ability": "Người cầm quân không hoảng loạn trước được mất. Thắng hay thua chỉ là nhịp thở thường ngày của chiến trận; kẻ giữ được bình tĩnh mới đi đến cùng.",
+    "flavor": "\"Thắng bại là chuyện thường tình của binh gia.\"",
+    "artColors": ["#0a1622", "#1a3a52", "#241d10"],
+    "artShapes": [
+      {
+        "bg": "radial-gradient(circle, #3a86ff 0%, transparent 70%)",
+        "w": 120,
+        "h": 128,
+        "x": "50%",
+        "y": "36%"
+      },
+      {
+        "bg": "radial-gradient(circle, #f0c850 0%, transparent 68%)",
+        "w": 84,
+        "h": 108,
+        "x": "66%",
+        "y": "58%"
+      }
+    ],
+    "rune": "兵"
+  },
+  {
+    "name": "Nhẹ Đến Nhẹ Đi",
+    "type": "Tào Tháo - Detachment",
+    "tag": "Vang danh thiên cổ",
+    "mana": 3,
+    "atk": 5,
+    "hp": 7,
+    "rarity": "epic",
+    "set": "Tao III",
+    "ability": "Khí phách của kẻ xem nhẹ được mất. Đến hay đi đều thong dong, không để lòng vướng bận vào những thứ rồi cũng phải buông.",
+    "flavor": "\"Ta nhẹ nhàng đến cũng như khi nhẹ nhàng đi, vẫy tay chào không một chút vấn vương.\"",
+    "artColors": ["#0a1a18", "#16403a", "#1e2433"],
+    "artShapes": [
+      {
+        "bg": "radial-gradient(circle, #2af5d0 0%, transparent 70%)",
+        "w": 128,
+        "h": 96,
+        "x": "44%",
+        "y": "40%"
+      },
+      {
+        "bg": "radial-gradient(circle, #cfe8e0 0%, transparent 68%)",
+        "w": 80,
+        "h": 120,
+        "x": "30%",
+        "y": "58%"
+      }
+    ],
+    "rune": "風"
+  },
+  {
+    "name": "Hỏi Rồi Làm Ngược",
+    "type": "Tào Tháo - Cunning",
+    "tag": "Vang danh thiên cổ",
+    "mana": 2,
+    "atk": 4,
+    "hp": 6,
+    "rarity": "rare",
+    "set": "Tao III",
+    "ability": "Một lời nửa đùa nửa thật về sự đa nghi: đại sự không thể quyết theo cảm tính thường tình, đôi khi phải đi ngược số đông mới thắng.",
+    "flavor": "\"Chuyện đại sự nên về hỏi vợ, vợ bảo sao cứ làm ngược lại, ắt sẽ thành công.\"",
+    "artColors": ["#1a1206", "#3e2c0d", "#14223a"],
+    "artShapes": [
+      {
+        "bg": "radial-gradient(circle, #c9a23c 0%, transparent 70%)",
+        "w": 110,
+        "h": 118,
+        "x": "52%",
+        "y": "34%"
+      },
+      {
+        "bg": "radial-gradient(circle, #4488ff 0%, transparent 68%)",
+        "w": 92,
+        "h": 100,
+        "x": "28%",
+        "y": "60%"
+      }
+    ],
+    "rune": "反"
+  },
+  {
+    "name": "Vợ Của Kẻ Thù",
+    "type": "Tào Tháo - Conquest",
+    "tag": "Vang danh thiên cổ",
+    "mana": 5,
+    "atk": 7,
+    "hp": 4,
+    "rarity": "epic",
+    "set": "Tao III",
+    "ability": "Bản tính chinh phục của Tào Tháo: thứ khiến ông khao khát không phải sắc đẹp, mà là chiến lợi phẩm giành được từ tay đối thủ.",
+    "flavor": "\"Mỹ nhân thiên hạ đều tầm thường, duy chỉ vợ của kẻ thù làm ta thích thú.\"",
+    "artColors": ["#1c0608", "#5a1018", "#2a0d1f"],
+    "artShapes": [
+      {
+        "bg": "radial-gradient(circle, #b8172c 0%, transparent 70%)",
+        "w": 128,
+        "h": 92,
+        "x": "44%",
+        "y": "40%"
+      },
+      {
+        "bg": "radial-gradient(circle, #ff69b4 0%, transparent 68%)",
+        "w": 80,
+        "h": 120,
+        "x": "68%",
+        "y": "56%"
+      }
+    ],
+    "rune": "慾"
+  },
+  {
+    "name": "Nhận Thắng Nhận Bại",
+    "type": "Tào Tháo - Resilience",
+    "tag": "Tào Tháo về thất bại",
+    "mana": 3,
+    "atk": 5,
+    "hp": 7,
+    "rarity": "rare",
+    "set": "Tao IV",
+    "ability": "Kẻ dám mơ chiến thắng phải đủ gan gánh lấy thất bại. Không ai được quyền chỉ chọn phần thắng mà chối bỏ phần thua.",
+    "flavor": "\"Chấp nhận chiến thắng được thì cũng chấp nhận thất bại được.\"",
+    "artColors": ["#140d07", "#3a2410", "#241208"],
+    "artShapes": [
+      {
+        "bg": "radial-gradient(circle, #ff9f1c 0%, transparent 70%)",
+        "w": 120,
+        "h": 128,
+        "x": "50%",
+        "y": "36%"
+      },
+      {
+        "bg": "radial-gradient(circle, #d73a4a 0%, transparent 68%)",
+        "w": 84,
+        "h": 108,
+        "x": "66%",
+        "y": "58%"
+      }
+    ],
+    "rune": "敗"
+  },
+  {
+    "name": "Đã Đánh Phải Thắng",
+    "type": "Tào Tháo - Resolve",
+    "tag": "Tào Tháo về thất bại",
+    "mana": 6,
+    "atk": 8,
+    "hp": 4,
+    "rarity": "epic",
+    "set": "Tao IV",
+    "ability": "Lời tự vấn nghiệt ngã sau trận thua: đã ra quân thì phải toàn thắng, để bại binh mất thành là điều không thể tha thứ cho chính mình.",
+    "flavor": "\"Đã đánh nhau thì phải thắng, sao lại để binh bại, mất thành?\"",
+    "artColors": ["#160a0a", "#4d1414", "#2a1508"],
+    "artShapes": [
+      {
+        "bg": "radial-gradient(circle, #d73a4a 0%, transparent 70%)",
+        "w": 128,
+        "h": 96,
+        "x": "44%",
+        "y": "40%"
+      },
+      {
+        "bg": "radial-gradient(circle, #ff9f1c 0%, transparent 68%)",
+        "w": 80,
+        "h": 120,
+        "x": "30%",
+        "y": "58%"
+      }
+    ],
+    "rune": "戰"
+  },
+  {
+    "name": "Thất Bại Là Thầy",
+    "type": "Tào Tháo - Wisdom",
+    "tag": "Tào Tháo về thất bại",
+    "mana": 4,
+    "atk": 6,
+    "hp": 8,
+    "rarity": "legendary",
+    "set": "Tao IV",
+    "ability": "Thất bại không phải dấu chấm hết mà là người thầy: nó dạy cách thắng, cách đoạt thiên hạ. Muốn thành đại nghiệp phải biết nắm được, buông được.",
+    "flavor": "\"Thất bại là chuyện tốt, nó dạy ta cách để thành công, để đoạt lấy thiên hạ.\"",
+    "artColors": ["#0f1405", "#2c3a0d", "#1a2410"],
+    "artShapes": [
+      {
+        "bg": "radial-gradient(circle, #2ec47a 0%, transparent 70%)",
+        "w": 110,
+        "h": 118,
+        "x": "52%",
+        "y": "34%"
+      },
+      {
+        "bg": "radial-gradient(circle, #f0c850 0%, transparent 68%)",
+        "w": 92,
+        "h": 100,
+        "x": "28%",
+        "y": "60%"
+      }
+    ],
+    "rune": "師"
+  },
+  {
+    "name": "Càng Bại Càng Dũng",
+    "type": "Tào Tháo - Resilience",
+    "tag": "Tào Tháo về thất bại",
+    "mana": 5,
+    "atk": 7,
+    "hp": 7,
+    "rarity": "epic",
+    "set": "Tao IV",
+    "ability": "Không có vị tướng nào trăm trận trăm thắng. Người chiến thắng sau cùng là kẻ bại mà không nản, càng ngã càng đứng dậy dũng mãnh hơn.",
+    "flavor": "\"Chưa tướng nào trăm trận trăm thắng; chỉ có bại mà không nản mới giành phần thắng cuối cùng.\"",
+    "artColors": ["#140a05", "#4d2308", "#2a1810"],
+    "artShapes": [
+      {
+        "bg": "radial-gradient(circle, #ff9f1c 0%, transparent 70%)",
+        "w": 120,
+        "h": 132,
+        "x": "46%",
+        "y": "34%"
+      },
+      {
+        "bg": "radial-gradient(circle, #b8172c 0%, transparent 65%)",
+        "w": 86,
+        "h": 106,
+        "x": "66%",
+        "y": "60%"
+      }
+    ],
+    "rune": "韌"
+  },
+  {
+    "name": "Bại Rồi Mới Biết Thắng",
+    "type": "Tào Tháo - Wisdom",
+    "tag": "Tào Tháo về thất bại",
+    "mana": 4,
+    "atk": 5,
+    "hp": 8,
+    "rarity": "rare",
+    "set": "Tao IV",
+    "ability": "Người làm tướng chưa từng nếm thất bại thì không thể hiểu con đường đến chiến thắng. Vết thương cũ chính là bản đồ cho trận thắng sau.",
+    "flavor": "\"Người làm tướng không nếm vài lần thất bại, sao biết cách để thắng trận?\"",
+    "artColors": ["#0a0f16", "#22304a", "#1a1810"],
+    "artShapes": [
+      {
+        "bg": "radial-gradient(circle, #4488ff 0%, transparent 70%)",
+        "w": 128,
+        "h": 92,
+        "x": "44%",
+        "y": "38%"
+      },
+      {
+        "bg": "radial-gradient(circle, #c9a23c 0%, transparent 68%)",
+        "w": 88,
+        "h": 110,
+        "x": "68%",
+        "y": "56%"
+      }
+    ],
+    "rune": "將"
+  },
+  {
+    "name": "Giữ Lửa Chiến Đấu",
+    "type": "Tào Tháo - Spirit",
+    "tag": "Tào Tháo về thất bại",
+    "mana": 3,
+    "atk": 6,
+    "hp": 6,
+    "rarity": "epic",
+    "set": "Tao IV",
+    "ability": "Thua trận chưa phải tận cùng. Điều thật sự đáng sợ là khi thất bại bẻ gãy luôn ý chí chiến đấu, khiến ta không còn dám đứng lên.",
+    "flavor": "\"Thất bại không đáng sợ; đáng sợ là đánh mất luôn tinh thần chiến đấu.\"",
+    "artColors": ["#1a0a05", "#5a2410", "#2a1208"],
+    "artShapes": [
+      {
+        "bg": "radial-gradient(circle, #ff6a1c 0%, transparent 70%)",
+        "w": 120,
+        "h": 128,
+        "x": "50%",
+        "y": "36%"
+      },
+      {
+        "bg": "radial-gradient(circle, #d73a4a 0%, transparent 68%)",
+        "w": 84,
+        "h": 108,
+        "x": "66%",
+        "y": "58%"
+      }
+    ],
+    "rune": "志"
+  },
+  {
+    "name": "Mối Thù Phải Báo",
+    "type": "Tào Tháo - Vengeance",
+    "tag": "Tào Tháo về thất bại",
+    "mana": 5,
+    "atk": 8,
+    "hp": 3,
+    "rarity": "rare",
+    "set": "Tao IV",
+    "ability": "Tiếng gầm sau khi trúng kế: thừa nhận sai lầm nhất thời nhưng biến cái nhục thành lời thề rửa hận bằng được.",
+    "flavor": "\"Ta lỡ mắc phải kế thất phu, thề rằng thù này thế nào cũng báo được.\"",
+    "artColors": ["#160606", "#5a1016", "#240d10"],
+    "artShapes": [
+      {
+        "bg": "radial-gradient(circle, #b8172c 0%, transparent 70%)",
+        "w": 128,
+        "h": 96,
+        "x": "44%",
+        "y": "40%"
+      },
+      {
+        "bg": "radial-gradient(circle, #6a4bc3 0%, transparent 68%)",
+        "w": 80,
+        "h": 120,
+        "x": "30%",
+        "y": "58%"
+      }
+    ],
+    "rune": "仇"
+  },
+  {
+    "name": "Gặp Núi Mở Lối",
+    "type": "Tào Tháo - Strategy",
+    "tag": "Tào Tháo về thất bại",
+    "mana": 4,
+    "atk": 6,
+    "hp": 7,
+    "rarity": "epic",
+    "set": "Tao IV",
+    "ability": "Tinh thần không gì cản nổi của người cầm quân: núi thì xẻ đường, sông thì bắc cầu, chẳng lẽ vũng bùn lại chịu dừng chân?",
+    "flavor": "\"Gặp núi phải mở lối, gặp nước phải bắc cầu, lẽ đâu bùn lầy lại không đi được?\"",
+    "artColors": ["#0a1410", "#1a3a2c", "#241d10"],
+    "artShapes": [
+      {
+        "bg": "radial-gradient(circle, #2ec47a 0%, transparent 70%)",
+        "w": 110,
+        "h": 118,
+        "x": "52%",
+        "y": "34%"
+      },
+      {
+        "bg": "radial-gradient(circle, #c9a23c 0%, transparent 68%)",
+        "w": 92,
+        "h": 100,
+        "x": "28%",
+        "y": "60%"
+      }
+    ],
+    "rune": "行"
+  },
+  {
+    "name": "Sống Chết Có Số",
+    "type": "Tào Tháo - Iron Will",
+    "tag": "Tào Tháo về thất bại",
+    "mana": 6,
+    "atk": 9,
+    "hp": 3,
+    "rarity": "legendary",
+    "set": "Tao IV",
+    "ability": "Kỷ luật lạnh lùng giữa tang thương: than khóc chẳng đổi được số mệnh, chỉ làm rã lòng quân. Tào Tháo cấm nước mắt bằng lưỡi gươm.",
+    "flavor": "\"Sống chết có số, việc gì phải khóc? Đứa nào khóc nữa thì chém!\"",
+    "artColors": ["#0d0a14", "#2c2440", "#160a10"],
+    "artShapes": [
+      {
+        "bg": "radial-gradient(circle, #6a4bc3 0%, transparent 70%)",
+        "w": 120,
+        "h": 128,
+        "x": "50%",
+        "y": "36%"
+      },
+      {
+        "bg": "radial-gradient(circle, #cfc6e8 0%, transparent 68%)",
+        "w": 84,
+        "h": 108,
+        "x": "66%",
+        "y": "58%"
+      }
+    ],
+    "rune": "命"
+  },
+  {
+    "name": "Liên Minh Sẽ Tan",
+    "type": "Tào Tháo - Foresight",
+    "tag": "Tào Tháo về thất bại",
+    "mana": 5,
+    "atk": 6,
+    "hp": 6,
+    "rarity": "epic",
+    "set": "Tao IV",
+    "ability": "Đòn tâm lý nhìn thấu lòng người: kẻ thù chỉ đoàn kết khi nguy nan, hết hoạn nạn ắt nghi kỵ, đấu đá và tự tan rã.",
+    "flavor": "\"Lúc nguy nan chúng hợp thành một; thắng rồi ắt nghi kỵ, chia rẽ và bại.\"",
+    "artColors": ["#0a1018", "#243044", "#1a1420"],
+    "artShapes": [
+      {
+        "bg": "radial-gradient(circle, #3a86ff 0%, transparent 70%)",
+        "w": 128,
+        "h": 92,
+        "x": "44%",
+        "y": "38%"
+      },
+      {
+        "bg": "radial-gradient(circle, #6a4bc3 0%, transparent 68%)",
+        "w": 88,
+        "h": 110,
+        "x": "68%",
+        "y": "56%"
+      }
+    ],
+    "rune": "散"
+  },
+  {
+    "name": "Tàn Nhẫn Mà Phân Minh",
+    "type": "Tào Tháo - Philosophy",
+    "tag": "Câu nói hay của Tào Tháo",
+    "mana": 4,
+    "atk": 6,
+    "hp": 6,
+    "rarity": "rare",
+    "set": "Tao VII",
+    "ability": "Lời tự bạch của kẻ bị gọi là gian hùng: tàn nhẫn không có nghĩa là mù quáng, trong lòng Tào Tháo thiện và ác vẫn rạch ròi.",
+    "flavor": "\"Ta tuy tàn nhẫn, nhưng giữa thiện và ác vẫn có sự phân biệt rạch ròi.\"",
+    "artColors": ["#0f1208", "#2c3a14", "#1a1010"],
+    "artShapes": [
+      {
+        "bg": "radial-gradient(circle, #2ec47a 0%, transparent 70%)",
+        "w": 120,
+        "h": 128,
+        "x": "50%",
+        "y": "36%"
+      },
+      {
+        "bg": "radial-gradient(circle, #d73a4a 0%, transparent 68%)",
+        "w": 84,
+        "h": 108,
+        "x": "66%",
+        "y": "58%"
+      }
+    ],
+    "rune": "善"
+  },
+  {
+    "name": "Đời Người Ngắn Ngủi",
+    "type": "Tào Tháo - Mortality",
+    "tag": "Câu nói hay của Tào Tháo",
+    "mana": 2,
+    "atk": 3,
+    "hp": 8,
+    "rarity": "epic",
+    "set": "Tao VII",
+    "ability": "Một thoáng bi tráng trong lòng kẻ chinh chiến: vũ trụ thì vô tận, còn kiếp người ngắn chẳng tày gang, nên phải sống cho đáng.",
+    "flavor": "\"Trời đất dài bao nhiêu, nhân gian ngắn bấy nhiêu.\"",
+    "artColors": ["#0a0d18", "#222c50", "#15161f"],
+    "artShapes": [
+      {
+        "bg": "radial-gradient(circle, #4f46e5 0%, transparent 70%)",
+        "w": 128,
+        "h": 96,
+        "x": "44%",
+        "y": "40%"
+      },
+      {
+        "bg": "radial-gradient(circle, #cfd2ff 0%, transparent 68%)",
+        "w": 80,
+        "h": 120,
+        "x": "30%",
+        "y": "58%"
+      }
+    ],
+    "rune": "天"
+  },
+  {
+    "name": "Bất Khả Chiến Bại",
+    "type": "Tào Tháo - Dominion",
+    "tag": "Câu nói hay của Tào Tháo",
+    "mana": 6,
+    "atk": 8,
+    "hp": 6,
+    "rarity": "legendary",
+    "set": "Tao VII",
+    "ability": "Gốc rễ của quyền uy: chẳng ai phục tùng kẻ yếu. Muốn thu phục lòng người, trước hết bản thân phải đứng ở thế không thể bị đánh bại.",
+    "flavor": "\"Muốn thu phục người khác, trước hết bản thân phải là kẻ bất khả chiến bại.\"",
+    "artColors": ["#160606", "#5a1418", "#2a1008"],
+    "artShapes": [
+      {
+        "bg": "radial-gradient(circle, #d73a4a 0%, transparent 70%)",
+        "w": 110,
+        "h": 118,
+        "x": "52%",
+        "y": "34%"
+      },
+      {
+        "bg": "radial-gradient(circle, #f0c850 0%, transparent 68%)",
+        "w": 92,
+        "h": 100,
+        "x": "28%",
+        "y": "60%"
+      }
+    ],
+    "rune": "強"
+  },
+  {
+    "name": "Chặt Tay Giữ Mạng",
+    "type": "Tào Tháo - Survival",
+    "tag": "Câu nói hay của Tào Tháo",
+    "mana": 4,
+    "atk": 5,
+    "hp": 7,
+    "rarity": "epic",
+    "set": "Tao VII",
+    "ability": "Logic sinh tồn lạnh lùng: có thể hy sinh một phần thân thể để sống, nhưng có những thứ cốt lõi mất đi thì không còn là tồn tại nữa.",
+    "flavor": "\"Người có thể tự chặt cánh tay để cầu sống, nhưng sao có thể tự chặt đầu để tồn tại?\"",
+    "artColors": ["#140a0a", "#4a1c14", "#241008"],
+    "artShapes": [
+      {
+        "bg": "radial-gradient(circle, #d73a4a 0%, transparent 70%)",
+        "w": 128,
+        "h": 92,
+        "x": "44%",
+        "y": "38%"
+      },
+      {
+        "bg": "radial-gradient(circle, #ff9f1c 0%, transparent 68%)",
+        "w": 88,
+        "h": 110,
+        "x": "68%",
+        "y": "56%"
+      }
+    ],
+    "rune": "生"
+  },
+  {
+    "name": "Dùng Kẻ Thù Của Mình",
+    "type": "Tào Tháo - Pragmatism",
+    "tag": "Câu nói hay của Tào Tháo",
+    "mana": 5,
+    "atk": 6,
+    "hp": 6,
+    "rarity": "epic",
+    "set": "Tao VII",
+    "ability": "Bậc thầy thực dụng: hận thù chỉ làm mờ phán đoán. Thay vì phí sức căm ghét kẻ địch, hãy biến chính hắn thành công cụ phục vụ mình.",
+    "flavor": "\"Thay vì căm hận kẻ thù, chi bằng sử dụng hắn cho việc của mình.\"",
+    "artColors": ["#0c1016", "#26384a", "#1a1410"],
+    "artShapes": [
+      {
+        "bg": "radial-gradient(circle, #49c6e5 0%, transparent 70%)",
+        "w": 110,
+        "h": 118,
+        "x": "52%",
+        "y": "34%"
+      },
+      {
+        "bg": "radial-gradient(circle, #2af5d0 0%, transparent 68%)",
+        "w": 92,
+        "h": 100,
+        "x": "28%",
+        "y": "60%"
+      }
+    ],
+    "rune": "用"
+  },
+  {
+    "name": "Sống Anh Hùng Chết Làm Ma",
+    "type": "Tào Tháo - Defiance",
+    "tag": "Câu nói hay của Tào Tháo",
+    "mana": 5,
+    "atk": 8,
+    "hp": 4,
+    "rarity": "legendary",
+    "set": "Tao VII",
+    "ability": "Khí phách kiêu hùng đến chết: sống làm anh hùng, chết hóa làm ma cũng phải ngạo nghễ, thà chết chứ không cam chịu nhục nhã giam cầm.",
+    "flavor": "\"Ta sinh ra làm anh hùng, chết cũng là ma, không thể chịu nỗi nhục bị giam cầm.\"",
+    "artColors": ["#0d0a14", "#341a40", "#160a14"],
+    "artShapes": [
+      {
+        "bg": "radial-gradient(circle, #8800ff 0%, transparent 70%)",
+        "w": 120,
+        "h": 128,
+        "x": "50%",
+        "y": "36%"
+      },
+      {
+        "bg": "radial-gradient(circle, #b8172c 0%, transparent 68%)",
+        "w": 84,
+        "h": 108,
+        "x": "66%",
+        "y": "58%"
+      }
+    ],
+    "rune": "魂"
+  },
+  {
+    "name": "Ân Đức Hơn Uy Phong",
+    "type": "Tào Tháo - Statecraft",
+    "tag": "Câu nói hay của Tào Tháo",
+    "mana": 4,
+    "atk": 5,
+    "hp": 8,
+    "rarity": "rare",
+    "set": "Tao VII",
+    "ability": "Mặt khuất sau tiếng dữ: người đời chỉ thấy uy phong đáng sợ, mà không hiểu Tào Tháo coi ân đức thu phục lòng người còn nặng hơn quyền uy.",
+    "flavor": "\"Thiên hạ chỉ biết Tào Tháo uy phong, mà không biết ta trọng ân đức hơn uy phong.\"",
+    "artColors": ["#140f05", "#43340f", "#241d10"],
+    "artShapes": [
+      {
+        "bg": "radial-gradient(circle, #c9a23c 0%, transparent 70%)",
+        "w": 128,
+        "h": 96,
+        "x": "44%",
+        "y": "40%"
+      },
+      {
+        "bg": "radial-gradient(circle, #2ec47a 0%, transparent 68%)",
+        "w": 80,
+        "h": 120,
+        "x": "30%",
+        "y": "58%"
+      }
+    ],
+    "rune": "恩"
+  },
+  {
+    "name": "Cúi Đầu Để Diệt",
+    "type": "Tào Tháo - Cunning",
+    "tag": "Câu nói hay của Tào Tháo",
+    "mana": 3,
+    "atk": 6,
+    "hp": 6,
+    "rarity": "epic",
+    "set": "Tao VII",
+    "ability": "Mưu lược nhẫn nhịn: muốn hạ kẻ địch đôi khi phải tạm cúi đầu, hạ mình để hắn buông lơi rồi mới ra đòn kết liễu.",
+    "flavor": "\"Muốn giết kẻ trộm, trước tiên phải cúi đầu trước kẻ trộm.\"",
+    "artColors": ["#0c0e14", "#262c3e", "#181410"],
+    "artShapes": [
+      {
+        "bg": "radial-gradient(circle, #49c6e5 0%, transparent 70%)",
+        "w": 110,
+        "h": 118,
+        "x": "52%",
+        "y": "34%"
+      },
+      {
+        "bg": "radial-gradient(circle, #ff9f1c 0%, transparent 68%)",
+        "w": 92,
+        "h": 100,
+        "x": "28%",
+        "y": "60%"
+      }
+    ],
+    "rune": "忍"
+  },
+  {
+    "name": "Thà Làm Gian Hùng",
+    "type": "Tào Tháo - Defiance",
+    "tag": "Câu nói hay của Tào Tháo",
+    "mana": 6,
+    "atk": 8,
+    "hp": 5,
+    "rarity": "legendary",
+    "set": "Tao VII",
+    "ability": "Tuyên ngôn chọn lối đi riêng: nếu làm quân tử chỉ chuốc lấy nhục nhã và diệt vong, thì thà làm gian hùng để thực hiện cho được hoài bão.",
+    "flavor": "\"Nếu làm quân tử phải bị giẫm đạp, bị giết, thì ta thà làm gian hùng để đạt hoài bão.\"",
+    "artColors": ["#16060a", "#4d1424", "#240d14"],
+    "artShapes": [
+      {
+        "bg": "radial-gradient(circle, #b8172c 0%, transparent 70%)",
+        "w": 128,
+        "h": 92,
+        "x": "44%",
+        "y": "38%"
+      },
+      {
+        "bg": "radial-gradient(circle, #8800ff 0%, transparent 68%)",
+        "w": 88,
+        "h": 110,
+        "x": "68%",
+        "y": "56%"
+      }
+    ],
+    "rune": "奸"
+  },
+  {
+    "name": "Chí Nuốt Trời Đất",
+    "type": "Tào Tháo - Ambition",
+    "tag": "Câu nói hay của Tào Tháo",
+    "mana": 7,
+    "atk": 9,
+    "hp": 5,
+    "rarity": "legendary",
+    "set": "Tao VII",
+    "ability": "Định nghĩa anh hùng theo Tào Tháo: kẻ ôm chí lớn, mưu sâu, tài năng trùm vũ trụ và khát vọng nuốt trọn cả đất trời.",
+    "flavor": "\"Anh hùng là kẻ trong bụng có chí lớn, mưu cao, có chí nuốt cả trời đất.\"",
+    "artColors": ["#1a0e04", "#5a3008", "#241808"],
+    "artShapes": [
+      {
+        "bg": "radial-gradient(circle, #ff9f1c 0%, transparent 70%)",
+        "w": 120,
+        "h": 132,
+        "x": "46%",
+        "y": "34%"
+      },
+      {
+        "bg": "radial-gradient(circle, #b8172c 0%, transparent 65%)",
+        "w": 86,
+        "h": 106,
+        "x": "66%",
+        "y": "60%"
+      }
+    ],
+    "rune": "吞"
+  },
+  {
+    "name": "Vẫn Là Tào Tháo",
+    "type": "Tào Tháo - Defiance",
+    "tag": "Đoạn trích",
+    "mana": 8,
+    "atk": 9,
+    "hp": 7,
+    "rarity": "legendary",
+    "set": "Tao VIII",
+    "ability": "Lời tổng kết ngạo nghễ: người đời gọi ông gian hùng nhưng không ai thắng nổi ông; dù bị nhìn lầm bao lần, Tào Tháo vẫn là Tào Tháo, không sợ ai phán xét.",
+    "flavor": "\"Người đời đều nói ta gian hùng, nhưng chẳng làm gì được một kẻ gian hùng như ta.\"",
+    "artColors": ["#1a0608", "#5a1016", "#14101f"],
+    "artShapes": [
+      {
+        "bg": "radial-gradient(circle, #b8172c 0%, transparent 70%)",
+        "w": 122,
+        "h": 130,
+        "x": "50%",
+        "y": "35%"
+      },
+      {
+        "bg": "radial-gradient(circle, #f0c850 0%, transparent 66%)",
+        "w": 84,
+        "h": 110,
+        "x": "30%",
+        "y": "60%"
+      }
+    ],
+    "rune": "梟"
   }
 ]
