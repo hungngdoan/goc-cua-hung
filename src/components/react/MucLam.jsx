@@ -78,6 +78,13 @@ const PROVERBS = [
     tag: "Đoàn kết",
   },
   {
+    icon: "🛡️",
+    text: "Nuôi quân 3 năm, dùng 1 lần",
+    meaning:
+      "Có những việc phải chuẩn bị lâu dài, rèn lực thật kỹ, để đến đúng thời điểm thì một lần ra tay cũng đủ xoay chuyển cục diện.",
+    tag: "Chuẩn bị",
+  },
+  {
     icon: "⭐",
     text: "Có chí thì nên",
     meaning:

@@ -695,7 +695,37 @@ const darkRow = ["den_dau", "hong_tram", "muc_than", "hoian", "sap_bao_dem", "qu
 const brightRow = ["hoa_dao", "giaydo", "dongho", "sapbao_sang", "quancoc_sang", "suong_mai"].map((id) => styles.find((s) => s.id === id));
 
 const DEFAULT_STYLE_ID = "den_dau";
-const styleIds = new Set(styles.map((s) => s.id));
+
+// The URL hash is a human-readable slug rather than the internal style id, so a
+// shared link describes the page. Every tab maps its id to a slug derived from
+// the visible tab name (ASCII, no diacritics). Each tab's old hash was its raw
+// id, which keeps resolving automatically because the loop below always maps
+// id -> id; `aliases` only cover extra legacy spellings beyond the raw id.
+const hashSlugs = {
+  giaydo: { slug: "muc-lam", aliases: ["giay-do"] }, // Mực Lam
+  hoian: { slug: "tao-thao", aliases: ["hoi-an"] },  // Tào Tháo
+  dongho: { slug: "tu-sach" },                       // Tủ sách
+  sapbao_sang: { slug: "tra-sang" },                 // Trà Sáng
+  quancoc_sang: { slug: "lua-sen" },                 // Lụa Sen
+  hong_tram: { slug: "ve-tui" },                     // Về tui
+  den_dau: { slug: "dem-huyen" },                    // Đêm Huyền
+  muc_than: { slug: "36-ke" },                       // 36 Kế
+  sap_bao_dem: { slug: "nhac-khuya" },               // Nhạc Khuya
+  quan_coc_toi: { slug: "tro-choi-dien-tu" },        // Trò chơi điện tử
+  suong_mai: { slug: "con-mua" },                    // Cơn Mưa
+  hoa_dao: { slug: "goc-hong" }                      // Góc Hồng
+};
+
+// id -> hash written to the URL when a tab is opened.
+const styleIdToHash = new Map(styles.map((s) => [s.id, hashSlugs[s.id]?.slug || s.id]));
+// hash (current slug, raw id, or legacy alias) -> id, for restoring a tab.
+const hashToStyleId = new Map();
+for (const s of styles) {
+  const { slug, aliases = [] } = hashSlugs[s.id] || {};
+  for (const hash of [slug || s.id, s.id, ...aliases]) {
+    hashToStyleId.set(hash, s.id);
+  }
+}
 
 const styleIcons = {
   hoian: "🏮",
@@ -767,10 +797,11 @@ export default function VietnameseBlogStyleLab() {
   // markup identical to the prerendered HTML.
   useEffect(() => {
     const applyHash = () => {
-      const id = window.location.hash.slice(1);
-      if (styleIds.has(id)) {
+      const hash = window.location.hash.slice(1);
+      const id = hashToStyleId.get(hash);
+      if (id) {
         setStyleId(id);
-      } else if (!id) {
+      } else if (!hash) {
         setStyleId(DEFAULT_STYLE_ID);
       }
     };
@@ -785,8 +816,9 @@ export default function VietnameseBlogStyleLab() {
 
   const selectTab = (id) => {
     setStyleId(id);
-    if (window.location.hash.slice(1) !== id) {
-      window.history.pushState(null, "", `#${id}`);
+    const hash = styleIdToHash.get(id) || id;
+    if (window.location.hash.slice(1) !== hash) {
+      window.history.pushState(null, "", `#${hash}`);
     }
   };
   const tabPosts = postsByStyle[style.id] || [];
