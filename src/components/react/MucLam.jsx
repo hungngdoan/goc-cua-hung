@@ -147,7 +147,7 @@ const Divider = ({ theme }) => (
 export default function MucLam({ theme }) {
   return (
     <div
-      className="muc-lam relative mx-auto w-full max-w-[860px] 2xl:max-w-[1200px]"
+      className="muc-lam relative mx-auto w-full max-w-[860px] xl:max-w-[1200px]"
       style={{ color: theme.text }}
     >
       <style dangerouslySetInnerHTML={{ __html: `
@@ -204,7 +204,7 @@ export default function MucLam({ theme }) {
            sliver. `grid-flow-row-dense` backfills the gap a full-width card
            would otherwise leave, keeping the block tight. Equal-height rows
            come for free from the grid, so neighbouring chips line up. ── */}
-      <ul className="mt-5 grid grid-flow-row-dense grid-cols-1 gap-[0.9rem] sm:grid-cols-2 2xl:grid-cols-3 2xl:gap-x-5">
+      <ul className="mt-5 grid grid-flow-row-dense grid-cols-1 gap-[0.9rem] sm:grid-cols-2 xl:grid-cols-3 xl:gap-x-5">
         {PROVERBS.map((p, i) => {
           const long = p.text.length > LONG_QUOTE_CHARS;
           return (
