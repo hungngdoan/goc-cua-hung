@@ -36,6 +36,13 @@ const PROVERBS = [
     tag: "Liệu sức",
   },
   {
+    icon: "🥣",
+    text: "Một miếng khi đói bằng một gói khi no",
+    meaning:
+      "Sự giúp đỡ đúng lúc, dù nhỏ, vẫn quý hơn món quà lớn khi người nhận đã đủ đầy.",
+    tag: "Đùm bọc",
+  },
+  {
     icon: "⛰️",
     text: "Trèo cao ngã đau",
     meaning:
@@ -48,6 +55,13 @@ const PROVERBS = [
     meaning:
       "Hưởng trái ngọt thì đừng quên gốc rễ, nhớ ơn người đi trước đã vun trồng.",
     tag: "Ơn nghĩa",
+  },
+  {
+    icon: "⚖️",
+    text: "Để thành công, bạn phải ích kỷ, nếu không bạn sẽ không bao giờ đạt được thành tựu. Và một khi bạn đã đạt đến thành công cao nhất, bạn buộc phải không ích kỷ.",
+    meaning:
+      "Lúc gây dựng phải dồn hết cho mục tiêu của mình; nhưng khi đã lên tới đỉnh thì phải biết cho đi, nghĩ cho người khác.",
+    tag: "Thành công",
   },
   {
     icon: "🧭",
@@ -93,6 +107,11 @@ const PROVERBS = [
   },
 ];
 
+// Above this many characters a saying is too long for a half-width chip and
+// is promoted to a full-width pull-quote instead. Sits well above every ca
+// dao tục ngữ here (longest ~58), so only genuinely long quotes break out.
+const LONG_QUOTE_CHARS = 70;
+
 /* -- atoms ------------------------------------------------------ */
 
 const Fade = ({ children, d = 0, className = "" }) => {
@@ -128,7 +147,7 @@ const Divider = ({ theme }) => (
 export default function MucLam({ theme }) {
   return (
     <div
-      className="muc-lam relative mx-auto w-full max-w-[860px]"
+      className="muc-lam relative mx-auto w-full max-w-[860px] xl:max-w-[1200px]"
       style={{ color: theme.text }}
     >
       <style dangerouslySetInnerHTML={{ __html: `
@@ -138,7 +157,8 @@ export default function MucLam({ theme }) {
         }
         .ml-card:hover {
           transform: translateY(-2px);
-          box-shadow: 0 0 0 1px ${theme.panelBorder}, ${theme.previewShadow};
+          border-left-color: ${theme.accent};
+          box-shadow: 0 0 0 1px ${theme.accent}, ${theme.panelShadow};
         }
         @media (prefers-reduced-motion: reduce) {
           .ml-card { transition: none; }
@@ -178,32 +198,58 @@ export default function MucLam({ theme }) {
         </div>
       </Fade>
 
-      {/* ── proverbs ── a list of: one cute icon + the quote, nothing else ── */}
-      <ul className="mt-5 space-y-2.5">
-        {PROVERBS.map((p, i) => (
-          <li key={p.text}>
-            <Fade d={0.08 + i * 0.04}>
-              <div
-                className="ml-card flex items-center gap-3 border px-3.5 py-2.5 sm:gap-4 sm:px-4 sm:py-3"
-                style={{
-                  background: theme.panelBg,
-                  borderColor: theme.panelBorder,
-                  boxShadow: theme.panelShadow,
-                }}
-              >
-                <span className="shrink-0 text-xl leading-none sm:text-2xl" aria-hidden="true">
-                  {p.icon}
-                </span>
-                <p
-                  className="min-w-0 font-serif text-lg font-black leading-snug sm:text-xl"
-                  style={{ color: theme.accent }}
+      {/* ── proverbs ── a length-aware grid of inked "ghi chú" notes. Short
+           sayings pack two-up as compact chips; a long quote spans the whole
+           row as a pull-quote so it is never crushed into a tall, narrow
+           sliver. `grid-flow-row-dense` backfills the gap a full-width card
+           would otherwise leave, keeping the block tight. Equal-height rows
+           come for free from the grid, so neighbouring chips line up. ── */}
+      <ul className="mt-5 grid grid-flow-row-dense grid-cols-1 gap-[0.9rem] sm:grid-cols-2 xl:grid-cols-3 xl:gap-x-5">
+        {PROVERBS.map((p, i) => {
+          const long = p.text.length > LONG_QUOTE_CHARS;
+          return (
+            <li key={p.text} className={long ? "col-span-full" : ""}>
+              <Fade d={0.06 + i * 0.03} className="h-full">
+                <div
+                  className={`ml-card relative h-full overflow-hidden border ${long ? "px-4 py-3" : "px-3 py-2"}`}
+                  style={{
+                    background: theme.panelBg,
+                    borderColor: theme.panelBorder,
+                    borderLeft: `3px solid ${theme.accent}`,
+                    boxShadow: theme.statShadow,
+                  }}
                 >
-                  {p.text}
-                </p>
-              </div>
-            </Fade>
-          </li>
-        ))}
+                  {/* faint pull-quote watermark, only on the long ones */}
+                  {long && (
+                    <span
+                      aria-hidden="true"
+                      className="pointer-events-none absolute -right-1 -top-4 font-serif text-7xl leading-none"
+                      style={{ color: theme.accentSoft, zIndex: 0 }}
+                    >
+                      ”
+                    </span>
+                  )}
+                  <div
+                    className={`relative z-[1] flex h-full ${long ? "items-start gap-3" : "items-center gap-2.5"}`}
+                  >
+                    <span
+                      className={`shrink-0 leading-none ${long ? "text-lg sm:text-xl" : "text-base sm:text-lg"}`}
+                      aria-hidden="true"
+                    >
+                      {p.icon}
+                    </span>
+                    <p
+                      className={`min-w-0 font-serif text-[15px] sm:text-base ${long ? "font-semibold leading-relaxed" : "font-bold leading-snug"}`}
+                      style={{ color: theme.accent }}
+                    >
+                      {p.text}
+                    </p>
+                  </div>
+                </div>
+              </Fade>
+            </li>
+          );
+        })}
       </ul>
 
       {/* ── closing ── same Divider as the header, kept consistent ── */}
