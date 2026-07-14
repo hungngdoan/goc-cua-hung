@@ -8,29 +8,12 @@ import VeTui from "./VeTui.jsx";
 import MucLam from "./MucLam.jsx";
 import TuSach from "./TuSach.jsx";
 import MuaRoi from "./MuaRoi.jsx";
+import MonkeyParadoxExperience from "./MonkeyParadoxExperience.jsx";
+import { monkeyParadoxPost } from "../../content/monkeyParadox.js";
 
 const postsByStyle = {
   den_dau: [
-    {
-      title: "Nghịch Lý Con Khỉ Vô Hạn",
-      date: "18/6/2026",
-      type: "Câu chuyện",
-      seal: "🐒",
-      sealLarge: true,
-      body: [
-        "Để tôi kể bạn nghe một câu chuyện nghe qua tưởng về lũ khỉ. Nhưng không phải.",
-        "Hãy tưởng tượng bạn đang dò một mật khẩu. Một ký tự thôi, vỏn vẹn 64 khả năng, bạn đoán đại rồi cũng trúng. Hai ký tự thì lâu hơn, nhưng rồi vẫn ra. Còn một triệu ký tự thì sao? Số khả năng lớn đến mức viết riêng con số ấy ra đã dài tới 1,8 triệu chữ số; xác suất đoán trúng nhỏ đến gần như bằng không. Gần như thôi. Chưa hẳn là không.",
-        "Và đây mới là chỗ kỳ lạ. Có trong tay vô hạn lần thử, việc dò ra mật khẩu một triệu ký tự ấy không chỉ trở nên rất có thể, mà thành điều chắc chắn. Với vô hạn lần thử, mọi điều có thể xảy ra rồi sẽ xảy ra.",
-        "Đặt vô số con khỉ trước vô số chiếc máy đánh chữ, để chúng gõ phím loạn xạ trong vô tận thời gian, rồi sẽ có một con gõ ra trọn vẹn toàn bộ tác phẩm của Shakespeare. Từng chữ, từng vở kịch, từng bài thơ, hoàn hảo. Không phải vì lũ khỉ thông minh, cũng chẳng phải vì chúng cố gắng, chỉ vì thời gian vô hạn biến cả điều bất khả thi nhất thành điều tất yếu.",
-        "Và nó không dừng lại ở đó. Mọi cuốn sách từng được viết rồi sẽ xuất hiện. Cả những cuốn chưa ai viết. Cả những cuốn kể về chuyện còn chưa xảy ra.",
-        "Nhưng câu chuyện thường bỏ quên một điều. Cùng cái vô hạn gõ ra Shakespeare ấy cũng gõ ra hàng tỉ bản lỗi: vẫn vở kịch đó nhưng sai một câu, lệch một ngày tháng, một lời dối đặt đúng vào chỗ đáng lẽ phải là sự thật. Kiệt tác nằm đâu đó trong ấy, chôn vùi giữa một bãi rác vô tận của những thứ nghe gần như thật. Vậy nên thứ hiếm hoi chưa bao giờ là trang sách, mà là người đọc đủ tỉnh để nhận ra. Bạn không cần mọi cuốn sách có thể có; bạn chỉ cần cuốn đáng để mang theo.",
-        "Nếu mọi thứ đều có thể xuất hiện, vậy điều gì khiến một thứ trở thành thật với riêng bạn?"
-      ],
-      lesson:
-        "♾️ Nghịch lý này không thực sự nói về lũ khỉ. Nó nói về sự vô hạn. Vô hạn không có nghĩa là rất rất lớn, mà có nghĩa là điều bất khả thi trở thành điều tất yếu.",
-      tags: ["#VôHạn", "#NghịchLý"],
-      readMore: false
-    },
+    monkeyParadoxPost,
     {
       title: "Hai Mũi Tên",
       date: "31/5/2026",
@@ -787,6 +770,18 @@ function MusicWave({ bars = 4 }) {
   );
 }
 
+function OrderedColumns({ contentFirst, content, sidebar }) {
+  return (
+    <section className="mt-6 grid gap-5 lg:grid-cols-[260px_1fr] 2xl:grid-cols-[320px_1fr] 2xl:gap-8">
+      {contentFirst ? (
+        <>{content}{sidebar}</>
+      ) : (
+        <>{sidebar}{content}</>
+      )}
+    </section>
+  );
+}
+
 export default function VietnameseBlogStyleLab() {
   const [styleId, setStyleId] = useState(DEFAULT_STYLE_ID);
   const style = useMemo(() => styles.find((item) => item.id === styleId) || styles[0], [styleId]);
@@ -1085,8 +1080,177 @@ export default function VietnameseBlogStyleLab() {
                 box background to the neighboring boxes; other tabs fully theme. */}
             <MusicPlayer portalTarget={musicSlot} theme={style} colorful={style.id === "den_dau"} />
 
-            <section className="mt-6 grid gap-5 lg:grid-cols-[260px_1fr] 2xl:grid-cols-[320px_1fr] 2xl:gap-8">
-              <aside className="space-y-5">
+            <OrderedColumns
+              contentFirst={style.id === "den_dau"}
+              content={(
+              <section className={`min-w-0 ${style.id === "den_dau" ? "order-1 lg:order-2" : ""}`}>
+                {style.id === "muc_than" ? (
+                  <div className="mx-auto w-full max-w-[1080px]">
+                    <ThirtySixKe />
+                  </div>
+                ) : style.id === "hoian" ? (
+                  <div className="mx-auto w-full max-w-[1080px]">
+                    <TaoThao />
+                  </div>
+                ) : style.id === "hong_tram" ? (
+                  <VeTui />
+                ) : style.id === "giaydo" ? (
+                  <MucLam theme={style} />
+                ) : style.id === "dongho" ? (
+                  <TuSach theme={style} />
+                ) : style.id === "suong_mai" ? (
+                  <MuaRoi theme={style} />
+                ) : (
+                  <>
+                <motion.div
+                  key={style.id}
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.25 }}
+                  className="border p-2.5 sm:p-3"
+                  style={{
+                    background: style.panelBg,
+                    borderColor: style.panelBorder,
+                    boxShadow: style.previewShadow
+                  }}
+                >
+                  <h2
+                    className={`text-center font-serif text-3xl font-black leading-tight sm:text-4xl ${style.id === "sap_bao_dem" ? "flex items-center justify-center gap-3" : ""}`}
+                    style={{ color: style.accent }}
+                  >
+                    {style.id === "sap_bao_dem" && <MusicWave />}
+                    {style.name}
+                  </h2>
+                  <p className="mx-auto mt-1 max-w-3xl text-center font-serif text-base leading-6" style={{ color: style.textSoft }}>
+                    {style.subtitle}
+                  </p>
+                  <Divider style={style} />
+                  <div className="text-center text-[11px] uppercase leading-4 tracking-[0.24em]" style={{ color: style.textMuted }}>
+                    {style.motif}
+                  </div>
+                </motion.div>
+
+                {tabPosts.length > 0 && (
+                <div className="mt-5 space-y-4">
+                  {tabPosts.map((post, index) => {
+                    const bodyBlocks = Array.isArray(post.body) ? post.body : [post.body];
+
+                    return (
+                      <motion.article
+                        key={post.title}
+                        initial={{ opacity: 0, y: 12 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.25, delay: index * 0.04 }}
+                        className={`grid gap-4 border ${post.small ? "p-3 sm:p-3.5" : "p-4 sm:p-5"} ${post.centered ? "text-center" : post.small ? "" : "sm:grid-cols-[84px_1fr]"}`}
+                        style={{
+                          background: style.panelSoftBg,
+                          borderColor: style.panelSoftBorder,
+                          boxShadow: style.panelSoftShadow
+                        }}
+                      >
+                        {(post.image || post.seal || post.type || post.date) && (
+                        <div className={post.centered ? "text-center" : "flex sm:block sm:text-center"}>
+                          <div
+                            className={`grid h-16 w-16 shrink-0 place-items-center overflow-hidden border-4 border-double font-serif font-black ${post.sealLarge ? "text-xl" : "text-sm"} ${post.centered ? "mx-auto" : ""}`}
+                            aria-hidden={post.experience === "monkey-paradox" ? "true" : undefined}
+                            style={{ color: style.accent, borderColor: style.sealBorder, background: style.sealBg }}
+                          >
+                            {post.image ? (
+                              <img className="h-full w-full object-cover" src={post.image} alt="" />
+                            ) : (
+                              post.seal
+                            )}
+                          </div>
+                          <div className={post.centered ? "mt-3" : "ml-3 sm:ml-0 sm:mt-3"}>
+                            <div className="text-xs uppercase tracking-[0.2em]" style={{ color: style.textMuted }}>
+                              {post.type}
+                            </div>
+                            <div className="mt-1 text-xs" style={{ color: style.textMuted }}>{post.date}</div>
+                          </div>
+                        </div>
+                        )}
+                        <div>
+                          <h3 className={`font-serif ${post.small ? "text-base font-normal leading-6" : "text-2xl font-black sm:text-3xl"}`}>{post.title}</h3>
+                          {post.experience === "monkey-paradox" && (
+                            <MonkeyParadoxExperience theme={style} />
+                          )}
+                          {bodyBlocks.length > 0 && (
+                          <div className={`mt-3 max-w-3xl space-y-3 text-base leading-8 ${post.centered ? "mx-auto" : ""}`} style={{ color: style.textSoft }}>
+                            {bodyBlocks.map((paragraph) => (
+                              <p key={paragraph}>
+                                {paragraph.split("\n").map((line, lineIndex, lines) => (
+                                  <React.Fragment key={line}>
+                                    {line}
+                                    {lineIndex < lines.length - 1 && <br />}
+                                  </React.Fragment>
+                                ))}
+                              </p>
+                            ))}
+                          </div>
+                          )}
+                          {post.lesson && (
+                            <>
+                              <div className="my-4 flex items-center gap-3 opacity-70">
+                                <div className="h-px flex-1" style={{ background: style.accent }} />
+                                <div className="text-xs" style={{ color: style.accent, letterSpacing: style.dividerTracking }}>
+                                  {style.dividerSymbol}
+                                </div>
+                                <div className="h-px flex-1" style={{ background: style.accent }} />
+                              </div>
+                              <p
+                                className="max-w-3xl border-l-4 py-2 pl-4 font-serif text-lg leading-8"
+                                style={{ borderColor: style.accent, color: style.text }}
+                              >
+                                {post.lesson}
+                              </p>
+                            </>
+                          )}
+                          {post.mood && (
+                            <div
+                              className="mt-4 border-y py-2 text-xs uppercase tracking-[0.16em]"
+                              style={{ borderColor: style.panelSoftBorder, color: style.textMuted }}
+                            >
+                              {post.mood}
+                            </div>
+                          )}
+                          {post.tags && (
+                            <div className={`mt-3 flex flex-wrap gap-2 ${post.centered ? "justify-center" : ""}`}>
+                              {post.tags.map((tag) => (
+                                <span
+                                  key={tag}
+                                  className="border px-2.5 py-1 text-xs font-bold"
+                                  style={{ borderColor: style.panelSoftBorder, color: style.accent, background: style.btnBg }}
+                                >
+                                  {tag}
+                                </span>
+                              ))}
+                            </div>
+                          )}
+                          {post.readMore !== false && (
+                            <button
+                              className="mt-4 border px-4 py-2 text-sm font-bold transition hover:translate-x-0.5"
+                              style={{
+                                borderColor: style.accent,
+                                color: style.accent,
+                                background: style.btnBg,
+                                boxShadow: style.btnShadow
+                              }}
+                            >
+                              read more -&gt;
+                            </button>
+                          )}
+                        </div>
+                      </motion.article>
+                    );
+                  })}
+                </div>
+                )}
+                  </>
+                )}
+              </section>
+              )}
+              sidebar={(
+              <aside className={`space-y-5 ${style.id === "den_dau" ? "order-2 lg:order-1" : ""}`}>
                 <section
                   className="border p-3 hb-box"
                   style={{
@@ -1187,169 +1351,8 @@ export default function VietnameseBlogStyleLab() {
                   </div>
                 </section>
               </aside>
-
-              <section className="min-w-0">
-                {style.id === "muc_than" ? (
-                  <div className="mx-auto w-full max-w-[1080px]">
-                    <ThirtySixKe />
-                  </div>
-                ) : style.id === "hoian" ? (
-                  <div className="mx-auto w-full max-w-[1080px]">
-                    <TaoThao />
-                  </div>
-                ) : style.id === "hong_tram" ? (
-                  <VeTui />
-                ) : style.id === "giaydo" ? (
-                  <MucLam theme={style} />
-                ) : style.id === "dongho" ? (
-                  <TuSach theme={style} />
-                ) : style.id === "suong_mai" ? (
-                  <MuaRoi theme={style} />
-                ) : (
-                  <>
-                <motion.div
-                  key={style.id}
-                  initial={{ opacity: 0, y: 12 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.25 }}
-                  className="border p-2.5 sm:p-3"
-                  style={{
-                    background: style.panelBg,
-                    borderColor: style.panelBorder,
-                    boxShadow: style.previewShadow
-                  }}
-                >
-                  <h2
-                    className={`text-center font-serif text-3xl font-black leading-tight sm:text-4xl ${style.id === "sap_bao_dem" ? "flex items-center justify-center gap-3" : ""}`}
-                    style={{ color: style.accent }}
-                  >
-                    {style.id === "sap_bao_dem" && <MusicWave />}
-                    {style.name}
-                  </h2>
-                  <p className="mx-auto mt-1 max-w-3xl text-center font-serif text-base leading-6" style={{ color: style.textSoft }}>
-                    {style.subtitle}
-                  </p>
-                  <Divider style={style} />
-                  <div className="text-center text-[11px] uppercase leading-4 tracking-[0.24em]" style={{ color: style.textMuted }}>
-                    {style.motif}
-                  </div>
-                </motion.div>
-
-                {tabPosts.length > 0 && (
-                <div className="mt-5 space-y-4">
-                  {tabPosts.map((post, index) => {
-                    const bodyBlocks = Array.isArray(post.body) ? post.body : [post.body];
-
-                    return (
-                      <motion.article
-                        key={post.title}
-                        initial={{ opacity: 0, y: 12 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.25, delay: index * 0.04 }}
-                        className={`grid gap-4 border ${post.small ? "p-3 sm:p-3.5" : "p-4 sm:p-5"} ${post.centered ? "text-center" : post.small ? "" : "sm:grid-cols-[84px_1fr]"}`}
-                        style={{
-                          background: style.panelSoftBg,
-                          borderColor: style.panelSoftBorder,
-                          boxShadow: style.panelSoftShadow
-                        }}
-                      >
-                        {(post.image || post.seal || post.type || post.date) && (
-                        <div className={post.centered ? "text-center" : "flex sm:block sm:text-center"}>
-                          <div
-                            className={`grid h-16 w-16 shrink-0 place-items-center overflow-hidden border-4 border-double font-serif font-black ${post.sealLarge ? "text-xl" : "text-sm"} ${post.centered ? "mx-auto" : ""}`}
-                            style={{ color: style.accent, borderColor: style.sealBorder, background: style.sealBg }}
-                          >
-                            {post.image ? (
-                              <img className="h-full w-full object-cover" src={post.image} alt="" />
-                            ) : (
-                              post.seal
-                            )}
-                          </div>
-                          <div className={post.centered ? "mt-3" : "ml-3 sm:ml-0 sm:mt-3"}>
-                            <div className="text-xs uppercase tracking-[0.2em]" style={{ color: style.textMuted }}>
-                              {post.type}
-                            </div>
-                            <div className="mt-1 text-xs" style={{ color: style.textMuted }}>{post.date}</div>
-                          </div>
-                        </div>
-                        )}
-                        <div>
-                          <h3 className={`font-serif ${post.small ? "text-base font-normal leading-6" : "text-2xl font-black sm:text-3xl"}`}>{post.title}</h3>
-                          {bodyBlocks.length > 0 && (
-                          <div className={`mt-3 max-w-3xl space-y-3 text-base leading-8 ${post.centered ? "mx-auto" : ""}`} style={{ color: style.textSoft }}>
-                            {bodyBlocks.map((paragraph) => (
-                              <p key={paragraph}>
-                                {paragraph.split("\n").map((line, lineIndex, lines) => (
-                                  <React.Fragment key={line}>
-                                    {line}
-                                    {lineIndex < lines.length - 1 && <br />}
-                                  </React.Fragment>
-                                ))}
-                              </p>
-                            ))}
-                          </div>
-                          )}
-                          {post.lesson && (
-                            <>
-                              <div className="my-4 flex items-center gap-3 opacity-70">
-                                <div className="h-px flex-1" style={{ background: style.accent }} />
-                                <div className="text-xs" style={{ color: style.accent, letterSpacing: style.dividerTracking }}>
-                                  {style.dividerSymbol}
-                                </div>
-                                <div className="h-px flex-1" style={{ background: style.accent }} />
-                              </div>
-                              <p
-                                className="max-w-3xl border-l-4 py-2 pl-4 font-serif text-lg leading-8"
-                                style={{ borderColor: style.accent, color: style.text }}
-                              >
-                                {post.lesson}
-                              </p>
-                            </>
-                          )}
-                          {post.mood && (
-                            <div
-                              className="mt-4 border-y py-2 text-xs uppercase tracking-[0.16em]"
-                              style={{ borderColor: style.panelSoftBorder, color: style.textMuted }}
-                            >
-                              {post.mood}
-                            </div>
-                          )}
-                          {post.tags && (
-                            <div className={`mt-3 flex flex-wrap gap-2 ${post.centered ? "justify-center" : ""}`}>
-                              {post.tags.map((tag) => (
-                                <span
-                                  key={tag}
-                                  className="border px-2.5 py-1 text-xs font-bold"
-                                  style={{ borderColor: style.panelSoftBorder, color: style.accent, background: style.btnBg }}
-                                >
-                                  {tag}
-                                </span>
-                              ))}
-                            </div>
-                          )}
-                          {post.readMore !== false && (
-                            <button
-                              className="mt-4 border px-4 py-2 text-sm font-bold transition hover:translate-x-0.5"
-                              style={{
-                                borderColor: style.accent,
-                                color: style.accent,
-                                background: style.btnBg,
-                                boxShadow: style.btnShadow
-                              }}
-                            >
-                              read more -&gt;
-                            </button>
-                          )}
-                        </div>
-                      </motion.article>
-                    );
-                  })}
-                </div>
-                )}
-                  </>
-                )}
-              </section>
-            </section>
+              )}
+            />
 
             <footer className="mt-7 border-t pt-6" style={{ borderColor: style.borderSection }}>
               <div className="mt-6 text-center" style={{ color: style.textMuted }}>
