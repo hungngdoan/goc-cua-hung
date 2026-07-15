@@ -40,7 +40,7 @@ const FACTS = [
   },
   {
     title: "Sau giờ làm",
-    body: "Gym, dọn nhà.",
+    body: "Gym, dọn nhà, nấu ăn.",
   },
   {
     title: "Tôi tin gì",

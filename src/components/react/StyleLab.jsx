@@ -21,54 +21,82 @@ const postsByStyle = {
       seal: "🏹",
       sealLarge: true,
       body: [
-        "⛰️ Một người nọ lên núi tìm đại sư để thỉnh giáo. Đại sư hỏi: \"Có hai con quỷ muốn ăn thịt ngươi. Quỷ đỏ 👹 chỉ cần một mũi tên là bị tiêu diệt. Quỷ xanh 😈 cần tới tận hai mũi tên. Nhưng trong tay ngươi chỉ có hai mũi tên. Ngươi làm sao để sống sót?\"",
-        "Người nọ nhìn thẳng vào mắt đại sư, gằn giọng nói: \"Đơn giản thôi, tôi sẽ bắn con quỷ xanh một mũi trước. Mũi tên còn lại, kẻ nào dám tấn công tôi, tôi sẽ bắn kẻ đó!\""
+        '⛰️ Một người nọ lên núi tìm đại sư để thỉnh giáo. Đại sư hỏi: "Có hai con quỷ muốn ăn thịt ngươi. Quỷ đỏ 👹 chỉ cần một mũi tên là bị tiêu diệt. Quỷ xanh 😈 cần tới tận hai mũi tên. Nhưng trong tay ngươi chỉ có hai mũi tên. Ngươi làm sao để sống sót?"',
+        'Người nọ nhìn thẳng vào mắt đại sư, gằn giọng nói: "Đơn giản thôi, tôi sẽ bắn con quỷ xanh một mũi trước. Mũi tên còn lại, kẻ nào dám tấn công tôi, tôi sẽ bắn kẻ đó!"',
       ],
       lesson:
         "🎯 Khi bị dồn vào đường cùng với nguồn lực hạn hẹp, đừng cố tìm cách an toàn tuyệt đối. Hãy dùng đòn phủ đầu để răn đe kẻ mạnh nhất. Giữ lại con bài cuối cùng để kẻ thù khiếp sợ mà không manh động. 🛡️",
       tags: ["#Trí"],
-      readMore: false
-    }
+      readMore: false,
+    },
   ],
   sap_bao_dem: [
     {
+      title: "8 Vạn 6 Ngàn Thương",
+      date: "15/7/2026",
+      seal: "86K",
+      body: [
+        '"8 vạn 6 ngàn 400 lần nhớ em".',
+        "24 giờ × 60 phút × 60 giây = 86.400 giây.",
+        "Anh chưa từng nghĩ, sẽ có ai đó nhung nhớ anh nhiều đến vậy. Thật tình, người ta hay lấy con số ra để đong đếm phải không?",
+        "Nhưng người muốn trở về, đâu cần đủ 1000 cái máy bay rồi mới trở về đâu, phải không?",
+
+        "Chờ đợi, là lời tỏ tình dài nhất, và cũng là lời tỏ tình chân thành nhất. Anh chợt nhận ra rằng, nó chỉ đáng giá nếu như hai người thực sự hướng về nhau.",
+        "Tình cảm đẹp nhất, là khi cả hai đều chân thành với nhau.",
+        '"Còn tình yêu đẹp nhất, là khi không ai có ý định rời đi, cho dù thế nào đi chăng nữa..."',
+        "~ Sưu Tầm ~",
+      ],
+      mediaLink: {
+        href: "https://youtu.be/33i7ym_gI3k?si=IsA86470ecvHCRxg",
+        title: "8 Vạn 6 Ngàn Thương · AIR Remix",
+        artist: "Hạo Thiên · Air Remix",
+        eyebrow: "Nhạc khuya · YouTube",
+        thumbnail: "https://i.ytimg.com/vi/33i7ym_gI3k/hqdefault.jpg",
+      },
+      readMore: false,
+    },
+    {
       title: "Mạnh Bà",
-      centered: true,
+      seal: "MB",
+      date: "6/2026",
       body: [
         "Bỉ ngạn hoa nở bên bờ sinh tử\nSông Vong Xuyên nhuộm đỏ cả một dòng\nCanh Mạnh Bà, là ai quên ai nhớ\nCầu Nại Hà, là ai ngóng ai trông",
-        "\"Mạnh Bà chưa uống đã say\nHà chi Nguyệt Lão cắt dây tơ hồng\nNhân gian một cõi hư không\nCanh thừa, dây đứt khiến lòng ngỗn ngang.\""
+        '"Mạnh Bà chưa uống đã say\nHà chi Nguyệt Lão cắt dây tơ hồng\nNhân gian một cõi hư không\nCanh thừa, dây đứt khiến lòng ngỗn ngang."',
       ],
-      readMore: false
-    }
+      mediaLink: {
+        href: "https://youtu.be/xUgHL-6_QS4?si=ttDfI89XbP4I7qxf",
+        title: "Mạnh Bà",
+        artist: "Linh Hương Luz · Finn T · SinKra",
+        eyebrow: "Nhạc khuya · YouTube",
+        thumbnail: "https://i.ytimg.com/vi/xUgHL-6_QS4/hqdefault.jpg",
+      },
+      readMore: false,
+    },
   ],
   quan_coc_toi: [
     {
       title: "Liên Minh Huyền Thoại",
       type: "Trò chơi",
       image: `${import.meta.env.BASE_URL}/img/leage_icon.jpg`,
-      body: [
-        "Chơi từ hồi gà rán Garena còn khuyến mãi"
-      ],
-      readMore: false
+      body: ["Chơi từ hồi gà rán Garena còn khuyến mãi"],
+      readMore: false,
     },
     {
       title: "Megaman X4 / Rockman X4",
       type: "Trò chơi",
       image: `${import.meta.env.BASE_URL}/img/mgx4.png`,
-      body: [
-        "Chơi trong giờ tin học"
-      ],
-      readMore: false
-    }
+      body: ["Chơi trong giờ tin học"],
+      readMore: false,
+    },
   ],
   hoa_dao: [
     {
       title: "Đối lập với yêu thương là sự thờ ơ",
       small: true,
       body: [],
-      readMore: false
-    }
-  ]
+      readMore: false,
+    },
+  ],
 };
 
 const styles = [
@@ -119,13 +147,15 @@ const styles = [
     avatarBg: "rgba(29,91,115,0.07)",
     dividerSymbol: "✒ ✒ ✒",
     dividerTracking: "0.35em",
-    pattern: "linear-gradient(90deg, rgba(182,58,52,0.10) 0 2px, transparent 2px 78px), repeating-linear-gradient(0deg, rgba(29,91,115,0.055) 0 1px, transparent 1px 30px), radial-gradient(circle at 82% 16%, rgba(182,58,52,0.13), transparent 18%), linear-gradient(180deg, rgba(255,255,255,0.46), rgba(222,236,232,0.38) 100%)",
-    motif: "mực lam · giấy sáng · dấu son · ghi chú"
+    pattern:
+      "linear-gradient(90deg, rgba(182,58,52,0.10) 0 2px, transparent 2px 78px), repeating-linear-gradient(0deg, rgba(29,91,115,0.055) 0 1px, transparent 1px 30px), radial-gradient(circle at 82% 16%, rgba(182,58,52,0.13), transparent 18%), linear-gradient(180deg, rgba(255,255,255,0.46), rgba(222,236,232,0.38) 100%)",
+    motif: "mực lam · giấy sáng · dấu son · ghi chú",
   },
   {
     id: "hoian",
     name: "Tào Tháo",
-    subtitle: "Praesent commodo libero non lectus facilisis, sed tempor mi luctus.",
+    subtitle:
+      "Praesent commodo libero non lectus facilisis, sed tempor mi luctus.",
     pageBg: "#28140d",
     text: "#ffe7b3",
     textSoft: "rgba(255,231,179,0.75)",
@@ -169,13 +199,15 @@ const styles = [
     avatarBg: "rgba(0,0,0,0.04)",
     dividerSymbol: "◇ ◇ ◇",
     dividerTracking: "0.35em",
-    pattern: "radial-gradient(circle at 18% 12%, rgba(244,184,96,.24), transparent 16%), radial-gradient(circle at 78% 8%, rgba(209,75,51,.18), transparent 18%), linear-gradient(90deg, rgba(244,184,96,.06) 1px, transparent 1px)",
-    motif: "◆  placeholder  ◆  sample  ◆  text  ◆"
+    pattern:
+      "radial-gradient(circle at 18% 12%, rgba(244,184,96,.24), transparent 16%), radial-gradient(circle at 78% 8%, rgba(209,75,51,.18), transparent 18%), linear-gradient(90deg, rgba(244,184,96,.06) 1px, transparent 1px)",
+    motif: "◆  placeholder  ◆  sample  ◆  text  ◆",
   },
   {
     id: "dongho",
     name: "Tủ sách",
-    subtitle: "Những cuốn sách đã đọc, và đôi dòng đọng lại sau khi gấp trang cuối.",
+    subtitle:
+      "Những cuốn sách đã đọc, và đôi dòng đọng lại sau khi gấp trang cuối.",
     pageBg: "#f3d68a",
     text: "#331d10",
     textSoft: "rgba(51,29,16,0.70)",
@@ -219,8 +251,9 @@ const styles = [
     avatarBg: "rgba(0,0,0,0.04)",
     dividerSymbol: "◇ ◇ ◇",
     dividerTracking: "0.35em",
-    pattern: "repeating-linear-gradient(45deg, rgba(51,29,16,.045) 0 2px, transparent 2px 12px), radial-gradient(circle at 90% 15%, rgba(178,31,19,.18), transparent 22%)",
-    motif: "tủ sách · trang giấy · đôi dòng · đọng lại"
+    pattern:
+      "repeating-linear-gradient(45deg, rgba(51,29,16,.045) 0 2px, transparent 2px 12px), radial-gradient(circle at 90% 15%, rgba(178,31,19,.18), transparent 22%)",
+    motif: "tủ sách · trang giấy · đôi dòng · đọng lại",
   },
   {
     id: "sapbao_sang",
@@ -269,8 +302,9 @@ const styles = [
     avatarBg: "rgba(49,92,61,0.08)",
     dividerSymbol: "☵ ◇ ☵",
     dividerTracking: "0.35em",
-    pattern: "radial-gradient(circle at 16% 14%, rgba(155,106,36,0.18), transparent 22%), radial-gradient(circle at 84% 18%, rgba(49,92,61,0.16), transparent 24%), radial-gradient(circle at 52% 94%, rgba(44,29,18,0.08), transparent 30%), repeating-linear-gradient(0deg, rgba(44,29,18,0.04) 0 1px, transparent 1px 30px), linear-gradient(180deg, rgba(255,238,190,0.42), rgba(190,157,95,0.26) 100%)",
-    motif: "trà sáng · xanh sâu · vàng rang · mực nâu"
+    pattern:
+      "radial-gradient(circle at 16% 14%, rgba(155,106,36,0.18), transparent 22%), radial-gradient(circle at 84% 18%, rgba(49,92,61,0.16), transparent 24%), radial-gradient(circle at 52% 94%, rgba(44,29,18,0.08), transparent 30%), repeating-linear-gradient(0deg, rgba(44,29,18,0.04) 0 1px, transparent 1px 30px), linear-gradient(180deg, rgba(255,238,190,0.42), rgba(190,157,95,0.26) 100%)",
+    motif: "trà sáng · xanh sâu · vàng rang · mực nâu",
   },
   {
     id: "quancoc_sang",
@@ -319,13 +353,15 @@ const styles = [
     avatarBg: "rgba(114,134,111,0.07)",
     dividerSymbol: "✿ ◇ ✿",
     dividerTracking: "0.35em",
-    pattern: "radial-gradient(circle at 18% 14%, rgba(216,166,181,0.22), transparent 24%), radial-gradient(circle at 84% 18%, rgba(114,134,111,0.16), transparent 22%), radial-gradient(circle at 50% 94%, rgba(56,35,56,0.055), transparent 28%), repeating-linear-gradient(135deg, rgba(114,134,111,0.035) 0 1px, transparent 1px 24px), linear-gradient(180deg, rgba(255,250,241,0.62), rgba(238,226,220,0.42) 100%)",
-    motif: "lụa sen · nền ngà · xanh sage · mực mận"
+    pattern:
+      "radial-gradient(circle at 18% 14%, rgba(216,166,181,0.22), transparent 24%), radial-gradient(circle at 84% 18%, rgba(114,134,111,0.16), transparent 22%), radial-gradient(circle at 50% 94%, rgba(56,35,56,0.055), transparent 28%), repeating-linear-gradient(135deg, rgba(114,134,111,0.035) 0 1px, transparent 1px 24px), linear-gradient(180deg, rgba(255,250,241,0.62), rgba(238,226,220,0.42) 100%)",
+    motif: "lụa sen · nền ngà · xanh sage · mực mận",
   },
   {
     id: "hong_tram",
     name: "Về tui",
-    subtitle: "Morbi vulputate neque ut massa facilisis, vitae luctus lorem dictum.",
+    subtitle:
+      "Morbi vulputate neque ut massa facilisis, vitae luctus lorem dictum.",
     pageBg: "#080807",
     text: "#EED9A6",
     textSoft: "#B8AA91",
@@ -369,8 +405,9 @@ const styles = [
     avatarBg: "rgba(198,161,91,0.12)",
     dividerSymbol: "• • •",
     dividerTracking: "0.28em",
-    pattern: "radial-gradient(circle at 12% 8%, rgba(198,161,91,0.105), transparent 18%), radial-gradient(circle at 82% 18%, rgba(198,161,91,0.055), transparent 26%), radial-gradient(circle at 50% 92%, rgba(198,161,91,0.045), transparent 28%), repeating-linear-gradient(90deg, rgba(255,255,255,0.016) 0 1px, transparent 1px 34px), repeating-linear-gradient(0deg, rgba(255,255,255,0.010) 0 1px, transparent 1px 24px), linear-gradient(135deg, #080807, #12110F 48%, #090806)",
-    motif: "placeholder · sample · text · notes"
+    pattern:
+      "radial-gradient(circle at 12% 8%, rgba(198,161,91,0.105), transparent 18%), radial-gradient(circle at 82% 18%, rgba(198,161,91,0.055), transparent 26%), radial-gradient(circle at 50% 92%, rgba(198,161,91,0.045), transparent 28%), repeating-linear-gradient(90deg, rgba(255,255,255,0.016) 0 1px, transparent 1px 34px), repeating-linear-gradient(0deg, rgba(255,255,255,0.010) 0 1px, transparent 1px 24px), linear-gradient(135deg, #080807, #12110F 48%, #090806)",
+    motif: "placeholder · sample · text · notes",
   },
   {
     id: "den_dau",
@@ -419,8 +456,9 @@ const styles = [
     avatarBg: "rgba(139,159,191,0.1)",
     dividerSymbol: "• • •",
     dividerTracking: "0.28em",
-    pattern: "radial-gradient(circle at 12% 8%, rgba(100,140,200,0.05), transparent 18%), radial-gradient(circle at 82% 18%, rgba(139,159,191,0.12), transparent 26%), radial-gradient(circle at 50% 92%, rgba(100,140,200,0.05), transparent 28%), repeating-linear-gradient(90deg, rgba(255,255,255,0.018) 0 1px, transparent 1px 34px), repeating-linear-gradient(0deg, rgba(255,255,255,0.012) 0 1px, transparent 1px 24px), linear-gradient(135deg, #080B14, #0F1528 48%, #0A0E1A)",
-    motif: "ánh trăng · chuyện nhỏ · đêm khuya · riêng mình"
+    pattern:
+      "radial-gradient(circle at 12% 8%, rgba(100,140,200,0.05), transparent 18%), radial-gradient(circle at 82% 18%, rgba(139,159,191,0.12), transparent 26%), radial-gradient(circle at 50% 92%, rgba(100,140,200,0.05), transparent 28%), repeating-linear-gradient(90deg, rgba(255,255,255,0.018) 0 1px, transparent 1px 34px), repeating-linear-gradient(0deg, rgba(255,255,255,0.012) 0 1px, transparent 1px 24px), linear-gradient(135deg, #080B14, #0F1528 48%, #0A0E1A)",
+    motif: "ánh trăng · chuyện nhỏ · đêm khuya · riêng mình",
   },
   {
     id: "muc_than",
@@ -469,8 +507,9 @@ const styles = [
     avatarBg: "rgba(175,160,132,0.1)",
     dividerSymbol: "• • •",
     dividerTracking: "0.28em",
-    pattern: "radial-gradient(circle at 12% 8%, rgba(175,160,132,0.10), transparent 18%), radial-gradient(circle at 82% 18%, rgba(175,160,132,0.045), transparent 26%), radial-gradient(circle at 50% 92%, rgba(175,160,132,0.045), transparent 28%), repeating-linear-gradient(90deg, rgba(255,255,255,0.018) 0 1px, transparent 1px 34px), repeating-linear-gradient(0deg, rgba(255,255,255,0.012) 0 1px, transparent 1px 24px), linear-gradient(135deg, #080808, #15120D 48%, #0B0A09)",
-    motif: "placeholder · sample · text · notes"
+    pattern:
+      "radial-gradient(circle at 12% 8%, rgba(175,160,132,0.10), transparent 18%), radial-gradient(circle at 82% 18%, rgba(175,160,132,0.045), transparent 26%), radial-gradient(circle at 50% 92%, rgba(175,160,132,0.045), transparent 28%), repeating-linear-gradient(90deg, rgba(255,255,255,0.018) 0 1px, transparent 1px 34px), repeating-linear-gradient(0deg, rgba(255,255,255,0.012) 0 1px, transparent 1px 24px), linear-gradient(135deg, #080808, #15120D 48%, #0B0A09)",
+    motif: "placeholder · sample · text · notes",
   },
   {
     id: "sap_bao_dem",
@@ -519,13 +558,15 @@ const styles = [
     avatarBg: "rgba(190,111,93,0.1)",
     dividerSymbol: "• • •",
     dividerTracking: "0.28em",
-    pattern: "radial-gradient(circle at 12% 8%, rgba(190,111,93,0.11), transparent 18%), radial-gradient(circle at 82% 18%, rgba(190,111,93,0.05), transparent 26%), radial-gradient(circle at 50% 92%, rgba(190,111,93,0.05), transparent 28%), repeating-linear-gradient(90deg, rgba(255,255,255,0.018) 0 1px, transparent 1px 34px), repeating-linear-gradient(0deg, rgba(255,255,255,0.012) 0 1px, transparent 1px 24px), linear-gradient(135deg, #0F0C09, #1B120D 48%, #100C09)",
-    motif: "đêm khuya · nhạc nhẹ · nhớ một người · thương một đời"
+    pattern:
+      "radial-gradient(circle at 12% 8%, rgba(190,111,93,0.11), transparent 18%), radial-gradient(circle at 82% 18%, rgba(190,111,93,0.05), transparent 26%), radial-gradient(circle at 50% 92%, rgba(190,111,93,0.05), transparent 28%), repeating-linear-gradient(90deg, rgba(255,255,255,0.018) 0 1px, transparent 1px 34px), repeating-linear-gradient(0deg, rgba(255,255,255,0.012) 0 1px, transparent 1px 24px), linear-gradient(135deg, #0F0C09, #1B120D 48%, #100C09)",
+    motif: "đêm khuya · nhạc nhẹ · nhớ một người · thương một đời",
   },
   {
     id: "quan_coc_toi",
     name: "Trò chơi điện tử",
-    subtitle: "Maecenas suscipit sem vitae sapien rhoncus, non posuere neque tempor.",
+    subtitle:
+      "Maecenas suscipit sem vitae sapien rhoncus, non posuere neque tempor.",
     pageBg: "#0C090B",
     text: "#E8D8DD",
     textSoft: "#9A858C",
@@ -569,8 +610,9 @@ const styles = [
     avatarBg: "rgba(176,112,128,0.1)",
     dividerSymbol: "• • •",
     dividerTracking: "0.28em",
-    pattern: "radial-gradient(circle at 12% 8%, rgba(176,112,128,0.12), transparent 18%), radial-gradient(circle at 82% 18%, rgba(176,112,128,0.05), transparent 26%), radial-gradient(circle at 50% 92%, rgba(176,112,128,0.05), transparent 28%), repeating-linear-gradient(90deg, rgba(255,255,255,0.018) 0 1px, transparent 1px 34px), repeating-linear-gradient(0deg, rgba(255,255,255,0.012) 0 1px, transparent 1px 24px), linear-gradient(135deg, #0C090B, #1A1218 48%, #100C0E)",
-    motif: "placeholder · sample · text · notes"
+    pattern:
+      "radial-gradient(circle at 12% 8%, rgba(176,112,128,0.12), transparent 18%), radial-gradient(circle at 82% 18%, rgba(176,112,128,0.05), transparent 26%), radial-gradient(circle at 50% 92%, rgba(176,112,128,0.05), transparent 28%), repeating-linear-gradient(90deg, rgba(255,255,255,0.018) 0 1px, transparent 1px 34px), repeating-linear-gradient(0deg, rgba(255,255,255,0.012) 0 1px, transparent 1px 24px), linear-gradient(135deg, #0C090B, #1A1218 48%, #100C0E)",
+    motif: "placeholder · sample · text · notes",
   },
   {
     id: "suong_mai",
@@ -619,8 +661,9 @@ const styles = [
     avatarBg: "rgba(49,95,100,0.10)",
     dividerSymbol: "≈ ≈ ≈",
     dividerTracking: "0.35em",
-    pattern: "radial-gradient(circle at 18% 16%, rgba(232,220,208,0.22), transparent 28%), radial-gradient(circle at 78% 58%, rgba(49,95,100,0.18), transparent 30%), repeating-linear-gradient(90deg, rgba(20,34,38,0.035) 0 1px, transparent 1px 42px), linear-gradient(180deg, rgba(255,255,255,0.06), rgba(20,34,38,0.08) 100%)",
-    motif: "≈  tĩnh tâm  ≈  nhẫn nhịn  ≈  buông bỏ  ≈"
+    pattern:
+      "radial-gradient(circle at 18% 16%, rgba(232,220,208,0.22), transparent 28%), radial-gradient(circle at 78% 58%, rgba(49,95,100,0.18), transparent 30%), repeating-linear-gradient(90deg, rgba(20,34,38,0.035) 0 1px, transparent 1px 42px), linear-gradient(180deg, rgba(255,255,255,0.06), rgba(20,34,38,0.08) 100%)",
+    motif: "≈  tĩnh tâm  ≈  nhẫn nhịn  ≈  buông bỏ  ≈",
   },
   {
     id: "hoa_dao",
@@ -669,13 +712,28 @@ const styles = [
     avatarBg: "rgba(255,255,255,0.04)",
     dividerSymbol: "♡ ♡ ♡",
     dividerTracking: "0.40em",
-    pattern: "repeating-linear-gradient(0deg, rgba(74,31,42,0.10) 0 1px, transparent 1px 28px), radial-gradient(circle at 15% 10%, rgba(255,182,193,0.55), transparent 28%), radial-gradient(circle at 85% 20%, rgba(255,200,210,0.40), transparent 24%), radial-gradient(circle at 50% 90%, rgba(182,69,93,0.10), transparent 30%), linear-gradient(180deg, rgba(255,255,255,0.10), transparent 60%)",
-    motif: "♡  placeholder  ♡  sample  ♡  text  ♡"
-  }
+    pattern:
+      "repeating-linear-gradient(0deg, rgba(74,31,42,0.10) 0 1px, transparent 1px 28px), radial-gradient(circle at 15% 10%, rgba(255,182,193,0.55), transparent 28%), radial-gradient(circle at 85% 20%, rgba(255,200,210,0.40), transparent 24%), radial-gradient(circle at 50% 90%, rgba(182,69,93,0.10), transparent 30%), linear-gradient(180deg, rgba(255,255,255,0.10), transparent 60%)",
+    motif: "♡  placeholder  ♡  sample  ♡  text  ♡",
+  },
 ];
 
-const darkRow = ["den_dau", "hong_tram", "muc_than", "hoian", "sap_bao_dem", "quan_coc_toi"].map((id) => styles.find((s) => s.id === id));
-const brightRow = ["hoa_dao", "giaydo", "dongho", "sapbao_sang", "quancoc_sang", "suong_mai"].map((id) => styles.find((s) => s.id === id));
+const darkRow = [
+  "den_dau",
+  "hong_tram",
+  "muc_than",
+  "hoian",
+  "sap_bao_dem",
+  "quan_coc_toi",
+].map((id) => styles.find((s) => s.id === id));
+const brightRow = [
+  "hoa_dao",
+  "giaydo",
+  "dongho",
+  "sapbao_sang",
+  "quancoc_sang",
+  "suong_mai",
+].map((id) => styles.find((s) => s.id === id));
 
 const DEFAULT_STYLE_ID = "den_dau";
 
@@ -686,21 +744,23 @@ const DEFAULT_STYLE_ID = "den_dau";
 // id -> id; `aliases` only cover extra legacy spellings beyond the raw id.
 const hashSlugs = {
   giaydo: { slug: "muc-lam", aliases: ["giay-do"] }, // Mực Lam
-  hoian: { slug: "tao-thao", aliases: ["hoi-an"] },  // Tào Tháo
-  dongho: { slug: "tu-sach" },                       // Tủ sách
-  sapbao_sang: { slug: "tra-sang" },                 // Trà Sáng
-  quancoc_sang: { slug: "lua-sen" },                 // Lụa Sen
-  hong_tram: { slug: "ve-tui" },                     // Về tui
-  den_dau: { slug: "dem-huyen" },                    // Đêm Huyền
-  muc_than: { slug: "36-ke" },                       // 36 Kế
-  sap_bao_dem: { slug: "nhac-khuya" },               // Nhạc Khuya
-  quan_coc_toi: { slug: "tro-choi-dien-tu" },        // Trò chơi điện tử
-  suong_mai: { slug: "con-mua" },                    // Cơn Mưa
-  hoa_dao: { slug: "goc-hong" }                      // Góc Hồng
+  hoian: { slug: "tao-thao", aliases: ["hoi-an"] }, // Tào Tháo
+  dongho: { slug: "tu-sach" }, // Tủ sách
+  sapbao_sang: { slug: "tra-sang" }, // Trà Sáng
+  quancoc_sang: { slug: "lua-sen" }, // Lụa Sen
+  hong_tram: { slug: "ve-tui" }, // Về tui
+  den_dau: { slug: "dem-huyen" }, // Đêm Huyền
+  muc_than: { slug: "36-ke" }, // 36 Kế
+  sap_bao_dem: { slug: "nhac-khuya" }, // Nhạc Khuya
+  quan_coc_toi: { slug: "tro-choi-dien-tu" }, // Trò chơi điện tử
+  suong_mai: { slug: "con-mua" }, // Cơn Mưa
+  hoa_dao: { slug: "goc-hong" }, // Góc Hồng
 };
 
 // id -> hash written to the URL when a tab is opened.
-const styleIdToHash = new Map(styles.map((s) => [s.id, hashSlugs[s.id]?.slug || s.id]));
+const styleIdToHash = new Map(
+  styles.map((s) => [s.id, hashSlugs[s.id]?.slug || s.id]),
+);
 // hash (current slug, raw id, or legacy alias) -> id, for restoring a tab.
 const hashToStyleId = new Map();
 for (const s of styles) {
@@ -722,7 +782,7 @@ const styleIcons = {
   dongho: "📚",
   sapbao_sang: "🍵",
   quancoc_sang: "🪷",
-  suong_mai: "💧"
+  suong_mai: "💧",
 };
 
 // Goals list shown in the left panel. Defined once and shared across every
@@ -735,23 +795,32 @@ const sidebarList = {
     { text: "Dọn gọn một góc riêng", status: "done" },
     { text: "Viết code hàng ngày", status: "ongoing" },
     { text: "Đỗ cao học", status: "done" },
-    { text: "Học Pytorch", status: "done", href: "https://www.learnpytorch.io/" },
+    {
+      text: "Học Pytorch",
+      status: "done",
+      href: "https://www.learnpytorch.io/",
+    },
     { text: "Đại số tuyến tính", status: "open" },
-    { text: "Tập Gym", status: "ongoing" }
-  ]
+    { text: "Tập Gym", status: "ongoing" },
+  ],
 };
 
 const statusLabels = {
   done: "Xong",
   open: "Đang làm",
-  ongoing: "Duy trì"
+  ongoing: "Duy trì",
 };
 
 function Divider({ style }) {
   return (
     <div className="my-1.5 flex items-center gap-2 opacity-80">
       <div className="h-px flex-1" style={{ background: style.accent }} />
-      <div style={{ color: style.accent, letterSpacing: style.dividerTracking }} className="text-xs">{style.dividerSymbol}</div>
+      <div
+        style={{ color: style.accent, letterSpacing: style.dividerTracking }}
+        className="text-xs"
+      >
+        {style.dividerSymbol}
+      </div>
       <div className="h-px flex-1" style={{ background: style.accent }} />
     </div>
   );
@@ -774,9 +843,15 @@ function OrderedColumns({ contentFirst, content, sidebar }) {
   return (
     <section className="mt-6 grid gap-5 lg:grid-cols-[260px_1fr] 2xl:grid-cols-[320px_1fr] 2xl:gap-8">
       {contentFirst ? (
-        <>{content}{sidebar}</>
+        <>
+          {content}
+          {sidebar}
+        </>
       ) : (
-        <>{sidebar}{content}</>
+        <>
+          {sidebar}
+          {content}
+        </>
       )}
     </section>
   );
@@ -784,7 +859,10 @@ function OrderedColumns({ contentFirst, content, sidebar }) {
 
 export default function VietnameseBlogStyleLab() {
   const [styleId, setStyleId] = useState(DEFAULT_STYLE_ID);
-  const style = useMemo(() => styles.find((item) => item.id === styleId) || styles[0], [styleId]);
+  const style = useMemo(
+    () => styles.find((item) => item.id === styleId) || styles[0],
+    [styleId],
+  );
 
   // The active tab lives in the URL hash so a refresh or a shared link
   // restores it, and back/forward walk through previously visited tabs.
@@ -822,7 +900,7 @@ export default function VietnameseBlogStyleLab() {
   const statusColors = {
     done: style.accent,
     open: style.text,
-    ongoing: style.textMuted
+    ongoing: style.textMuted,
   };
   // Portal target for the music player: the visual UI portals into this sidebar
   // slot, which now exists on every tab.
@@ -849,10 +927,12 @@ export default function VietnameseBlogStyleLab() {
           color: isActive ? style.text : style.textSoft,
           fontWeight: isActive ? 800 : 600,
           "--glow": item.accent,
-          "--glow-soft": item.accentSoft
+          "--glow-soft": item.accentSoft,
         }}
       >
-        <span className="tab-icon" aria-hidden="true">{styleIcons[item.id]}</span>
+        <span className="tab-icon" aria-hidden="true">
+          {styleIcons[item.id]}
+        </span>
         {item.name}
       </button>
     );
@@ -860,7 +940,9 @@ export default function VietnameseBlogStyleLab() {
 
   return (
     <>
-      <style dangerouslySetInnerHTML={{ __html: `
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
         .style-tab {
           position: relative;
           transition: box-shadow 220ms ease, transform 180ms ease, border-color 180ms ease;
@@ -1011,365 +1093,598 @@ export default function VietnameseBlogStyleLab() {
           .gc-footer-stars, .gc-heart, .gc-blink { animation: none; }
           .gc-eq i { animation: none; height: 11px; }
         }
-      ` }} />
-    <main
-      className="min-h-screen"
-      style={{ color: style.text, backgroundColor: style.pageBg, backgroundImage: style.pattern }}
-    >
-      <div className="web-scale-shell mx-auto max-w-6xl xl:max-w-7xl 2xl:max-w-[1700px] px-4 pt-2 pb-3 sm:px-7 lg:px-8 2xl:px-12">
-        <div
-          className="border-[3px] border-double p-2"
-          style={{
-            borderColor: style.borderOuter,
-            background: style.frameBg,
-            boxShadow: style.frameShadow
-          }}
-        >
-          <div className="border p-3 sm:p-4 lg:p-6 2xl:p-8 pt-2 sm:pt-2 lg:pt-3 2xl:pt-4" style={{ borderColor: style.borderInner }}>
+      `,
+        }}
+      />
+      <main
+        className="min-h-screen"
+        style={{
+          color: style.text,
+          backgroundColor: style.pageBg,
+          backgroundImage: style.pattern,
+        }}
+      >
+        <div className="web-scale-shell mx-auto max-w-6xl xl:max-w-7xl 2xl:max-w-[1700px] px-4 pt-2 pb-3 sm:px-7 lg:px-8 2xl:px-12">
+          <div
+            className="border-[3px] border-double p-2"
+            style={{
+              borderColor: style.borderOuter,
+              background: style.frameBg,
+              boxShadow: style.frameShadow,
+            }}
+          >
             <div
-              className="relative mb-3 overflow-hidden border"
-              style={{
-                borderColor: style.panelBorder,
-                boxShadow: style.previewShadow,
-                background:
-                  "radial-gradient(120% 80% at 50% 115%, rgba(244,184,96,0.12), transparent 60%), linear-gradient(180deg, #05040a 0%, #0a0710 58%, #050409 100%)"
-              }}
+              className="border p-3 sm:p-4 lg:p-6 2xl:p-8 pt-2 sm:pt-2 lg:pt-3 2xl:pt-4"
+              style={{ borderColor: style.borderInner }}
             >
-              <div className="banner-stars" aria-hidden="true" />
-              <img
-                src={bannerRoses}
-                alt="Đêm sao: hai đứa trẻ và chú chó ngồi trên bãi cỏ, khóm hồng nở bên phải"
-                className="banner-img relative z-10 mx-auto block h-auto w-full"
-                style={{ maxWidth: "620px" }}
-              />
-            </div>
-            <header>
-              <div className="flex flex-wrap items-baseline gap-3">
-                <h1 className="max-w-4xl 2xl:max-w-5xl font-serif text-2xl font-black leading-none tracking-tight sm:text-3xl lg:text-4xl 2xl:text-5xl">
-                  Một Góc Đời
-                </h1>
-                <div
-                  className="inline-block border px-2.5 py-0.5 text-[10px] uppercase tracking-[0.2em] -translate-y-[4px]"
-                  style={{
-                    borderColor: style.tagBorder,
-                    color: style.textSoft,
-                    background: style.tagBg,
-                    boxShadow: style.tagShadow
-                  }}
-                >
-                  Đời là vô thường
-                </div>
+              <div
+                className="relative mb-3 overflow-hidden border"
+                style={{
+                  borderColor: style.panelBorder,
+                  boxShadow: style.previewShadow,
+                  background:
+                    "radial-gradient(120% 80% at 50% 115%, rgba(244,184,96,0.12), transparent 60%), linear-gradient(180deg, #05040a 0%, #0a0710 58%, #050409 100%)",
+                }}
+              >
+                <div className="banner-stars" aria-hidden="true" />
+                <img
+                  src={bannerRoses}
+                  alt="Đêm sao: hai đứa trẻ và chú chó ngồi trên bãi cỏ, khóm hồng nở bên phải"
+                  className="banner-img relative z-10 mx-auto block h-auto w-full"
+                  style={{ maxWidth: "620px" }}
+                />
               </div>
-            </header>
+              <header>
+                <div className="flex flex-wrap items-baseline gap-3">
+                  <h1 className="max-w-4xl 2xl:max-w-5xl font-serif text-2xl font-black leading-none tracking-tight sm:text-3xl lg:text-4xl 2xl:text-5xl">
+                    Một Góc Đời
+                  </h1>
+                  <div
+                    className="inline-block border px-2.5 py-0.5 text-[10px] uppercase tracking-[0.2em] -translate-y-[4px]"
+                    style={{
+                      borderColor: style.tagBorder,
+                      color: style.textSoft,
+                      background: style.tagBg,
+                      boxShadow: style.tagShadow,
+                    }}
+                  >
+                    Đời là vô thường
+                  </div>
+                </div>
+              </header>
 
-            <div
-              className="mt-6 border-y py-3"
-              style={{ borderColor: style.borderSection }}
-            >
-              <nav className="flex flex-wrap gap-2 text-sm font-semibold">
-                {darkRow.map(renderTab)}
-              </nav>
-              <nav className="mt-2 flex flex-wrap gap-2 text-sm font-semibold">
-                {brightRow.map(renderTab)}
-              </nav>
-            </div>
+              <div
+                className="mt-6 border-y py-3"
+                style={{ borderColor: style.borderSection }}
+              >
+                <nav className="flex flex-wrap gap-2 text-sm font-semibold">
+                  {darkRow.map(renderTab)}
+                </nav>
+                <nav className="mt-2 flex flex-wrap gap-2 text-sm font-semibold">
+                  {brightRow.map(renderTab)}
+                </nav>
+              </div>
 
-            {/* Mounted once here, outside the tab switch, so the audio never
+              {/* Mounted once here, outside the tab switch, so the audio never
                 unmounts. Its visual UI portals into the sidebar slot below. */}
-            {/* Đêm Huyền keeps the colorful hung-blog controls but matches its
+              {/* Đêm Huyền keeps the colorful hung-blog controls but matches its
                 box background to the neighboring boxes; other tabs fully theme. */}
-            <MusicPlayer portalTarget={musicSlot} theme={style} colorful={style.id === "den_dau"} />
+              <MusicPlayer
+                portalTarget={musicSlot}
+                theme={style}
+                colorful={style.id === "den_dau"}
+              />
 
-            <OrderedColumns
-              contentFirst={style.id === "den_dau"}
-              content={(
-              <section className={`min-w-0 ${style.id === "den_dau" ? "order-1 lg:order-2" : ""}`}>
-                {style.id === "muc_than" ? (
-                  <div className="mx-auto w-full max-w-[1080px]">
-                    <ThirtySixKe />
-                  </div>
-                ) : style.id === "hoian" ? (
-                  <div className="mx-auto w-full max-w-[1080px]">
-                    <TaoThao />
-                  </div>
-                ) : style.id === "hong_tram" ? (
-                  <VeTui />
-                ) : style.id === "giaydo" ? (
-                  <MucLam theme={style} />
-                ) : style.id === "dongho" ? (
-                  <TuSach theme={style} />
-                ) : style.id === "suong_mai" ? (
-                  <MuaRoi theme={style} />
-                ) : (
-                  <>
-                <motion.div
-                  key={style.id}
-                  initial={{ opacity: 0, y: 12 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.25 }}
-                  className="border p-2.5 sm:p-3"
-                  style={{
-                    background: style.panelBg,
-                    borderColor: style.panelBorder,
-                    boxShadow: style.previewShadow
-                  }}
+              <OrderedColumns
+                contentFirst={style.id === "den_dau"}
+                content={
+                  <section
+                    className={`min-w-0 ${style.id === "den_dau" ? "order-1 lg:order-2" : ""}`}
+                  >
+                    {style.id === "muc_than" ? (
+                      <div className="mx-auto w-full max-w-[1080px]">
+                        <ThirtySixKe />
+                      </div>
+                    ) : style.id === "hoian" ? (
+                      <div className="mx-auto w-full max-w-[1080px]">
+                        <TaoThao />
+                      </div>
+                    ) : style.id === "hong_tram" ? (
+                      <VeTui />
+                    ) : style.id === "giaydo" ? (
+                      <MucLam theme={style} />
+                    ) : style.id === "dongho" ? (
+                      <TuSach theme={style} />
+                    ) : style.id === "suong_mai" ? (
+                      <MuaRoi theme={style} />
+                    ) : (
+                      <>
+                        <motion.div
+                          key={style.id}
+                          initial={{ opacity: 0, y: 12 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ duration: 0.25 }}
+                          className="border p-2.5 sm:p-3"
+                          style={{
+                            background: style.panelBg,
+                            borderColor: style.panelBorder,
+                            boxShadow: style.previewShadow,
+                          }}
+                        >
+                          <h2
+                            className={`text-center font-serif text-3xl font-black leading-tight sm:text-4xl ${style.id === "sap_bao_dem" ? "flex items-center justify-center gap-3" : ""}`}
+                            style={{ color: style.accent }}
+                          >
+                            {style.id === "sap_bao_dem" && <MusicWave />}
+                            {style.name}
+                          </h2>
+                          <p
+                            className="mx-auto mt-1 max-w-3xl text-center font-serif text-base leading-6"
+                            style={{ color: style.textSoft }}
+                          >
+                            {style.subtitle}
+                          </p>
+                          <Divider style={style} />
+                          <div
+                            className="text-center text-[11px] uppercase leading-4 tracking-[0.24em]"
+                            style={{ color: style.textMuted }}
+                          >
+                            {style.motif}
+                          </div>
+                        </motion.div>
+
+                        {tabPosts.length > 0 && (
+                          <div className="mt-5 space-y-4">
+                            {tabPosts.map((post, index) => {
+                              const bodyBlocks = Array.isArray(post.body)
+                                ? post.body
+                                : [post.body];
+
+                              return (
+                                <motion.article
+                                  key={post.title}
+                                  initial={{ opacity: 0, y: 12 }}
+                                  animate={{ opacity: 1, y: 0 }}
+                                  transition={{
+                                    duration: 0.25,
+                                    delay: index * 0.04,
+                                  }}
+                                  className={`grid gap-4 border ${post.small ? "p-3 sm:p-3.5" : "p-4 sm:p-5"} ${post.centered ? "text-center" : post.small ? "" : "sm:grid-cols-[84px_1fr]"}`}
+                                  style={{
+                                    background: style.panelSoftBg,
+                                    borderColor: style.panelSoftBorder,
+                                    boxShadow: style.panelSoftShadow,
+                                  }}
+                                >
+                                  {(post.image ||
+                                    post.seal ||
+                                    post.type ||
+                                    post.date) && (
+                                    <div
+                                      className={
+                                        post.centered
+                                          ? "text-center"
+                                          : "flex sm:block sm:text-center"
+                                      }
+                                    >
+                                      <div
+                                        className={`grid h-16 w-16 shrink-0 place-items-center overflow-hidden border-4 border-double font-serif font-black ${post.sealLarge ? "text-xl" : "text-sm"} ${post.centered ? "mx-auto" : "sm:mx-auto"}`}
+                                        aria-hidden={
+                                          post.experience === "monkey-paradox"
+                                            ? "true"
+                                            : undefined
+                                        }
+                                        style={{
+                                          color: style.accent,
+                                          borderColor: style.sealBorder,
+                                          background: style.sealBg,
+                                        }}
+                                      >
+                                        {post.image ? (
+                                          <img
+                                            className="h-full w-full object-cover"
+                                            src={post.image}
+                                            alt=""
+                                          />
+                                        ) : (
+                                          post.seal
+                                        )}
+                                      </div>
+                                      <div
+                                        className={
+                                          post.centered
+                                            ? "mt-3"
+                                            : "ml-3 sm:ml-0 sm:mt-3"
+                                        }
+                                      >
+                                        {post.type && (
+                                          <div
+                                            className="text-xs uppercase tracking-[0.2em]"
+                                            style={{ color: style.textMuted }}
+                                          >
+                                            {post.type}
+                                          </div>
+                                        )}
+                                        {post.date && (
+                                          <div
+                                            className={`${post.type ? "mt-1 " : ""}text-xs`}
+                                            style={{ color: style.textMuted }}
+                                          >
+                                            {post.date}
+                                          </div>
+                                        )}
+                                      </div>
+                                    </div>
+                                  )}
+                                  <div>
+                                    <h3
+                                      className={`font-serif ${post.small ? "text-base font-normal leading-6" : "text-2xl font-black sm:text-3xl"}`}
+                                    >
+                                      {post.title}
+                                    </h3>
+                                    {post.mediaLink && (
+                                      <a
+                                        className="group mt-4 grid max-w-3xl grid-cols-[minmax(0,1fr)_auto] items-center gap-3 overflow-hidden border p-2.5 transition duration-200 hover:-translate-y-0.5 sm:grid-cols-[88px_minmax(0,1fr)_auto]"
+                                        style={{
+                                          borderColor: style.sealBorder,
+                                          background: style.btnBg,
+                                          boxShadow: style.btnShadow,
+                                        }}
+                                        href={post.mediaLink.href}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        aria-label={`Nghe ${post.mediaLink.title} trên YouTube, mở trong tab mới`}
+                                      >
+                                        <img
+                                          className="hidden h-[66px] w-[88px] object-cover opacity-80 transition duration-200 group-hover:opacity-100 sm:block"
+                                          src={post.mediaLink.thumbnail}
+                                          alt=""
+                                          width="88"
+                                          height="66"
+                                          loading="lazy"
+                                          decoding="async"
+                                        />
+                                        <span className="min-w-0">
+                                          <span
+                                            className="block text-[9px] font-bold uppercase tracking-[0.2em]"
+                                            style={{ color: style.textMuted }}
+                                          >
+                                            {post.mediaLink.eyebrow}
+                                          </span>
+                                          <strong
+                                            className="mt-1 block truncate font-serif text-sm leading-5 sm:text-base"
+                                            style={{ color: style.text }}
+                                          >
+                                            {post.mediaLink.title}
+                                          </strong>
+                                          <span
+                                            className="mt-0.5 block text-xs"
+                                            style={{ color: style.textSoft }}
+                                          >
+                                            {post.mediaLink.artist}
+                                          </span>
+                                        </span>
+                                        <span
+                                          className="grid h-9 w-9 place-items-center border text-xs"
+                                          style={{
+                                            borderColor: style.accent,
+                                            color: style.accent,
+                                            background: style.accentSoft,
+                                          }}
+                                          aria-hidden="true"
+                                        >
+                                          <svg
+                                            className="ml-0.5 h-3.5 w-3.5"
+                                            viewBox="0 0 16 16"
+                                            fill="currentColor"
+                                          >
+                                            <path d="M4.5 2.75v10.5L13 8 4.5 2.75Z" />
+                                          </svg>
+                                        </span>
+                                      </a>
+                                    )}
+                                    {post.experience === "monkey-paradox" && (
+                                      <MonkeyParadoxExperience theme={style} />
+                                    )}
+                                    {bodyBlocks.length > 0 && (
+                                      <div
+                                        className={`mt-3 max-w-3xl space-y-3 text-base leading-8 ${post.centered ? "mx-auto" : ""}`}
+                                        style={{ color: style.textSoft }}
+                                      >
+                                        {bodyBlocks.map((paragraph) => (
+                                          <p key={paragraph}>
+                                            {paragraph
+                                              .split("\n")
+                                              .map((line, lineIndex, lines) => (
+                                                <React.Fragment key={line}>
+                                                  {line}
+                                                  {lineIndex <
+                                                    lines.length - 1 && <br />}
+                                                </React.Fragment>
+                                              ))}
+                                          </p>
+                                        ))}
+                                      </div>
+                                    )}
+                                    {post.lesson && (
+                                      <>
+                                        <div className="my-4 flex items-center gap-3 opacity-70">
+                                          <div
+                                            className="h-px flex-1"
+                                            style={{ background: style.accent }}
+                                          />
+                                          <div
+                                            className="text-xs"
+                                            style={{
+                                              color: style.accent,
+                                              letterSpacing:
+                                                style.dividerTracking,
+                                            }}
+                                          >
+                                            {style.dividerSymbol}
+                                          </div>
+                                          <div
+                                            className="h-px flex-1"
+                                            style={{ background: style.accent }}
+                                          />
+                                        </div>
+                                        <p
+                                          className="max-w-3xl border-l-4 py-2 pl-4 font-serif text-lg leading-8"
+                                          style={{
+                                            borderColor: style.accent,
+                                            color: style.text,
+                                          }}
+                                        >
+                                          {post.lesson}
+                                        </p>
+                                      </>
+                                    )}
+                                    {post.mood && (
+                                      <div
+                                        className="mt-4 border-y py-2 text-xs uppercase tracking-[0.16em]"
+                                        style={{
+                                          borderColor: style.panelSoftBorder,
+                                          color: style.textMuted,
+                                        }}
+                                      >
+                                        {post.mood}
+                                      </div>
+                                    )}
+                                    {post.tags && (
+                                      <div
+                                        className={`mt-3 flex flex-wrap gap-2 ${post.centered ? "justify-center" : ""}`}
+                                      >
+                                        {post.tags.map((tag) => (
+                                          <span
+                                            key={tag}
+                                            className="border px-2.5 py-1 text-xs font-bold"
+                                            style={{
+                                              borderColor:
+                                                style.panelSoftBorder,
+                                              color: style.accent,
+                                              background: style.btnBg,
+                                            }}
+                                          >
+                                            {tag}
+                                          </span>
+                                        ))}
+                                      </div>
+                                    )}
+                                    {post.readMore !== false && (
+                                      <button
+                                        className="mt-4 border px-4 py-2 text-sm font-bold transition hover:translate-x-0.5"
+                                        style={{
+                                          borderColor: style.accent,
+                                          color: style.accent,
+                                          background: style.btnBg,
+                                          boxShadow: style.btnShadow,
+                                        }}
+                                      >
+                                        read more -&gt;
+                                      </button>
+                                    )}
+                                  </div>
+                                </motion.article>
+                              );
+                            })}
+                          </div>
+                        )}
+                      </>
+                    )}
+                  </section>
+                }
+                sidebar={
+                  <aside
+                    className={`space-y-5 ${style.id === "den_dau" ? "order-2 lg:order-1" : ""}`}
+                  >
+                    <section
+                      className="border p-3 hb-box"
+                      style={{
+                        background: style.panelSoftBg,
+                        borderColor: style.panelSoftBorder,
+                        boxShadow: style.panelSoftShadow,
+                        "--strip": sidebarStrip,
+                      }}
+                    >
+                      <div className="flex flex-col gap-1.5 text-sm">
+                        <a
+                          className="footer-link flex items-center gap-2.5"
+                          href="https://www.linkedin.com/in/nguyendoan001/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{ color: style.accent }}
+                        >
+                          <svg
+                            viewBox="0 0 24 24"
+                            width="16"
+                            height="16"
+                            fill="currentColor"
+                            className="shrink-0"
+                            aria-hidden="true"
+                            focusable="false"
+                          >
+                            <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 110-4.13 2.06 2.06 0 010 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z" />
+                          </svg>
+                          <span className="font-semibold">LinkedIn</span>
+                          <span
+                            className="ml-auto"
+                            aria-hidden="true"
+                            style={{ color: style.textMuted }}
+                          >
+                            ↗
+                          </span>
+                        </a>
+                        <a
+                          className="footer-link flex items-center gap-2.5"
+                          href="https://github.com/hungngdoan"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{ color: style.accent }}
+                        >
+                          <svg
+                            viewBox="0 0 16 16"
+                            width="16"
+                            height="16"
+                            fill="currentColor"
+                            className="shrink-0"
+                            aria-hidden="true"
+                            focusable="false"
+                          >
+                            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
+                          </svg>
+                          <span className="font-semibold">GitHub</span>
+                          <span
+                            className="ml-auto"
+                            aria-hidden="true"
+                            style={{ color: style.textMuted }}
+                          >
+                            ↗
+                          </span>
+                        </a>
+                        <a
+                          className="footer-link flex items-center gap-2.5"
+                          href="https://hungngdoan.github.io/hung-blog/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{ color: style.accent }}
+                        >
+                          <svg
+                            viewBox="0 0 24 24"
+                            width="16"
+                            height="16"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            className="shrink-0"
+                            aria-hidden="true"
+                            focusable="false"
+                          >
+                            <circle cx="12" cy="12" r="10" />
+                            <line x1="2" y1="12" x2="22" y2="12" />
+                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                          </svg>
+                          <span className="font-semibold">Blog Tiếng Anh</span>
+                          <span
+                            className="ml-auto"
+                            aria-hidden="true"
+                            style={{ color: style.textMuted }}
+                          >
+                            ↗
+                          </span>
+                        </a>
+                      </div>
+                    </section>
+
+                    {/* Portal target: the music player's visual UI renders here,
+                    directly under "Placeholder Title", matching hung-blog. */}
+                    <div ref={setMusicSlot} />
+
+                    <section
+                      className="border p-4 hb-box"
+                      style={{
+                        background: style.panelSoftBg,
+                        borderColor: style.panelSoftBorder,
+                        boxShadow: style.panelSoftShadow,
+                        "--strip": sidebarStrip,
+                      }}
+                    >
+                      <div className="font-serif text-xl font-black">
+                        {sidebarList.title}
+                      </div>
+                      <div className="mt-3 space-y-2">
+                        {sidebarList.items.map((quest) => {
+                          const status = statusLabels[quest.status]
+                            ? quest.status
+                            : "open";
+
+                          return (
+                            <div
+                              key={quest.text}
+                              className="flex items-center justify-between gap-3 border-b pb-2 text-sm"
+                              style={{ borderColor: style.contentBorder }}
+                            >
+                              {quest.href ? (
+                                <a
+                                  href={quest.href}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="footer-link"
+                                  style={{ color: style.questColor }}
+                                >
+                                  {quest.text}
+                                </a>
+                              ) : (
+                                <span style={{ color: style.questColor }}>
+                                  {quest.text}
+                                </span>
+                              )}
+                              <span
+                                className="shrink-0 font-bold"
+                                style={{ color: statusColors[status] }}
+                              >
+                                {statusLabels[status]}
+                              </span>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </section>
+                  </aside>
+                }
+              />
+
+              <footer
+                className="mt-7 border-t pt-6"
+                style={{ borderColor: style.borderSection }}
+              >
+                <div
+                  className="mt-6 text-center"
+                  style={{ color: style.textMuted }}
                 >
-                  <h2
-                    className={`text-center font-serif text-3xl font-black leading-tight sm:text-4xl ${style.id === "sap_bao_dem" ? "flex items-center justify-center gap-3" : ""}`}
+                  <div className="gc-footer-stars" aria-hidden="true">
+                    ✦ ✧ ✦ ✧ ✦ ✧ ✦
+                  </div>
+                  <p className="mt-2 text-sm">
+                    Được chế từ <span className="gc-heart">♥</span> và rất nhiều
+                    caffeine
+                  </p>
+                  <p
+                    className="mt-2 font-serif text-base font-black"
                     style={{ color: style.accent }}
                   >
-                    {style.id === "sap_bao_dem" && <MusicWave />}
-                    {style.name}
-                  </h2>
-                  <p className="mx-auto mt-1 max-w-3xl text-center font-serif text-base leading-6" style={{ color: style.textSoft }}>
-                    {style.subtitle}
+                    <span className="gc-blink">Hưng | Đúng, là Hưng</span>
                   </p>
-                  <Divider style={style} />
-                  <div className="text-center text-[11px] uppercase leading-4 tracking-[0.24em]" style={{ color: style.textMuted }}>
-                    {style.motif}
-                  </div>
-                </motion.div>
-
-                {tabPosts.length > 0 && (
-                <div className="mt-5 space-y-4">
-                  {tabPosts.map((post, index) => {
-                    const bodyBlocks = Array.isArray(post.body) ? post.body : [post.body];
-
-                    return (
-                      <motion.article
-                        key={post.title}
-                        initial={{ opacity: 0, y: 12 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.25, delay: index * 0.04 }}
-                        className={`grid gap-4 border ${post.small ? "p-3 sm:p-3.5" : "p-4 sm:p-5"} ${post.centered ? "text-center" : post.small ? "" : "sm:grid-cols-[84px_1fr]"}`}
-                        style={{
-                          background: style.panelSoftBg,
-                          borderColor: style.panelSoftBorder,
-                          boxShadow: style.panelSoftShadow
-                        }}
-                      >
-                        {(post.image || post.seal || post.type || post.date) && (
-                        <div className={post.centered ? "text-center" : "flex sm:block sm:text-center"}>
-                          <div
-                            className={`grid h-16 w-16 shrink-0 place-items-center overflow-hidden border-4 border-double font-serif font-black ${post.sealLarge ? "text-xl" : "text-sm"} ${post.centered ? "mx-auto" : ""}`}
-                            aria-hidden={post.experience === "monkey-paradox" ? "true" : undefined}
-                            style={{ color: style.accent, borderColor: style.sealBorder, background: style.sealBg }}
-                          >
-                            {post.image ? (
-                              <img className="h-full w-full object-cover" src={post.image} alt="" />
-                            ) : (
-                              post.seal
-                            )}
-                          </div>
-                          <div className={post.centered ? "mt-3" : "ml-3 sm:ml-0 sm:mt-3"}>
-                            <div className="text-xs uppercase tracking-[0.2em]" style={{ color: style.textMuted }}>
-                              {post.type}
-                            </div>
-                            <div className="mt-1 text-xs" style={{ color: style.textMuted }}>{post.date}</div>
-                          </div>
-                        </div>
-                        )}
-                        <div>
-                          <h3 className={`font-serif ${post.small ? "text-base font-normal leading-6" : "text-2xl font-black sm:text-3xl"}`}>{post.title}</h3>
-                          {post.experience === "monkey-paradox" && (
-                            <MonkeyParadoxExperience theme={style} />
-                          )}
-                          {bodyBlocks.length > 0 && (
-                          <div className={`mt-3 max-w-3xl space-y-3 text-base leading-8 ${post.centered ? "mx-auto" : ""}`} style={{ color: style.textSoft }}>
-                            {bodyBlocks.map((paragraph) => (
-                              <p key={paragraph}>
-                                {paragraph.split("\n").map((line, lineIndex, lines) => (
-                                  <React.Fragment key={line}>
-                                    {line}
-                                    {lineIndex < lines.length - 1 && <br />}
-                                  </React.Fragment>
-                                ))}
-                              </p>
-                            ))}
-                          </div>
-                          )}
-                          {post.lesson && (
-                            <>
-                              <div className="my-4 flex items-center gap-3 opacity-70">
-                                <div className="h-px flex-1" style={{ background: style.accent }} />
-                                <div className="text-xs" style={{ color: style.accent, letterSpacing: style.dividerTracking }}>
-                                  {style.dividerSymbol}
-                                </div>
-                                <div className="h-px flex-1" style={{ background: style.accent }} />
-                              </div>
-                              <p
-                                className="max-w-3xl border-l-4 py-2 pl-4 font-serif text-lg leading-8"
-                                style={{ borderColor: style.accent, color: style.text }}
-                              >
-                                {post.lesson}
-                              </p>
-                            </>
-                          )}
-                          {post.mood && (
-                            <div
-                              className="mt-4 border-y py-2 text-xs uppercase tracking-[0.16em]"
-                              style={{ borderColor: style.panelSoftBorder, color: style.textMuted }}
-                            >
-                              {post.mood}
-                            </div>
-                          )}
-                          {post.tags && (
-                            <div className={`mt-3 flex flex-wrap gap-2 ${post.centered ? "justify-center" : ""}`}>
-                              {post.tags.map((tag) => (
-                                <span
-                                  key={tag}
-                                  className="border px-2.5 py-1 text-xs font-bold"
-                                  style={{ borderColor: style.panelSoftBorder, color: style.accent, background: style.btnBg }}
-                                >
-                                  {tag}
-                                </span>
-                              ))}
-                            </div>
-                          )}
-                          {post.readMore !== false && (
-                            <button
-                              className="mt-4 border px-4 py-2 text-sm font-bold transition hover:translate-x-0.5"
-                              style={{
-                                borderColor: style.accent,
-                                color: style.accent,
-                                background: style.btnBg,
-                                boxShadow: style.btnShadow
-                              }}
-                            >
-                              read more -&gt;
-                            </button>
-                          )}
-                        </div>
-                      </motion.article>
-                    );
-                  })}
+                  <p className="mt-1 text-[11px] uppercase tracking-[0.3em]">
+                    © 2026 Một Góc Đời
+                  </p>
                 </div>
-                )}
-                  </>
-                )}
-              </section>
-              )}
-              sidebar={(
-              <aside className={`space-y-5 ${style.id === "den_dau" ? "order-2 lg:order-1" : ""}`}>
-                <section
-                  className="border p-3 hb-box"
-                  style={{
-                    background: style.panelSoftBg,
-                    borderColor: style.panelSoftBorder,
-                    boxShadow: style.panelSoftShadow,
-                    "--strip": sidebarStrip
-                  }}
-                >
-                  <div className="flex flex-col gap-1.5 text-sm">
-                    <a
-                      className="footer-link flex items-center gap-2.5"
-                      href="https://www.linkedin.com/in/nguyendoan001/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      style={{ color: style.accent }}
-                    >
-                      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" className="shrink-0" aria-hidden="true" focusable="false">
-                        <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 110-4.13 2.06 2.06 0 010 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z" />
-                      </svg>
-                      <span className="font-semibold">LinkedIn</span>
-                      <span className="ml-auto" aria-hidden="true" style={{ color: style.textMuted }}>↗</span>
-                    </a>
-                    <a
-                      className="footer-link flex items-center gap-2.5"
-                      href="https://github.com/hungngdoan"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      style={{ color: style.accent }}
-                    >
-                      <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" className="shrink-0" aria-hidden="true" focusable="false">
-                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
-                      </svg>
-                      <span className="font-semibold">GitHub</span>
-                      <span className="ml-auto" aria-hidden="true" style={{ color: style.textMuted }}>↗</span>
-                    </a>
-                    <a
-                      className="footer-link flex items-center gap-2.5"
-                      href="https://hungngdoan.github.io/hung-blog/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      style={{ color: style.accent }}
-                    >
-                      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="shrink-0" aria-hidden="true" focusable="false">
-                        <circle cx="12" cy="12" r="10" />
-                        <line x1="2" y1="12" x2="22" y2="12" />
-                        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-                      </svg>
-                      <span className="font-semibold">Blog Tiếng Anh</span>
-                      <span className="ml-auto" aria-hidden="true" style={{ color: style.textMuted }}>↗</span>
-                    </a>
-                  </div>
-                </section>
-
-                {/* Portal target: the music player's visual UI renders here,
-                    directly under "Placeholder Title", matching hung-blog. */}
-                <div ref={setMusicSlot} />
-
-                <section
-                  className="border p-4 hb-box"
-                  style={{
-                    background: style.panelSoftBg,
-                    borderColor: style.panelSoftBorder,
-                    boxShadow: style.panelSoftShadow,
-                    "--strip": sidebarStrip
-                  }}
-                >
-                  <div className="font-serif text-xl font-black">{sidebarList.title}</div>
-                  <div className="mt-3 space-y-2">
-                    {sidebarList.items.map((quest) => {
-                      const status = statusLabels[quest.status] ? quest.status : "open";
-
-                      return (
-                        <div
-                          key={quest.text}
-                          className="flex items-center justify-between gap-3 border-b pb-2 text-sm"
-                          style={{ borderColor: style.contentBorder }}
-                        >
-                          {quest.href ? (
-                            <a
-                              href={quest.href}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="footer-link"
-                              style={{ color: style.questColor }}
-                            >
-                              {quest.text}
-                            </a>
-                          ) : (
-                            <span style={{ color: style.questColor }}>{quest.text}</span>
-                          )}
-                          <span className="shrink-0 font-bold" style={{ color: statusColors[status] }}>
-                            {statusLabels[status]}
-                          </span>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </section>
-              </aside>
-              )}
-            />
-
-            <footer className="mt-7 border-t pt-6" style={{ borderColor: style.borderSection }}>
-              <div className="mt-6 text-center" style={{ color: style.textMuted }}>
-                <div className="gc-footer-stars" aria-hidden="true">✦ ✧ ✦ ✧ ✦ ✧ ✦</div>
-                <p className="mt-2 text-sm">
-                  Được chế từ <span className="gc-heart">♥</span> và rất nhiều caffeine
-                </p>
-                <p className="mt-2 font-serif text-base font-black" style={{ color: style.accent }}>
-                  <span className="gc-blink">Hưng | Đúng, là Hưng</span>
-                </p>
-                <p className="mt-1 text-[11px] uppercase tracking-[0.3em]">© 2026 Một Góc Đời</p>
-              </div>
-            </footer>
+              </footer>
+            </div>
           </div>
         </div>
-      </div>
-    </main>
+      </main>
     </>
   );
 }
