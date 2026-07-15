@@ -8,6 +8,20 @@ import {
 import "./MonkeyParadoxExperience.css";
 
 const LAST_SCENE_INDEX = monkeyParadoxScenes.length - 1;
+const DEFAULT_NEON = { color: "#00FFFF", rgb: "0, 255, 255" };
+const SCENE_NEON = {
+  "single-key": DEFAULT_NEON,
+  "two-keys": DEFAULT_NEON,
+  million: { color: "#FF69B4", rgb: "255, 105, 180" },
+  distinction: { color: "#FF69B4", rgb: "255, 105, 180" },
+  attempts: { color: "#7FFF00", rgb: "127, 255, 0" },
+  typewriters: { color: "#FFD700", rgb: "255, 215, 0" },
+  folio: { color: "#FFD700", rgb: "255, 215, 0" },
+  "without-intent": { color: "#BEAAFF", rgb: "190, 170, 255" },
+  variations: { color: "#BEAAFF", rgb: "190, 170, 255" },
+  reader: DEFAULT_NEON,
+  finale: { color: "#7FFF00", rgb: "127, 255, 0" }
+};
 const FOCUSABLE_SELECTOR = [
   "a[href]",
   "button:not([disabled])",
@@ -162,13 +176,21 @@ export default function MonkeyParadoxExperience({ theme }) {
   const isFinalScene = sceneIndex === LAST_SCENE_INDEX;
   const progress = ((sceneIndex + 1) / monkeyParadoxScenes.length) * 100;
   const themeVars = {
-    "--mpx-page": theme?.pageBg || "#080B14",
-    "--mpx-panel": theme?.panelBg || "#0E1220",
-    "--mpx-panel-soft": theme?.panelSoftBg || "rgba(14,18,32,0.94)",
-    "--mpx-text": theme?.text || "#D4DAE8",
-    "--mpx-soft": theme?.textSoft || "#7A839A",
-    "--mpx-accent": theme?.accent || "#8B9FBF",
-    "--mpx-border": theme?.panelBorder || "#1C2236"
+    "--mpx-page": theme?.pageBg || "#050512",
+    "--mpx-panel": "#09091F",
+    "--mpx-panel-soft": "rgba(9, 9, 31, 0.94)",
+    "--mpx-text": "#F5F2FF",
+    "--mpx-soft": "#9CA6C5",
+    "--mpx-accent": DEFAULT_NEON.color,
+    "--mpx-accent-rgb": DEFAULT_NEON.rgb,
+    "--mpx-border": "rgba(0, 255, 255, 0.22)"
+  };
+  const sceneNeon = SCENE_NEON[scene.visual] || DEFAULT_NEON;
+  const sceneThemeVars = {
+    ...themeVars,
+    "--mpx-accent": sceneNeon.color,
+    "--mpx-accent-rgb": sceneNeon.rgb,
+    "--mpx-border": `rgba(${sceneNeon.rgb}, 0.22)`
   };
 
   useEffect(() => {
@@ -440,7 +462,7 @@ export default function MonkeyParadoxExperience({ theme }) {
   const dialog = (
     <motion.div
       className="mpx-overlay"
-      style={themeVars}
+      style={sceneThemeVars}
       initial={reduceMotion ? false : { opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: reduceMotion ? 0 : 0.18 }}
@@ -481,7 +503,6 @@ export default function MonkeyParadoxExperience({ theme }) {
         </header>
 
         <div className="mpx-progress-row">
-          <span className="mpx-progress-label">Chặng {padScene(sceneIndex + 1)}</span>
           <div
             className="mpx-progress-track"
             role="progressbar"
