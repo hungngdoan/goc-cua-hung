@@ -105,6 +105,34 @@ const PROVERBS = [
       "Còn ý chí và quyết tâm thì rồi việc gì cũng tới ngày làm được.",
     tag: "Ý chí",
   },
+  {
+    icon: "🏞️",
+    text: "Đồng Đăng có phố Kỳ Lừa,\nCó nàng Tô Thị, có chùa Tam Thanh.",
+    meaning:
+      "Gợi nhắc những địa danh nổi tiếng của xứ Lạng: phố Kỳ Lừa, nàng Tô Thị và chùa Tam Thanh.",
+    tag: "Xứ Lạng",
+  },
+  {
+    icon: "⛰️",
+    text: "Đường vô xứ Nghệ quanh quanh,\nNon xanh nước biếc như tranh họa đồ.",
+    meaning:
+      "Ca ngợi vẻ đẹp sơn thủy hữu tình trên đường vào xứ Nghệ.",
+    tag: "Xứ Nghệ",
+  },
+  {
+    icon: "🌾",
+    text: "Cần Thơ gạo trắng nước trong,\nAi đi đến đó lòng không muốn về.",
+    meaning:
+      "Gợi vẻ trù phú, trong lành và mến khách của vùng đất Tây Đô.",
+    tag: "Tây Đô",
+  },
+  {
+    icon: "🪷",
+    text: "Đồng Tháp Mười cò bay thẳng cánh,\nNước Tháp Mười lóng lánh cá tôm.",
+    meaning:
+      "Khắc họa cánh đồng rộng lớn và sản vật dồi dào của vùng Đồng Tháp Mười.",
+    tag: "Đồng Tháp",
+  },
 ];
 
 // Above this many characters a saying is too long for a half-width chip and
@@ -239,7 +267,7 @@ export default function MucLam({ theme }) {
                       {p.icon}
                     </span>
                     <p
-                      className={`min-w-0 font-serif text-[15px] sm:text-base ${long ? "font-semibold leading-relaxed" : "font-bold leading-snug"}`}
+                      className={`min-w-0 whitespace-pre-line font-serif text-[15px] sm:text-base ${long ? "font-semibold leading-relaxed" : "font-bold leading-snug"}`}
                       style={{ color: theme.accent }}
                     >
                       {p.text}
