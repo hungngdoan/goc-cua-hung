@@ -71,6 +71,13 @@ const PROVERBS = [
     tag: "Trải nghiệm",
   },
   {
+    icon: "🐎",
+    text: "Đường dài mới biết ngựa hay",
+    meaning:
+      "Phải qua hành trình dài và thử thách lâu bền mới biết rõ năng lực, bản lĩnh thật sự.",
+    tag: "Thử thách",
+  },
+  {
     icon: "🌱",
     text: "Thất bại là mẹ thành công",
     meaning:
