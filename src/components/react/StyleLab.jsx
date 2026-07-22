@@ -9,10 +9,25 @@ import MucLam from "./MucLam.jsx";
 import TuSach from "./TuSach.jsx";
 import MuaRoi from "./MuaRoi.jsx";
 import MonkeyParadoxExperience from "./MonkeyParadoxExperience.jsx";
+import TamMaoVignette from "./TamMaoVignette.jsx";
 import { monkeyParadoxPost } from "../../content/monkeyParadox.js";
 
 const postsByStyle = {
   den_dau: [
+    {
+      title: "Tam Mao · Ba Sợi Tóc Giữa Nhân Gian",
+      date: "21/7/2026",
+      type: "Nhân vật",
+      seal: "三毛",
+      sealLarge: true,
+      intro: "Ba sợi tóc, hai bàn chân trần, một trái tim chưa học cách lạnh đi.",
+      vignette: "tam-mao",
+      body: [
+        "Tam Mao (三毛) là cậu bé mồ côi do họa sĩ Trương Lạc Bình sáng tạo: gầy guộc, lang thang giữa Thượng Hải cũ, sống nhờ chút trí khôn và lòng tử tế lớn hơn hoàn cảnh. Em khiến người ta bật cười rồi chợt nghẹn, bởi sau nét vẽ hóm hỉnh là một câu hỏi rất thật: giữa đói rét và thờ ơ, một đứa trẻ phải mạnh mẽ đến bao nhiêu mới giữ được phần người?",
+      ],
+      tags: ["#TamMao", "#NhânVật"],
+      readMore: false,
+    },
     monkeyParadoxPost,
     {
       title: "Hai Mũi Tên",
@@ -1322,6 +1337,19 @@ export default function VietnameseBlogStyleLab() {
                                     >
                                       {post.title}
                                     </h3>
+                                    {post.intro && (
+                                      <p
+                                        className="mt-3 max-w-3xl font-serif text-lg italic leading-8"
+                                        style={{ color: style.text }}
+                                      >
+                                        {post.intro}
+                                      </p>
+                                    )}
+                                    {post.vignette === "tam-mao" && (
+                                      <TamMaoVignette
+                                        theme={style}
+                                      />
+                                    )}
                                     {post.mediaLink && (
                                       <a
                                         className="group mt-4 grid max-w-3xl grid-cols-[minmax(0,1fr)_auto] items-center gap-3 overflow-hidden border p-2.5 transition duration-200 hover:-translate-y-0.5 sm:grid-cols-[88px_minmax(0,1fr)_auto]"
