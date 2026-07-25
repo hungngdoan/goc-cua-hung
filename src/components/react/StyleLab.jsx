@@ -1,6 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import bannerRoses from "../../banner_roses.gif?url";
 import MusicPlayer from "./MusicPlayer.jsx";
 import TaoThao from "./TaoThao.jsx";
 import ThirtySixKe from "./ThirtySixKe.jsx";
@@ -11,6 +10,12 @@ import MuaRoi from "./MuaRoi.jsx";
 import MonkeyParadoxExperience from "./MonkeyParadoxExperience.jsx";
 import TamMaoVignette from "./TamMaoVignette.jsx";
 import { monkeyParadoxPost } from "../../content/monkeyParadox.js";
+
+const assetBase = import.meta.env.BASE_URL.replace(/\/$/, "");
+const bannerVideo = `${assetBase}/banner_roses.mp4`;
+const bannerStill = `${assetBase}/banner_roses-still.webp`;
+const bannerAlt =
+  "Đêm sao: hai đứa trẻ và chú chó ngồi trên bãi cỏ, khóm hồng nở bên phải";
 
 const postsByStyle = {
   den_dau: [
@@ -1014,7 +1019,7 @@ export default function VietnameseBlogStyleLab() {
           0%, 100% { opacity: 0.4; }
           50% { opacity: 0.85; }
         }
-        .banner-img {
+        .banner-media {
           image-rendering: pixelated;
           image-rendering: crisp-edges;
           filter: drop-shadow(0 2px 10px rgba(0,0,0,0.45));
@@ -1142,12 +1147,39 @@ export default function VietnameseBlogStyleLab() {
                 }}
               >
                 <div className="banner-stars" aria-hidden="true" />
-                <img
-                  src={bannerRoses}
-                  alt="Đêm sao: hai đứa trẻ và chú chó ngồi trên bãi cỏ, khóm hồng nở bên phải"
-                  className="banner-img relative z-10 mx-auto block h-auto w-full"
+                {/* Decorative pixel-art banner, formerly a 751 KB animated GIF.
+                    role="img" keeps the same semantics the <img alt> had: this
+                    is a picture that happens to move, not a media player, and it
+                    guarantees the label is exposed as an image name.
+                    The <source media> is load-bearing, not decoration: when the
+                    visitor prefers reduced motion no source matches, so the
+                    browser selects nothing, requests no MP4, and paints the
+                    poster still instead. Supported in Chrome, Safari, Edge and
+                    Firefox 120+; Firefox 53-119 ignores `media` inside <video>
+                    and will animate regardless. Dimensions match the poster and
+                    the original GIF (597x50); the MP4 is 598 wide only because
+                    H.264 requires an even width, and the extra column is black. */}
+                <video
+                  role="img"
+                  aria-label={bannerAlt}
+                  poster={bannerStill}
+                  width="597"
+                  height="50"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  preload="auto"
+                  className="banner-media relative z-10 mx-auto block h-auto w-full"
                   style={{ maxWidth: "620px" }}
-                />
+                >
+                  <source
+                    src={bannerVideo}
+                    type="video/mp4"
+                    media="(prefers-reduced-motion: no-preference)"
+                  />
+                  {bannerAlt}
+                </video>
               </div>
               <header>
                 <div className="flex flex-wrap items-baseline gap-3">
