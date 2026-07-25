@@ -1,13 +1,17 @@
-import { motion, useReducedMotion } from "framer-motion";
+import "./MucLam.css";
 
 /* ================================================================
    "Mực Lam" -- Ca dao tục ngữ (Vietnamese proverbs) for Một Góc Đời.
    Rendered inside the StyleLab frame on the `giaydo` tab. It receives
    the active theme object as `theme` -- the exact same token set that
-   lives in StyleLab's `styles` array -- so every colour, shadow, the
-   header copy, and the divider come straight from the theme. No
+   lives in StyleLab's `styles` array -- and forwards it to the
+   stylesheet as CSS custom properties, so every colour, shadow, the
+   header copy and the divider come straight from the theme. No
    duplicated palette to drift out of sync. The surrounding frame
    already paints the page background.
+
+   Layout is one sheet of ruled paper: see MucLam.css for the vertical
+   rhythm the list depends on.
    ================================================================ */
 
 // `meaning` and `tag` are kept as the source-of-truth content (not
@@ -113,6 +117,20 @@ const PROVERBS = [
     tag: "Ý chí",
   },
   {
+    icon: "🐇",
+    text: "Ôm cây đợi thỏ",
+    meaning:
+      "Một lần thỏ tự đâm vào gốc cây mà được, kẻ kia bỏ cả ruộng đồng ngồi ôm gốc chờ mãi. May mắn tình cờ không bao giờ là kế sinh nhai.",
+    tag: "Cầu may",
+  },
+  {
+    icon: "🍐",
+    text: "Há miệng chờ sung",
+    meaning:
+      "Nằm dưới gốc sung, há miệng chờ quả rụng trúng. Không chịu ra tay mà chỉ trông vào trời cho thì có ngày đói.",
+    tag: "Ỷ lại",
+  },
+  {
     icon: "🏞️",
     text: "Đồng Đăng có phố Kỳ Lừa,\nCó nàng Tô Thị, có chùa Tam Thanh.",
     meaning:
@@ -142,165 +160,99 @@ const PROVERBS = [
   },
 ];
 
-// Above this many characters a saying is too long for a half-width chip and
-// is promoted to a full-width pull-quote instead. Sits well above every ca
-// dao tục ngữ here (longest ~58), so only genuinely long quotes break out.
-const LONG_QUOTE_CHARS = 70;
+/* -- entrance timing --------------------------------------------
+   The list inks in one line after another. The cap keeps the tail of
+   a growing list from waiting: at 28ms a step the stagger stops
+   growing after the 20th saying instead of trailing off.
+   ---------------------------------------------------------------- */
+const HEAD_DELAY_MS = 60;
+const STEP_MS = 28;
+const STEP_CAP_MS = 560;
+
+const entryDelay = (i) => HEAD_DELAY_MS + Math.min(i * STEP_MS, STEP_CAP_MS);
+const FOOT_DELAY_MS = entryDelay(PROVERBS.length - 1) + 90;
 
 /* -- atoms ------------------------------------------------------ */
 
-const Fade = ({ children, d = 0, className = "" }) => {
-  // Respect prefers-reduced-motion: opt-out users skip the slide/fade-in
-  // entrance entirely; the default experience is unchanged.
-  const reduce = useReducedMotion();
-  return (
-    <motion.div
-      initial={reduce ? false : { opacity: 0, y: 14 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: d, ease: "easeOut" }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  );
-};
-
 // Faithful copy of StyleLab's own <Divider>: same gap-2 + opacity-80,
 // driven by the theme's dividerSymbol / dividerTracking / accent.
-const Divider = ({ theme }) => (
-  <div className="my-1.5 flex items-center gap-2 opacity-80">
-    <div className="h-px flex-1" style={{ background: theme.accent }} />
-    <div className="text-xs" style={{ color: theme.accent, letterSpacing: theme.dividerTracking }}>
-      {theme.dividerSymbol}
-    </div>
-    <div className="h-px flex-1" style={{ background: theme.accent }} />
+const Divider = ({ symbol }) => (
+  <div className="ml-divider" aria-hidden="true">
+    <span className="ml-divider-line" />
+    <span className="ml-divider-mark">{symbol}</span>
+    <span className="ml-divider-line" />
   </div>
 );
 
 /* -- main ------------------------------------------------------- */
 
 export default function MucLam({ theme }) {
+  // The theme object is the single source of truth; the stylesheet
+  // reads it through these. `contentBorder` gives the ruled lines and
+  // `sealBorder` the dấu son margin rule, both already part of the
+  // palette, so nothing new is invented here.
+  const tokens = {
+    "--ml-text": theme.text,
+    "--ml-soft": theme.textSoft,
+    "--ml-muted": theme.textMuted,
+    "--ml-accent": theme.accent,
+    "--ml-accent-soft": theme.accentSoft,
+    "--ml-paper": theme.panelBg,
+    "--ml-border": theme.panelBorder,
+    "--ml-shadow": theme.previewShadow,
+    "--ml-rule": theme.contentBorder,
+    "--ml-seal": theme.sealBorder,
+    "--ml-divider-tracking": theme.dividerTracking,
+  };
+
   return (
     <div
       className="muc-lam relative mx-auto w-full max-w-[860px] xl:max-w-[1200px]"
-      style={{ color: theme.text }}
+      style={tokens}
     >
-      <style dangerouslySetInnerHTML={{ __html: `
-        .muc-lam ::selection { background: ${theme.accentSoft}; color: ${theme.text}; }
-        .ml-card {
-          transition: transform 200ms ease, box-shadow 220ms ease, border-color 200ms ease;
-        }
-        .ml-card:hover {
-          transform: translateY(-2px);
-          border-left-color: ${theme.accent};
-          box-shadow: 0 0 0 1px ${theme.accent}, ${theme.panelShadow};
-        }
-        @media (prefers-reduced-motion: reduce) {
-          .ml-card { transition: none; }
-          .ml-card:hover { transform: none; }
-        }
-      ` }} />
+      <div className="ml-sheet">
+        {/* ── header: the original "Mực Lam" preview tile, now the head
+             of the sheet rather than a detached panel ── */}
+        <header className="ml-head ml-fade">
+          <h2 className="ml-title font-serif">{theme.name}</h2>
+          <p className="ml-subtitle font-serif">{theme.subtitle}</p>
+          <Divider symbol={theme.dividerSymbol} />
+          <p className="ml-motif">{theme.motif}</p>
+        </header>
 
-      {/* ── header: the original "Mực Lam" preview tile, theme-driven ── */}
-      <Fade d={0}>
-        <div
-          className="border p-2.5 sm:p-3"
-          style={{
-            background: theme.panelBg,
-            borderColor: theme.panelBorder,
-            boxShadow: theme.previewShadow,
-          }}
-        >
-          <h2
-            className="text-center font-serif text-3xl font-black leading-tight sm:text-4xl"
-            style={{ color: theme.accent }}
-          >
-            {theme.name}
-          </h2>
-          <p
-            className="mx-auto mt-1 max-w-3xl text-center font-serif text-base leading-6"
-            style={{ color: theme.textSoft }}
-          >
-            {theme.subtitle}
-          </p>
-          <Divider theme={theme} />
-          <div
-            className="text-center text-[11px] uppercase leading-4 tracking-[0.24em]"
-            style={{ color: theme.textMuted }}
-          >
-            {theme.motif}
-          </div>
-        </div>
-      </Fade>
-
-      {/* ── proverbs ── a length-aware grid of inked "ghi chú" notes. Short
-           sayings pack two-up as compact chips; a long quote spans the whole
-           row as a pull-quote so it is never crushed into a tall, narrow
-           sliver. `grid-flow-row-dense` backfills the gap a full-width card
-           would otherwise leave, keeping the block tight. Equal-height rows
-           come for free from the grid, so neighbouring chips line up. ── */}
-      <ul className="mt-5 grid grid-flow-row-dense grid-cols-1 gap-[0.9rem] sm:grid-cols-2 xl:grid-cols-3 xl:gap-x-5">
-        {PROVERBS.map((p, i) => {
-          const long = p.text.length > LONG_QUOTE_CHARS;
-          return (
-            <li key={p.text} className={long ? "col-span-full" : ""}>
-              <Fade d={0.06 + i * 0.03} className="h-full">
-                <div
-                  className={`ml-card relative h-full overflow-hidden border ${long ? "px-4 py-3" : "px-3 py-2"}`}
-                  style={{
-                    background: theme.panelBg,
-                    borderColor: theme.panelBorder,
-                    borderLeft: `3px solid ${theme.accent}`,
-                    boxShadow: theme.statShadow,
-                  }}
-                >
-                  {/* faint pull-quote watermark, only on the long ones */}
-                  {long && (
-                    <span
-                      aria-hidden="true"
-                      className="pointer-events-none absolute -right-1 -top-4 font-serif text-7xl leading-none"
-                      style={{ color: theme.accentSoft, zIndex: 0 }}
-                    >
-                      ”
-                    </span>
-                  )}
-                  <div
-                    className={`relative z-[1] flex h-full ${long ? "items-start gap-3" : "items-center gap-2.5"}`}
-                  >
-                    <span
-                      className={`shrink-0 leading-none ${long ? "text-lg sm:text-xl" : "text-base sm:text-lg"}`}
-                      aria-hidden="true"
-                    >
-                      {p.icon}
-                    </span>
-                    <p
-                      className={`min-w-0 whitespace-pre-line font-serif text-[15px] sm:text-base ${long ? "font-semibold leading-relaxed" : "font-bold leading-snug"}`}
-                      style={{ color: theme.accent }}
-                    >
-                      {p.text}
-                    </p>
-                  </div>
-                </div>
-              </Fade>
+        {/* ── the sayings ── one per ruled line. A saying that ends
+             early leaves the rest of its rule empty, which is what
+             writing on ruled paper looks like; a long one simply runs
+             on to the next rule. Both cases need no special casing,
+             so the four ca dao couplets take two rules each for free.
+             The icons sit in the margin, left of the dấu son rule,
+             and line up into a column down the page. ── */}
+        <ul className="ml-list">
+          {PROVERBS.map((p, i) => (
+            <li
+              key={p.text}
+              className="ml-entry font-serif"
+              style={{ "--ml-delay": `${entryDelay(i)}ms` }}
+            >
+              <span className="ml-icon" aria-hidden="true">
+                {p.icon}
+              </span>
+              {p.text}
             </li>
-          );
-        })}
-      </ul>
+          ))}
+        </ul>
 
-      {/* ── closing ── same Divider as the header, kept consistent ── */}
-      <Fade d={0.16 + PROVERBS.length * 0.04}>
-        <div className="mt-6">
-          <Divider theme={theme} />
-        </div>
-      </Fade>
-      <Fade d={0.2 + PROVERBS.length * 0.04}>
-        <p
-          className="mt-3 pb-2 text-center font-serif text-base italic leading-7"
-          style={{ color: theme.textMuted }}
+        {/* ── closing ── same Divider as the header, kept consistent ── */}
+        <footer
+          className="ml-foot ml-fade"
+          style={{ "--ml-delay": `${FOOT_DELAY_MS}ms` }}
         >
-          Người xưa nói ngắn, mà ngẫm thì dài.
-        </p>
-      </Fade>
+          <Divider symbol={theme.dividerSymbol} />
+          <p className="ml-closer font-serif">
+            Người xưa nói ngắn, mà ngẫm thì dài.
+          </p>
+        </footer>
+      </div>
     </div>
   );
 }

@@ -1,0 +1,274 @@
+/* ================================================================
+   "Mực Lam" -- ruled-paper layout for the ca dao tục ngữ list.
+
+   The theme already describes this page as ruled notebook paper:
+   `styles[0].pattern` in StyleLab.jsx paints horizontal rules every
+   30px behind a seal-red margin line. This sheet writes each saying
+   on one of those rules instead of boxing it in a card, so a short
+   saying that ends early reads as ordinary writing rather than as an
+   unfilled container.
+
+   Every colour arrives as a custom property set by MucLam.jsx from
+   the active theme object. No palette is duplicated here, and the
+   font stack stays with Tailwind's `font-serif` in the markup. The
+   tokens this file consumes (accent, panelBg, panelBorder,
+   previewShadow, contentBorder, sealBorder, dividerTracking, the
+   three text shades) are present on all 12 themes, so the component
+   is not tied to `giaydo` beyond being mounted there.
+
+   This is a plain global stylesheet, so every rule is scoped under
+   .muc-lam. The `ml-` prefix predates this layout and is kept for
+   continuity -- note it means "Mực Lam" here, not Tailwind's
+   margin-left, which is another reason the scope matters.
+
+   VERTICAL RHYTHM -- the one rule to respect when editing:
+   every text line in the list is exactly --ml-lh tall, and each entry
+   occupies a whole number of those lines, so the ruled gradient stays
+   locked to the text no matter how a saying wraps. Do not give
+   .ml-entry vertical padding, margin or borders; that is precisely
+   what would knock the writing off its lines. Horizontal padding is
+   free -- the background origin is the padding box, so the margin
+   rule keeps its position regardless.
+   ================================================================ */
+
+.muc-lam {
+  /* Rhythm. --ml-rule-y places the rule just under the baseline of
+     --ml-fs text inside an --ml-lh line box, the way a ruled page sits
+     under handwriting. Because the line box is a fixed pixel height,
+     alignment survives a font fallback: only the text shifts, the
+     rules do not drift. */
+  --ml-lh: 44px;
+  --ml-rule-y: 30px;
+  --ml-gutter: 66px;
+  --ml-indent: 1.125rem;
+  --ml-fs: 19px;
+
+  color: var(--ml-text);
+}
+
+@media (max-width: 639px) {
+  .muc-lam {
+    --ml-lh: 38px;
+    --ml-rule-y: 26px;
+    --ml-gutter: 44px;
+    --ml-indent: 0.875rem;
+    --ml-fs: 16.5px;
+  }
+}
+
+.muc-lam ::selection {
+  background: var(--ml-accent-soft);
+  color: var(--ml-text);
+}
+
+/* ---- the sheet ------------------------------------------------- */
+
+.muc-lam .ml-sheet {
+  border: 1px solid var(--ml-border);
+  background: var(--ml-paper);
+  box-shadow: var(--ml-shadow);
+}
+
+/* ---- header ---------------------------------------------------- */
+
+.muc-lam .ml-head {
+  padding: 0.625rem 0.75rem;
+  border-bottom: 1px solid var(--ml-rule);
+}
+
+.muc-lam .ml-title {
+  margin: 0;
+  text-align: center;
+  font-size: 1.875rem;
+  font-weight: 900;
+  line-height: 1.25;
+  color: var(--ml-accent);
+}
+
+.muc-lam .ml-subtitle {
+  margin: 0.25rem auto 0;
+  max-width: 48rem;
+  text-align: center;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  color: var(--ml-soft);
+}
+
+.muc-lam .ml-motif {
+  margin: 0;
+  text-align: center;
+  font-size: 11px;
+  line-height: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.24em;
+  color: var(--ml-muted);
+}
+
+@media (min-width: 640px) {
+  .muc-lam .ml-head {
+    padding: 0.75rem 1rem;
+  }
+
+  .muc-lam .ml-title {
+    font-size: 2.25rem;
+  }
+}
+
+/* ---- divider, shared by header and footer ---------------------- */
+
+.muc-lam .ml-divider {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0.375rem 0;
+  opacity: 0.8;
+}
+
+.muc-lam .ml-divider-line {
+  flex: 1;
+  height: 1px;
+  background: var(--ml-accent);
+}
+
+.muc-lam .ml-divider-mark {
+  font-size: 0.75rem;
+  color: var(--ml-accent);
+  letter-spacing: var(--ml-divider-tracking);
+}
+
+/* ---- the ruled list -------------------------------------------- */
+
+.muc-lam .ml-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.muc-lam .ml-entry {
+  position: relative;
+  margin: 0;
+  padding: 0 1.25rem 0 calc(var(--ml-gutter) + var(--ml-indent));
+  font-size: var(--ml-fs);
+  /* Lora ships 400 and 700 to this site (see the Google Fonts link in
+     Base.astro); 600 would be synthesised, so the ink is set at 700. */
+  font-weight: 700;
+  line-height: var(--ml-lh);
+  color: var(--ml-accent);
+  white-space: pre-line;
+  transition: background-color 160ms ease;
+
+  /* Both rules live on the entry rather than on the list so that the
+     hover tint below can sit *under* them: background-color paints
+     beneath background-image, so a highlighted row keeps its lines.
+     Each entry is a whole number of line boxes, so the repeating rule
+     stays continuous from one entry to the next. */
+  background-color: transparent;
+  background-image:
+    linear-gradient(
+      90deg,
+      transparent 0 var(--ml-gutter),
+      var(--ml-seal) var(--ml-gutter) calc(var(--ml-gutter) + 2px),
+      transparent calc(var(--ml-gutter) + 2px)
+    ),
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0 var(--ml-rule-y),
+      var(--ml-rule) var(--ml-rule-y) calc(var(--ml-rule-y) + 1px),
+      transparent calc(var(--ml-rule-y) + 1px) var(--ml-lh)
+    );
+}
+
+.muc-lam .ml-icon {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: var(--ml-gutter);
+  height: var(--ml-lh);
+  /* Out of flow and pinned to one line box, so an emoji's taller
+     metrics can never stretch the row and break the rhythm. */
+  line-height: var(--ml-lh);
+  text-align: center;
+  font-size: calc(var(--ml-fs) * 0.95);
+  opacity: 0.9;
+  transition: opacity 160ms ease, transform 160ms ease;
+}
+
+/* Hover only where hovering is real: on touch the state sticks after
+   a tap and leaves a row highlighted for no reason. */
+@media (hover: hover) {
+  .muc-lam .ml-entry:hover {
+    background-color: var(--ml-accent-soft);
+  }
+
+  .muc-lam .ml-entry:hover .ml-icon {
+    opacity: 1;
+    transform: translateX(2px);
+  }
+}
+
+/* ---- footer ---------------------------------------------------- */
+
+.muc-lam .ml-foot {
+  padding: 0.25rem 0.75rem 0.75rem;
+  border-top: 1px solid var(--ml-rule);
+}
+
+@media (min-width: 640px) {
+  .muc-lam .ml-foot {
+    padding: 0.25rem 1rem 0.875rem;
+  }
+}
+
+.muc-lam .ml-closer {
+  margin: 0.25rem 0 0;
+  text-align: center;
+  font-size: 1rem;
+  font-style: italic;
+  line-height: 1.75rem;
+  color: var(--ml-muted);
+}
+
+/* ---- entrance --------------------------------------------------
+   A CSS animation rather than the framer-motion <Fade> this component
+   used to wrap every item in, for two layout reasons. A motion
+   wrapper puts an extra block box around each saying, and any box
+   between .ml-list and .ml-entry is one more chance for a stray
+   margin to push the writing off its rules; animating the <li>
+   itself keeps the list flat. And the movement runs along the line
+   rather than across it -- translateX, never translateY -- so no
+   saying is ever floating off its rule mid-animation, which is what
+   the old y: 14 slide would have done here.
+   ---------------------------------------------------------------- */
+
+@keyframes ml-ink-in {
+  from {
+    opacity: 0;
+    transform: translateX(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.muc-lam .ml-entry,
+.muc-lam .ml-fade {
+  animation: ml-ink-in 460ms ease-out both;
+  animation-delay: var(--ml-delay, 0ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .muc-lam .ml-entry,
+  .muc-lam .ml-fade {
+    animation: none;
+  }
+
+  .muc-lam .ml-entry,
+  .muc-lam .ml-icon {
+    transition: none;
+  }
+
+  .muc-lam .ml-entry:hover .ml-icon {
+    transform: none;
+  }
+}
