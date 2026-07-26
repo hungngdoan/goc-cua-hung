@@ -194,7 +194,13 @@ function OrderedColumns({ contentFirst, content, sidebar }) {
 
 export default function VietnameseBlogStyleLab() {
   const [sectionId, setSectionId] = useState(DEFAULT_SECTION_ID);
-  const section = sectionRegistry.find((item) => item.id === sectionId);
+  // Falling back to the first section keeps an unknown id from white-screening
+  // the page on `section.id` below. Nothing can reach that today (every setter
+  // is fed either the default or an id that came out of the registry), but the
+  // pre-registry code guarded it and a new setter site is the obvious way for
+  // that to change.
+  const section =
+    sectionRegistry.find((item) => item.id === sectionId) || sectionRegistry[0];
   const style = themes[section.id];
 
   // The active tab lives in the URL hash so a refresh or a shared link
