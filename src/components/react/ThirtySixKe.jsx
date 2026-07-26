@@ -1,6 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import thirtySixKeHtml from "../../content/36ke.html?raw";
-import thirtySixKeCss from "../../content/36ke.css?raw";
 
 // ┌──────────────────────────────────────────────────────────────────────────┐
 // │ READ THIS BEFORE ADDING A CHINESE CHARACTER TO src/content/36ke.html.     │
@@ -180,7 +179,7 @@ const migrationGuards = `
 `;
 
 function parseThirtySixKe() {
-  const styles = `${fontsImport}\n${thirtySixKeCss}\n${migrationGuards}`;
+  const styles = `${fontsImport}\n${migrationGuards}`;
   const assetBase = import.meta.env.BASE_URL || "/";
   const dragonSrc = `${assetBase.replace(/\/$/, "")}/img/chineseDragon1.jpg`;
   const html = thirtySixKeHtml

@@ -150,10 +150,6 @@ export default function VeTui() {
         fontFamily: "'Lora', Georgia, 'Times New Roman', serif",
       }}
     >
-      <style dangerouslySetInnerHTML={{ __html: `
-        .vetui ::selection { background: rgba(198,161,91,0.25); color: #EED9A6; }
-      ` }} />
-
       {/* ambient gold glow + faint grid -- the "shiny" backdrop from v2 */}
       <div
         className="pointer-events-none absolute inset-0 z-0 opacity-[0.16]"

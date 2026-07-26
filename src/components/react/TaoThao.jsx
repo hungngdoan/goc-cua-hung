@@ -1,5 +1,4 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
-import taothaoStyles from "../../styles/taothao.css?raw";
 import taothaoCards from "../../content/taothaoCards.json";
 
 // Gem colours cycle with the card index, one entry per card position.
@@ -222,8 +221,6 @@ export default function TaoThao() {
 
   return (
     <section className="taothao-page">
-      <style dangerouslySetInnerHTML={{ __html: taothaoStyles }} />
-
       <div className="tt-wrapper">
         <div className="tt-atmosphere" aria-hidden="true">
           <div className="tt-bg-gradient" />

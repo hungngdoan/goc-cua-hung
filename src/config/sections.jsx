@@ -1,13 +1,73 @@
 import { lazy } from "react";
 
+// Astro propagates normal CSS imports from every module reachable by a
+// hydrated island into the page head, including modules behind React.lazy.
+// Import the three new lazy styles as emitted asset URLs instead, then hold
+// each component promise until its stylesheet link has loaded. This keeps the
+// CSS off the default route and prevents an unstyled frame when a tab opens.
+import taoThaoStylesheet from "../styles/taothao.css?url&no-inline";
+import thirtySixKeStylesheet from "../content/36ke.css?url&no-inline";
+import veTuiStylesheet from "../components/react/VeTui.css?url&no-inline";
+
+const stylesheetLoads = new Map();
+
+function loadStylesheet(href) {
+  if (typeof document === "undefined") return Promise.resolve();
+
+  const absoluteHref = new URL(href, document.baseURI).href;
+  const pending = stylesheetLoads.get(absoluteHref);
+  if (pending) return pending;
+
+  const existing = [...document.querySelectorAll('link[rel="stylesheet"]')]
+    .find((link) => link.href === absoluteHref);
+  if (existing?.sheet) return Promise.resolve();
+
+  const link = existing || document.createElement("link");
+  link.rel = "stylesheet";
+  link.href = absoluteHref;
+
+  const loaded = new Promise((resolve, reject) => {
+    link.addEventListener("load", resolve, { once: true });
+    link.addEventListener(
+      "error",
+      () => reject(new Error(`Unable to load stylesheet: ${absoluteHref}`)),
+      { once: true },
+    );
+  });
+
+  stylesheetLoads.set(absoluteHref, loaded);
+  if (!existing) document.head.appendChild(link);
+  return loaded;
+}
+
+const withStylesheet = (loadComponent, stylesheet) => {
+  let pending;
+  return () => {
+    pending ??= Promise.all([
+      loadStylesheet(stylesheet),
+      loadComponent(),
+    ]).then(([, component]) => component);
+    return pending;
+  };
+};
+
 // Each loader is named so the registry can expose it as `preload` as well as
 // hand it to lazy(). Warming a chunk when the reader shows intent (pointer or
 // keyboard focus on the tab) usually means it has already arrived by the time
 // they click, which is what keeps the tab feeling instant. Repeat calls are
 // free: a dynamic import resolves from the module cache after the first.
-const loadTaoThao = () => import("../components/react/TaoThao.jsx");
-const loadThirtySixKe = () => import("../components/react/ThirtySixKe.jsx");
-const loadVeTui = () => import("../components/react/VeTui.jsx");
+const loadTaoThao = withStylesheet(
+  () => import("../components/react/TaoThao.jsx"),
+  taoThaoStylesheet,
+);
+const loadThirtySixKe = withStylesheet(
+  () => import("../components/react/ThirtySixKe.jsx"),
+  thirtySixKeStylesheet,
+);
+const loadVeTui = withStylesheet(
+  () => import("../components/react/VeTui.jsx"),
+  veTuiStylesheet,
+);
 const loadMucLam = () => import("../components/react/MucLam.jsx");
 const loadTuSach = () => import("../components/react/TuSach.jsx");
 const loadMuaRoi = () => import("../components/react/MuaRoi.jsx");
