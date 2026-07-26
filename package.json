@@ -8,7 +8,8 @@
     "dev": "astro dev --host localhost --port 4321",
     "build": "astro build",
     "preview": "astro preview",
-    "check:sections": "astro build && node scripts/check-section-registry.mjs --output .section-check/result.json --screenshots .section-check/screenshots"
+    "check:fonts": "node scripts/check-36ke-font-subset.mjs",
+    "check:sections": "node scripts/check-36ke-font-subset.mjs && astro build && node scripts/check-section-registry.mjs --output .section-check/result.json --screenshots .section-check/screenshots"
   },
   "dependencies": {
     "astro": "^5.7.0",
