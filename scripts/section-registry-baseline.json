@@ -1,0 +1,423 @@
+{
+  "defaultId": "den_dau",
+  "navRows": [
+    [
+      {
+        "label": "Đêm Huyền",
+        "icon": "🌙"
+      },
+      {
+        "label": "Về tui",
+        "icon": "🕯"
+      },
+      {
+        "label": "36 Kế",
+        "icon": "📜"
+      },
+      {
+        "label": "Tào Tháo",
+        "icon": "🏮"
+      },
+      {
+        "label": "Nhạc Khuya",
+        "icon": "🎶"
+      },
+      {
+        "label": "Trò chơi điện tử",
+        "icon": "🎮"
+      }
+    ],
+    [
+      {
+        "label": "Góc Hồng",
+        "icon": "🌸"
+      },
+      {
+        "label": "Mực Lam",
+        "icon": "✒️"
+      },
+      {
+        "label": "Tủ sách",
+        "icon": "📚"
+      },
+      {
+        "label": "Trà Sáng",
+        "icon": "🍵"
+      },
+      {
+        "label": "Lụa Sen",
+        "icon": "🪷"
+      },
+      {
+        "label": "Cơn Mưa",
+        "icon": "💧"
+      }
+    ]
+  ],
+  "sections": [
+    {
+      "id": "den_dau",
+      "name": "Đêm Huyền",
+      "row": "dark",
+      "icon": "🌙",
+      "body": {
+        "kind": "generic",
+        "selector": "h3",
+        "text": "Tam Mao · Ba Sợi Tóc Giữa Nhân Gian"
+      },
+      "resolutions": {
+        "slug": [
+          {
+            "hash": "dem-huyen",
+            "resolved": true
+          }
+        ],
+        "rawId": [
+          {
+            "hash": "den_dau",
+            "resolved": true
+          }
+        ],
+        "aliases": []
+      },
+      "screenshot": {
+        "bytes": 1757255,
+        "sha256": "26d7efb803ab3c8519ab5489b12c27d7a7421947d8ba193e740b5a668f630f67"
+      }
+    },
+    {
+      "id": "hong_tram",
+      "name": "Về tui",
+      "row": "dark",
+      "icon": "🕯",
+      "body": {
+        "kind": "bespoke",
+        "selector": ".vetui"
+      },
+      "resolutions": {
+        "slug": [
+          {
+            "hash": "ve-tui",
+            "resolved": true
+          }
+        ],
+        "rawId": [
+          {
+            "hash": "hong_tram",
+            "resolved": true
+          }
+        ],
+        "aliases": []
+      },
+      "screenshot": {
+        "bytes": 1247402,
+        "sha256": "f9b15d55a1163400bd04ec55e5386e1fcef5c16ec5bd2f01e520a70e0f2dd487"
+      }
+    },
+    {
+      "id": "muc_than",
+      "name": "36 Kế",
+      "row": "dark",
+      "icon": "📜",
+      "body": {
+        "kind": "bespoke",
+        "selector": ".thirty-six-ke-page"
+      },
+      "resolutions": {
+        "slug": [
+          {
+            "hash": "36-ke",
+            "resolved": true
+          }
+        ],
+        "rawId": [
+          {
+            "hash": "muc_than",
+            "resolved": true
+          }
+        ],
+        "aliases": []
+      },
+      "screenshot": {
+        "bytes": 2342537,
+        "sha256": "31b4b4b1aa626a6e366f9ea1e6f9c24c9b53d60ab88e18e922a74ef0b9c9091e"
+      }
+    },
+    {
+      "id": "hoian",
+      "name": "Tào Tháo",
+      "row": "dark",
+      "icon": "🏮",
+      "body": {
+        "kind": "bespoke",
+        "selector": ".taothao-page"
+      },
+      "resolutions": {
+        "slug": [
+          {
+            "hash": "tao-thao",
+            "resolved": true
+          }
+        ],
+        "rawId": [
+          {
+            "hash": "hoian",
+            "resolved": true
+          }
+        ],
+        "aliases": [
+          {
+            "hash": "hoi-an",
+            "resolved": true
+          }
+        ]
+      },
+      "screenshot": {
+        "bytes": 824954,
+        "sha256": "86a8f8fc9c648c432020f204d5c92d1f0d26f3b21a6533299cdfeabb41ca3174"
+      }
+    },
+    {
+      "id": "sap_bao_dem",
+      "name": "Nhạc Khuya",
+      "row": "dark",
+      "icon": "🎶",
+      "body": {
+        "kind": "generic",
+        "selector": "h3",
+        "text": "8 Vạn 6 Ngàn Thương"
+      },
+      "resolutions": {
+        "slug": [
+          {
+            "hash": "nhac-khuya",
+            "resolved": true
+          }
+        ],
+        "rawId": [
+          {
+            "hash": "sap_bao_dem",
+            "resolved": true
+          }
+        ],
+        "aliases": []
+      },
+      "screenshot": {
+        "bytes": 1093194,
+        "sha256": "3ca91961591a32f220ee9f83a7361f11f53bb995395de7a043d771e5fd3de1a2"
+      }
+    },
+    {
+      "id": "quan_coc_toi",
+      "name": "Trò chơi điện tử",
+      "row": "dark",
+      "icon": "🎮",
+      "body": {
+        "kind": "generic",
+        "selector": "h3",
+        "text": "Liên Minh Huyền Thoại"
+      },
+      "resolutions": {
+        "slug": [
+          {
+            "hash": "tro-choi-dien-tu",
+            "resolved": true
+          }
+        ],
+        "rawId": [
+          {
+            "hash": "quan_coc_toi",
+            "resolved": true
+          }
+        ],
+        "aliases": []
+      },
+      "screenshot": {
+        "bytes": 863626,
+        "sha256": "40146cdb58fdc6328706d24d35351eeb46f06eb32d7160ca1d1dd6f6d8b2f840"
+      }
+    },
+    {
+      "id": "hoa_dao",
+      "name": "Góc Hồng",
+      "row": "bright",
+      "icon": "🌸",
+      "body": {
+        "kind": "generic",
+        "selector": "h3",
+        "text": "Đối lập với yêu thương là sự thờ ơ"
+      },
+      "resolutions": {
+        "slug": [
+          {
+            "hash": "goc-hong",
+            "resolved": true
+          }
+        ],
+        "rawId": [
+          {
+            "hash": "hoa_dao",
+            "resolved": true
+          }
+        ],
+        "aliases": []
+      },
+      "screenshot": {
+        "bytes": 419541,
+        "sha256": "ede0c1c71705d7a45c194ea94f11453d2a6cb60ea0ed94ff75e48c3fdf13c9f6"
+      }
+    },
+    {
+      "id": "giaydo",
+      "name": "Mực Lam",
+      "row": "bright",
+      "icon": "✒️",
+      "body": {
+        "kind": "bespoke",
+        "selector": ".muc-lam"
+      },
+      "resolutions": {
+        "slug": [
+          {
+            "hash": "muc-lam",
+            "resolved": true
+          }
+        ],
+        "rawId": [
+          {
+            "hash": "giaydo",
+            "resolved": true
+          }
+        ],
+        "aliases": [
+          {
+            "hash": "giay-do",
+            "resolved": true
+          }
+        ]
+      },
+      "screenshot": {
+        "bytes": 474013,
+        "sha256": "8266214cb8461d3b4a6a23de4ecc2f84e64a1cab8fbfd363064bc2f668f6371e"
+      }
+    },
+    {
+      "id": "dongho",
+      "name": "Tủ sách",
+      "row": "bright",
+      "icon": "📚",
+      "body": {
+        "kind": "bespoke",
+        "selector": ".tu-sach"
+      },
+      "resolutions": {
+        "slug": [
+          {
+            "hash": "tu-sach",
+            "resolved": true
+          }
+        ],
+        "rawId": [
+          {
+            "hash": "dongho",
+            "resolved": true
+          }
+        ],
+        "aliases": []
+      },
+      "screenshot": {
+        "bytes": 473183,
+        "sha256": "96af13186a8d83a92430215bab0a11c75731e24987112ea2492aa9736bbcd54c"
+      }
+    },
+    {
+      "id": "sapbao_sang",
+      "name": "Trà Sáng",
+      "row": "bright",
+      "icon": "🍵",
+      "body": {
+        "kind": "generic",
+        "selector": "h2",
+        "text": "Trà Sáng"
+      },
+      "resolutions": {
+        "slug": [
+          {
+            "hash": "tra-sang",
+            "resolved": true
+          }
+        ],
+        "rawId": [
+          {
+            "hash": "sapbao_sang",
+            "resolved": true
+          }
+        ],
+        "aliases": []
+      },
+      "screenshot": {
+        "bytes": 596498,
+        "sha256": "214dff3c311582aadb6005f5e553dac522e34670f670370053ceb2c0c9edd622"
+      }
+    },
+    {
+      "id": "quancoc_sang",
+      "name": "Lụa Sen",
+      "row": "bright",
+      "icon": "🪷",
+      "body": {
+        "kind": "generic",
+        "selector": "h2",
+        "text": "Lụa Sen"
+      },
+      "resolutions": {
+        "slug": [
+          {
+            "hash": "lua-sen",
+            "resolved": true
+          }
+        ],
+        "rawId": [
+          {
+            "hash": "quancoc_sang",
+            "resolved": true
+          }
+        ],
+        "aliases": []
+      },
+      "screenshot": {
+        "bytes": 675381,
+        "sha256": "dcade29fb237c3351b5b426f72375dcaa734823a5c3f152b3a03f1aabc2cb6bb"
+      }
+    },
+    {
+      "id": "suong_mai",
+      "name": "Cơn Mưa",
+      "row": "bright",
+      "icon": "💧",
+      "body": {
+        "kind": "bespoke",
+        "selector": ".mua-roi"
+      },
+      "resolutions": {
+        "slug": [
+          {
+            "hash": "con-mua",
+            "resolved": true
+          }
+        ],
+        "rawId": [
+          {
+            "hash": "suong_mai",
+            "resolved": true
+          }
+        ],
+        "aliases": []
+      },
+      "screenshot": {
+        "bytes": 555259,
+        "sha256": "88ed596b8397a8a7c3f5039b1387645288a1930ec27bd98ed90db2d453155a65"
+      }
+    }
+  ]
+}

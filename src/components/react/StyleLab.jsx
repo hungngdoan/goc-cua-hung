@@ -1,16 +1,27 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, {
+  Suspense,
+  useEffect,
+  useState,
+  useTransition,
+} from "react";
 import { motion } from "framer-motion";
-import bannerRoses from "../../banner_roses.gif?url";
 import MusicPlayer from "./MusicPlayer.jsx";
-import TaoThao from "./TaoThao.jsx";
-import ThirtySixKe from "./ThirtySixKe.jsx";
-import VeTui from "./VeTui.jsx";
-import MucLam from "./MucLam.jsx";
-import TuSach from "./TuSach.jsx";
-import MuaRoi from "./MuaRoi.jsx";
 import MonkeyParadoxExperience from "./MonkeyParadoxExperience.jsx";
 import TamMaoVignette from "./TamMaoVignette.jsx";
 import { monkeyParadoxPost } from "../../content/monkeyParadox.js";
+import { themes } from "../../config/themes.js";
+import {
+  DEFAULT_SECTION_ID,
+  hashToSectionId,
+  sectionRegistry,
+  sectionRows,
+} from "../../config/sections.jsx";
+
+const assetBase = import.meta.env.BASE_URL.replace(/\/$/, "");
+const bannerVideo = `${assetBase}/banner_roses.mp4`;
+const bannerStill = `${assetBase}/banner_roses-still.webp`;
+const bannerAlt =
+  "Đêm sao: hai đứa trẻ và chú chó ngồi trên bãi cỏ, khóm hồng nở bên phải";
 
 const postsByStyle = {
   den_dau: [
@@ -114,692 +125,6 @@ const postsByStyle = {
   ],
 };
 
-const styles = [
-  {
-    id: "giaydo",
-    name: "Mực Lam",
-    subtitle: "Nền giấy sáng, mực xanh lam, một dấu son nhỏ giữ nhịp.",
-    pageBg: "#eaf2ed",
-    text: "#132c35",
-    textSoft: "rgba(19,44,53,0.74)",
-    textMuted: "rgba(19,44,53,0.58)",
-    accent: "#1d5b73",
-    accentSoft: "rgba(29,91,115,0.135)",
-    borderOuter: "rgba(19,44,53,0.30)",
-    borderInner: "rgba(19,44,53,0.18)",
-    borderSection: "rgba(19,44,53,0.22)",
-    contentBorder: "rgba(19,44,53,0.14)",
-    questColor: "#132c35",
-    questMuted: "#5f7880",
-    frameBg: "rgba(29,91,115,0.035)",
-    frameShadow: "none",
-    panelBg: "rgba(253,250,239,0.94)",
-    panelBorder: "rgba(29,91,115,0.28)",
-    panelShadow: "6px 6px 0 rgba(29,91,115,.10)",
-    panelSoftBg: "rgba(255,255,247,0.74)",
-    panelSoftBorder: "rgba(29,91,115,0.18)",
-    panelSoftShadow: "6px 6px 0 rgba(29,91,115,.08)",
-    previewShadow: "7px 7px 0 rgba(29,91,115,.12)",
-    footerShadow: "5px 5px 0 rgba(29,91,115,.10)",
-    navBg: "rgba(29,91,115,0.05)",
-    navBorder: "rgba(29,91,115,0.20)",
-    chooserBg: "rgba(255,255,255,0.22)",
-    chooserBorder: "rgba(29,91,115,0.22)",
-    chooserShadow: "4px 4px 0 rgba(29,91,115,.14)",
-    chooserTextInactive: "#132c35",
-    musicHighlight: "#b63a34",
-    statBg: "rgba(29,91,115,0.055)",
-    statBorder: "rgba(29,91,115,0.24)",
-    statShadow: "4px 4px 0 rgba(29,91,115,.08)",
-    btnBg: "rgba(29,91,115,0.045)",
-    btnShadow: "3px 3px 0 rgba(29,91,115,.10)",
-    tagBg: "rgba(182,58,52,0.06)",
-    tagBorder: "rgba(182,58,52,0.32)",
-    tagShadow: "3px 3px 0 rgba(182,58,52,.08)",
-    sealBg: "rgba(182,58,52,0.08)",
-    sealBorder: "rgba(182,58,52,0.48)",
-    avatarBorder: "rgba(29,91,115,0.42)",
-    avatarBg: "rgba(29,91,115,0.07)",
-    dividerSymbol: "✒ ✒ ✒",
-    dividerTracking: "0.35em",
-    pattern:
-      "linear-gradient(90deg, rgba(182,58,52,0.10) 0 2px, transparent 2px 78px), repeating-linear-gradient(0deg, rgba(29,91,115,0.055) 0 1px, transparent 1px 30px), radial-gradient(circle at 82% 16%, rgba(182,58,52,0.13), transparent 18%), linear-gradient(180deg, rgba(255,255,255,0.46), rgba(222,236,232,0.38) 100%)",
-    motif: "mực lam · giấy sáng · dấu son · ghi chú",
-  },
-  {
-    id: "hoian",
-    name: "Tào Tháo",
-    subtitle:
-      "Praesent commodo libero non lectus facilisis, sed tempor mi luctus.",
-    pageBg: "#28140d",
-    text: "#ffe7b3",
-    textSoft: "rgba(255,231,179,0.75)",
-    textMuted: "rgba(255,231,179,0.60)",
-    accent: "#f4b860",
-    accentSoft: "rgba(244,184,96,0.133)",
-    borderOuter: "rgba(255,231,179,0.35)",
-    borderInner: "rgba(255,231,179,0.20)",
-    borderSection: "rgba(255,231,179,0.25)",
-    contentBorder: "rgba(255,231,179,0.15)",
-    questColor: "#ffe7b3",
-    questMuted: "#ffe7b3",
-    frameBg: "rgba(255,231,179,0.025)",
-    frameShadow: "none",
-    panelBg: "rgba(58,29,18,0.88)",
-    panelBorder: "rgba(244,184,96,0.35)",
-    panelShadow: "6px 6px 0 rgba(0,0,0,.10)",
-    panelSoftBg: "rgba(81,35,21,0.55)",
-    panelSoftBorder: "rgba(244,184,96,0.25)",
-    panelSoftShadow: "6px 6px 0 rgba(0,0,0,.10)",
-    previewShadow: "7px 7px 0 rgba(0,0,0,.12)",
-    footerShadow: "5px 5px 0 rgba(0,0,0,.10)",
-    navBg: "rgba(0,0,0,0.02)",
-    navBorder: "rgba(255,231,179,0.20)",
-    chooserBg: "rgba(0,0,0,0.02)",
-    chooserBorder: "rgba(0,0,0,0.18)",
-    chooserShadow: "4px 4px 0 rgba(0,0,0,.16)",
-    chooserTextInactive: "#ffe7b3",
-    musicHighlight: "#ffe7b3",
-    statBg: "rgba(0,0,0,0.025)",
-    statBorder: "rgba(255,231,179,0.25)",
-    statShadow: "4px 4px 0 rgba(0,0,0,.08)",
-    btnBg: "transparent",
-    btnShadow: "3px 3px 0 rgba(0,0,0,.10)",
-    tagBg: "transparent",
-    tagBorder: "rgba(255,231,179,0.30)",
-    tagShadow: "3px 3px 0 rgba(0,0,0,.08)",
-    sealBg: "transparent",
-    sealBorder: "rgba(255,231,179,0.35)",
-    avatarBorder: "rgba(255,231,179,0.40)",
-    avatarBg: "rgba(0,0,0,0.04)",
-    dividerSymbol: "◇ ◇ ◇",
-    dividerTracking: "0.35em",
-    pattern:
-      "radial-gradient(circle at 18% 12%, rgba(244,184,96,.24), transparent 16%), radial-gradient(circle at 78% 8%, rgba(209,75,51,.18), transparent 18%), linear-gradient(90deg, rgba(244,184,96,.06) 1px, transparent 1px)",
-    motif: "◆  placeholder  ◆  sample  ◆  text  ◆",
-  },
-  {
-    id: "dongho",
-    name: "Tủ sách",
-    subtitle:
-      "Những cuốn sách đã đọc, và đôi dòng đọng lại sau khi gấp trang cuối.",
-    pageBg: "#f3d68a",
-    text: "#331d10",
-    textSoft: "rgba(51,29,16,0.70)",
-    textMuted: "rgba(51,29,16,0.60)",
-    accent: "#b21f13",
-    accentSoft: "rgba(178,31,19,0.133)",
-    borderOuter: "rgba(51,29,16,0.35)",
-    borderInner: "rgba(51,29,16,0.20)",
-    borderSection: "rgba(51,29,16,0.25)",
-    contentBorder: "rgba(51,29,16,0.15)",
-    questColor: "#331d10",
-    questMuted: "#331d10",
-    frameBg: "rgba(51,29,16,0.025)",
-    frameShadow: "none",
-    panelBg: "rgba(247,226,162,0.95)",
-    panelBorder: "rgba(51,29,16,0.55)",
-    panelShadow: "6px 6px 0 rgba(0,0,0,.10)",
-    panelSoftBg: "rgba(255,240,189,0.70)",
-    panelSoftBorder: "rgba(51,29,16,0.35)",
-    panelSoftShadow: "6px 6px 0 rgba(0,0,0,.10)",
-    previewShadow: "7px 7px 0 rgba(0,0,0,.12)",
-    footerShadow: "5px 5px 0 rgba(0,0,0,.10)",
-    navBg: "rgba(0,0,0,0.02)",
-    navBorder: "rgba(51,29,16,0.20)",
-    chooserBg: "rgba(0,0,0,0.02)",
-    chooserBorder: "rgba(0,0,0,0.18)",
-    chooserShadow: "4px 4px 0 rgba(0,0,0,.16)",
-    chooserTextInactive: "#331d10",
-    musicHighlight: "#331d10",
-    statBg: "rgba(0,0,0,0.025)",
-    statBorder: "rgba(51,29,16,0.25)",
-    statShadow: "4px 4px 0 rgba(0,0,0,.08)",
-    btnBg: "transparent",
-    btnShadow: "3px 3px 0 rgba(0,0,0,.10)",
-    tagBg: "transparent",
-    tagBorder: "rgba(51,29,16,0.30)",
-    tagShadow: "3px 3px 0 rgba(0,0,0,.08)",
-    sealBg: "transparent",
-    sealBorder: "rgba(51,29,16,0.35)",
-    avatarBorder: "rgba(51,29,16,0.40)",
-    avatarBg: "rgba(0,0,0,0.04)",
-    dividerSymbol: "◇ ◇ ◇",
-    dividerTracking: "0.35em",
-    pattern:
-      "repeating-linear-gradient(45deg, rgba(51,29,16,.045) 0 2px, transparent 2px 12px), radial-gradient(circle at 90% 15%, rgba(178,31,19,.18), transparent 22%)",
-    motif: "tủ sách · trang giấy · đôi dòng · đọng lại",
-  },
-  {
-    id: "sapbao_sang",
-    name: "Trà Sáng",
-    subtitle: "Giấy màu trà ấm, xanh sâu, vàng rang và mực nâu trầm.",
-    pageBg: "#dfc894",
-    text: "#2c1d12",
-    textSoft: "rgba(44,29,18,0.75)",
-    textMuted: "rgba(44,29,18,0.58)",
-    accent: "#315c3d",
-    accentSoft: "rgba(49,92,61,0.14)",
-    borderOuter: "rgba(44,29,18,0.32)",
-    borderInner: "rgba(49,92,61,0.20)",
-    borderSection: "rgba(49,92,61,0.23)",
-    contentBorder: "rgba(44,29,18,0.15)",
-    questColor: "#2c1d12",
-    questMuted: "#6f5a3a",
-    frameBg: "rgba(49,92,61,0.035)",
-    frameShadow: "none",
-    panelBg: "rgba(247,229,179,0.90)",
-    panelBorder: "rgba(49,92,61,0.30)",
-    panelShadow: "6px 6px 0 rgba(44,29,18,.12)",
-    panelSoftBg: "rgba(250,236,196,0.72)",
-    panelSoftBorder: "rgba(49,92,61,0.20)",
-    panelSoftShadow: "6px 6px 0 rgba(44,29,18,.09)",
-    previewShadow: "7px 7px 0 rgba(44,29,18,.13)",
-    footerShadow: "5px 5px 0 rgba(44,29,18,.10)",
-    navBg: "rgba(49,92,61,0.05)",
-    navBorder: "rgba(49,92,61,0.22)",
-    chooserBg: "rgba(255,244,212,0.24)",
-    chooserBorder: "rgba(49,92,61,0.24)",
-    chooserShadow: "4px 4px 0 rgba(44,29,18,.15)",
-    chooserTextInactive: "#2c1d12",
-    musicHighlight: "#9b6a24",
-    statBg: "rgba(49,92,61,0.06)",
-    statBorder: "rgba(49,92,61,0.26)",
-    statShadow: "4px 4px 0 rgba(44,29,18,.09)",
-    btnBg: "rgba(49,92,61,0.05)",
-    btnShadow: "3px 3px 0 rgba(44,29,18,.11)",
-    tagBg: "rgba(155,106,36,0.08)",
-    tagBorder: "rgba(155,106,36,0.34)",
-    tagShadow: "3px 3px 0 rgba(44,29,18,.08)",
-    sealBg: "rgba(155,106,36,0.09)",
-    sealBorder: "rgba(155,106,36,0.44)",
-    avatarBorder: "rgba(49,92,61,0.44)",
-    avatarBg: "rgba(49,92,61,0.08)",
-    dividerSymbol: "☵ ◇ ☵",
-    dividerTracking: "0.35em",
-    pattern:
-      "radial-gradient(circle at 16% 14%, rgba(155,106,36,0.18), transparent 22%), radial-gradient(circle at 84% 18%, rgba(49,92,61,0.16), transparent 24%), radial-gradient(circle at 52% 94%, rgba(44,29,18,0.08), transparent 30%), repeating-linear-gradient(0deg, rgba(44,29,18,0.04) 0 1px, transparent 1px 30px), linear-gradient(180deg, rgba(255,238,190,0.42), rgba(190,157,95,0.26) 100%)",
-    motif: "trà sáng · xanh sâu · vàng rang · mực nâu",
-  },
-  {
-    id: "quancoc_sang",
-    name: "Lụa Sen",
-    subtitle: "Hồng sen nhạt, nền ngà, xanh sage và mực mận trầm.",
-    pageBg: "#eee2dc",
-    text: "#382338",
-    textSoft: "rgba(56,35,56,0.74)",
-    textMuted: "rgba(56,35,56,0.56)",
-    accent: "#72866f",
-    accentSoft: "rgba(114,134,111,0.145)",
-    borderOuter: "rgba(56,35,56,0.28)",
-    borderInner: "rgba(114,134,111,0.18)",
-    borderSection: "rgba(114,134,111,0.22)",
-    contentBorder: "rgba(56,35,56,0.13)",
-    questColor: "#382338",
-    questMuted: "#766472",
-    frameBg: "rgba(114,134,111,0.035)",
-    frameShadow: "none",
-    panelBg: "rgba(255,250,241,0.92)",
-    panelBorder: "rgba(114,134,111,0.28)",
-    panelShadow: "6px 6px 0 rgba(77,55,71,.10)",
-    panelSoftBg: "rgba(250,244,235,0.76)",
-    panelSoftBorder: "rgba(114,134,111,0.18)",
-    panelSoftShadow: "6px 6px 0 rgba(77,55,71,.08)",
-    previewShadow: "7px 7px 0 rgba(77,55,71,.11)",
-    footerShadow: "5px 5px 0 rgba(77,55,71,.09)",
-    navBg: "rgba(114,134,111,0.045)",
-    navBorder: "rgba(114,134,111,0.20)",
-    chooserBg: "rgba(255,250,241,0.28)",
-    chooserBorder: "rgba(114,134,111,0.22)",
-    chooserShadow: "4px 4px 0 rgba(77,55,71,.13)",
-    chooserTextInactive: "#382338",
-    musicHighlight: "#9d6375",
-    statBg: "rgba(114,134,111,0.055)",
-    statBorder: "rgba(114,134,111,0.24)",
-    statShadow: "4px 4px 0 rgba(77,55,71,.08)",
-    btnBg: "rgba(114,134,111,0.045)",
-    btnShadow: "3px 3px 0 rgba(77,55,71,.10)",
-    tagBg: "rgba(157,99,117,0.07)",
-    tagBorder: "rgba(157,99,117,0.30)",
-    tagShadow: "3px 3px 0 rgba(157,99,117,.08)",
-    sealBg: "rgba(157,99,117,0.08)",
-    sealBorder: "rgba(157,99,117,0.42)",
-    avatarBorder: "rgba(114,134,111,0.42)",
-    avatarBg: "rgba(114,134,111,0.07)",
-    dividerSymbol: "✿ ◇ ✿",
-    dividerTracking: "0.35em",
-    pattern:
-      "radial-gradient(circle at 18% 14%, rgba(216,166,181,0.22), transparent 24%), radial-gradient(circle at 84% 18%, rgba(114,134,111,0.16), transparent 22%), radial-gradient(circle at 50% 94%, rgba(56,35,56,0.055), transparent 28%), repeating-linear-gradient(135deg, rgba(114,134,111,0.035) 0 1px, transparent 1px 24px), linear-gradient(180deg, rgba(255,250,241,0.62), rgba(238,226,220,0.42) 100%)",
-    motif: "lụa sen · nền ngà · xanh sage · mực mận",
-  },
-  {
-    id: "hong_tram",
-    name: "Về tui",
-    subtitle:
-      "Morbi vulputate neque ut massa facilisis, vitae luctus lorem dictum.",
-    pageBg: "#080807",
-    text: "#EED9A6",
-    textSoft: "#B8AA91",
-    textMuted: "#6F634E",
-    accent: "#C6A15B",
-    accentSoft: "rgba(198,161,91,0.12)",
-    borderOuter: "#2A261D",
-    borderInner: "#2A261D",
-    borderSection: "#2A261D",
-    contentBorder: "#2A261D",
-    questColor: "#B8AA91",
-    questMuted: "#6F634E",
-    frameBg: "rgba(255,255,255,0.018)",
-    frameShadow: "0 0 80px rgba(0,0,0,.38)",
-    panelBg: "rgba(18,17,15,0.86)",
-    panelBorder: "#2A261D",
-    panelShadow: "6px 6px 0 rgba(0,0,0,.26)",
-    panelSoftBg: "rgba(20,18,15,0.78)",
-    panelSoftBorder: "#2A261D",
-    panelSoftShadow: "6px 6px 0 rgba(0,0,0,.26)",
-    previewShadow: "7px 7px 0 rgba(0,0,0,.30)",
-    footerShadow: "5px 5px 0 rgba(0,0,0,.26)",
-    navBg: "rgba(18,17,15,0.86)",
-    navBorder: "#2A261D",
-    chooserBg: "rgba(255,255,255,0.02)",
-    chooserBorder: "#2A261D",
-    chooserShadow: "4px 4px 0 rgba(0,0,0,.35)",
-    chooserTextInactive: "#B8AA91",
-    musicHighlight: "#C6A15B",
-    statBg: "rgba(198,161,91,0.12)",
-    statBorder: "#2A261D",
-    statShadow: "4px 4px 0 rgba(0,0,0,.24)",
-    btnBg: "rgba(198,161,91,0.12)",
-    btnShadow: "3px 3px 0 rgba(0,0,0,.25)",
-    tagBg: "rgba(18,17,15,0.86)",
-    tagBorder: "#2A261D",
-    tagShadow: "3px 3px 0 rgba(0,0,0,.22)",
-    sealBg: "rgba(198,161,91,0.12)",
-    sealBorder: "#6F634E",
-    avatarBorder: "#6F634E",
-    avatarBg: "rgba(198,161,91,0.12)",
-    dividerSymbol: "• • •",
-    dividerTracking: "0.28em",
-    pattern:
-      "radial-gradient(circle at 12% 8%, rgba(198,161,91,0.105), transparent 18%), radial-gradient(circle at 82% 18%, rgba(198,161,91,0.055), transparent 26%), radial-gradient(circle at 50% 92%, rgba(198,161,91,0.045), transparent 28%), repeating-linear-gradient(90deg, rgba(255,255,255,0.016) 0 1px, transparent 1px 34px), repeating-linear-gradient(0deg, rgba(255,255,255,0.010) 0 1px, transparent 1px 24px), linear-gradient(135deg, #080807, #12110F 48%, #090806)",
-    motif: "placeholder · sample · text · notes",
-  },
-  {
-    id: "den_dau",
-    name: "Đêm Huyền",
-    subtitle: "Câu chuyện dưới ánh trăng.",
-    pageBg: "#080B14",
-    text: "#D4DAE8",
-    textSoft: "#7A839A",
-    textMuted: "#454D63",
-    accent: "#8B9FBF",
-    accentSoft: "rgba(139,159,191,0.1)",
-    borderOuter: "#1C2236",
-    borderInner: "#1C2236",
-    borderSection: "#1C2236",
-    contentBorder: "#1C2236",
-    questColor: "#7A839A",
-    questMuted: "#454D63",
-    frameBg: "rgba(255,255,255,0.018)",
-    frameShadow: "0 0 80px rgba(0,0,0,.38)",
-    panelBg: "#0E1220",
-    panelBorder: "#1C2236",
-    panelShadow: "6px 6px 0 rgba(0,0,0,.26)",
-    panelSoftBg: "rgba(14,18,32,0.74)",
-    panelSoftBorder: "#1C2236",
-    panelSoftShadow: "6px 6px 0 rgba(0,0,0,.26)",
-    previewShadow: "7px 7px 0 rgba(0,0,0,.30)",
-    footerShadow: "5px 5px 0 rgba(0,0,0,.26)",
-    navBg: "rgba(14,18,32,0.74)",
-    navBorder: "#1C2236",
-    chooserBg: "rgba(255,255,255,0.02)",
-    chooserBorder: "#1C2236",
-    chooserShadow: "4px 4px 0 rgba(0,0,0,.35)",
-    chooserTextInactive: "#7A839A",
-    musicHighlight: "#8B9FBF",
-    statBg: "rgba(139,159,191,0.1)",
-    statBorder: "#1C2236",
-    statShadow: "4px 4px 0 rgba(0,0,0,.24)",
-    btnBg: "rgba(139,159,191,0.1)",
-    btnShadow: "3px 3px 0 rgba(0,0,0,.25)",
-    tagBg: "rgba(14,18,32,0.74)",
-    tagBorder: "#1C2236",
-    tagShadow: "3px 3px 0 rgba(0,0,0,.22)",
-    sealBg: "rgba(139,159,191,0.1)",
-    sealBorder: "#454D63",
-    avatarBorder: "#454D63",
-    avatarBg: "rgba(139,159,191,0.1)",
-    dividerSymbol: "• • •",
-    dividerTracking: "0.28em",
-    pattern:
-      "radial-gradient(circle at 12% 8%, rgba(100,140,200,0.05), transparent 18%), radial-gradient(circle at 82% 18%, rgba(139,159,191,0.12), transparent 26%), radial-gradient(circle at 50% 92%, rgba(100,140,200,0.05), transparent 28%), repeating-linear-gradient(90deg, rgba(255,255,255,0.018) 0 1px, transparent 1px 34px), repeating-linear-gradient(0deg, rgba(255,255,255,0.012) 0 1px, transparent 1px 24px), linear-gradient(135deg, #080B14, #0F1528 48%, #0A0E1A)",
-    motif: "ánh trăng · chuyện nhỏ · đêm khuya · riêng mình",
-  },
-  {
-    id: "muc_than",
-    name: "36 Kế",
-    subtitle: "Ba mươi sáu mưu kế cổ điển.",
-    pageBg: "#080808",
-    text: "#E7DFD0",
-    textSoft: "#9A907D",
-    textMuted: "#555047",
-    accent: "#AFA084",
-    accentSoft: "rgba(175,160,132,0.1)",
-    borderOuter: "#2A2722",
-    borderInner: "#2A2722",
-    borderSection: "#2A2722",
-    contentBorder: "#2A2722",
-    questColor: "#9A907D",
-    questMuted: "#555047",
-    frameBg: "rgba(255,255,255,0.018)",
-    frameShadow: "0 0 80px rgba(0,0,0,.38)",
-    panelBg: "rgba(18,18,18,0.78)",
-    panelBorder: "#2A2722",
-    panelShadow: "6px 6px 0 rgba(0,0,0,.26)",
-    panelSoftBg: "rgba(18,18,18,0.78)",
-    panelSoftBorder: "#2A2722",
-    panelSoftShadow: "6px 6px 0 rgba(0,0,0,.26)",
-    previewShadow: "7px 7px 0 rgba(0,0,0,.30)",
-    footerShadow: "5px 5px 0 rgba(0,0,0,.26)",
-    navBg: "rgba(18,18,18,0.78)",
-    navBorder: "#2A2722",
-    chooserBg: "rgba(255,255,255,0.02)",
-    chooserBorder: "#2A2722",
-    chooserShadow: "4px 4px 0 rgba(0,0,0,.35)",
-    chooserTextInactive: "#9A907D",
-    musicHighlight: "#AFA084",
-    statBg: "rgba(175,160,132,0.1)",
-    statBorder: "#2A2722",
-    statShadow: "4px 4px 0 rgba(0,0,0,.24)",
-    btnBg: "rgba(175,160,132,0.1)",
-    btnShadow: "3px 3px 0 rgba(0,0,0,.25)",
-    tagBg: "rgba(18,18,18,0.78)",
-    tagBorder: "#2A2722",
-    tagShadow: "3px 3px 0 rgba(0,0,0,.22)",
-    sealBg: "rgba(175,160,132,0.1)",
-    sealBorder: "#555047",
-    avatarBorder: "#555047",
-    avatarBg: "rgba(175,160,132,0.1)",
-    dividerSymbol: "• • •",
-    dividerTracking: "0.28em",
-    pattern:
-      "radial-gradient(circle at 12% 8%, rgba(175,160,132,0.10), transparent 18%), radial-gradient(circle at 82% 18%, rgba(175,160,132,0.045), transparent 26%), radial-gradient(circle at 50% 92%, rgba(175,160,132,0.045), transparent 28%), repeating-linear-gradient(90deg, rgba(255,255,255,0.018) 0 1px, transparent 1px 34px), repeating-linear-gradient(0deg, rgba(255,255,255,0.012) 0 1px, transparent 1px 24px), linear-gradient(135deg, #080808, #15120D 48%, #0B0A09)",
-    motif: "placeholder · sample · text · notes",
-  },
-  {
-    id: "sap_bao_dem",
-    name: "Nhạc Khuya",
-    subtitle: "Nhạc khuya, nghe để buồn, chỉ là buồn một mình.",
-    pageBg: "#0F0C09",
-    text: "#EAD8C2",
-    textSoft: "#A48D76",
-    textMuted: "#5A493A",
-    accent: "#BE6F5D",
-    accentSoft: "rgba(190,111,93,0.1)",
-    borderOuter: "#33261C",
-    borderInner: "#33261C",
-    borderSection: "#33261C",
-    contentBorder: "#33261C",
-    questColor: "#A48D76",
-    questMuted: "#5A493A",
-    frameBg: "rgba(255,255,255,0.018)",
-    frameShadow: "0 0 80px rgba(0,0,0,.38)",
-    panelBg: "rgba(24,19,14,0.74)",
-    panelBorder: "#33261C",
-    panelShadow: "6px 6px 0 rgba(0,0,0,.26)",
-    panelSoftBg: "rgba(24,19,14,0.74)",
-    panelSoftBorder: "#33261C",
-    panelSoftShadow: "6px 6px 0 rgba(0,0,0,.26)",
-    previewShadow: "7px 7px 0 rgba(0,0,0,.30)",
-    footerShadow: "5px 5px 0 rgba(0,0,0,.26)",
-    navBg: "rgba(24,19,14,0.74)",
-    navBorder: "#33261C",
-    chooserBg: "rgba(255,255,255,0.02)",
-    chooserBorder: "#33261C",
-    chooserShadow: "4px 4px 0 rgba(0,0,0,.35)",
-    chooserTextInactive: "#A48D76",
-    musicHighlight: "#BE6F5D",
-    statBg: "rgba(190,111,93,0.1)",
-    statBorder: "#33261C",
-    statShadow: "4px 4px 0 rgba(0,0,0,.24)",
-    btnBg: "rgba(190,111,93,0.1)",
-    btnShadow: "3px 3px 0 rgba(0,0,0,.25)",
-    tagBg: "rgba(24,19,14,0.74)",
-    tagBorder: "#33261C",
-    tagShadow: "3px 3px 0 rgba(0,0,0,.22)",
-    sealBg: "rgba(190,111,93,0.1)",
-    sealBorder: "#5A493A",
-    avatarBorder: "#5A493A",
-    avatarBg: "rgba(190,111,93,0.1)",
-    dividerSymbol: "• • •",
-    dividerTracking: "0.28em",
-    pattern:
-      "radial-gradient(circle at 12% 8%, rgba(190,111,93,0.11), transparent 18%), radial-gradient(circle at 82% 18%, rgba(190,111,93,0.05), transparent 26%), radial-gradient(circle at 50% 92%, rgba(190,111,93,0.05), transparent 28%), repeating-linear-gradient(90deg, rgba(255,255,255,0.018) 0 1px, transparent 1px 34px), repeating-linear-gradient(0deg, rgba(255,255,255,0.012) 0 1px, transparent 1px 24px), linear-gradient(135deg, #0F0C09, #1B120D 48%, #100C09)",
-    motif: "đêm khuya · nhạc nhẹ · nhớ một người · thương một đời",
-  },
-  {
-    id: "quan_coc_toi",
-    name: "Trò chơi điện tử",
-    subtitle:
-      "Maecenas suscipit sem vitae sapien rhoncus, non posuere neque tempor.",
-    pageBg: "#0C090B",
-    text: "#E8D8DD",
-    textSoft: "#9A858C",
-    textMuted: "#5C4A52",
-    accent: "#B07080",
-    accentSoft: "rgba(176,112,128,0.1)",
-    borderOuter: "#2E2226",
-    borderInner: "#2E2226",
-    borderSection: "#2E2226",
-    contentBorder: "#2E2226",
-    questColor: "#9A858C",
-    questMuted: "#5C4A52",
-    frameBg: "rgba(255,255,255,0.018)",
-    frameShadow: "0 0 80px rgba(0,0,0,.38)",
-    panelBg: "rgba(22,18,20,0.74)",
-    panelBorder: "#2E2226",
-    panelShadow: "6px 6px 0 rgba(0,0,0,.26)",
-    panelSoftBg: "rgba(22,18,20,0.74)",
-    panelSoftBorder: "#2E2226",
-    panelSoftShadow: "6px 6px 0 rgba(0,0,0,.26)",
-    previewShadow: "7px 7px 0 rgba(0,0,0,.30)",
-    footerShadow: "5px 5px 0 rgba(0,0,0,.26)",
-    navBg: "rgba(22,18,20,0.74)",
-    navBorder: "#2E2226",
-    chooserBg: "rgba(255,255,255,0.02)",
-    chooserBorder: "#2E2226",
-    chooserShadow: "4px 4px 0 rgba(0,0,0,.35)",
-    chooserTextInactive: "#9A858C",
-    musicHighlight: "#B07080",
-    statBg: "rgba(176,112,128,0.1)",
-    statBorder: "#2E2226",
-    statShadow: "4px 4px 0 rgba(0,0,0,.24)",
-    btnBg: "rgba(176,112,128,0.1)",
-    btnShadow: "3px 3px 0 rgba(0,0,0,.25)",
-    tagBg: "rgba(22,18,20,0.74)",
-    tagBorder: "#2E2226",
-    tagShadow: "3px 3px 0 rgba(0,0,0,.22)",
-    sealBg: "rgba(176,112,128,0.1)",
-    sealBorder: "#5C4A52",
-    avatarBorder: "#5C4A52",
-    avatarBg: "rgba(176,112,128,0.1)",
-    dividerSymbol: "• • •",
-    dividerTracking: "0.28em",
-    pattern:
-      "radial-gradient(circle at 12% 8%, rgba(176,112,128,0.12), transparent 18%), radial-gradient(circle at 82% 18%, rgba(176,112,128,0.05), transparent 26%), radial-gradient(circle at 50% 92%, rgba(176,112,128,0.05), transparent 28%), repeating-linear-gradient(90deg, rgba(255,255,255,0.018) 0 1px, transparent 1px 34px), repeating-linear-gradient(0deg, rgba(255,255,255,0.012) 0 1px, transparent 1px 24px), linear-gradient(135deg, #0C090B, #1A1218 48%, #100C0E)",
-    motif: "placeholder · sample · text · notes",
-  },
-  {
-    id: "suong_mai",
-    name: "Cơn Mưa",
-    subtitle: "Ngày mưa ngồi yên, nhặt đôi câu chữ rồi ngẫm.",
-    pageBg: "#A9B8B8",
-    text: "#142226",
-    textSoft: "rgba(20,34,38,0.76)",
-    textMuted: "rgba(20,34,38,0.58)",
-    accent: "#315F64",
-    accentSoft: "rgba(49,95,100,0.16)",
-    borderOuter: "rgba(20,34,38,0.42)",
-    borderInner: "rgba(20,34,38,0.24)",
-    borderSection: "rgba(20,34,38,0.28)",
-    contentBorder: "rgba(20,34,38,0.18)",
-    questColor: "#142226",
-    questMuted: "rgba(20,34,38,0.68)",
-    frameBg: "rgba(20,34,38,0.025)",
-    frameShadow: "none",
-    panelBg: "rgba(213,222,220,0.88)",
-    panelBorder: "rgba(31,69,74,0.36)",
-    panelShadow: "6px 6px 0 rgba(20,34,38,.10)",
-    panelSoftBg: "rgba(224,229,222,0.68)",
-    panelSoftBorder: "rgba(31,69,74,0.26)",
-    panelSoftShadow: "6px 6px 0 rgba(20,34,38,.08)",
-    previewShadow: "7px 7px 0 rgba(20,34,38,.12)",
-    footerShadow: "5px 5px 0 rgba(20,34,38,.10)",
-    navBg: "rgba(20,34,38,0.035)",
-    navBorder: "rgba(20,34,38,0.22)",
-    chooserBg: "rgba(20,34,38,0.035)",
-    chooserBorder: "rgba(20,34,38,0.20)",
-    chooserShadow: "4px 4px 0 rgba(20,34,38,.14)",
-    chooserTextInactive: "#142226",
-    musicHighlight: "#315F64",
-    statBg: "rgba(49,95,100,0.10)",
-    statBorder: "rgba(31,69,74,0.28)",
-    statShadow: "4px 4px 0 rgba(20,34,38,.08)",
-    btnBg: "transparent",
-    btnShadow: "3px 3px 0 rgba(20,34,38,.08)",
-    tagBg: "transparent",
-    tagBorder: "rgba(20,34,38,0.34)",
-    tagShadow: "3px 3px 0 rgba(20,34,38,.08)",
-    sealBg: "transparent",
-    sealBorder: "rgba(20,34,38,0.36)",
-    avatarBorder: "rgba(49,95,100,0.46)",
-    avatarBg: "rgba(49,95,100,0.10)",
-    dividerSymbol: "≈ ≈ ≈",
-    dividerTracking: "0.35em",
-    pattern:
-      "radial-gradient(circle at 18% 16%, rgba(232,220,208,0.22), transparent 28%), radial-gradient(circle at 78% 58%, rgba(49,95,100,0.18), transparent 30%), repeating-linear-gradient(90deg, rgba(20,34,38,0.035) 0 1px, transparent 1px 42px), linear-gradient(180deg, rgba(255,255,255,0.06), rgba(20,34,38,0.08) 100%)",
-    motif: "≈  tĩnh tâm  ≈  nhẫn nhịn  ≈  buông bỏ  ≈",
-  },
-  {
-    id: "hoa_dao",
-    name: "Góc Hồng",
-    subtitle: "Peach blossom in spring, soft and full of longing.",
-    pageBg: "#E8B0BE",
-    text: "#4A1F2A",
-    textSoft: "rgba(74,31,42,0.72)",
-    textMuted: "rgba(74,31,42,0.55)",
-    accent: "#B6455D",
-    accentSoft: "rgba(182,69,93,0.133)",
-    borderOuter: "rgba(74,31,42,0.30)",
-    borderInner: "rgba(74,31,42,0.18)",
-    borderSection: "rgba(74,31,42,0.22)",
-    contentBorder: "rgba(74,31,42,0.14)",
-    questColor: "#4A1F2A",
-    questMuted: "#4A1F2A",
-    frameBg: "rgba(255,255,255,0.06)",
-    frameShadow: "none",
-    panelBg: "rgba(252,228,232,0.92)",
-    panelBorder: "rgba(123,40,60,0.30)",
-    panelShadow: "6px 6px 0 rgba(76,20,32,.08)",
-    panelSoftBg: "rgba(254,238,241,0.75)",
-    panelSoftBorder: "rgba(123,40,60,0.22)",
-    panelSoftShadow: "6px 6px 0 rgba(76,20,32,.08)",
-    previewShadow: "7px 7px 0 rgba(76,20,32,.10)",
-    footerShadow: "5px 5px 0 rgba(76,20,32,.08)",
-    navBg: "rgba(255,255,255,0.04)",
-    navBorder: "rgba(74,31,42,0.18)",
-    chooserBg: "rgba(255,255,255,0.04)",
-    chooserBorder: "rgba(74,31,42,0.16)",
-    chooserShadow: "4px 4px 0 rgba(76,20,32,.14)",
-    chooserTextInactive: "#4A1F2A",
-    musicHighlight: "#4A1F2A",
-    statBg: "rgba(255,255,255,0.04)",
-    statBorder: "rgba(74,31,42,0.22)",
-    statShadow: "4px 4px 0 rgba(76,20,32,.06)",
-    btnBg: "transparent",
-    btnShadow: "3px 3px 0 rgba(76,20,32,.08)",
-    tagBg: "transparent",
-    tagBorder: "rgba(74,31,42,0.28)",
-    tagShadow: "3px 3px 0 rgba(76,20,32,.06)",
-    sealBg: "transparent",
-    sealBorder: "rgba(74,31,42,0.32)",
-    avatarBorder: "rgba(74,31,42,0.38)",
-    avatarBg: "rgba(255,255,255,0.04)",
-    dividerSymbol: "♡ ♡ ♡",
-    dividerTracking: "0.40em",
-    pattern:
-      "repeating-linear-gradient(0deg, rgba(74,31,42,0.10) 0 1px, transparent 1px 28px), radial-gradient(circle at 15% 10%, rgba(255,182,193,0.55), transparent 28%), radial-gradient(circle at 85% 20%, rgba(255,200,210,0.40), transparent 24%), radial-gradient(circle at 50% 90%, rgba(182,69,93,0.10), transparent 30%), linear-gradient(180deg, rgba(255,255,255,0.10), transparent 60%)",
-    motif: "♡  placeholder  ♡  sample  ♡  text  ♡",
-  },
-];
-
-const darkRow = [
-  "den_dau",
-  "hong_tram",
-  "muc_than",
-  "hoian",
-  "sap_bao_dem",
-  "quan_coc_toi",
-].map((id) => styles.find((s) => s.id === id));
-const brightRow = [
-  "hoa_dao",
-  "giaydo",
-  "dongho",
-  "sapbao_sang",
-  "quancoc_sang",
-  "suong_mai",
-].map((id) => styles.find((s) => s.id === id));
-
-const DEFAULT_STYLE_ID = "den_dau";
-
-// The URL hash is a human-readable slug rather than the internal style id, so a
-// shared link describes the page. Every tab maps its id to a slug derived from
-// the visible tab name (ASCII, no diacritics). Each tab's old hash was its raw
-// id, which keeps resolving automatically because the loop below always maps
-// id -> id; `aliases` only cover extra legacy spellings beyond the raw id.
-const hashSlugs = {
-  giaydo: { slug: "muc-lam", aliases: ["giay-do"] }, // Mực Lam
-  hoian: { slug: "tao-thao", aliases: ["hoi-an"] }, // Tào Tháo
-  dongho: { slug: "tu-sach" }, // Tủ sách
-  sapbao_sang: { slug: "tra-sang" }, // Trà Sáng
-  quancoc_sang: { slug: "lua-sen" }, // Lụa Sen
-  hong_tram: { slug: "ve-tui" }, // Về tui
-  den_dau: { slug: "dem-huyen" }, // Đêm Huyền
-  muc_than: { slug: "36-ke" }, // 36 Kế
-  sap_bao_dem: { slug: "nhac-khuya" }, // Nhạc Khuya
-  quan_coc_toi: { slug: "tro-choi-dien-tu" }, // Trò chơi điện tử
-  suong_mai: { slug: "con-mua" }, // Cơn Mưa
-  hoa_dao: { slug: "goc-hong" }, // Góc Hồng
-};
-
-// id -> hash written to the URL when a tab is opened.
-const styleIdToHash = new Map(
-  styles.map((s) => [s.id, hashSlugs[s.id]?.slug || s.id]),
-);
-// hash (current slug, raw id, or legacy alias) -> id, for restoring a tab.
-const hashToStyleId = new Map();
-for (const s of styles) {
-  const { slug, aliases = [] } = hashSlugs[s.id] || {};
-  for (const hash of [slug || s.id, s.id, ...aliases]) {
-    hashToStyleId.set(hash, s.id);
-  }
-}
-
-const styleIcons = {
-  hoian: "🏮",
-  hong_tram: "🕯",
-  den_dau: "🌙",
-  muc_than: "📜",
-  sap_bao_dem: "🎶",
-  quan_coc_toi: "🎮",
-  hoa_dao: "🌸",
-  giaydo: "✒️",
-  dongho: "📚",
-  sapbao_sang: "🍵",
-  quancoc_sang: "🪷",
-  suong_mai: "💧",
-};
-
 // Goals list shown in the left panel. Defined once and shared across every
 // tab so the sidebar reads identically no matter which theme is active.
 // status: "done" = finished one-off goal, "open" = in progress / will finish,
@@ -854,6 +179,51 @@ function MusicWave({ bars = 4 }) {
   );
 }
 
+// A lazy chunk that fails to arrive throws while rendering, and without a
+// boundary React unmounts the whole island: banner, nav, sidebar and the
+// playing music player all disappear, not just the tab. That is not a rare
+// case here. Chunk filenames are content-hashed and the old ones are deleted
+// on every deploy, so anyone holding the page open across a deploy asks for a
+// file that is already gone. Keyed by section id so a failed tab does not
+// poison the next one, and reloading is offered because a stale build really
+// is the likely cause.
+class SectionBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { failed: false };
+  }
+
+  static getDerivedStateFromError() {
+    return { failed: true };
+  }
+
+  render() {
+    if (!this.state.failed) return this.props.children;
+    const { style } = this.props;
+    return (
+      <div
+        className="border p-4 text-center font-serif"
+        style={{
+          background: style.panelBg,
+          borderColor: style.panelBorder,
+          boxShadow: style.panelShadow,
+          color: style.textSoft,
+        }}
+      >
+        <p className="text-base leading-6">Phần này chưa tải được.</p>
+        <button
+          type="button"
+          onClick={() => window.location.reload()}
+          className="mt-2 border px-3 py-1 text-sm"
+          style={{ borderColor: style.panelBorder, color: style.accent }}
+        >
+          Tải lại trang
+        </button>
+      </div>
+    );
+  }
+}
+
 function OrderedColumns({ contentFirst, content, sidebar }) {
   return (
     <section className="mt-6 grid gap-5 lg:grid-cols-[260px_1fr] 2xl:grid-cols-[320px_1fr] 2xl:gap-8">
@@ -873,11 +243,20 @@ function OrderedColumns({ contentFirst, content, sidebar }) {
 }
 
 export default function VietnameseBlogStyleLab() {
-  const [styleId, setStyleId] = useState(DEFAULT_STYLE_ID);
-  const style = useMemo(
-    () => styles.find((item) => item.id === styleId) || styles[0],
-    [styleId],
-  );
+  const [sectionId, setSectionId] = useState(DEFAULT_SECTION_ID);
+  // Tab changes are transitions, so the current body stays put instead of
+  // collapsing while a lazy chunk loads. That also means a click has no
+  // visible effect until the chunk lands, so `isPending` supplies the missing
+  // feedback on the slow path that preloading did not already cover.
+  const [isPending, startTransition] = useTransition();
+  // Falling back to the first section keeps an unknown id from white-screening
+  // the page on `section.id` below. Nothing can reach that today (every setter
+  // is fed either the default or an id that came out of the registry), but the
+  // pre-registry code guarded it and a new setter site is the obvious way for
+  // that to change.
+  const section =
+    sectionRegistry.find((item) => item.id === sectionId) || sectionRegistry[0];
+  const style = themes[section.id];
 
   // The active tab lives in the URL hash so a refresh or a shared link
   // restores it, and back/forward walk through previously visited tabs.
@@ -886,11 +265,11 @@ export default function VietnameseBlogStyleLab() {
   useEffect(() => {
     const applyHash = () => {
       const hash = window.location.hash.slice(1);
-      const id = hashToStyleId.get(hash);
+      const id = hashToSectionId.get(hash);
       if (id) {
-        setStyleId(id);
+        startTransition(() => setSectionId(id));
       } else if (!hash) {
-        setStyleId(DEFAULT_STYLE_ID);
+        startTransition(() => setSectionId(DEFAULT_SECTION_ID));
       }
     };
     applyHash();
@@ -902,14 +281,14 @@ export default function VietnameseBlogStyleLab() {
     };
   }, []);
 
-  const selectTab = (id) => {
-    setStyleId(id);
-    const hash = styleIdToHash.get(id) || id;
+  const selectTab = (item) => {
+    startTransition(() => setSectionId(item.id));
+    const hash = item.slug;
     if (window.location.hash.slice(1) !== hash) {
       window.history.pushState(null, "", `#${hash}`);
     }
   };
-  const tabPosts = postsByStyle[style.id] || [];
+  const tabPosts = postsByStyle[section.id] || [];
   // Per-status color, resolved against the active theme so each tab keeps its
   // own palette while the labels stay identical everywhere.
   const statusColors = {
@@ -924,29 +303,37 @@ export default function VietnameseBlogStyleLab() {
   // On Đêm Huyền the sidebar boxes use the colorful hung-blog neon strip to
   // match the music box; every other tab uses its own accent color.
   const sidebarStrip =
-    style.id === "den_dau"
+    section.id === "den_dau"
       ? "linear-gradient(90deg, #ff69b4, #00ffff, #ffd700)"
       : style.accent;
 
   const renderTab = (item) => {
-    const isActive = item.id === style.id;
+    const isActive = item.id === section.id;
+    const itemTheme = themes[item.id];
     return (
       <button
         key={item.id}
-        onClick={() => selectTab(item.id)}
+        onClick={() => selectTab(item)}
+        // Warm the chunk as soon as intent shows, so the click itself usually
+        // has nothing to wait for. pointerenter covers mouse and pen; focus
+        // covers keyboard; pointerdown is the last chance on touch, where
+        // there is no hover but a press still precedes the click.
+        onPointerEnter={() => item.preload?.()}
+        onPointerDown={() => item.preload?.()}
+        onFocus={() => item.preload?.()}
         className={`style-tab flex flex-1 items-center justify-center border px-3 py-2 ${isActive ? "is-active" : ""}`}
         style={{
           minWidth: "140px",
-          borderColor: isActive ? item.accent : style.navBorder,
+          borderColor: isActive ? itemTheme.accent : style.navBorder,
           background: isActive ? style.accentSoft : style.navBg,
           color: isActive ? style.text : style.textSoft,
           fontWeight: isActive ? 800 : 600,
-          "--glow": item.accent,
-          "--glow-soft": item.accentSoft,
+          "--glow": itemTheme.accent,
+          "--glow-soft": itemTheme.accentSoft,
         }}
       >
         <span className="tab-icon" aria-hidden="true">
-          {styleIcons[item.id]}
+          {item.icon}
         </span>
         {item.name}
       </button>
@@ -1014,7 +401,7 @@ export default function VietnameseBlogStyleLab() {
           0%, 100% { opacity: 0.4; }
           50% { opacity: 0.85; }
         }
-        .banner-img {
+        .banner-media {
           image-rendering: pixelated;
           image-rendering: crisp-edges;
           filter: drop-shadow(0 2px 10px rgba(0,0,0,0.45));
@@ -1142,12 +529,38 @@ export default function VietnameseBlogStyleLab() {
                 }}
               >
                 <div className="banner-stars" aria-hidden="true" />
-                <img
-                  src={bannerRoses}
-                  alt="Đêm sao: hai đứa trẻ và chú chó ngồi trên bãi cỏ, khóm hồng nở bên phải"
-                  className="banner-img relative z-10 mx-auto block h-auto w-full"
+                {/* Decorative pixel-art banner, formerly a 751 KB animated GIF.
+                    role="img" keeps the same semantics the <img alt> had: this
+                    is a picture that happens to move, not a media player, and it
+                    guarantees the label is exposed as an image name.
+                    The <source media> is load-bearing, not decoration: when the
+                    visitor prefers reduced motion no source matches, so the
+                    browser selects nothing, requests no MP4, and paints the
+                    poster still instead. Supported in Chrome, Safari, Edge and
+                    Firefox 120+; Firefox 53-119 ignores `media` inside <video>
+                    and will animate regardless. Dimensions match the poster and
+                    the original GIF (597x50); the MP4 is 598 wide only because
+                    H.264 requires an even width, and the extra column is black. */}
+                <video
+                  role="img"
+                  aria-label={bannerAlt}
+                  poster={bannerStill}
+                  width="597"
+                  height="50"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  preload="auto"
+                  className="banner-media relative z-10 mx-auto block h-auto w-full"
                   style={{ maxWidth: "620px" }}
-                />
+                >
+                  <source
+                    src={bannerVideo}
+                    type="video/mp4"
+                    media="(prefers-reduced-motion: no-preference)"
+                  />
+                </video>
               </div>
               <header>
                 <div className="flex flex-wrap items-baseline gap-3">
@@ -1173,10 +586,10 @@ export default function VietnameseBlogStyleLab() {
                 style={{ borderColor: style.borderSection }}
               >
                 <nav className="flex flex-wrap gap-2 text-sm font-semibold">
-                  {darkRow.map(renderTab)}
+                  {sectionRows.dark.map(renderTab)}
                 </nav>
                 <nav className="mt-2 flex flex-wrap gap-2 text-sm font-semibold">
-                  {brightRow.map(renderTab)}
+                  {sectionRows.bright.map(renderTab)}
                 </nav>
               </div>
 
@@ -1187,35 +600,32 @@ export default function VietnameseBlogStyleLab() {
               <MusicPlayer
                 portalTarget={musicSlot}
                 theme={style}
-                colorful={style.id === "den_dau"}
+                colorful={section.id === "den_dau"}
               />
 
               <OrderedColumns
-                contentFirst={style.id === "den_dau"}
+                contentFirst={section.id === "den_dau"}
                 content={
                   <section
-                    className={`min-w-0 ${style.id === "den_dau" ? "order-1 lg:order-2" : ""}`}
+                    className={`min-w-0 ${section.id === "den_dau" ? "order-1 lg:order-2" : ""}`}
+                    // Only set while a transition is in flight, so the settled
+                    // DOM is byte-identical to before.
+                    style={
+                      isPending
+                        ? { opacity: 0.55, cursor: "progress" }
+                        : undefined
+                    }
                   >
-                    {style.id === "muc_than" ? (
-                      <div className="mx-auto w-full max-w-[1080px]">
-                        <ThirtySixKe />
-                      </div>
-                    ) : style.id === "hoian" ? (
-                      <div className="mx-auto w-full max-w-[1080px]">
-                        <TaoThao />
-                      </div>
-                    ) : style.id === "hong_tram" ? (
-                      <VeTui />
-                    ) : style.id === "giaydo" ? (
-                      <MucLam theme={style} />
-                    ) : style.id === "dongho" ? (
-                      <TuSach theme={style} />
-                    ) : style.id === "suong_mai" ? (
-                      <MuaRoi theme={style} />
-                    ) : (
-                      <>
+                    {/* Tab updates are transitions, so the revealed body stays
+                      in place while a lazy chunk loads. No placeholder DOM. */}
+                    <SectionBoundary key={section.id} style={style}>
+                    <Suspense fallback={null}>
+                      {section.component ? (
+                        section.component(style, section)
+                      ) : (
+                        <>
                         <motion.div
-                          key={style.id}
+                          key={section.id}
                           initial={{ opacity: 0, y: 12 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ duration: 0.25 }}
@@ -1227,17 +637,17 @@ export default function VietnameseBlogStyleLab() {
                           }}
                         >
                           <h2
-                            className={`text-center font-serif text-3xl font-black leading-tight sm:text-4xl ${style.id === "sap_bao_dem" ? "flex items-center justify-center gap-3" : ""}`}
+                            className={`text-center font-serif text-3xl font-black leading-tight sm:text-4xl ${section.id === "sap_bao_dem" ? "flex items-center justify-center gap-3" : ""}`}
                             style={{ color: style.accent }}
                           >
-                            {style.id === "sap_bao_dem" && <MusicWave />}
-                            {style.name}
+                            {section.id === "sap_bao_dem" && <MusicWave />}
+                            {section.name}
                           </h2>
                           <p
                             className="mx-auto mt-1 max-w-3xl text-center font-serif text-base leading-6"
                             style={{ color: style.textSoft }}
                           >
-                            {style.subtitle}
+                            {section.subtitle}
                           </p>
                           <Divider style={style} />
                           <div
@@ -1517,13 +927,15 @@ export default function VietnameseBlogStyleLab() {
                             })}
                           </div>
                         )}
-                      </>
-                    )}
+                        </>
+                      )}
+                    </Suspense>
+                    </SectionBoundary>
                   </section>
                 }
                 sidebar={
                   <aside
-                    className={`space-y-5 ${style.id === "den_dau" ? "order-2 lg:order-1" : ""}`}
+                    className={`space-y-5 ${section.id === "den_dau" ? "order-2 lg:order-1" : ""}`}
                   >
                     <section
                       className="border p-3 hb-box"

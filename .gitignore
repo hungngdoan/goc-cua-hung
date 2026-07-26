@@ -11,3 +11,7 @@ Thumbs.db
 
 # Font binary used only by scripts/make-share-card.py (download URL in its header)
 scripts/*.ttf
+
+# Output of `npm run check:sections`. One run writes ~11 MB of PNGs; only the
+# committed baseline in scripts/ is meant to be tracked.
+.section-check/

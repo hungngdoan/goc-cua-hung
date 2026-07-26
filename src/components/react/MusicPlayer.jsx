@@ -1,7 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
-import manhBaTrack from "../../music/manh-ba-2.opus?url";
-import canonTrack from "../../music/canon-in-d.opus?url";
+
+const assetBase = import.meta.env.BASE_URL.replace(/\/$/, "");
+const manhBaTrack = `${assetBase}/music/manh-ba-2.opus`;
+const canonTrack = `${assetBase}/music/canon-in-d.opus`;
 
 const PLAY_ICON = "▶"; // ▶
 const PAUSE_ICON = "❚❚"; // ❚❚
