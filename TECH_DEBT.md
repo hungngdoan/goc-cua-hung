@@ -7,10 +7,13 @@ Every claim below was re-verified against the working tree on 2026-07-25. Items 
 
 ## Recently paid off (2026-07-25)
 
-- **Item 1, heavy media, is paid.** All three files moved out of the bundle graph to `public/`, with URLs composed from `import.meta.env.BASE_URL` (`StyleLab.jsx:14-18`, `MusicPlayer.jsx:4-6`) rather than the hardcoded base that would have worked in dev and 404'd on Pages. The 751 KB banner GIF became a 33 KB H.264 MP4 plus a 16 KB WebP still, a 93.5% cut on the one asset every visitor pays for before anything else. `dist/` went 10,116,753 to 9,397,738 bytes. Audio is unchanged in size; moving it was bundle hygiene, not a byte saving, and `preload="metadata"` still means the 8 MB of opus is not fetched on load.
+- **Former item 1, theme and content-section conflation, is paid.** Palette tokens now live alone in `src/config/themes.js:1-578`. The twelve tabs, their stable ids, names, slugs, aliases, icons, rows and component adapters live in one registry at `src/config/sections.jsx:28-166`; the adapters at `src/config/sections.jsx:8-25` also encode whether a bespoke component receives a theme.
+- `StyleLab.jsx` consumes the registry for state, hash routing and tab data at `StyleLab.jsx:197-230`. Its former six-way section ternary is now a component lookup at `StyleLab.jsx:545-547`, with the existing generic post list as the null-component fallback. The file fell from 1,750 to 1,050 lines without moving `postsByStyle`.
+- The dependency-free check in `scripts/check-section-registry.mjs:30-470` is worth keeping, together with `scripts/section-registry-baseline.json`: it covers all twelve bodies, labels, icons, rows, canonical slugs, raw ids, legacy aliases and the no-hash default, then captures a full-page screenshot per tab. It is deliberately not presented as a general test suite.
+- **Heavy media is paid.** All three files moved out of the bundle graph to `public/`, with URLs composed from `import.meta.env.BASE_URL` (`StyleLab.jsx:15-18`, `MusicPlayer.jsx:4-6`) rather than the hardcoded base that would have worked in dev and 404'd on Pages. The 751 KB banner GIF became a 33 KB H.264 MP4 plus a 16 KB WebP still, a 93.5% cut on the one asset every visitor pays for before anything else. `dist/` went 10,116,753 to 9,397,738 bytes. Audio is unchanged in size; moving it was bundle hygiene, not a byte saving, and `preload="metadata"` still means the 8 MB of opus is not fetched on load.
 - Banner accessibility and motion behaviour preserved through the format change: `role="img"` plus `aria-label` carries the original `alt` text verbatim, and a `<source media="(prefers-reduced-motion: no-preference)">` means reduced-motion visitors match no source, request no MP4, and get the poster still. Known gap: Firefox 53-119 ignores `media` inside `<video>` and will animate anyway (fixed in Firefox 120).
-- **Item 7's Lora 900 defect is paid.** `Base.astro:37` no longer requests a weight Google does not serve. Verified zero-pixel: heading screenshots before and after are byte-identical. Font consolidation and the three `@import` sites are untouched and remain open below.
-- Mực Lam rebuilt as a ruled-paper list (`ec4e6a5`). Card grid replaced by one saying per ruled line. More importantly it is the first component to do styling the way the rest of the repo should: theme tokens go in as CSS custom properties from `MucLam.jsx:194-206`, all structure lives in a co-located `MucLam.css`, every selector is scoped under `.muc-lam`, and the runtime `<style dangerouslySetInnerHTML>` is gone. Use it as the reference when paying down item 3.
+- **The Lora 900 defect is paid.** `Base.astro:37` no longer requests a weight Google does not serve. Verified zero-pixel: heading screenshots before and after are byte-identical. Font consolidation and the three `@import` sites are untouched and remain open below.
+- Mực Lam rebuilt as a ruled-paper list (`ec4e6a5`). Card grid replaced by one saying per ruled line. More importantly it is the first component to do styling the way the rest of the repo should: theme tokens go in as CSS custom properties from `MucLam.jsx:194-211`, all structure lives in a co-located `MucLam.css`, every selector is scoped under `.muc-lam`, and the runtime `<style dangerouslySetInnerHTML>` is gone. Use it as the reference when paying down item 2.
 - The framer-motion per-item `<Fade>` wrapper is gone from Mực Lam in favour of a CSS keyframe. One less hydration-time cost, and one less wrapper element between a list and its items.
 
 ## Recently paid off (2026-06-11)
@@ -27,79 +30,71 @@ Every claim below was re-verified against the working tree on 2026-07-25. Items 
 
 ## Open debt, ranked
 
-### 1. Theme and content section are the same object
+### 1. The entire homepage is one eagerly hydrated island
 
-- The `styles` array (`StyleLab.jsx:122-739`) is 617 lines, 36% of the file, and conflates a visual palette with a content tab. "Tủ sách" is a bookshelf, "36 Kế" is an article, "Về tui" is an about page, yet each is a ~50-token colour object.
-- Ids still do not match names: `giaydo` renders "Mực Lam", `dongho` renders "Tủ sách", `muc_than` renders "36 Kế", `hoian` renders "Tào Tháo", `hong_tram` renders "Về tui" (`StyleLab.jsx:124-689`).
-- Correction to the previous entry: ids are **no longer frozen into URLs**. The `hashSlugs` map (`StyleLab.jsx:765-778`) publishes a readable slug per tab, and `hashToStyleId` (`StyleLab.jsx:785-791`) still resolves the raw id and any legacy alias. Renaming an id now costs an `aliases` entry, not a broken link. This item is a maintainability problem only; the URL-compatibility blocker is gone.
-- Adding one tab still touches six places: `postsByStyle` (:20), `styles` (:122), `darkRow` (:741), `brightRow` (:749), `hashSlugs` (:765), `styleIcons` (:793), plus the render dispatch in item 5.
-- Fix: split into a themes module (palette tokens only) and a section registry `{ id, name, slug, icon, row, component }`. One entry per tab, one file to touch.
-
-### 2. The entire homepage is one eagerly hydrated island
-
-- `src/pages/index.astro:7` mounts `<StyleLab client:load />`, and StyleLab is the whole page: banner, nav, sidebar, music player, footer and every tab body. The build ships `StyleLab.*.js` at 346 KB plus the 138 KB React runtime chunk, all blocking on first load, for a page whose visible content is mostly static text.
+- `src/pages/index.astro:7` mounts `<StyleLab client:load />`, and StyleLab is the whole page: banner, nav, sidebar, music player, footer and every tab body. The build ships `StyleLab.*.js` at 354.26 kB plus the 141.76 kB React runtime chunk, all blocking on first load, for a page whose visible content is mostly static text.
 - Only the active tab renders, but every tab component is in the same chunk, so reading one proverb downloads the 36 Kế markup, the Tào Tháo cards and the music player.
-- Fix, in order of payoff: move to `client:visible` or `client:idle` for below-the-fold islands, render the banner, header and footer as static Astro rather than React, and lazy-import the six tab bodies so a tab costs its own chunk. Comes far more easily once item 1 gives a registry to key the dynamic import on.
+- Fix, in order of payoff: move to `client:visible` or `client:idle` for below-the-fold islands, render the banner, header and footer as static Astro rather than React, and lazy-import the six tab bodies so a tab costs its own chunk. The now-paid section registry provides the key for those dynamic imports.
 
-### 3. Styling lives in JavaScript, not in stylesheets
+### 2. Styling lives in JavaScript, not in stylesheets
 
 - Two separate forms of the same problem.
 - Inline `style={{...}}` props threaded from the theme object: 49 in `StyleLab.jsx`, 34 in `TuSach.jsx`, 22 in `MuaRoi.jsx`, 20 in `VeTui.jsx`.
-- Runtime `<style dangerouslySetInnerHTML>` injection, 8 sites across 7 components: `StyleLab.jsx:964`, `MusicPlayer.jsx:761`, `TaoThao.jsx:225`, `ThirtySixKe.jsx:272`, `TuSach.jsx:372`, `VeTui.jsx:153`, `MuaRoi.jsx:290`. Each rebuilds a CSS string on mount and re-injects it on theme change.
+- Runtime `<style dangerouslySetInnerHTML>` injection, 7 sites across 7 components: `StyleLab.jsx:278`, `MusicPlayer.jsx:761`, `TaoThao.jsx:225`, `ThirtySixKe.jsx:272`, `TuSach.jsx:372`, `VeTui.jsx:153`, `MuaRoi.jsx:290`. Each rebuilds a CSS string on mount and re-injects it on theme change.
 - Partially paid. `MucLam.css` and `MonkeyParadoxExperience.css` are co-located stylesheets, so the target pattern already exists in the repo twice and needs no new tooling.
 - Fix: set the theme tokens once as CSS custom properties on the StyleLab root, then convert component by component to a co-located `.css` file with selectors scoped under a component class. `MucLam.jsx` plus `MucLam.css` is the worked example.
 
-### 4. Content is hardcoded inside components
+### 3. Content is hardcoded inside components
 
-- `postsByStyle` (`StyleLab.jsx:20-120`) holds 9 posts as JS objects. `BOOKS` (`TuSach.jsx:19`) holds the bookshelf. Every new post is a code edit inside a 1,718-line component.
-- Partially paid: `monkeyParadoxPost` was extracted to `src/content/monkeyParadox.js` and imported at `StyleLab.jsx:12`, and `taothaoCards.json` already lives in `src/content/`. The pattern is proven, just not applied to the rest.
+- `postsByStyle` (`StyleLab.jsx:21-121`) holds 9 posts as JS objects. `BOOKS` (`TuSach.jsx:19`) holds the bookshelf. Every new post is a code edit inside a 1,050-line component.
+- Partially paid: `monkeyParadoxPost` was extracted to `src/content/monkeyParadox.js` and imported at `StyleLab.jsx:6`, and `taothaoCards.json` already lives in `src/content/`. The pattern is proven, just not applied to the rest.
 - Fix: move posts and books to `src/content/` as JSON or data modules, same as the two that already moved. Components keep the layout, data files keep the words.
 
-### 5. Two ad-hoc dispatch mechanisms choose what renders
+### 4. Post-level embeds still use ad-hoc dispatch
 
-- Tab bodies are selected by a six-way ternary chain on `style.id` (`StyleLab.jsx:1231-1245`).
-- Post bodies use a second, unrelated mechanism: a string compare on `post.experience === "monkey-paradox"` in two places (`StyleLab.jsx:1320` and `:1446`, keyed off `monkeyParadox.js:38`). `TamMaoVignette` is wired in by hand at `StyleLab.jsx:1381`.
-- Cost: two different rules for "what component renders here", neither discoverable from the data, both requiring a JSX edit to extend.
-- Fix: one `component` field on the section registry from item 1, and one `experience` map for post-level embeds. Both become data, not control flow.
+- Section dispatch is paid by the registry above. Post bodies still use a string compare on `post.experience === "monkey-paradox"` in two places (`StyleLab.jsx:620` and `StyleLab.jsx:746`, keyed off `monkeyParadox.js:38`). `TamMaoVignette` is wired in by hand at `StyleLab.jsx:681`.
+- Cost: post-level component selection remains scattered through JSX and still requires a control-flow edit to extend.
+- Fix: reuse the registry pattern later through a separate `experience` map keyed by `post.experience`, plus a vignette map if more vignettes appear. Do not put post embeds in the section registry itself; tabs and embeds have different lifecycles and fallback rules.
 
-### 6. Nine font families, eight of them loaded via @import
+### 5. Nine font families, eight of them loaded via @import
 
 - Corrected count. Previously recorded as six, and it wrongly listed Lora as an `@import`. Lora loads correctly via `<link>` in `src/layouts/Base.astro:37`.
 - The other eight load through three `@import url(...)` sites, each render-blocking when its tab mounts: `MusicPlayer.jsx:43` (Press Start 2P, VT323), `ThirtySixKe.jsx:6` (Noto Serif SC, Noto Serif), `src/styles/taothao.css:1` (Cinzel, Cinzel Decorative, Cormorant Garamond, MedievalSharp).
-- Related gap: `Base.astro:37` requests Lora weights 400/700/900, but Google serves no Lora 900 (the family stops at 700), so every `font-black` heading on the site silently resolves to 700. Either drop the 900 request or pick a display face that has it.
+- The invalid Lora 900 request is already paid off; the remaining debt is the family count, remote loading and duplicated import paths.
 - Fix: consolidate to one or two self-hosted Vietnamese-subset fonts loaded once in `Base.astro`, and delete the `@import`s. The Vietnamese subset matters: Georgia, the current fallback, has no precomposed Vietnamese glyphs and decomposes the diacritics if Lora fails.
 
-### 7. 36 Kế is still injected HTML, not a component
+### 6. 36 Kế is still injected HTML, not a component
 
 - `36ke.html` (723 lines) goes in via `dangerouslySetInnerHTML` at `ThirtySixKe.jsx:273`. Safe (own authored content) and no longer regex-built, but it is invisible to React, and scroll position is measured and patched with timers and resize listeners: `ThirtySixKe.jsx:187`, `:227`, `:251-252`.
 - Fix when next touched: port the markup to JSX, or render it from data like the Tào Tháo cards already are.
 
-### 8. plan-sample/DESIGN.md describes a site that was never built
+### 7. plan-sample/DESIGN.md describes a site that was never built
 
 - Verified still wrong on every substantive point. It specifies Tailwind 4.x (repo runs 3.4.17), Markdown/MDX content collections (none exist), multi-page routing (owner decided against it), and "10 visual styles" (there are 12).
 - A wrong design doc is worse than none: it is the first file a new contributor opens.
 - Fix: delete it. The accurate architecture is now described by this register plus the README.
 
-### 9. No lint, no tests, no type checking
+### 8. No lint, no general test suite, no type checking
 
 - `package.json:6-11` has four scripts: `start`, `dev`, `build`, `preview`. No lint, no test, no `astro check`. No ESLint or test config anywhere in the repo.
 - `tsconfig.json` extends `astro/tsconfigs/strict`, but every component is untyped `.jsx`, so nothing is actually checked. A typo'd theme id in `darkRow`/`brightRow` still fails at render, not at build.
-- Acceptable for a hobby repo, and ranked last for that reason. If it grows: add `astro check` to the build, then ESLint, then one smoke test that mounts each tab.
+- The section-registry regression script paid a narrow coverage gap, but it is not wired into a package script and does not cover general component behaviour.
+- Acceptable for a hobby repo, and ranked last for that reason. If it grows: add `astro check` to the build, then ESLint, then promote the registry check into a maintained smoke-test command.
 
 ## Verified healthy
 
 Checked on 2026-07-25 and found fine. Recorded so the next audit does not re-litigate them.
 
 - **Deploy pipeline.** `.github/workflows/deploy.yml` is clean: `npm ci`, pinned major action versions, least-privilege permissions, a `pages` concurrency group with `cancel-in-progress`. No changes needed.
-- **Hash routing.** `hashSlugs` / `styleIdToHash` / `hashToStyleId` (`StyleLab.jsx:760-785`) give readable URLs while keeping raw ids and legacy aliases resolvable. This is the best-designed part of StyleLab.
-- **Head metadata and share card.** Complete in `Base.astro:22-34`, absolute URLs composed from `Astro.site` + `BASE_URL`, no hardcoded origin.
+- **Hash routing.** The section metadata and compatibility map (`src/config/sections.jsx:28-166`), consumed at `StyleLab.jsx:197-229`, give readable URLs while keeping raw ids and legacy aliases resolvable. This is now isolated from the view component.
+- **Head metadata and share card.** Complete in `Base.astro:23-33`, absolute URLs composed from `Astro.site` + `BASE_URL`, no hardcoded origin.
 - **`scripts/Lora.ttf`.** Correctly untracked (`git ls-files scripts/` returns only the Python script), ignored via `.gitignore`, and its download URL is documented in the generator header. The regeneration path is reproducible.
-- **`public/img/` assets.** All six are 19 KB to 95 KB, book covers already webp. Nothing to reclaim here; the media problem was item 1 and is now paid.
+- **`public/img/` assets.** All six are 19 KB to 95 KB, book covers already webp. Nothing to reclaim here; the media problem is paid off above.
 - **Audio preloading.** `preload="metadata"` at `MusicPlayer.jsx:768` means the 8 MB of opus is not fetched on page load.
 - **Tailwind config.** `content` glob covers `astro,html,js,jsx,ts,tsx`; no missed files.
-- **Mực Lam.** `MucLam.jsx` + `MucLam.css` are the pattern items 4 and 5 should converge on: tokens in, scoped stylesheet, no runtime injection, no palette duplication.
+- **Mực Lam.** `MucLam.jsx` + `MucLam.css` are the pattern item 2 should converge on: tokens in, scoped stylesheet, no runtime injection, no palette duplication.
 
 ## Document status
 
-- `ARCHITECTURE_REVIEW_TOMORROW.md`: **fold into this register, then delete.** It was committed in `657cbf0` as a prompt for a review, not as the review's findings. That review was never executed: none of its target artifacts exist (no themes module, no section registry), and its analysis is now superseded by items 1, 2, 4 and 5 above, which carry line references it never had. Its own footer instructs deletion once the restructuring is complete; the honest version is to delete it once its asks are recorded here, which this rewrite does.
-- `plan-sample/DESIGN.md`: delete. See item 8.
+- `ARCHITECTURE_REVIEW_TOMORROW.md`: **delete.** It was committed in `657cbf0` as a prompt for a review, not as the review's findings. Its themes-module and section-registry target is now complete, and its remaining concerns are recorded in open items 1, 3 and 4 above with current line references. Its own footer instructs deletion once the restructuring is complete.
+- `plan-sample/DESIGN.md`: delete. See item 7.
