@@ -1,4 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, {
+  startTransition,
+  Suspense,
+  useEffect,
+  useState,
+} from "react";
 import { motion } from "framer-motion";
 import MusicPlayer from "./MusicPlayer.jsx";
 import MonkeyParadoxExperience from "./MonkeyParadoxExperience.jsx";
@@ -174,6 +179,51 @@ function MusicWave({ bars = 4 }) {
   );
 }
 
+// A lazy chunk that fails to arrive throws while rendering, and without a
+// boundary React unmounts the whole island: banner, nav, sidebar and the
+// playing music player all disappear, not just the tab. That is not a rare
+// case here. Chunk filenames are content-hashed and the old ones are deleted
+// on every deploy, so anyone holding the page open across a deploy asks for a
+// file that is already gone. Keyed by section id so a failed tab does not
+// poison the next one, and reloading is offered because a stale build really
+// is the likely cause.
+class SectionBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { failed: false };
+  }
+
+  static getDerivedStateFromError() {
+    return { failed: true };
+  }
+
+  render() {
+    if (!this.state.failed) return this.props.children;
+    const { style } = this.props;
+    return (
+      <div
+        className="border p-4 text-center font-serif"
+        style={{
+          background: style.panelBg,
+          borderColor: style.panelBorder,
+          boxShadow: style.panelShadow,
+          color: style.textSoft,
+        }}
+      >
+        <p className="text-base leading-6">Phần này chưa tải được.</p>
+        <button
+          type="button"
+          onClick={() => window.location.reload()}
+          className="mt-2 border px-3 py-1 text-sm"
+          style={{ borderColor: style.panelBorder, color: style.accent }}
+        >
+          Tải lại trang
+        </button>
+      </div>
+    );
+  }
+}
+
 function OrderedColumns({ contentFirst, content, sidebar }) {
   return (
     <section className="mt-6 grid gap-5 lg:grid-cols-[260px_1fr] 2xl:grid-cols-[320px_1fr] 2xl:gap-8">
@@ -212,9 +262,9 @@ export default function VietnameseBlogStyleLab() {
       const hash = window.location.hash.slice(1);
       const id = hashToSectionId.get(hash);
       if (id) {
-        setSectionId(id);
+        startTransition(() => setSectionId(id));
       } else if (!hash) {
-        setSectionId(DEFAULT_SECTION_ID);
+        startTransition(() => setSectionId(DEFAULT_SECTION_ID));
       }
     };
     applyHash();
@@ -227,7 +277,7 @@ export default function VietnameseBlogStyleLab() {
   }, []);
 
   const selectTab = (item) => {
-    setSectionId(item.id);
+    startTransition(() => setSectionId(item.id));
     const hash = item.slug;
     if (window.location.hash.slice(1) !== hash) {
       window.history.pushState(null, "", `#${hash}`);
@@ -548,10 +598,14 @@ export default function VietnameseBlogStyleLab() {
                   <section
                     className={`min-w-0 ${section.id === "den_dau" ? "order-1 lg:order-2" : ""}`}
                   >
-                    {section.component ? (
-                      section.component(style, section)
-                    ) : (
-                      <>
+                    {/* Tab updates are transitions, so the revealed body stays
+                      in place while a lazy chunk loads. No placeholder DOM. */}
+                    <SectionBoundary key={section.id} style={style}>
+                    <Suspense fallback={null}>
+                      {section.component ? (
+                        section.component(style, section)
+                      ) : (
+                        <>
                         <motion.div
                           key={section.id}
                           initial={{ opacity: 0, y: 12 }}
@@ -855,8 +909,10 @@ export default function VietnameseBlogStyleLab() {
                             })}
                           </div>
                         )}
-                      </>
-                    )}
+                        </>
+                      )}
+                    </Suspense>
+                    </SectionBoundary>
                   </section>
                 }
                 sidebar={

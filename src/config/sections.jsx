@@ -1,9 +1,13 @@
-import TaoThao from "../components/react/TaoThao.jsx";
-import ThirtySixKe from "../components/react/ThirtySixKe.jsx";
-import VeTui from "../components/react/VeTui.jsx";
-import MucLam from "../components/react/MucLam.jsx";
-import TuSach from "../components/react/TuSach.jsx";
-import MuaRoi from "../components/react/MuaRoi.jsx";
+import { lazy } from "react";
+
+const TaoThao = lazy(() => import("../components/react/TaoThao.jsx"));
+const ThirtySixKe = lazy(
+  () => import("../components/react/ThirtySixKe.jsx"),
+);
+const VeTui = lazy(() => import("../components/react/VeTui.jsx"));
+const MucLam = lazy(() => import("../components/react/MucLam.jsx"));
+const TuSach = lazy(() => import("../components/react/TuSach.jsx"));
+const MuaRoi = lazy(() => import("../components/react/MuaRoi.jsx"));
 
 const withTheme = (Component) =>
   (theme, section) => (
