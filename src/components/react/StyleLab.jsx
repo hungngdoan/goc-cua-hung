@@ -560,7 +560,6 @@ export default function VietnameseBlogStyleLab() {
                     type="video/mp4"
                     media="(prefers-reduced-motion: no-preference)"
                   />
-                  {bannerAlt}
                 </video>
               </div>
               <header>
