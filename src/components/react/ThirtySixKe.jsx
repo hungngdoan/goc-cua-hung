@@ -2,8 +2,38 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import thirtySixKeHtml from "../../content/36ke.html?raw";
 import thirtySixKeCss from "../../content/36ke.css?raw";
 
+// ┌──────────────────────────────────────────────────────────────────────────┐
+// │ READ THIS BEFORE ADDING A CHINESE CHARACTER TO src/content/36ke.html.     │
+// │                                                                          │
+// │ Noto Serif SC is requested with Google Fonts' `text=` parameter, so the   │
+// │ file we get back contains ONLY the characters listed below. That is what  │
+// │ makes this tab cost ~67 KB of font instead of ~4.4 MB.                    │
+// │                                                                          │
+// │ The trap: a character that is not in this list is NOT rendered in Noto    │
+// │ Serif SC. It silently falls back to whatever CJK face the reader's system │
+// │ happens to have. No console error, no build error, no 404. It just looks  │
+// │ wrong, and only on machines whose fallback differs from yours.            │
+// │                                                                          │
+// │ So this list is not decoration. Whenever 36ke.html changes, run           │
+// │   npm run check:fonts                                                     │
+// │ which fails loudly if any rendered character is missing, and              │
+// │   node scripts/check-36ke-font-subset.mjs --print                         │
+// │ to regenerate the correct value. `npm run check:sections` runs the guard  │
+// │ too. Digits belong here as well: .ke-index renders "1".."36" in this      │
+// │ font, so 0-9 are part of the subset.                                     │
+// └──────────────────────────────────────────────────────────────────────────┘
+const notoSerifScSubset =
+  "0123456789三上不並中主交人代以伍伐倉借假偷僵六兵刀劫勝勞十參反圍城壹天客屋屍山岸底引待戰手打抽拋指捉換摸擊擒攻故救敗敵暗有李東柱桃桑梁梯槐樹欲殺殼水海混渡火為無牽玉王環生痴癲瞞磚空笑縱罵羊美聲肆肉脫花苦草薪藏虎虢蛇蟬裡西觀計調貳賊走趁趙近連逸過道遠還金釜門開間關陳陸隔離順驚魂魏魚";
+
+// Two requests, deliberately. `text=` applies to the whole css2 request, so
+// Cormorant Garamond must not share a URL with the subsetted Noto Serif SC or
+// the Vietnamese body text would be subsetted to these 145 characters too.
+// Noto Serif was dropped: it was declared but never the primary face anywhere,
+// so no Noto Serif file was ever fetched. VT323 and Press Start 2P were dropped:
+// MusicPlayer already loads both on every route.
 const fontsImport =
-  '@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=VT323&family=Press+Start+2P&display=swap");';
+  `@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&display=swap&text=${encodeURIComponent(notoSerifScSubset)}");\n` +
+  '@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&display=swap");';
 
 const migrationGuards = `
   .thirty-six-ke-page .ke-dragon,
