@@ -1,13 +1,23 @@
 import { lazy } from "react";
 
-const TaoThao = lazy(() => import("../components/react/TaoThao.jsx"));
-const ThirtySixKe = lazy(
-  () => import("../components/react/ThirtySixKe.jsx"),
-);
-const VeTui = lazy(() => import("../components/react/VeTui.jsx"));
-const MucLam = lazy(() => import("../components/react/MucLam.jsx"));
-const TuSach = lazy(() => import("../components/react/TuSach.jsx"));
-const MuaRoi = lazy(() => import("../components/react/MuaRoi.jsx"));
+// Each loader is named so the registry can expose it as `preload` as well as
+// hand it to lazy(). Warming a chunk when the reader shows intent (pointer or
+// keyboard focus on the tab) usually means it has already arrived by the time
+// they click, which is what keeps the tab feeling instant. Repeat calls are
+// free: a dynamic import resolves from the module cache after the first.
+const loadTaoThao = () => import("../components/react/TaoThao.jsx");
+const loadThirtySixKe = () => import("../components/react/ThirtySixKe.jsx");
+const loadVeTui = () => import("../components/react/VeTui.jsx");
+const loadMucLam = () => import("../components/react/MucLam.jsx");
+const loadTuSach = () => import("../components/react/TuSach.jsx");
+const loadMuaRoi = () => import("../components/react/MuaRoi.jsx");
+
+const TaoThao = lazy(loadTaoThao);
+const ThirtySixKe = lazy(loadThirtySixKe);
+const VeTui = lazy(loadVeTui);
+const MucLam = lazy(loadMucLam);
+const TuSach = lazy(loadTuSach);
+const MuaRoi = lazy(loadMuaRoi);
 
 const withTheme = (Component) =>
   (theme, section) => (
@@ -39,6 +49,7 @@ export const sectionRegistry = [
     icon: "🌙",
     row: "dark",
     component: null,
+    preload: null,
   },
   {
     id: "hong_tram",
@@ -50,6 +61,7 @@ export const sectionRegistry = [
     icon: "🕯",
     row: "dark",
     component: () => <VeTui />,
+    preload: loadVeTui,
   },
   {
     id: "muc_than",
@@ -60,6 +72,7 @@ export const sectionRegistry = [
     icon: "📜",
     row: "dark",
     component: constrained(ThirtySixKe),
+    preload: loadThirtySixKe,
   },
   {
     id: "hoian",
@@ -71,6 +84,7 @@ export const sectionRegistry = [
     icon: "🏮",
     row: "dark",
     component: constrained(TaoThao),
+    preload: loadTaoThao,
   },
   {
     id: "sap_bao_dem",
@@ -81,6 +95,7 @@ export const sectionRegistry = [
     icon: "🎶",
     row: "dark",
     component: null,
+    preload: null,
   },
   {
     id: "quan_coc_toi",
@@ -92,6 +107,7 @@ export const sectionRegistry = [
     icon: "🎮",
     row: "dark",
     component: null,
+    preload: null,
   },
   {
     id: "hoa_dao",
@@ -102,6 +118,7 @@ export const sectionRegistry = [
     icon: "🌸",
     row: "bright",
     component: null,
+    preload: null,
   },
   {
     id: "giaydo",
@@ -112,6 +129,7 @@ export const sectionRegistry = [
     icon: "✒️",
     row: "bright",
     component: withTheme(MucLam),
+    preload: loadMucLam,
   },
   {
     id: "dongho",
@@ -123,6 +141,7 @@ export const sectionRegistry = [
     icon: "📚",
     row: "bright",
     component: withTheme(TuSach),
+    preload: loadTuSach,
   },
   {
     id: "sapbao_sang",
@@ -133,6 +152,7 @@ export const sectionRegistry = [
     icon: "🍵",
     row: "bright",
     component: null,
+    preload: null,
   },
   {
     id: "quancoc_sang",
@@ -143,6 +163,7 @@ export const sectionRegistry = [
     icon: "🪷",
     row: "bright",
     component: null,
+    preload: null,
   },
   {
     id: "suong_mai",
@@ -153,6 +174,7 @@ export const sectionRegistry = [
     icon: "💧",
     row: "bright",
     component: withTheme(MuaRoi),
+    preload: loadMuaRoi,
   },
 ];
 

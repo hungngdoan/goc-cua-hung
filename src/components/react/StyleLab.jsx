@@ -1,8 +1,8 @@
 import React, {
-  startTransition,
   Suspense,
   useEffect,
   useState,
+  useTransition,
 } from "react";
 import { motion } from "framer-motion";
 import MusicPlayer from "./MusicPlayer.jsx";
@@ -244,6 +244,11 @@ function OrderedColumns({ contentFirst, content, sidebar }) {
 
 export default function VietnameseBlogStyleLab() {
   const [sectionId, setSectionId] = useState(DEFAULT_SECTION_ID);
+  // Tab changes are transitions, so the current body stays put instead of
+  // collapsing while a lazy chunk loads. That also means a click has no
+  // visible effect until the chunk lands, so `isPending` supplies the missing
+  // feedback on the slow path that preloading did not already cover.
+  const [isPending, startTransition] = useTransition();
   // Falling back to the first section keeps an unknown id from white-screening
   // the page on `section.id` below. Nothing can reach that today (every setter
   // is fed either the default or an id that came out of the registry), but the
@@ -309,6 +314,13 @@ export default function VietnameseBlogStyleLab() {
       <button
         key={item.id}
         onClick={() => selectTab(item)}
+        // Warm the chunk as soon as intent shows, so the click itself usually
+        // has nothing to wait for. pointerenter covers mouse and pen; focus
+        // covers keyboard; pointerdown is the last chance on touch, where
+        // there is no hover but a press still precedes the click.
+        onPointerEnter={() => item.preload?.()}
+        onPointerDown={() => item.preload?.()}
+        onFocus={() => item.preload?.()}
         className={`style-tab flex flex-1 items-center justify-center border px-3 py-2 ${isActive ? "is-active" : ""}`}
         style={{
           minWidth: "140px",
@@ -597,6 +609,13 @@ export default function VietnameseBlogStyleLab() {
                 content={
                   <section
                     className={`min-w-0 ${section.id === "den_dau" ? "order-1 lg:order-2" : ""}`}
+                    // Only set while a transition is in flight, so the settled
+                    // DOM is byte-identical to before.
+                    style={
+                      isPending
+                        ? { opacity: 0.55, cursor: "progress" }
+                        : undefined
+                    }
                   >
                     {/* Tab updates are transitions, so the revealed body stays
                       in place while a lazy chunk loads. No placeholder DOM. */}
