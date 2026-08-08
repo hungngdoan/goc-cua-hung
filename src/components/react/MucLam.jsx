@@ -61,6 +61,13 @@ const PROVERBS = [
     tag: "Ơn nghĩa",
   },
   {
+    icon: "🖌️",
+    text: "Một chữ cũng là thầy, nửa chữ cũng là thầy",
+    meaning:
+      "Dạy được một chữ hay chỉ nửa chữ thì cũng là thầy. Ơn dạy dỗ không đo bằng nhiều ít; học được của ai điều gì cũng nên nhớ.",
+    tag: "Tôn sư",
+  },
+  {
     icon: "⚖️",
     text: "Để thành công, bạn phải ích kỷ, nếu không bạn sẽ không bao giờ đạt được thành tựu. Và một khi bạn đã đạt đến thành công cao nhất, bạn buộc phải không ích kỷ.",
     meaning:
