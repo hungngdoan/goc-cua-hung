@@ -63,8 +63,6 @@ const PROVERBS = [
   {
     icon: "🖌️",
     text: "Một chữ cũng là thầy, nửa chữ cũng là thầy",
-    meaning:
-      "Dạy được một chữ hay chỉ nửa chữ thì cũng là thầy. Ơn dạy dỗ không đo bằng nhiều ít; học được của ai điều gì cũng nên nhớ.",
     tag: "Tôn sư",
   },
   {
