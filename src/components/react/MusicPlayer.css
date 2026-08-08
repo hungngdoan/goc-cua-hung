@@ -1,0 +1,295 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap");
+
+.music-box {
+  --bg-panel: #0d0d2b;
+  --accent-cyan: #00ffff;
+  --accent-pink: #ff69b4;
+  --accent-gold: #ffd700;
+  --text-dim: #9988bb;
+  --link-color: #00ccff;
+  --font-pixel: "VT323", monospace;
+  --font-display: "Press Start 2P", monospace;
+  font-family: var(--font-pixel);
+  background: var(--bg-panel);
+  border: 1px solid var(--mb-border, #335);
+  border-radius: 4px;
+  padding: 13px;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.music-box::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--mb-strip, linear-gradient(90deg, var(--accent-pink), var(--accent-cyan), var(--accent-gold)));
+}
+
+.music-box h3 {
+  font-family: var(--font-display);
+  font-size: 11px;
+  color: var(--accent-gold);
+  margin: 0 0 8px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.blink {
+  animation: music-blink-anim 1s steps(1) infinite;
+}
+
+@keyframes music-blink-anim {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+@keyframes music-glow-pulse {
+  0% {
+    text-shadow:
+      0 0 10px rgba(var(--mb-glow-rgb, 255, 105, 180), 0.8),
+      0 0 20px rgba(var(--mb-glow-rgb, 255, 105, 180), 0.4),
+      2px 2px 0 #330033;
+  }
+  100% {
+    text-shadow:
+      0 0 20px rgba(var(--mb-glow-rgb, 255, 105, 180), 1),
+      0 0 40px rgba(var(--mb-glow-rgb, 255, 105, 180), 0.6),
+      0 0 60px rgba(var(--mb-glow-rgb, 255, 105, 180), 0.3),
+      2px 2px 0 #330033;
+  }
+}
+
+.music-title-wrap {
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 8px;
+}
+
+.music-title-wrap::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 20px;
+  background: linear-gradient(90deg, transparent, var(--bg-panel));
+  pointer-events: none;
+}
+
+.music-title-scroll {
+  font-family: var(--font-pixel);
+  font-size: 17px;
+  color: var(--accent-pink);
+  white-space: nowrap;
+  display: inline-block;
+  animation: music-scroll 12s linear infinite;
+}
+
+@keyframes music-scroll {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+.music-progress-wrap {
+  height: 6px;
+  background: var(--track-bg, rgba(255, 255, 255, 0.08));
+  border-radius: 3px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.music-progress-bar {
+  height: 100%;
+  width: 0%;
+  /* Per-tab gradient via --progress-from/--progress-to; falls back to the
+     pink->cyan neon defaults on the colorful (Đêm Huyền) player. */
+  background: linear-gradient(90deg, var(--progress-from, var(--accent-pink)), var(--progress-to, var(--accent-cyan)));
+  border-radius: 3px;
+  transition: width 0.1s linear;
+}
+
+.music-times {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-pixel);
+  font-size: 14px;
+  color: var(--text-dim);
+  margin: 4px 0 8px;
+}
+
+.music-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.music-btn {
+  background: none;
+  border: 1px solid var(--accent-cyan);
+  color: var(--accent-cyan);
+  font-size: 13px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.2s;
+  padding: 0;
+  line-height: 1;
+}
+
+.music-btn:hover {
+  background: rgba(var(--mb-glow-rgb, 0, 255, 255), 0.15);
+  box-shadow: 0 0 10px rgba(var(--mb-glow-rgb, 0, 255, 255), 0.4);
+}
+
+.music-btn.playing {
+  border-color: var(--accent-pink);
+  color: var(--accent-pink);
+  animation: music-glow-pulse 2s ease-in-out infinite alternate;
+}
+
+.music-btn.is-on {
+  border-color: var(--accent-gold);
+  color: var(--accent-gold);
+}
+
+.music-btn-skip {
+  font-size: 10px;
+}
+
+.music-btn:disabled {
+  cursor: wait;
+  opacity: 0.75;
+}
+
+.music-volume {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.music-vol-icon {
+  font-size: 18px;
+  color: var(--accent-gold);
+  cursor: pointer;
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.music-vol-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  flex: 1;
+  height: 4px;
+  background: var(--track-bg, rgba(255, 255, 255, 0.08));
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+}
+
+.music-vol-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--accent-gold);
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 0 6px rgba(var(--mb-glow-rgb, 255, 215, 0), 0.5);
+}
+
+.music-vol-slider::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--accent-gold);
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 0 6px rgba(var(--mb-glow-rgb, 255, 215, 0), 0.5);
+}
+
+.music-list {
+  list-style: none;
+  margin: 10px 0 0;
+  padding: 0;
+}
+
+.music-list li {
+  margin: 0;
+}
+
+.music-list-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  background: none;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  padding: 4px 6px;
+  cursor: pointer;
+  text-align: left;
+  font-family: var(--font-pixel);
+  color: var(--text-dim);
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.music-list-row:hover {
+  background: rgba(var(--mb-glow-rgb, 0, 255, 255), 0.1);
+  color: var(--accent-cyan);
+}
+
+.music-list-row.is-active {
+  border-color: var(--accent-pink);
+  color: var(--accent-pink);
+}
+
+.music-list-num {
+  font-size: 14px;
+  width: 14px;
+  text-align: right;
+  opacity: 0.75;
+  flex-shrink: 0;
+}
+
+.music-list-title {
+  font-size: 16px;
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.music-list-artist {
+  font-size: 13px;
+  opacity: 0.7;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.music-credit {
+  display: inline-block;
+  margin-top: 8px;
+  color: var(--link-color);
+  font-family: var(--font-pixel);
+  font-size: 16px;
+  text-decoration: none;
+  transition: color 0.2s, text-shadow 0.2s;
+}
+
+.music-credit:hover {
+  color: var(--accent-pink);
+  text-shadow: 0 0 8px rgba(var(--mb-glow-rgb, 255, 105, 180), 0.5);
+}

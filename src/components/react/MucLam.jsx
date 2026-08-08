@@ -61,6 +61,11 @@ const PROVERBS = [
     tag: "Ơn nghĩa",
   },
   {
+    icon: "🖌️",
+    text: "Một chữ cũng là thầy, nửa chữ cũng là thầy",
+    tag: "Tôn sư",
+  },
+  {
     icon: "⚖️",
     text: "Để thành công, bạn phải ích kỷ, nếu không bạn sẽ không bao giờ đạt được thành tựu. Và một khi bạn đã đạt đến thành công cao nhất, bạn buộc phải không ích kỷ.",
     meaning:
