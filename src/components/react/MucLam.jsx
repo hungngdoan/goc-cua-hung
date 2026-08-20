@@ -108,6 +108,11 @@ const PROVERBS = [
     tag: "Đoàn kết",
   },
   {
+    icon: "🌊",
+    text: "Thuận vợ thuận chồng, tát biển Đông cũng cạn",
+    tag: "Đồng lòng",
+  },
+  {
     icon: "🛡️",
     text: "Nuôi quân 3 năm, dùng 1 lần",
     meaning:
