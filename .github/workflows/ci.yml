@@ -1,0 +1,32 @@
+name: CI
+
+# Lint runs where it can still change the outcome: on every pull request, and
+# on main as a backstop for anything pushed straight there. Deploy is left
+# alone on purpose - a lint slip should fail a review, not hold the site
+# hostage, and by the time deploy runs the PR check has already had its say.
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# A new push to the same branch makes the previous run's answer irrelevant.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          # Matches deploy.yml, so lint and the build that ships agree.
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - run: npm run lint

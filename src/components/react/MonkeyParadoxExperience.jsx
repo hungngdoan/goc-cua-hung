@@ -1,4 +1,4 @@
-import React, { useEffect, useId, useRef, useState } from "react";
+import React, { useCallback, useEffect, useId, useRef, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { createPortal } from "react-dom";
 import {
@@ -204,26 +204,26 @@ export default function MonkeyParadoxExperience({ theme }) {
     setIsOpen(true);
   };
 
-  const closeExperience = () => {
+  const closeExperience = useCallback(() => {
     setIsOpen(false);
-  };
+  }, []);
 
-  const showPreviousScene = () => {
+  const showPreviousScene = useCallback(() => {
     if (isFirstScene) {
       return;
     }
     setDirection(-1);
     setSceneIndex((current) => Math.max(0, current - 1));
-  };
+  }, [isFirstScene]);
 
-  const showNextScene = () => {
+  const showNextScene = useCallback(() => {
     if (isFinalScene) {
       closeExperience();
       return;
     }
     setDirection(1);
     setSceneIndex((current) => Math.min(LAST_SCENE_INDEX, current + 1));
-  };
+  }, [isFinalScene, closeExperience]);
 
   const showFirstScene = () => {
     setDirection(-1);
@@ -387,7 +387,7 @@ export default function MonkeyParadoxExperience({ theme }) {
 
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
-  }, [isOpen, sceneIndex]);
+  }, [isOpen, sceneIndex, closeExperience, showNextScene, showPreviousScene]);
 
   useEffect(() => {
     if (!isOpen || !stageRef.current) {

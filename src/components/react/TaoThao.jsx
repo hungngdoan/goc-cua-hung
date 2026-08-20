@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import taothaoCards from "../../content/taothaoCards.json";
 
 // Gem colours cycle with the card index, one entry per card position.
@@ -110,7 +110,7 @@ export default function TaoThao() {
     ? `${index + 1} / ${results.length} kết quả`
     : `Thẻ ${index + 1} / ${results.length}`;
 
-  const goTo = (next) => {
+  const goTo = useCallback((next) => {
     if (!results.length) return;
     let target = next;
     if (target < 0) target = results.length - 1;
@@ -125,7 +125,7 @@ export default function TaoThao() {
       window.clearTimeout(transitionTimer.current);
       transitionTimer.current = window.setTimeout(() => setTransitioning(false), 350);
     }
-  };
+  }, [results]);
 
   const onSearch = (event) => {
     setQuery(event.target.value);
@@ -199,7 +199,7 @@ export default function TaoThao() {
       cardArea?.removeEventListener("touchstart", onTouchStart);
       cardArea?.removeEventListener("touchend", onTouchEnd);
     };
-  }, [index, flipped, query]);
+  }, [index, flipped, query, goTo]);
 
   useEffect(() => () => window.clearTimeout(transitionTimer.current), []);
 
