@@ -141,6 +141,13 @@ const PROVERBS = [
     tag: "Ỷ lại",
   },
   {
+    icon: "🐅",
+    text: "Một rừng không thể có hai hổ",
+    meaning:
+      "Hai kẻ mạnh ngang nhau không thể cùng ngự trị một chỗ. Sớm muộn cũng phải phân cao thấp, hoặc một bên chịu lui.",
+    tag: "Tranh quyền",
+  },
+  {
     icon: "🏞️",
     text: "Đồng Đăng có phố Kỳ Lừa,\nCó nàng Tô Thị, có chùa Tam Thanh.",
     meaning:
