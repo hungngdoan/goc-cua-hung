@@ -148,6 +148,11 @@ const PROVERBS = [
     tag: "Tranh quyền",
   },
   {
+    icon: "🎒",
+    text: "Một buổi tan trường",
+    tag: "Học trò",
+  },
+  {
     icon: "🏞️",
     text: "Đồng Đăng có phố Kỳ Lừa,\nCó nàng Tô Thị, có chùa Tam Thanh.",
     meaning:
