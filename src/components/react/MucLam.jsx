@@ -153,6 +153,11 @@ const PROVERBS = [
     tag: "Học trò",
   },
   {
+    icon: "🌤️",
+    text: "Trong họa có phúc",
+    tag: "Nghịch cảnh",
+  },
+  {
     icon: "🏞️",
     text: "Đồng Đăng có phố Kỳ Lừa,\nCó nàng Tô Thị, có chùa Tam Thanh.",
     meaning:
