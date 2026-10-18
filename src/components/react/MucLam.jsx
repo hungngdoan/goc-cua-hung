@@ -61,6 +61,13 @@ const PROVERBS = [
     tag: "Ơn nghĩa",
   },
   {
+    icon: "🌳",
+    text: "Ăn cây nào, rào cây ấy",
+    meaning:
+      "Được hưởng lợi từ đâu thì phải có trách nhiệm gìn giữ, bảo vệ nơi ấy.",
+    tag: "Trách nhiệm",
+  },
+  {
     icon: "🖌️",
     text: "Một chữ cũng là thầy, nửa chữ cũng là thầy",
     tag: "Tôn sư",
